@@ -1,191 +1,281 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Direct Oral Anticoagulant Counselling (Apixaban) | OSCE</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #ede7f6;
-            color: #4527a0;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-            color: #4527a0;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #d1c4e9;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-            color: #4527a0;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #b39ddb;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul, ol {
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩸 Direct Oral Anticoagulant Counselling (Apixaban)</title>
+  <style>
+    /* --- UPDATED PURPLE COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #ede7f6; /* Light purple background */
+      color: #4527a0;     /* Dark purple text */
+    }
+
+    header {
+      background: linear-gradient(to right, #b39ddb, #4527a0); /* Purple gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #d1c4e9; /* Lighter purple switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #ede7f6; /* Light purple background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #4527a0; /* Dark purple for headings */
+      border-left: 5px solid #4527a0; /* Dark purple border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>🩸 Direct Oral Anticoagulant Counselling (Apixaban) | OSCE</h1>
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
-    </div>
-</div>
-<div class="labels">
+  <header>🩸 Direct Oral Anticoagulant Counselling (Apixaban)</header>
+  <div class="labels">
     <span>High-Yield Notes</span>
     <span>Full Script</span>
-</div>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
 
-<div class="content-section active" id="highYield">
-<h2>High-Yield OSCE Points 🧠</h2>
-<h3>🩺 Set up</h3>
-<ul>
-    <li>🧼 Wash hands, don PPE if needed</li>
-    <li>👋 Introduce yourself (name, role)</li>
-    <li>🆔 Confirm patient's name & DOB</li>
-    <li>🎯 Explain purpose: discuss AF and DOAC treatment options</li>
-    <li>📝 Gain consent to proceed</li>
-    <li>📖 Demonstrate awareness of recent AF diagnosis</li>
-</ul>
-<h3>💭 Perceptions (ICE)</h3>
-<ul>
-    <li>🗣️ Ask what the patient knows about AF/anticoagulation</li>
-    <li>❓ Explore concerns and expectations</li>
-    <li>🙋 Encourage questions and active participation</li>
-</ul>
-<h3>📨 Invitation</h3>
-<ul>
-    <li>💬 Offer to provide info about AF/DOACs</li>
-    <li>🔍 Ask if any specific areas they want to discuss or avoid</li>
-</ul>
-<h3>📚 Knowledge</h3>
-<ul>
-    <li>✅ Check patient understanding</li>
-    <li>🫀 Explain AF and risk of stroke (in patient-friendly terms)</li>
-    <li>💊 Explain how DOACs (like apixaban) work</li>
-    <li>🪢 Chunk info, check understanding, avoid jargon</li>
-    <li>🔁 Tailor detail to patient</li>
-    <li>🌍 Signpost to resources, provide written info</li>
-</ul>
-<h3>💊 How to take Apixaban</h3>
-<ul>
-    <li>💡 Take at the same time every day (usually twice daily)</li>
-    <li>💧 Swallow whole, with or without food</li>
-    <li>⏳ Continue as prescribed (often lifelong for AF)</li>
-    <li>❌ Don’t double up if a dose is missed, just take the next scheduled dose</li>
-</ul>
-<h3>🩺 Timeline & monitoring</h3>
-<ul>
-    <li>🩸 Routine bloods at baseline and for renal function</li>
-    <li>📅 Annual/periodic reviews for ongoing safety</li>
-</ul>
-<h3>⚠️ Side effects & safety netting</h3>
-<ul>
-    <li>🩸 Bleeding: gums, nosebleeds, bruising, blood in urine/stool—seek help if severe or persistent</li>
-    <li>🚑 Red flags: black stool, severe headache, unexplained pain—seek urgent help</li>
-    <li>💊 Avoid NSAIDs/aspirin unless prescribed</li>
-</ul>
-<h3>🤝 Empathy & summary</h3>
-<ul>
-    <li>🤔 Explore feelings about information</li>
-    <li>💬 Show empathy, active listening, summarise key points</li>
-    <li>✅ Teach-back, confirm needs addressed, thank, close</li>
-</ul>
-</div>
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <ul>
+            <li>🧼 Wash hands, don PPE if needed</li>
+            <li>👋 Introduce yourself (name, role)</li>
+            <li>🆔 Confirm patient's name & DOB</li>
+            <li>🎯 Explain purpose: discuss AF and DOAC treatment options</li>
+            <li>📝 Gain consent to proceed</li>
+            <li>📖 Demonstrate awareness of recent AF diagnosis</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Perceptions (ICE)</h3>
+        <ul>
+            <li>🗣️ Ask what the patient knows about AF/anticoagulation</li>
+            <li>❓ Explore concerns and expectations</li>
+            <li>🙋 Encourage questions and active participation</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📚 Knowledge</h3>
+        <ul>
+            <li>✅ Check patient understanding</li>
+            <li>🫀 Explain AF and risk of stroke (in patient-friendly terms)</li>
+            <li>💊 Explain how DOACs (like apixaban) work</li>
+            <li>🪢 Chunk info, check understanding, avoid jargon</li>
+            <li>🔁 Tailor detail to patient</li>
+            <li>🌍 Signpost to resources, provide written info</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>💊 How to take Apixaban</h3>
+        <ul>
+            <li>💡 Take at the same time every day (usually twice daily)</li>
+            <li>💧 Swallow whole, with or without food</li>
+            <li>⏳ Continue as prescribed (often lifelong for AF)</li>
+            <li>❌ Don’t double up if a dose is missed, just take the next scheduled dose</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🔬 Timeline & monitoring</h3>
+        <ul>
+            <li>🩸 Routine bloods at baseline and for renal function</li>
+            <li>📅 Annual/periodic reviews for ongoing safety</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side effects & safety netting</h3>
+        <ul>
+            <li>🩸 Bleeding: gums, nosebleeds, bruising, blood in urine/stool—seek help if severe or persistent</li>
+            <li>🚑 Red flags: black stool, severe headache, unexplained pain—seek urgent help</li>
+            <li>💊 Avoid NSAIDs/aspirin unless prescribed</li>
+        </ul>
+    </div>
+    <div class="section-box">
+       <h3>❤️ Empathy & summary</h3>
+        <ul>
+            <li>🤔 Explore feelings about information</li>
+            <li>💬 Show empathy, active listening, summarise key points</li>
+            <li>✅ Teach-back, confirm needs addressed, thank, close</li>
+        </ul>
+    </div>
+  </div>
 
-<div class="content-section" id="fullScript">
-<h2>Full Word-for-Word OSCE Script 📜</h2>
-<h3>🩺 Set up</h3>
-<p>"Hi, my name is [Your Name], I’m one of the doctors. I’ll just wash my hands and put on PPE if needed. Can I confirm your full name and date of birth?"</p>
-<p>"Your recent diagnosis is atrial fibrillation, and today we’ll talk about the treatment options—especially blood thinners like apixaban, which are used to reduce your stroke risk. Is that okay with you? Shall we carry on?"</p>
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <p>"Hi, my name is [Your Name], I’m one of the doctors. I’ll just wash my hands and put on PPE if needed. Can I confirm your full name and date of birth?"</p>
+        <p>"Your recent diagnosis is atrial fibrillation, and today we’ll talk about the treatment options—especially blood thinners like apixaban, which are used to reduce your stroke risk. Is that okay with you? Shall we carry on?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Perceptions (ICE)</h3>
+        <p>"What do you already know about atrial fibrillation and its treatments? Do you have any concerns or questions about blood thinners? What are you hoping to get from our chat today?"</p>
+        <p>"Feel free to ask anything as we go—this is your decision."</p>
+    </div>
+    <div class="section-box">
+        <h3>📚 Knowledge & explanation</h3>
+        <p>"AF means your heart has an irregular rhythm, which increases the chance of blood clots forming. These clots can cause a stroke. Blood thinners, or anticoagulants, like apixaban, help stop clots from forming and so lower your risk of stroke."</p>
+        <p>"Apixaban is a direct oral anticoagulant (DOAC). It makes your blood less likely to clot, but it also means you may bleed more easily. Does that make sense so far?"</p>
+        <p>"I’ll explain in small steps—let me know if I’m going too fast or if you want more detail."</p>
+    </div>
+    <div class="section-box">
+        <h3>💊 How to take Apixaban</h3>
+        <p>"Apixaban is usually taken twice a day, at the same time each day. You can take it with or without food. If you miss a dose, just take the next one at your usual time—don’t double up."</p>
+        <p>"You’ll usually need to stay on it long-term, unless your doctor says otherwise."</p>
+    </div>
+    <div class="section-box">
+        <h3>🔬 Timeline & monitoring</h3>
+        <p>"We’ll check your kidney function with a blood test before and during treatment, and see you at least once a year for review."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side effects & safety netting</h3>
+        <p>"The main risk is bleeding, like bruising more easily, nosebleeds, bleeding gums, or blood in your urine or stool. If you notice severe, persistent, or unexplained bleeding, or black stool or severe headache, seek urgent help."</p>
+        <p>"Avoid taking NSAIDs or aspirin unless your doctor says so, as they increase bleeding risk."</p>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Empathy, exploration, and summary</h3>
+        <p>"How do you feel about this information so far? Any concerns, or is there something you’d like to go over again?"</p>
+        <p>"To summarise: Apixaban reduces your risk of stroke from AF, but increases bleeding risk. Take it twice a day, don’t double up on missed doses, and look out for bleeding. We’ll review you regularly. Can you tell me what you’ll remember or do if you miss a dose, or if you notice bleeding?"</p>
+        <p>"Here’s a leaflet and some web links for more info. Have I answered all your questions? Thank you for your time—I’ll take off PPE and wash my hands."</p>
+    </div>
+  </div>
 
-<h3>💭 Perceptions (ICE)</h3>
-<p>"What do you already know about atrial fibrillation and its treatments? Do you have any concerns or questions about blood thinners? What are you hoping to get from our chat today?"</p>
-<p>"Feel free to ask anything as we go—this is your decision."</p>
-
-<h3>📨 Invitation</h3>
-<p>"Would you like me to give an overview of AF and its treatments, or is there something specific you’d like to focus on? Is there anything you’d prefer not to hear about?"</p>
-
-<h3>📚 Knowledge & explanation</h3>
-<p>"AF means your heart has an irregular rhythm, which increases the chance of blood clots forming. These clots can cause a stroke. Blood thinners, or anticoagulants, like apixaban, help stop clots from forming and so lower your risk of stroke."</p>
-<p>"Apixaban is a direct oral anticoagulant (DOAC). It makes your blood less likely to clot, but it also means you may bleed more easily. Does that make sense so far?"</p>
-<p>"I’ll explain in small steps—let me know if I’m going too fast or if you want more detail."</p>
-
-<h3>💊 How to take Apixaban</h3>
-<p>"Apixaban is usually taken twice a day, at the same time each day. You can take it with or without food. If you miss a dose, just take the next one at your usual time—don’t double up."</p>
-<p>"You’ll usually need to stay on it long-term, unless your doctor says otherwise."</p>
-
-<h3>🩺 Timeline & monitoring</h3>
-<p>"We’ll check your kidney function with a blood test before and during treatment, and see you at least once a year for review."</p>
-
-<h3>⚠️ Side effects & safety netting</h3>
-<p>"The main risk is bleeding, like bruising more easily, nosebleeds, bleeding gums, or blood in your urine or stool. If you notice severe, persistent, or unexplained bleeding, or black stool or severe headache, seek urgent help."</p>
-<p>"Avoid taking NSAIDs or aspirin unless your doctor says so, as they increase bleeding risk."</p>
-
-<h3>🤝 Empathy, exploration, and summary</h3>
-<p>"How do you feel about this information so far? Any concerns, or is there something you’d like to go over again?"</p>
-<p>"To summarise: Apixaban reduces your risk of stroke from AF, but increases bleeding risk. Take it twice a day, don’t double up on missed doses, and look out for bleeding. We’ll review you regularly. Can you tell me what you’ll remember or do if you miss a dose, or if you notice bleeding?"</p>
-<p>"Here’s a leaflet and some web links for more info. Have I answered all your questions? Thank you for your time—I’ll take off PPE and wash my hands."</p>
-</div>
-
-<script>
-const toggle = document.getElementById("toggleSwitch");
-const highYield = document.getElementById("highYield");
-const fullScript = document.getElementById("fullScript");
-toggle.addEventListener("click", () => {
-    toggle.classList.toggle("active");
-    highYield.classList.toggle("active");
-    fullScript.classList.toggle("active");
-});
-</script>
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
