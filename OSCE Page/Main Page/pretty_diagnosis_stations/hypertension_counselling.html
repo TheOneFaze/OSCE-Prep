@@ -1,170 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hypertension Counselling</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #fff3e0;
-            color: #ef6c00;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #ffe0b2;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #ffb74d;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💓 Hypertension Counselling</title>
+  <style>
+    /* --- UPDATED ORANGE COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff3e0; /* Light orange background */
+      color: #ef6c00;     /* Dark orange text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ffb74d, #ef6c00); /* Orange gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #ffe0b2; /* Lighter orange switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #fff3e0; /* Light orange background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #ef6c00; /* Dark orange for headings */
+      border-left: 5px solid #ef6c00; /* Dark orange border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>💓 Hypertension Counselling</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
+  <header>💓 Hypertension Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span style="color:#ef6c00;">High-Yield Notes</span>
-    <span style="color:#ef6c00;">Full Script</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>Introduction</h3>
-    <ul>
-        <li>🧼 Wash hands and PPE</li>
-        <li>👋 Introduce name and role</li>
-        <li>🆔 Confirm patient identity</li>
-        <li>📋 Clarify purpose of consultation</li>
-    </ul>
+    <div class="section-box">
+        <h3>🩺 Introduction</h3>
+        <ul>
+            <li>🧼 Wash hands and PPE</li>
+            <li>👋 Introduce name and role</li>
+            <li>🆔 Confirm patient identity</li>
+            <li>📋 Clarify purpose of consultation</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Understanding & Concerns</h3>
+        <ul>
+            <li>💬 Ask what patient knows about high BP</li>
+            <li>❓ Explore ICE (Ideas, Concerns, Expectations)</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📖 Explanation</h3>
+        <ul>
+            <li>💓 BP is the pressure of blood in your arteries</li>
+            <li>📈 Long-term high BP strains heart, brain, kidneys</li>
+            <li>😶 Often asymptomatic (“silent killer”)</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>💊 Management</h3>
+        <ul>
+            <li>🍎 Lifestyle: salt, diet, exercise, weight, smoking</li>
+            <li>💊 Medications: ACE inhibitors, CCBs, diuretics</li>
+            <li>📉 Goal: lower risk of stroke, heart disease</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>👋 Closing</h3>
+        <ul>
+            <li>📄 Leaflet + written advice</li>
+            <li>📞 Safety net: chest pain, severe headache, blurred vision</li>
+            <li>🙋 Invite final questions</li>
+        </ul>
+    </div>
+  </div>
 
-    <h3>Understanding & Concerns</h3>
-    <ul>
-        <li>💬 Ask what patient knows about high BP</li>
-        <li>❓ Explore ICE (Ideas, Concerns, Expectations)</li>
-    </ul>
-
-    <h3>Explanation</h3>
-    <ul>
-        <li>💓 BP is the pressure of blood in your arteries</li>
-        <li>📈 Long-term high BP strains heart, brain, kidneys</li>
-        <li>😶 Often asymptomatic (“silent killer”)</li>
-    </ul>
-
-    <h3>Management</h3>
-    <ul>
-        <li>🍎 Lifestyle: salt, diet, exercise, weight, smoking</li>
-        <li>💊 Medications: ACE inhibitors, CCBs, diuretics</li>
-        <li>📉 Goal: lower risk of stroke, heart disease</li>
-    </ul>
-
-    <h3>Closing</h3>
-    <ul>
-        <li>📄 Leaflet + written advice</li>
-        <li>📞 Safety net: chest pain, severe headache, blurred vision</li>
-        <li>🙋 Invite final questions</li>
-    </ul>
-</div>
-
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Introduction</h3>
+        <p>"Hi, I'm [Your Name], a medical student. I’ve been asked to talk to you about your blood pressure results. Before we start, could I confirm your name and date of birth?"</p>
+        <p>"Today I’d like to explain what high blood pressure means, how we manage it, and answer any questions you might have."</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Understanding & Concerns</h3>
+        <p>"Do you know much about high blood pressure?"</p>
+        <p>"Is there anything you're worried about or hoping I can clear up today?"</p>
+    </div>
+    <div class="section-box">
+        <h3>💓 What is Hypertension?</h3>
+        <p>"Blood pressure is the force of blood against the walls of your arteries. When it’s consistently too high, it’s called hypertension."</p>
+        <p>"You may not feel unwell with it, but over time it puts extra strain on your heart, blood vessels, brain and kidneys, which increases the risk of things like strokes, heart attacks, kidney problems and eye damage."</p>
+    </div>
+    <div class="section-box">
+        <h3>📊 What Causes It?</h3>
+        <p>"There isn’t always a single cause, but it can be linked to age, genetics, being overweight, a high-salt diet, lack of exercise, smoking, or alcohol." </p>
+    </div>
+    <div class="section-box">
+        <h3>🛠️ How Do We Manage It?</h3>
+        <p>"We usually start with lifestyle changes. These include reducing salt, eating more fruits and vegetables, regular exercise, weight loss, and stopping smoking if you smoke."</p>
+        <p>"If your blood pressure is still high after these, or if it's very high to begin with, we may recommend medication. This could include ACE inhibitors, calcium channel blockers, or diuretics — depending on your age and other health conditions."</p>
+    </div>
+    <div class="section-box">
+        <h3>📋 Monitoring and Targets</h3>
+        <p>"You’ll have regular blood pressure checks, either at the GP surgery or with a home monitor. We aim to keep your blood pressure below 140/90 mmHg for most people, or even lower if you have diabetes or kidney disease."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Summary & Safety Net</h3>
+        <p>"So in summary, hypertension is high blood pressure that can cause serious problems over time. It can be managed effectively with a combination of lifestyle changes and medication."</p>
+        <p>"Here’s a leaflet with everything we discussed and tips to help at home. If you ever get symptoms like chest pain, vision changes, or severe headaches — please seek urgent medical attention."</p>
+        <p>"Do you have any questions or anything you’d like me to go over again?"</p>
+        <p>"Thanks for your time — and we’ll arrange a follow-up with your GP or practice nurse soon."</p>
+    </div>
+  </div>
 
-    <h3>🩺 Introduction</h3>
-    <p>"Hi, I'm [Your Name], a medical student. I’ve been asked to talk to you about your blood pressure results. Before we start, could I confirm your name and date of birth?"</p>
-    <p>"Today I’d like to explain what high blood pressure means, how we manage it, and answer any questions you might have."</p>
-
-    <h3>🔍 Understanding & Concerns</h3>
-    <p>"Do you know much about high blood pressure?"</p>
-    <p>"Is there anything you're worried about or hoping I can clear up today?"</p>
-
-    <h3>💓 What is Hypertension?</h3>
-    <p>"Blood pressure is the force of blood against the walls of your arteries. When it’s consistently too high, it’s called hypertension."</p>
-    <p>"You may not feel unwell with it, but over time it puts extra strain on your heart, blood vessels, brain and kidneys, which increases the risk of things like strokes, heart attacks, kidney problems and eye damage."</p>
-
-    <h3>📊 What Causes It?</h3>
-    <p>"There isn’t always a single cause, but it can be linked to age, genetics, being overweight, a high-salt diet, lack of exercise, smoking, or alcohol." </p>
-
-    <h3>🛠️ How Do We Manage It?</h3>
-    <p>"We usually start with lifestyle changes. These include reducing salt, eating more fruits and vegetables, regular exercise, weight loss, and stopping smoking if you smoke."</p>
-    <p>"If your blood pressure is still high after these, or if it's very high to begin with, we may recommend medication. This could include ACE inhibitors, calcium channel blockers, or diuretics — depending on your age and other health conditions."</p>
-
-    <h3>📋 Monitoring and Targets</h3>
-    <p>"You’ll have regular blood pressure checks, either at the GP surgery or with a home monitor. We aim to keep your blood pressure below 140/90 mmHg for most people, or even lower if you have diabetes or kidney disease."</p>
-
-    <h3>✅ Summary & Safety Net</h3>
-    <p>"So in summary, hypertension is high blood pressure that can cause serious problems over time. It can be managed effectively with a combination of lifestyle changes and medication."</p>
-    <p>"Here’s a leaflet with everything we discussed and tips to help at home. If you ever get symptoms like chest pain, vision changes, or severe headaches — please seek urgent medical attention."</p>
-    <p>"Do you have any questions or anything you’d like me to go over again?"</p>
-    <p>"Thanks for your time — and we’ll arrange a follow-up with your GP or practice nurse soon."</p>
-</div>
-
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
