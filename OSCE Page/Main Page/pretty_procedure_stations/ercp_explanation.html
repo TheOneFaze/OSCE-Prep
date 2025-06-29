@@ -1,198 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>🩺 ERCP Explanation</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩺 ERCP Explanation</title>
+  <style>
+    /* --- UPDATED BLUE/CYAN COLOR SCHEME --- */
     body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #e0f7fa;
-        color: #006064;
-        margin: 0;
-        padding: 20px;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f7fa; /* Light cyan background */
+      color: #006064;     /* Dark cyan text */
     }
-    h1, h2 {
-        text-align: center;
-        color: #006064;
+
+    header {
+      background: linear-gradient(to right, #4dd0e1, #006064); /* Cyan gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    .toggle-container {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-    }
-    .switch {
-        position: relative;
-        width: 120px;
-        height: 50px;
-        background-color: #b2ebf2;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    }
-    .slider {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 40px;
-        height: 40px;
-        background-color: white;
-        border-radius: 50%;
-        transition: all 0.3s ease-in-out;
-    }
-    .switch.active .slider {
-        transform: translateX(70px);
-    }
+
     .labels {
-        display: flex;
-        justify-content: space-between;
-        font-weight: bold;
-        color: #006064;
-        padding: 0 10px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
     }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #b2ebf2; /* Lighter cyan switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
     .content-section {
-        display: none;
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        margin-top: 20px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        line-height: 1.6;
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
+
     .content-section.active {
-        display: block;
+      display: block;
     }
+
+    .section-box {
+      background: #e0f7fa; /* Light cyan background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
     h3 {
-        border-bottom: 2px solid #80deea;
-        padding-bottom: 5px;
-        margin-top: 25px;
-        color: #006064;
+      color: #006064; /* Dark cyan for headings */
+      border-left: 5px solid #006064; /* Dark cyan border */
+      padding-left: 10px;
+      margin-top: 20px;
     }
-    h4 {
-        margin-top: 20px;
-        color: #0097a7;
-    }
+
     ul {
-        margin-left: 20px;
+      padding-left: 20px;
     }
-    blockquote {
-        border-left: 3px solid #80deea;
-        margin-left: 0;
-        padding-left: 15px;
-        font-style: italic;
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    strong {
+        font-weight: bold;
         color: #004d40;
-        background: #e0f7fa;
-        margin-bottom: 20px;
     }
-    p strong {
-        color: #004d40;
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
     }
-</style>
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>🩺 ERCP Explanation</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch" role="switch" aria-checked="false" tabindex="0">
-        <div class="slider"></div>
+  <header>🩺 ERCP Explanation</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span>High-Yield Notes 🧠</span>
-    <span>Full Word-for-Word OSCE Script 📜</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>📚 Knowledge</h3>
+        <ul>
+            <li>ERCP = Endoscopic Retrograde Cholangiopancreatography</li>
+            <li>Used to diagnose and treat conditions of the bile ducts, pancreas, and gallbladder.</li>
+            <li>Involves camera insertion via the mouth down to the duodenum with X-ray dye injection.</li>
+            <li>Commonly used to remove gallstones causing pancreatitis.</li>
+            <li>Usually performed under sedation or general anaesthetic.</li>
+            <li>Requires fasting for 6 hours before the procedure.</li>
+            <li>Average procedure time is ~30 minutes.</li>
+            <li>Risks: bloating, sore throat, pancreatitis, bleeding, infection, or duct access failure.</li>
+            <li>Post-procedure observation for ~6 hours before discharge.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy & Summary</h3>
+        <ul>
+            <li>Clarify what ERCP is and why it's done.</li>
+            <li>Explain the route of the camera, anaesthesia, and need to fast.</li>
+            <li>Reassure about pain management and safety.</li>
+            <li>Mention recovery and risk monitoring.</li>
+            <li>Check patient understanding and address concerns.</li>
+        </ul>
+    </div>
+  </div>
 
-    <h3>📚 Knowledge</h3>
-    <ul>
-        <li>ERCP = Endoscopic Retrograde Cholangiopancreatography</li>
-        <li>Used to diagnose and treat conditions of the bile ducts, pancreas, and gallbladder.</li>
-        <li>Involves camera insertion via the mouth down to the duodenum with X-ray dye injection.</li>
-        <li>Commonly used to remove gallstones causing pancreatitis.</li>
-        <li>Usually performed under sedation or general anaesthetic.</li>
-        <li>Requires fasting for 6 hours before the procedure.</li>
-        <li>Average procedure time is ~30 minutes.</li>
-        <li>Risks: bloating, sore throat, pancreatitis, bleeding, infection, or duct access failure.</li>
-        <li>Post-procedure observation for ~6 hours before discharge.</li>
-    </ul>
-
-    <h3>✅ Strategy & Summary</h3>
-    <ul>
-        <li>Clarify what ERCP is and why it's done.</li>
-        <li>Explain the route of the camera, anaesthesia, and need to fast.</li>
-        <li>Reassure about pain management and safety.</li>
-        <li>Mention recovery and risk monitoring.</li>
-        <li>Check patient understanding and address concerns.</li>
-    </ul>
-</div>
-
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
-
-    <h3>📚 Knowledge</h3>
-
-    <h4>❓ What is ERCP and what does it involve?</h4>
-    <blockquote>
+    <div class="section-box">
+        <h3>❓ What is ERCP and what does it involve?</h3>
         <p><strong>Doctor:</strong> "The procedure we'd like to perform is called an ERCP. ERCP stands for endoscopic retrograde cholangiopancreatography. It is a procedure which involves an internal camera test via a long flexible tube (endoscopy) and X-ray to treat problems of the bile and pancreatic ducts."</p>
         <p><strong>Doctor:</strong> "During an ERCP, we put a flexible tube called an endoscope with a camera on the end into your mouth. We then pass this tube down your food pipe, stomach, and into the first part of the small intestine to reach the pancreas and gallbladder area."</p>
         <p><strong>Doctor:</strong> "Gallstone pancreatitis occurs when a gallstone blocks your pancreatic duct causing inflammation and pain in your pancreas. The ERCP procedure will help us locate and extract the stones."</p>
-    </blockquote>
-
-    <h4>💤 Sedation and preparation</h4>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>💤 Sedation and preparation</h3>
         <p><strong>Doctor:</strong> "You usually have sedation or a general anaesthetic. Sedation relaxes you but you're still responsive, while general anaesthetic makes you fully asleep. The choice depends on the department."</p>
         <p><strong>Doctor:</strong> "You'll need to fast for 6 hours beforehand, and only drink sips of water up to 2 hours before the procedure."</p>
-    </blockquote>
-
-    <h4>🕒 Duration of the procedure</h4>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>🕒 Duration of the procedure</h3>
         <p><strong>Doctor:</strong> "The procedure lasts between 15 minutes and 1 hour 30 minutes, with the average being around 30 minutes."</p>
-    </blockquote>
-
-    <h4>⚠️ Risks and complications</h4>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Risks and complications</h3>
         <p><strong>Doctor:</strong> "Like all procedures, ERCP has risks. Most commonly you might feel bloated, have a sore throat, or mild abdominal pain."</p>
         <p><strong>Doctor:</strong> "Other possible risks include bleeding, infection, pancreatitis (inflammation of the pancreas), and rarely damage to nearby organs."</p>
         <p><strong>Doctor:</strong> "Sometimes we can't access the bile duct and the procedure may need to be repeated later."</p>
-    </blockquote>
-
-    <h4>🛌 After the procedure</h4>
-    <blockquote>
+    </div>
+     <div class="section-box">
+        <h3>🛌 After the procedure</h3>
         <p><strong>Doctor:</strong> "After ERCP, you’ll be monitored for about 6 hours in a recovery area to make sure you're okay before going home."</p>
-    </blockquote>
-
-    <h3>💬 Exploration & empathy</h3>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Exploration & Empathy</h3>
         <p><strong>Doctor:</strong> "How do you feel about everything I’ve explained?"</p>
-        <p>Address concerns about pain and explain use of sedation.</p>
-    </blockquote>
-
-    <h3>✅ Strategy and summary</h3>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy and summary</h3>
         <p><strong>Doctor:</strong> "Would you mind summarising what we’ve talked about today just so I can be sure I explained it well?"</p>
-        <p>Confirm patient understanding of the procedure, its purpose, anaesthesia, risks, and recovery.</p>
-    </blockquote>
-</div>
+    </div>
+  </div>
 
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-
-        if (toggle.classList.contains("active")) {
-            toggle.setAttribute("aria-checked", "true");
-        } else {
-            toggle.setAttribute("aria-checked", "false");
-        }
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
