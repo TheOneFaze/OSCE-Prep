@@ -1,90 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diagnosis Stations</title>
-    <style>
-        /* --- CLINICAL BLUE THEME --- */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #e3f2fd; /* Light blue background */
-            color: #0d47a1;     /* Deep blue text */
-            padding: 40px;
-            margin: 0;
-        }
-        h1 {
-            text-align: center;
-            color: #0d47a1;
-            margin-bottom: 30px;
-            font-size: 2.2em;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .card {
-            background-color: #ffffff;
-            padding: 15px; /* Reduced padding */
-            width: 240px;   /* Reduced width */
-            min-height: 60px; /* Set minimum height */
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            display: flex; /* Added to enable centering */
-            align-items: center; /* Vertically centers the text */
-            justify-content: center; /* Horizontally centers the text */
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
-        a {
-            text-decoration: none;
-            color: #0d47a1;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Stations</title>
+<style>
+    /* --- WARM PEACH & TERRACOTTA THEME --- */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff3e0; /* Light peach background */
+      color: #bf360c;     /* Deep orange/terracotta text */
+      padding: 40px;
+      margin: 0;
+    }
+    h1 {
+      color: #bf360c;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.2em;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      background-color: #ffffff;
+      padding: 15px;
+      width: 260px;
+      min-height: 70px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    a {
+      text-decoration: none;
+      color: #bf360c;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
 
-        /* --- Media Queries for Mobile-Friendly Layout --- */
-        @media screen and (max-width: 768px) {
-            body {
-                padding: 20px;
-            }
-            .card {
-                width: 45%; /* Two cards per row on tablets */
-            }
-        }
-        @media screen and (max-width: 480px) {
-            body {
-                padding: 15px;
-            }
-            h1 {
-                font-size: 1.8em;
-            }
-            .card {
-                width: 100%; /* One card per row on mobile */
-            }
-        }
-    </style>
+    /* --- Media Queries for Mobile-Friendly Layout --- */
+    @media screen and (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      .card {
+        width: 45%; /* Two cards per row on tablets */
+      }
+    }
+    @media screen and (max-width: 480px) {
+      body {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+      .card {
+        width: 100%; /* One card per row on mobile */
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>🧠 Diagnosis Counselling Stations</h1>
-    <div class="container">
-        <div class="card"><a href="pretty_diagnosis_stations/explaining_a_diagnosis_of_asthma.html">Explaining a Diagnosis of Asthma</a></div>
-        <div class="card"><a href="pretty_diagnosis_stations/explaining_diagnosis_fibroadenoma.html">Explaining a Diagnosis of Fibroadenoma</a></div>
-        <div class="card"><a href="pretty_diagnosis_stations/explaining_diagnosis_eczema.html">Explaining a Diagnosis of Eczema</a></div>
-        <div class="card"><a href="pretty_diagnosis_stations/explaining_diagnosis_glaucoma.html">Explaining a Diagnosis of Glaucoma</a></div>
-        <div class="card"><a href="pretty_diagnosis_stations/explaining_diagnosis_type1_diabetes.html">Explaining a Diagnosis of Type 1 Diabetes</a></div>
-        <div class="card"><a href="pretty_diagnosis_stations/explaining_diagnosis_type2_diabetes.html">Explaining a Diagnosis of Type 2 Diabetes</a></div>
-        <div class="card"><a href="pretty_diagnosis_stations/explaining_diagnosis_copd.html">Explaining a Diagnosis of COPD</a></div>
-        <div class="card"><a href="pretty_diagnosis_stations/hypertension_counselling.html">Hypertension Counselling</a></div>
-        <div class="card"><a href="pretty_diagnosis_stations/atrial_fibrillation_counselling.html">Atrial Fibrillation Counselling</a></div>
-        <div class="card"><a href="pretty_diagnosis_stations/bacterial_vaginosis_counselling.html">Bacterial Vaginosis Counselling</a></div>
-        <div class="card"><a href="pretty_diagnosis_stations/chronic_kidney_disease_counselling.html">Chronic Kidney Disease Counselling</a></div>
-    </div>
+<h1>🏘️ Community Stations</h1>
+<div class="container">
+  <div class="card"><a href="pretty_community_stations/community_blood_pressure_check.html">Community Blood Pressure Check</a></div>
+  <div class="card"><a href="pretty_community_stations/hypertension_counselling.html">Hypertension Counselling</a></div>
+  <div class="card"><a href="pretty_community_stations/inhaler_technique_counselling.html">Inhaler Technique Counselling</a></div>
+  <div class="card"><a href="pretty_community_stations/smoking_cessation_counselling.html">Smoking Cessation Counselling</a></div>
+  <div class="card"><a href="pretty_community_stations/alcohol_cessation_counselling.html">Alcohol Cessation Counselling</a></div>
+  <div class="card"><a href="pretty_community_stations/dnacpr_counselling.html">DNACPR Counselling</a></div>
+  <div class="card"><a href="pretty_community_stations/bowel_cancer_screening_counselling.html">Bowel Cancer Screening</a></div>
+  <div class="card"><a href="pretty_community_stations/peak_flow_counselling.html">Peak Flow (PEFR) Technique</a></div>
+  <div class="card"><a href="pretty_community_stations/weight_loss_counselling.html">Weight Loss Counselling</a></div>
+</div>
 </body>
 </html>
