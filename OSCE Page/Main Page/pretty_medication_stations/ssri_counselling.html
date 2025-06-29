@@ -1,174 +1,246 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>SSRI Counselling</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f3e5f5;
-            color: #6a1b9a;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-            color: #6a1b9a;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #ce93d8;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-            color: #6a1b9a;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #ba68c8;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.7;
-        }
-        li {
-            margin-bottom: 4px;
-        }
-        .section-title {
-            font-size: 20px;
-            color: #6a1b9a;
-            margin-top: 25px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧠 SSRI Counselling</title>
+  <style>
+    /* --- UPDATED PURPLE COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3e5f5; /* Light purple background */
+      color: #6a1b9a;     /* Dark purple text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ba68c8, #6a1b9a); /* Purple gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #ce93d8; /* Lighter purple switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #f3e5f5; /* Light purple background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #6a1b9a; /* Dark purple for headings */
+      border-left: 5px solid #6a1b9a; /* Dark purple border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>🧠 SSRI Counselling</h1>
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
-    </div>
-</div>
-<div class="labels">
+  <header>🧠 SSRI Counselling</header>
+  <div class="labels">
     <span>High-Yield Notes</span>
     <span>Full Script</span>
-</div>
-<div id="highYield" class="content-section active">
-    <h2>High-Yield OSCE Checklist 🧠</h2>
-    <h3 class="section-title">Opening the consultation</h3>
-    <ul>
-        <li>🧼 Wash hands and don PPE if appropriate</li>
-        <li>👋 Introduce yourself, including name and role</li>
-        <li>🆔 Confirm patient's name and DOB</li>
-        <li>🎯 Clarify purpose: discuss SSRI treatment (for bulimia nervosa)</li>
-        <li>💡 Assess patient's ideas, concerns, expectations (ICE)</li>
-    </ul>
-    <h3 class="section-title">Patient history</h3>
-    <ul>
-        <li>📝 Briefly mention/review bulimia nervosa diagnosis</li>
-    </ul>
-    <h3 class="section-title">SSRI explanation</h3>
-    <ul>
-        <li>💊 Explain what an SSRI is and how it works (serotonin, mood regulation, delay to full effect)</li>
-        <li>🕒 Explain how to take SSRI, including timing and daily administration</li>
-        <li>⏳ Explain continuation: take daily, continue for months after improvement, don't stop abruptly—tapering required</li>
-        <li>⚠️ Discuss side effects: GI upset, drowsiness, headaches, weight change, and risk of GI bleed</li>
-        <li>🚫 Advise not to take NSAIDs without consulting a doctor due to GI bleed risk</li>
-    </ul>
-    <h3 class="section-title">Closing the consultation</h3>
-    <ul>
-        <li>📝 Summarise key points</li>
-        <li>📄 Provide leaflet or advice on further resources</li>
-        <li>🙏 Thank the patient for their time</li>
-        <li>🧤 Dispose of PPE appropriately and wash hands</li>
-    </ul>
-    <h3 class="section-title">Key communication skills</h3>
-    <ul>
-        <li>👂 Active listening</li>
-        <li>🗂️ Summarising</li>
-        <li>➡️ Signposting</li>
-    </ul>
-</div>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
 
-<div id="fullScript" class="content-section">
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>🩺 Opening the consultation</h3>
+        <ul>
+            <li>🧼 Wash hands and don PPE if appropriate</li>
+            <li>👋 Introduce yourself, including name and role</li>
+            <li>🆔 Confirm patient's name and DOB</li>
+            <li>🎯 Clarify purpose: discuss SSRI treatment (for bulimia nervosa)</li>
+            <li>💡 Assess patient's ideas, concerns, expectations (ICE)</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📖 SSRI explanation</h3>
+        <ul>
+            <li>💊 Explain what an SSRI is and how it works (serotonin, mood regulation, delay to full effect)</li>
+            <li>🕒 Explain how to take SSRI, including timing and daily administration</li>
+            <li>⏳ Explain continuation: take daily, continue for months after improvement, don't stop abruptly—tapering required</li>
+            <li>⚠️ Discuss side effects: GI upset, drowsiness, headaches, weight change, and risk of GI bleed</li>
+            <li>🚫 Advise not to take NSAIDs without consulting a doctor due to GI bleed risk</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>👋 Closing the consultation</h3>
+        <ul>
+            <li>📝 Summarise key points</li>
+            <li>📄 Provide leaflet or advice on further resources</li>
+            <li>🙏 Thank the patient for their time</li>
+            <li>🧤 Dispose of PPE appropriately and wash hands</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <p>"Hi, my name is [Your Name], I’m one of the medical students. Before we start, I’ll just wash my hands and put on some PPE. Can I confirm your full name and date of birth?"</p>
+        <p>"I understand you’ve been diagnosed with bulimia nervosa, and we’re here to discuss a treatment option called an SSRI. Is that alright with you?"</p>
+        <p>"To make sure this is helpful for you, can I ask—what do you already know about SSRIs, or do you have any concerns or expectations about starting medication for your bulimia?"</p>
+    </div>
+    <div class="section-box">
+        <h3>📝 Brief history</h3>
+        <p>"Have you taken any medications for your mood or bulimia before? How have things been for you recently?"</p>
+    </div>
+    <div class="section-box">
+        <h3>💊 What is an SSRI and why do you need it?</h3>
+        <p>"SSRIs, or selective serotonin reuptake inhibitors, are a group of medications that help increase levels of serotonin—a chemical in the brain linked to mood, emotions, and behaviour. In conditions like bulimia nervosa, serotonin levels can be low or unbalanced, which may contribute to mood changes and eating habits."</p>
+    </div>
+    <div class="section-box">
+        <h3>🕒 How to take an SSRI</h3>
+        <p>"SSRIs like fluoxetine are taken once a day, ideally at the same time each day. It may take 4–6 weeks before you notice the full benefit, so don’t worry if you don’t feel better straight away."</p>
+        <p>"It’s important to continue the SSRI even if you start feeling better. We usually recommend continuing for several months after your mood improves to reduce the risk of symptoms returning. If you ever wish to stop, let us know so we can gradually reduce the dose—don’t stop suddenly as it may cause withdrawal symptoms."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side effects and safety</h3>
+        <p>"Common side effects can include upset stomach, diarrhoea, headaches, weight change, feeling sleepy or sometimes trouble sleeping. Occasionally, people notice their mood feels a little worse before it gets better, but this is usually temporary."</p>
+        <p>"SSRIs can increase the risk of bleeding in your stomach, especially if taken with painkillers like ibuprofen or other NSAIDs. If you ever need pain relief, check with your doctor or pharmacist first, and never start an NSAID without medical advice."</p>
+    </div>
+    <div class="section-box">
+        <h3>📝 Monitoring and safety netting</h3>
+        <p>"We’ll keep an eye on your symptoms and side effects, and you’ll have regular reviews. Please let us know if you feel worse, have troubling side effects, or want to stop. Don’t stop abruptly."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Summary & teach-back</h3>
+        <p>"So in summary: SSRIs help balance serotonin, which can improve mood and support treatment of bulimia. Take it daily, give it several weeks to work, and don’t stop suddenly. Can you tell me what you’ll remember about your SSRI, just to check I explained it clearly?"</p>
+        <p>"Here’s a leaflet you can take home, and you can always find more information online from the NHS or Beat Eating Disorders charity. Any other questions or worries you’d like to talk about?"</p>
+        <p>"Thank you for your time today. I’ll now take off my PPE and wash my hands. If you need anything else, just ask."</p>
+    </div>
+  </div>
 
-    <h3>🩺 Set up</h3>
-    <p>"Hi, my name is [Your Name], I’m one of the medical students. Before we start, I’ll just wash my hands and put on some PPE. Can I confirm your full name and date of birth?"</p>
-    <p>"I understand you’ve been diagnosed with bulimia nervosa, and we’re here to discuss a treatment option called an SSRI. Is that alright with you?"</p>
-    <p>"To make sure this is helpful for you, can I ask—what do you already know about SSRIs, or do you have any concerns or expectations about starting medication for your bulimia?"</p>
-
-    <h3>📝 Brief history</h3>
-    <p>"Have you taken any medications for your mood or bulimia before? How have things been for you recently?"</p>
-
-    <h3>💊 What is an SSRI and why do you need it?</h3>
-    <p>"SSRIs, or selective serotonin reuptake inhibitors, are a group of medications that help increase levels of serotonin—a chemical in the brain linked to mood, emotions, and behaviour. In conditions like bulimia nervosa, serotonin levels can be low or unbalanced, which may contribute to mood changes and eating habits."</p>
-
-    <h3>🕒 How to take an SSRI</h3>
-    <p>"SSRIs like fluoxetine are taken once a day, ideally at the same time each day. It may take 4–6 weeks before you notice the full benefit, so don’t worry if you don’t feel better straight away."</p>
-    <p>"It’s important to continue the SSRI even if you start feeling better. We usually recommend continuing for several months after your mood improves to reduce the risk of symptoms returning. If you ever wish to stop, let us know so we can gradually reduce the dose—don’t stop suddenly as it may cause withdrawal symptoms."</p>
-
-    <h3>⚠️ Side effects and safety</h3>
-    <p>"Common side effects can include upset stomach, diarrhoea, headaches, weight change, feeling sleepy or sometimes trouble sleeping. Occasionally, people notice their mood feels a little worse before it gets better, but this is usually temporary."</p>
-    <p>"SSRIs can increase the risk of bleeding in your stomach, especially if taken with painkillers like ibuprofen or other NSAIDs. If you ever need pain relief, check with your doctor or pharmacist first, and never start an NSAID without medical advice."</p>
-
-    <h3>📝 Monitoring and safety netting</h3>
-    <p>"We’ll keep an eye on your symptoms and side effects, and you’ll have regular reviews. Please let us know if you feel worse, have troubling side effects, or want to stop. Don’t stop abruptly."</p>
-
-    <h3>✅ Summary & teach-back</h3>
-    <p>"So in summary: SSRIs help balance serotonin, which can improve mood and support treatment of bulimia. Take it daily, give it several weeks to work, and don’t stop suddenly. Can you tell me what you’ll remember about your SSRI, just to check I explained it clearly?"</p>
-    <p>"Here’s a leaflet you can take home, and you can always find more information online from the NHS or Beat Eating Disorders charity. Any other questions or worries you’d like to talk about?"</p>
-    <p>"Thank you for your time today. I’ll now take off my PPE and wash my hands. If you need anything else, just ask."</p>
-</div>
-
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
