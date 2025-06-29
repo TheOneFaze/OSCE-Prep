@@ -1,215 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Explaining a Diagnosis of Type 2 Diabetes</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #fce4ec;
-            color: #880e4f;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #f8bbd0;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #f06292;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.6;
-        }
-        p {
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍩 Explaining a Diagnosis of Type 2 Diabetes</title>
+  <style>
+    /* --- UPDATED PINK COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fce4ec; /* Light pink background */
+      color: #880e4f;     /* Dark pink text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ec407a, #ad1457); /* Pink gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #f8bbd0; /* Lighter pink switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #fce4ec; /* Light pink background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #880e4f; /* Dark pink for headings */
+      border-left: 5px solid #880e4f; /* Dark pink border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>🍩 Explaining a Diagnosis of Type 2 Diabetes</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
+  <header>🍩 Explaining a Diagnosis of Type 2 Diabetes</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span style="color:#880e4f;">High-Yield Notes</span>
-    <span style="color:#880e4f;">Full Script</span>
-</div>
+  </div>
 
-<!-- High-Yield Content -->
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>🩺 Opening the consultation</h3>
+        <ul>
+            <li>🧼 Wash hands and don PPE</li>
+            <li>👋 Introduce yourself and your role</li>
+            <li>🆔 Confirm patient name and date of birth</li>
+            <li>📋 Clarify reason for consultation</li>
+        </ul>
+    </div>
+     <div class="section-box">
+        <h3>📋 Patient History</h3>
+        <ul>
+            <li>🩺 Ask about symptoms leading to diagnosis</li>
+            <li>📚 Take past medical and medication history</li>
+            <li>👨‍👩‍👧 Ask about family history of diabetes</li>
+            <li>🏠 Ask about living situation, job, activities of daily living</li>
+            <li>🚬 Take smoking and alcohol history</li>
+            <li>🍽 Ask about diet and lifestyle</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Ideas, Concerns & Expectations</h3>
+        <ul>
+            <li>❓ Ask what patient knows about type 2 diabetes</li>
+            <li>💭 Explore patient's ideas, concerns, and expectations (ICE)</li>
+            <li>👂 Listen carefully and give positive feedback</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📖 Explanation</h3>
+        <ul>
+            <li>🔍 Signpost what you will cover</li>
+            <li>🧬 Explain normal glucose regulation and insulin role</li>
+            <li>🩸 Explain what diabetes is (insulin resistance and insufficient insulin)</li>
+            <li>⚠️ Explain causes and risk factors</li>
+            <li>❗ Explain possible complications if uncontrolled</li>
+            <li>🎯 Explain aims of management</li>
+            <li>🛠️ Overview of management: lifestyle, medication, monitoring</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>❓ Patient Questions</h3>
+        <ul>
+            <li>🩺 Explain monitoring for complications</li>
+            <li>📊 Explain how diabetes control is monitored (HbA1c)</li>
+            <li>⏳ Advise no routine home blood sugar checks currently unless instructed</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>👋 Closing the consultation</h3>
+        <ul>
+            <li>📝 Summarise key points</li>
+            <li>🙋 Ask if patient has any questions or concerns</li>
+            <li>📚 Provide leaflets and signpost websites for further info</li>
+            <li>📅 Arrange appropriate follow-up</li>
+            <li>🙏 Thank the patient</li>
+            <li>🗑 Dispose of PPE appropriately and wash hands</li>
+        </ul>
+    </div>
+  </div>
 
-    <h3>🩺 Opening the consultation</h3>
-    <ul>
-        <li>🧼 Wash hands and don PPE</li>
-        <li>👋 Introduce yourself and your role</li>
-        <li>🆔 Confirm patient name and date of birth</li>
-        <li>📋 Clarify reason for consultation</li>
-    </ul>
-
-    <h3>📋 Patient History</h3>
-    <ul>
-        <li>🩺 Ask about symptoms leading to diagnosis</li>
-        <li>📚 Take past medical and medication history</li>
-        <li>👨‍👩‍👧 Ask about family history of diabetes</li>
-        <li>🏠 Ask about living situation, job, activities of daily living</li>
-        <li>🚬 Take smoking and alcohol history</li>
-        <li>🍽 Ask about diet and lifestyle</li>
-    </ul>
-
-    <h3>💬 Ideas, Concerns & Expectations</h3>
-    <ul>
-        <li>❓ Ask what patient knows about type 2 diabetes</li>
-        <li>💭 Explore patient's ideas, concerns, and expectations (ICE)</li>
-        <li>👂 Listen carefully and give positive feedback</li>
-    </ul>
-
-    <h3>🍩 Explanation</h3>
-    <ul>
-        <li>🔍 Signpost what you will cover</li>
-        <li>🧬 Explain normal glucose regulation and insulin role</li>
-        <li>🩸 Explain what diabetes is (insulin resistance and insufficient insulin)</li>
-        <li>⚠️ Explain causes and risk factors</li>
-        <li>❗ Explain possible complications if uncontrolled</li>
-        <li>🎯 Explain aims of management</li>
-        <li>🛠️ Overview of management: lifestyle, medication, monitoring</li>
-    </ul>
-
-    <h3>❓ Patient Questions</h3>
-    <ul>
-        <li>🩺 Explain monitoring for complications</li>
-        <li>📊 Explain how diabetes control is monitored (HbA1c)</li>
-        <li>⏳ Advise no routine home blood sugar checks currently unless instructed</li>
-    </ul>
-
-    <h3>🔚 Closing the consultation</h3>
-    <ul>
-        <li>📝 Summarise key points</li>
-        <li>🙋 Ask if patient has any questions or concerns</li>
-        <li>📚 Provide leaflets and signpost websites for further info</li>
-        <li>📅 Arrange appropriate follow-up</li>
-        <li>🙏 Thank the patient</li>
-        <li>🗑 Dispose of PPE appropriately and wash hands</li>
-    </ul>
-
-    <h3>💡 Key Communication Skills</h3>
-    <ul>
-        <li>👂 Active listening</li>
-        <li>🗣 Summarising important points</li>
-        <li>➡️ Clear signposting throughout the consultation</li>
-    </ul>
-</div>
-
-<!-- Full Script Content -->
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Opening the consultation</h3>
+        <p>“Hi, I’m [Your Name], a medical student. I’ve been asked to go over the results of your recent blood tests. Before we start, could I confirm your name and date of birth?”</p>
+        <p>“Today, I’ll be explaining your diagnosis and answering any questions you may have.”</p>
+    </div>
+     <div class="section-box">
+        <h3>📋 Patient History</h3>
+        <p>“Before we go into the diagnosis, can I ask about the symptoms that brought you in? Any increased thirst, frequent urination, tiredness?”</p>
+        <p>“Do you have any other medical conditions or take any medications regularly?”</p>
+        <p>“Is there a family history of diabetes or other illnesses?”</p>
+        <p>“Can you tell me a bit about your living situation and daily activities?”</p>
+        <p>“What kind of work do you do?”</p>
+        <p>“Do you smoke or drink alcohol?”</p>
+        <p>“How would you describe your usual diet?”</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Ideas, Concerns & Expectations</h3>
+        <p>“What do you know about type 2 diabetes?”</p>
+        <p>“Do you have any concerns or questions about this diagnosis?”</p>
+        <p>“What are you hoping to get out of today’s consultation?”</p>
+    </div>
+    <div class="section-box">
+        <h3>🍩 Explanation</h3>
+        <p>“I’d like to start by briefly explaining how your body normally regulates blood sugar.”</p>
+        <p>“When you eat, your body breaks down food into sugar (glucose), which enters your bloodstream. Your pancreas releases insulin, a hormone that helps move sugar from the blood into your cells to be used for energy.”</p>
+        <p>“In type 2 diabetes, your body either doesn’t produce enough insulin, or your cells become resistant to it. This causes sugar to build up in your blood.”</p>
+        <p>“This condition can develop gradually and is more common with increasing age, excess weight, and family history.”</p>
+        <p>“If not managed well, high blood sugar can damage organs like the eyes, kidneys, nerves, and increase risk of heart disease.”</p>
+        <p>“Our goal is to keep your blood sugar within a safe range to reduce these risks.”</p>
+        <p>“Management involves lifestyle changes like diet and exercise, and medication. We usually start with a medicine called metformin to help your body use insulin better.”</p>
+    </div>
+    <div class="section-box">
+        <h3>❓ Patient Questions</h3>
+        <p>“You’ll have regular blood tests every few months to check your average blood sugar (HbA1c), and also checks for blood pressure, kidney function, eyes and feet.”</p>
+        <p>“At this stage, you don’t need to check your blood sugar at home routinely, unless we advise otherwise.”</p>
+    </div>
+    <div class="section-box">
+        <h3>👋 Closing the consultation</h3>
+        <p>“To summarise, you have type 2 diabetes. It’s a manageable condition with lifestyle and medication, and we’ll support you every step of the way.”</p>
+        <p>“Here is a leaflet with information about your condition and how to manage it.”</p>
+        <p>“If you ever feel very tired, dizzy, confused, or unwell — especially if you start medications — please contact us or attend A&E as it may indicate low or high blood sugar.”</p>
+        <p>“Do you have any questions for me?”</p>
+        <p>“Thank you for your time. We’ll arrange a follow-up appointment soon.”</p>
+        <p>“I will now safely remove my PPE and wash my hands.”</p>
+    </div>
+  </div>
 
-    <h3>🩺 Opening the consultation</h3>
-    <p>“Hi, I’m [Your Name], a medical student. I’ve been asked to go over the results of your recent blood tests. Before we start, could I confirm your name and date of birth?”</p>
-    <p>“Today, I’ll be explaining your diagnosis and answering any questions you may have.”</p>
-
-    <h3>📋 Patient History</h3>
-    <p>“Before we go into the diagnosis, can I ask about the symptoms that brought you in? Any increased thirst, frequent urination, tiredness?”</p>
-    <p>“Do you have any other medical conditions or take any medications regularly?”</p>
-    <p>“Is there a family history of diabetes or other illnesses?”</p>
-    <p>“Can you tell me a bit about your living situation and daily activities?”</p>
-    <p>“What kind of work do you do?”</p>
-    <p>“Do you smoke or drink alcohol?”</p>
-    <p>“How would you describe your usual diet?”</p>
-
-    <h3>💬 Ideas, Concerns & Expectations</h3>
-    <p>“What do you know about type 2 diabetes?”</p>
-    <p>“Do you have any concerns or questions about this diagnosis?”</p>
-    <p>“What are you hoping to get out of today’s consultation?”</p>
-
-    <h3>🍩 Explanation</h3>
-    <p>“I’d like to start by briefly explaining how your body normally regulates blood sugar.”</p>
-    <p>“When you eat, your body breaks down food into sugar (glucose), which enters your bloodstream. Your pancreas releases insulin, a hormone that helps move sugar from the blood into your cells to be used for energy.”</p>
-    <p>“In type 2 diabetes, your body either doesn’t produce enough insulin, or your cells become resistant to it. This causes sugar to build up in your blood.”</p>
-    <p>“This condition can develop gradually and is more common with increasing age, excess weight, and family history.”</p>
-    <p>“If not managed well, high blood sugar can damage organs like the eyes, kidneys, nerves, and increase risk of heart disease.”</p>
-    <p>“Our goal is to keep your blood sugar within a safe range to reduce these risks.”</p>
-    <p>“Management involves lifestyle changes like diet and exercise, and medication. We usually start with a medicine called metformin to help your body use insulin better.”</p>
-
-    <h3>❓ Patient Questions</h3>
-    <p>“You’ll have regular blood tests every few months to check your average blood sugar (HbA1c), and also checks for blood pressure, kidney function, eyes and feet.”</p>
-    <p>“At this stage, you don’t need to check your blood sugar at home routinely, unless we advise otherwise.”</p>
-
-    <h3>🔚 Closing the consultation</h3>
-    <p>“To summarise, you have type 2 diabetes. It’s a manageable condition with lifestyle and medication, and we’ll support you every step of the way.”</p>
-    <p>“Here is a leaflet with information about your condition and how to manage it.”</p>
-    <p>“If you ever feel very tired, dizzy, confused, or unwell — especially if you start medications — please contact us or attend A&E as it may indicate low or high blood sugar.”</p>
-    <p>“Do you have any questions for me?”</p>
-    <p>“Thank you for your time. We’ll arrange a follow-up appointment soon.”</p>
-    <p>“I will now safely remove my PPE and wash my hands.”</p>
-
-    <h3>💡 Key Communication Skills</h3>
-    <p>Throughout the consultation, I will ensure active listening, summarise key points to check understanding, and clearly signpost the flow of information.</p>
-</div>
-
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
