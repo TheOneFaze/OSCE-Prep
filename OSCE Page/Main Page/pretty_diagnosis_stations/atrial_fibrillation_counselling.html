@@ -1,221 +1,207 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>❤️ Atrial Fibrillation Counselling</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: #e8f5e9;
-            color: #1b5e20;
-        }
-        header {
-            background: linear-gradient(135deg, #43cea2, #185a9d);
-            color: white;
-            text-align: center;
-            padding: 30px 10px 20px;
-            font-size: 1.8em;
-            font-weight: bold;
-            border-bottom: 4px solid #2e7d32;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-        }
-        .switch {
-            position: relative;
-            width: 60px;
-            height: 30px;
-            background-color: #c8e6c9;
-            border-radius: 30px;
-            cursor: pointer;
-        }
-        .slider {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 24px;
-            height: 24px;
-            background-color: white;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
-        .switch.active .slider {
-            transform: translateX(30px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 30px;
-            font-size: 0.9em;
-        }
-        .content-section {
-            display: none;
-            max-width: 720px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-            animation: fadeIn 0.4s ease-in-out;
-        }
-        .content-section.active {
-            display: block;
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        h3 {
-            margin-top: 30px;
-            margin-bottom: 10px;
-            color: #2e7d32;
-            border-left: 4px solid #2e7d32;
-            padding-left: 10px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        p {
-            margin-bottom: 15px;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* MEDIA QUERIES */
-        @media screen and (min-width: 768px) and (max-width: 991px) {
-            .content-section { padding: 25px; }
-        }
-        @media screen and (min-width: 481px) and (max-width: 767px) {
-            header { font-size: 1.4em; }
-            .content-section { padding: 20px; }
-        }
-        @media screen and (min-width: 320px) and (max-width: 480px) {
-            header { font-size: 1.2em; padding: 20px 10px; }
-            .content-section { padding: 15px; }
-            .labels { font-size: 0.8em; padding: 0 20px; }
-        }
-    
-    header {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: linear-gradient(to right, #00c6ff, #0072ff);
-        color: white;
-        padding: 10px 0;
-        text-align: center;
-        font-size: 1.5em;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💖 Atrial Fibrillation Counselling | OSCE Spark</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e8f5e9;
+      color: #1b5e20;
     }
+    header {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      z-index: 10;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
     .toggle-container {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 1000;
     }
     .switch {
-        width: 150px;
-        height: 60px;
+      position: relative;
+      width: 80px;
+      height: 40px;
+      background-color: #c8e6c9;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     .slider {
-        width: 50px;
-        height: 50px;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 32px;
+      height: 32px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
     }
-    @media screen and (max-width: 767px) {
-        body {
-            padding: 10px;
-        }
-        h1, h2 {
-            font-size: 1.2em;
-        }
-        .content-section {
-            margin-bottom: 100px;
-        }
+    .switch.active .slider {
+      transform: translateX(40px);
     }
-</style>
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      max-width: 720px;
+      margin: 20px auto 10px;
+      font-size: 0.95em;
+      color: #1b5e20;
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 30px;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    .content-section.active {
+      display: block;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #2e7d32;
+      border-left: 4px solid #2e7d32;
+      padding-left: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* MEDIA QUERIES */
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .content-section { padding: 25px; }
+      header { font-size: 1.6em; }
+    }
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      .content-section { padding: 20px; }
+      header { font-size: 1.4em; }
+      .labels { font-size: 0.85em; }
+    }
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      .content-section { padding: 15px; border-radius: 15px; }
+      header { font-size: 1.3em; padding: 20px 10px; }
+      .labels { font-size: 0.8em; padding: 0 20px; }
+      .switch { width: 70px; height: 36px; }
+      .slider { width: 28px; height: 28px; top: 4px; left: 4px; }
+    }
+  </style>
 </head>
 <body>
+  <header>💖 Atrial Fibrillation Counselling</header>
 
-<header>💖 Atrial Fibrillation Counselling</header>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
-    </div>
-</div>
-
-<div class="labels">
+  <div class="labels">
     <span>High-Yield Notes</span>
     <span>Full Script</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div class="toggle-container">
+    <div class="switch" id="toggleSwitch">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-
     <h3>🩺 Set up</h3>
     <ul>
-        <li>🧼 Wash hands and don PPE if appropriate</li>
-        <li>👋 Introduce yourself including name and role</li>
-        <li>📇 Confirm patient’s name and date of birth</li>
-        <li>📋 Explain purpose: counselling on atrial fibrillation</li>
-        <li>✔️ Gain consent to proceed</li>
-        <li>📚 Be aware of key background info like recent AF diagnosis</li>
+      <li>🧼 Wash hands and don PPE if appropriate</li>
+      <li>👋 Introduce yourself including name and role</li>
+      <li>📇 Confirm patient’s name and date of birth</li>
+      <li>📋 Explain purpose: counselling on atrial fibrillation</li>
+      <li>✔️ Gain consent to proceed</li>
+      <li>📚 Be aware of key background info like recent AF diagnosis</li>
     </ul>
 
     <h3>🔍 Perceptions</h3>
     <ul>
-        <li>🔎 Explore patient’s prior knowledge/perception of AF</li>
-        <li>❓ Explore concerns and expectations</li>
-        <li>🙋 Encourage patient questions throughout</li>
+      <li>🔎 Explore patient’s prior knowledge/perception of AF</li>
+      <li>❓ Explore concerns and expectations</li>
+      <li>🙋 Encourage patient questions throughout</li>
     </ul>
 
     <h3>💡 Invitation</h3>
     <ul>
-        <li>💬 Offer more info about AF</li>
-        <li>❓ Ask if patient has specific questions</li>
-        <li>✅ Check which areas patient wants to know more about</li>
-        <li>👥 Confirm patient wants info now and if anyone else should be present</li>
+      <li>💬 Offer more info about AF</li>
+      <li>❓ Ask if patient has specific questions</li>
+      <li>✅ Check which areas patient wants to know more about</li>
+      <li>👥 Confirm patient wants info now and if anyone else should be present</li>
     </ul>
 
     <h3>📖 Knowledge</h3>
     <ul>
-        <li>🫀 Explain AF (irregular heartbeat caused by abnormal atrial electrical activity)</li>
-        <li>⚠️ Describe causes, including hypertension</li>
-        <li>🩺 Explain management: rate vs rhythm control</li>
-        <li>💊 Explain anticoagulation to reduce stroke risk</li>
-        <li>📦 Deliver info in chunks and pause to check understanding</li>
-        <li>🗣 Avoid jargon and use patient-friendly terms</li>
-        <li>🔄 Tailor depth of info based on patient knowledge/preferences</li>
-        <li>✔️ Correct misunderstandings as they arise</li>
-        <li>📲 Provide additional resources like websites and leaflets</li>
+      <li>🫀 Explain AF (irregular heartbeat caused by abnormal atrial electrical activity)</li>
+      <li>⚠️ Describe causes, including hypertension</li>
+      <li>🩺 Explain management: rate vs rhythm control</li>
+      <li>💊 Explain anticoagulation to reduce stroke risk</li>
+      <li>📦 Deliver info in chunks and pause to check understanding</li>
+      <li>🗣 Avoid jargon and use patient-friendly terms</li>
+      <li>🔄 Tailor depth of info based on patient knowledge/preferences</li>
+      <li>✔️ Correct misunderstandings as they arise</li>
+      <li>📲 Provide additional resources like websites and leaflets</li>
     </ul>
 
     <h3>💬 Exploration & Empathy</h3>
     <ul>
-        <li>❤️ Explore how patient feels about the information given</li>
-        <li>🤝 Show empathy throughout</li>
+      <li>❤️ Explore how patient feels about the information given</li>
+      <li>🤝 Show empathy throughout</li>
     </ul>
 
     <h3>✅ Strategy & Summary</h3>
     <ul>
-        <li>🔄 Check patient’s understanding by asking them to summarise key points</li>
-        <li>✔️ Confirm all questions/needs addressed</li>
-        <li>🤝 Use shared decision-making to agree on plan</li>
-        <li>⚠️ Provide safety-netting advice</li>
+      <li>🔄 Check patient’s understanding by asking them to summarise key points</li>
+      <li>✔️ Confirm all questions/needs addressed</li>
+      <li>🤝 Use shared decision-making to agree on plan</li>
+      <li>⚠️ Provide safety-netting advice</li>
     </ul>
-</div>
+  </div>
 
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
     <h3>🩺 Set up</h3>
     <p>"Hello, my name is [Your Name], and I’m a medical student. I will be talking with you today about your recent diagnosis of atrial fibrillation. Before we start, could you please confirm your full name and date of birth?"</p>
@@ -254,19 +240,18 @@
 
     <h3>🤝 Closing</h3>
     <p>"Is there anything else you would like to know or talk about before we finish?"</p>
-</div>
+  </div>
 
-<script>
+  <script>
     const toggle = document.getElementById("toggleSwitch");
     const highYield = document.getElementById("highYield");
     const fullScript = document.getElementById("fullScript");
 
     toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
+      toggle.classList.toggle("active");
+      highYield.classList.toggle("active");
+      fullScript.classList.toggle("active");
     });
-</script>
-
+  </script>
 </body>
 </html>
