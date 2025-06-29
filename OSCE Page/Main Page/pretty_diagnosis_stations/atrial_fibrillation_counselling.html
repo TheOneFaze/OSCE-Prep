@@ -125,6 +125,49 @@
       .content-section { padding: 15px; }
       .labels { padding: 0 20px; }
     }
+  <style>
+/* Existing styles remain above... */
+
+/* 📱 Mobile-friendly custom breakpoints */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  header { font-size: 1.5em; padding: 20px; }
+  .content-section { padding: 25px; }
+  .section-box { padding: 18px; }
+  h3 { font-size: 1.2em; }
+  p, li { font-size: 1em; }
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  header { font-size: 1.3em; padding: 18px; }
+  .content-section { padding: 20px; }
+  .section-box { padding: 16px; }
+  .labels { padding: 0 25px; }
+  h3 { font-size: 1.1em; }
+  p, li { font-size: 0.95em; }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  header { font-size: 1.1em; padding: 15px; }
+  .content-section { padding: 15px; }
+  .section-box { padding: 12px; }
+  .labels { padding: 0 15px; font-size: 0.85em; }
+  h3 { font-size: 1em; }
+  p, li { font-size: 0.9em; line-height: 1.4; }
+  .switch {
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 30px;
+  }
+  .slider {
+    width: 22px;
+    height: 22px;
+    top: 4px;
+    left: 4px;
+  }
+}
+</style>
+
   </style>
 </head>
 <body>
