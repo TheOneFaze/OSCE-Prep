@@ -1,260 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>❤️ Atrial Fibrillation Counselling</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atrial Fibrillation Counselling</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
 
-        h1 {
-            text-align: center;
-            color: #2e7d32;
-            font-size: 1.8em;
-            margin-top: 20px;
-        }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, #66bb6a, #b2dfdb);
+      z-index: 99;
+    }
 
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            margin: 10px 0;
-        }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-        .switch {
-            position: relative;
-            width: 70px;
-            height: 34px;
-            background-color: #c8e6c9;
-            border-radius: 50px;
-            cursor: pointer;
-        }
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 30px 0;
+      position: sticky;
+      top: 0;
+      background-color: #e8f5e9;
+      padding: 15px 0;
+      z-index: 10;
+    }
 
-        .slider {
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            width: 26px;
-            height: 26px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
+    .switch {
+      position: relative;
+      width: 120px;
+      height: 50px;
+      background-color: #c8e6c9;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
 
-        .switch.active .slider {
-            transform: translateX(36px);
-        }
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border-radius: 50%;
+      transition: all 0.3s ease-in-out;
+    }
 
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8em;
-            margin: 0 40px;
-            color: #2e7d32;
-        }
+    .switch.active .slider {
+      transform: translateX(70px);
+    }
 
-        .content-section {
-            display: none;
-            background: #ffffff;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 14px;
+    }
 
-        .content-section.active {
-            display: block;
-        }
+    .content-section {
+      display: none;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
 
-        h2 {
-            text-align: center;
-            margin-top: 0;
-        }
+    .content-section.active {
+      display: block;
+    }
 
-        h3 {
-            margin-top: 25px;
-            font-size: 1.1em;
-            border-left: 4px solid #81c784;
-            padding-left: 10px;
-            margin-bottom: 8px;
-        }
+    h3 {
+      border-left: 4px solid #66bb6a;
+      padding-left: 10px;
+      margin-top: 30px;
+    }
 
-        ul {
-            padding-left: 20px;
-        }
+    ul {
+      padding-left: 20px;
+    }
 
-        li {
-            margin-bottom: 10px;
-        }
+    li {
+      margin-bottom: 10px;
+    }
 
-        p {
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
+    p {
+      margin-bottom: 15px;
+    }
 
-        /* Scroll to top button */
-        #scrollTopBtn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #2e7d32;
-            color: white;
-            border: none;
-            padding: 10px 14px;
-            border-radius: 50%;
-            font-size: 18px;
-            cursor: pointer;
-            display: none;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-        }
+    /* Mobile Galaxy Domination Begins */
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      .content-section {
+        padding: 15px;
+      }
+      h1, h2 {
+        font-size: 20px;
+      }
+      h3 {
+        font-size: 18px;
+      }
+      .labels {
+        font-size: 12px;
+      }
+    }
 
-        /* Media Queries: dominate mobile galaxies */
-        @media screen and (max-width: 480px) {
-            h1 {
-                font-size: 1.5em;
-            }
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      h1, h2 {
+        font-size: 24px;
+      }
+    }
 
-            .content-section {
-                margin: 10px;
-                padding: 16px;
-            }
-
-            .labels {
-                margin: 0 20px;
-                font-size: 0.75em;
-            }
-        }
-
-        @media screen and (min-width: 481px) and (max-width: 767px) {
-            .content-section {
-                margin: 20px;
-            }
-
-            h1 {
-                font-size: 1.6em;
-            }
-        }
-
-        @media screen and (min-width: 768px) and (max-width: 991px) {
-            h1 {
-                font-size: 1.7em;
-            }
-
-            .content-section {
-                margin: 40px auto;
-                max-width: 700px;
-            }
-        }
-
-        @media screen and (min-width: 992px) {
-            .content-section {
-                margin: 40px auto;
-                max-width: 800px;
-            }
-        }
-    </style>
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      h1, h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<h1>❤️ Atrial Fibrillation Counselling</h1>
+<h1>💖 Atrial Fibrillation Counselling</h1>
 
 <div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
-    </div>
+  <div class="switch" id="toggleSwitch">
+    <div class="slider"></div>
+  </div>
 </div>
-
 <div class="labels">
-    <span>High-Yield Notes</span>
-    <span>Full Script</span>
+  <span style="color:#2e7d32;">High-Yield Notes</span>
+  <span style="color:#2e7d32;">Full Script</span>
 </div>
 
 <div id="highYield" class="content-section active">
-    <h2>High-Yield OSCE Points 🧠</h2>
-
-    <h3>Set up</h3>
-    <ul>
-        <li>🧼 Wash hands and don PPE if appropriate</li>
-        <li>👋 Introduce yourself including name and role</li>
-        <li>📇 Confirm patient’s name and date of birth</li>
-        <li>📋 Explain purpose: counselling on atrial fibrillation</li>
-        <li>✔️ Gain consent to proceed</li>
-        <li>📚 Be aware of key background info like recent AF diagnosis</li>
-    </ul>
-
-    <h3>Perceptions</h3>
-    <ul>
-        <li>🔍 Explore patient’s prior knowledge/perception of AF</li>
-        <li>❓ Explore concerns and expectations</li>
-        <li>🙋 Encourage patient questions throughout</li>
-    </ul>
-
-    <h3>Invitation</h3>
-    <ul>
-        <li>💬 Offer more info about AF</li>
-        <li>❓ Ask if patient has specific questions</li>
-        <li>✅ Check which areas patient wants to know more about</li>
-        <li>👥 Confirm patient wants info now and if anyone else should be present</li>
-    </ul>
-
-    <h3>Knowledge</h3>
-    <ul>
-        <li>🫀 Explain AF (irregular heartbeat caused by abnormal atrial electrical activity)</li>
-        <li>⚠️ Describe causes, including hypertension</li>
-        <li>🩺 Explain management: rate vs rhythm control</li>
-        <li>💊 Explain anticoagulation to reduce stroke risk</li>
-        <li>📦 Deliver info in chunks and pause to check understanding</li>
-        <li>🗣 Avoid jargon and use patient-friendly terms</li>
-        <li>🔄 Tailor depth of info based on patient knowledge/preferences</li>
-        <li>✔️ Correct misunderstandings as they arise</li>
-        <li>📲 Provide additional resources like websites and leaflets</li>
-    </ul>
-
-    <h3>Exploration & Empathy</h3>
-    <ul>
-        <li>❤️ Explore how patient feels about the information given</li>
-        <li>🤝 Show empathy throughout</li>
-    </ul>
-
-    <h3>Strategy & Summary</h3>
-    <ul>
-        <li>🔄 Check patient’s understanding by asking them to summarise key points</li>
-        <li>✔️ Confirm all questions/needs addressed</li>
-        <li>🤝 Use shared decision-making to agree on plan</li>
-        <li>⚠️ Provide safety-netting advice</li>
-    </ul>
+  <h2>High-Yield OSCE Points 🧠</h2>
+  <h3>Set up</h3>
+  <ul>
+    <li>🧼 Wash hands and don PPE</li>
+    <li>👋 Introduce yourself</li>
+    <li>📇 Confirm ID</li>
+  </ul>
 </div>
 
 <div id="fullScript" class="content-section">
-    <h2>Full Word-for-Word OSCE Script 📜</h2>
-
-    <h3>🩺 Set up</h3>
-    <p>"Hello, my name is [Your Name], and I’m a medical student..."</p>
-    <!-- [Insert rest of script here same as before if needed] -->
+  <h2>Full Word-for-Word OSCE Script 📜</h2>
+  <h3>🩺 Set up</h3>
+  <p>"Hello, my name is [Your Name]..."</p>
 </div>
 
-<button id="scrollTopBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑</button>
-
 <script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
+  const toggle = document.getElementById("toggleSwitch");
+  const highYield = document.getElementById("highYield");
+  const fullScript = document.getElementById("fullScript");
 
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    highYield.classList.toggle("active");
+    fullScript.classList.toggle("active");
+  });
 
-    window.onscroll = () => {
-        scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
-    };
+  const upBtn = document.createElement("button");
+  upBtn.innerText = "⬆";
+  upBtn.style.position = "fixed";
+  upBtn.style.bottom = "20px";
+  upBtn.style.right = "20px";
+  upBtn.style.borderRadius = "50%";
+  upBtn.style.background = "#2e7d32";
+  upBtn.style.color = "white";
+  upBtn.style.border = "none";
+  upBtn.style.width = "40px";
+  upBtn.style.height = "40px";
+  upBtn.style.fontSize = "18px";
+  upBtn.style.boxShadow = "0 2px 8px rgba(0,0,0,0.3)";
+  upBtn.style.cursor = "pointer";
+  upBtn.style.display = "none";
+  document.body.appendChild(upBtn);
+
+  window.addEventListener("scroll", () => {
+    upBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  upBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 </script>
 
 </body>
