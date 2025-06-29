@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧠 Post-Stroke Counselling</title>
+  <style>
+    /* --- BLUE THEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e3f2fd; /* Light blue background */
+      color: #1565c0;     /* Dark blue text */
+    }
+
+    header {
+      background: linear-gradient(to right, #64b5f6, #1565c0); /* Blue gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #bbdefb; /* Lighter blue switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #e3f2fd; /* Light blue background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #1565c0; /* Dark blue for headings */
+      border-left: 5px solid #1565c0; /* Dark blue border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+      list-style-type: none;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    strong {
+        font-weight: bold;
+        color: #0d47a1;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>🧠 Post-Stroke Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>♿ The Recovery Process</h3>
+        <ul>
+            <li><strong>Individual Journey:</strong> Recovery time varies for everyone.</li>
+            <li><strong>MDT Approach:</strong> A team of specialists will help, including:
+                <ul>
+                    <li>🏃 <strong>Physiotherapists</strong> for strength and mobility.</li>
+                    <li>🗣️ <strong>Speech & Language Therapists</strong> for speech difficulties.</li>
+                    <li>🏡 <strong>Occupational Therapists</strong> for home adjustments.</li>
+                </ul>
+            </li>
+            <li><strong>Mental Health:</strong> Psychological support is available for post-stroke anxiety or depression.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Lifestyle Changes (Secondary Prevention)</h3>
+        <ul>
+            <li>🚭 <strong>Smoking:</strong> Quitting is the most important step to reduce future risk.</li>
+            <li>🍺 <strong>Alcohol:</strong> Reducing alcohol intake is strongly advised.</li>
+            <li>🥗 <strong>Diet & Exercise:</strong> A balanced diet and gentle exercise (like swimming when ready) are crucial.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>💊 Medical Management (Secondary Prevention)</h3>
+        <ul>
+            <li>🟡 <strong>Statins:</strong> A high-dose statin will be started to lower cholesterol.</li>
+            <li>💓 <strong>Blood Pressure:</strong> Medications will be used to control high blood pressure.</li>
+            <li>🩸 <strong>Antiplatelets:</strong> Dual therapy (e.g., Aspirin + Clopidogrel) to prevent new clots.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🚗 Driving and Practicalities</h3>
+        <ul>
+            <li><strong>DVLA:</strong> You must inform the DVLA about your stroke.</li>
+            <li><strong>Driving Ban:</strong> You cannot drive for at least one month.</li>
+            <li><strong>Assessment:</strong> A GP assessment is required before you can be considered safe to drive again.</li>
+            <li><strong>Work:</strong> Return to work is variable and can take months, depending on your recovery.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>♿ The Road to Recovery</h3>
+        <p>Recovering from a stroke is a different journey for everyone, so there's no set timeframe for how long it will take. Because different parts of the brain can be affected, recovery is very individual.</p>
+        <p>We will have a team of specialists to support you. This will include physiotherapists to help you build your strength and movement back up in your affected arm and leg. They will give you a personalised programme with exercises you can do. We'll also involve speech and language therapists to help with any speaking difficulties, and occupational therapists who can help with adjustments at home to make daily life easier.</p>
+        <p>It's also important to know that it's very common to experience psychological effects like anxiety or depression after a stroke. This is completely understandable, and we have support available if these feelings persist.</p>
+        <p>In terms of going home, patients often stay in hospital for about a week, but this depends on how you are progressing and if any care needs to be arranged at home.</p>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Lifestyle Changes to Reduce Future Risk</h3>
+        <p>There are several important lifestyle changes you can make to significantly reduce your risk of having another stroke. Quitting smoking is the single best thing you can do for your health. Reducing your alcohol intake will also help.</p>
+        <p>A healthy, balanced diet is very important. We can refer you to a dietician for support with this. When you feel ready, gentle exercise like swimming is excellent for your overall health.</p>
+        <p>Many people take months off work to recover, but this is a personal decision between you and your employer when you feel ready. It's also safe to have sex after a stroke; it does not increase your risk of having another one.</p>
+    </div>
+    <div class="section-box">
+        <h3>💊 Medications for Secondary Prevention</h3>
+        <p>To help prevent another stroke, we will start you on a few medications. Firstly, a high-dose statin, which works to lower the 'bad' cholesterol in your blood. We will also look at your blood pressure and start medication to control it, as high blood pressure can damage blood vessels.</p>
+        <p>Finally, we will continue the anti-platelet drugs you were started on. These are medications like aspirin and clopidogrel that make your blood less sticky and reduce the chance of another clot forming.</p>
+    </div>
+    <div class="section-box">
+        <h3>🚗 Driving and Other Considerations</h3>
+        <p>It's a legal requirement to inform the DVLA that you have had a stroke. You will not be able to drive for at least one month. After that period, if you feel ready, you will need an assessment with your GP to check your vision and physical function before you can be considered safe to drive again.</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>
