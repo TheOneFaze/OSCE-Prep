@@ -1,157 +1,255 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Asthma Spacer Explanation</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🫁 Asthma Spacer Explanation</title>
+  <style>
+    /* --- UPDATED GREEN COLOR SCHEME --- */
     body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #e8f5e9;
-        color: #2e7d32;
-        margin: 0;
-        padding: 20px;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e8f5e9; /* Light green background */
+      color: #2e7d32;     /* Dark green text */
     }
-    h1, h2 {
-        text-align: center;
-        color: #2e7d32;
+
+    header {
+      background: linear-gradient(to right, #a5d6a7, #2e7d32); /* Green gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    .toggle-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 30px 0;
-    }
-    .switch {
-        position: relative;
-        width: 120px;
-        height: 50px;
-        background-color: #c8e6c9;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    }
-    .slider {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 40px;
-        height: 40px;
-        background-color: white;
-        border-radius: 50%;
-        transition: all 0.3s ease-in-out;
-    }
-    .switch.active .slider {
-        transform: translateX(70px);
-    }
+
     .labels {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-        font-weight: bold;
-        font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
     }
-    .labels span {
-        color: #2e7d32;
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
     }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #c8e6c9; /* Lighter green switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
     .content-section {
-        display: none;
-        padding: 20px;
-        background: white;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
+
     .content-section.active {
-        display: block;
+      display: block;
     }
+
+    .section-box {
+      background: #e8f5e9; /* Light green background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
     h3 {
-        border-bottom: 2px solid #a5d6a7;
-        padding-bottom: 5px;
-        margin-top: 30px;
+      color: #2e7d32; /* Dark green for headings */
+      border-left: 5px solid #2e7d32; /* Dark green border */
+      padding-left: 10px;
+      margin-top: 20px;
     }
-    ul {
-        line-height: 1.6;
+
+    ul, ol {
+      padding-left: 20px;
     }
-</style>
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>🫁 Asthma Spacer Explanation</h1>
-<div class="toggle-container">
-<div class="switch" id="toggleSwitch">
-<div class="slider"></div>
-</div>
-</div>
-<div class="labels">
-<span style="color:#2e7d32;">High-Yield Notes</span>
-<span style="color:#2e7d32;">Full Script</span>
-</div>
-<div class="content-section active" id="highYield">
-<h2>High-Yield OSCE Points 🧠</h2>
-<h3>🧼 Set up</h3>
-<ul>
-<li>🖐️ Wash hands and don PPE if needed</li>
-<li>📛 Introduce self (name, role)</li>
-<li>🗂️ Confirm patient details</li>
-<li>🎯 Explain purpose of consultation</li>
-<li>✅ Gain consent</li>
-</ul>
-<h3>🛡️ Purpose</h3>
-<ul>
-<li>Spacer improves delivery of inhaled medicine</li>
-<li>Reduces oropharyngeal deposition</li>
-<li>Easier for children and uncoordinated patients</li>
-</ul>
-<h3>📖 How to Use</h3>
-<ul>
-<li>Shake inhaler, remove cap</li>
-<li>Connect inhaler to spacer</li>
-<li>Exhale fully, then seal lips on spacer</li>
-<li>Press inhaler, breathe in slowly</li>
-<li>Hold breath 10s or breathe slowly for 5–10s</li>
-</ul>
-<h3>🧼 Cleaning</h3>
-<ul>
-<li>Wash spacer once weekly in warm soapy water</li>
-<li>Air dry — don’t towel dry</li>
-</ul>
-</div>
-<div class="content-section" id="fullScript">
-<h2>Full Word-for-Word OSCE Script 📜</h2>
-<h3>🧼 Set up</h3>
-<p>"Hi, I’m [Your Name], a healthcare student. I’ll just clean my hands and wear PPE if necessary. Can I confirm your full name and date of birth?"</p>
-<p>"I see you’ve been given a spacer device to use with your asthma inhaler. Would it be okay if I show you how it works and how to use it properly?"</p>
-<h3>🫁 What Is a Spacer?</h3>
-<p>"A spacer is a plastic chamber that attaches to your inhaler. It helps the medicine reach your lungs more effectively by slowing the spray so you can breathe it in more gently. It also reduces the amount of medicine that sticks to the back of your throat."</p>
-<h3>🧬 When and Why to Use It</h3>
-<p>"Spacers are especially useful if you’re experiencing side effects like taste changes from your inhaler. They help reduce medication left in the mouth and are also easier to use correctly, particularly during asthma attacks."</p>
-<h3>📏 Types of Spacers</h3>
-<p>"You might have seen a large one called a Volumatic – very effective but bulky. There are smaller ones like Aerochambers, which are more portable though slightly less effective."</p>
-<h3>📖 How to Use It</h3>
-<ol>
-<li>Prime the spacer (Volumatic only) with 10 puffs or wash and air dry before first use.</li>
-<li>Shake your inhaler and remove the cap.</li>
-<li>Attach it securely to the spacer.</li>
-<li>Exhale away from the device, then place the mouthpiece in your mouth with a good seal.</li>
-<li>Release one puff and breathe in slowly and deeply, or take 5–10 tidal breaths.</li>
-<li>Remove and repeat for a second dose if needed.</li>
-</ol>
-<h3>🧼 Cleaning and Maintenance</h3>
-<p>"Clean your spacer once a week using warm soapy water. Don’t wipe it dry – just let it air dry. This prevents static which can trap medication. Replace your spacer every year and store it safely to avoid damage."</p>
-<h3>✅ Summary</h3>
-<p>"Using a spacer helps deliver your medicine more effectively and reduces side effects like bad taste. Clean it weekly and replace it annually."</p>
-<p>"Would you like to practise using it now or do you have any questions for me?"</p>
-</div>
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
+  <header>🫁 Asthma Spacer Explanation</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
 
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>🧼 Set up</h3>
+        <ul>
+            <li>🖐️ Wash hands and don PPE if needed</li>
+            <li>📛 Introduce self (name, role)</li>
+            <li>🗂️ Confirm patient details</li>
+            <li>🎯 Explain purpose of consultation</li>
+            <li>✅ Gain consent</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🛡️ Purpose</h3>
+        <ul>
+            <li>Spacer improves delivery of inhaled medicine</li>
+            <li>Reduces oropharyngeal deposition</li>
+            <li>Easier for children and uncoordinated patients</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📖 How to Use</h3>
+        <ul>
+            <li>Shake inhaler, remove cap</li>
+            <li>Connect inhaler to spacer</li>
+            <li>Exhale fully, then seal lips on spacer</li>
+            <li>Press inhaler, breathe in slowly</li>
+            <li>Hold breath 10s or breathe slowly for 5–10s</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🧼 Cleaning</h3>
+        <ul>
+            <li>Wash spacer once weekly in warm soapy water</li>
+            <li>Air dry — don’t towel dry</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🧼 Set up</h3>
+        <p>"Hi, I’m [Your Name], a healthcare student. I’ll just clean my hands and wear PPE if necessary. Can I confirm your full name and date of birth?"</p>
+        <p>"I see you’ve been given a spacer device to use with your asthma inhaler. Would it be okay if I show you how it works and how to use it properly?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🫁 What Is a Spacer?</h3>
+        <p>"A spacer is a plastic chamber that attaches to your inhaler. It helps the medicine reach your lungs more effectively by slowing the spray so you can breathe it in more gently. It also reduces the amount of medicine that sticks to the back of your throat."</p>
+    </div>
+    <div class="section-box">
+        <h3>🧬 When and Why to Use It</h3>
+        <p>"Spacers are especially useful if you’re experiencing side effects like taste changes from your inhaler. They help reduce medication left in the mouth and are also easier to use correctly, particularly during asthma attacks."</p>
+    </div>
+     <div class="section-box">
+        <h3>📏 Types of Spacers</h3>
+        <p>"You might have seen a large one called a Volumatic – very effective but bulky. There are smaller ones like Aerochambers, which are more portable though slightly less effective."</p>
+    </div>
+    <div class="section-box">
+        <h3>📖 How to Use It</h3>
+        <ol>
+            <li>Prime the spacer (Volumatic only) with 10 puffs or wash and air dry before first use.</li>
+            <li>Shake your inhaler and remove the cap.</li>
+            <li>Attach it securely to the spacer.</li>
+            <li>Exhale away from the device, then place the mouthpiece in your mouth with a good seal.</li>
+            <li>Release one puff and breathe in slowly and deeply, or take 5–10 tidal breaths.</li>
+            <li>Remove and repeat for a second dose if needed.</li>
+        </ol>
+    </div>
+     <div class="section-box">
+        <h3>🧼 Cleaning and Maintenance</h3>
+        <p>"Clean your spacer once a week using warm soapy water. Don’t wipe it dry – just let it air dry. This prevents static which can trap medication. Replace your spacer every year and store it safely to avoid damage."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Summary</h3>
+        <p>"Using a spacer helps deliver your medicine more effectively and reduces side effects like bad taste. Clean it weekly and replace it annually."</p>
+        <p>"Would you like to practise using it now or do you have any questions for me?"</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
