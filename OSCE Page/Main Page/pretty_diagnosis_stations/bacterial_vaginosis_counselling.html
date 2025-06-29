@@ -112,72 +112,50 @@
     }
 
     @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
       .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
     }
 
     @media screen and (min-width: 481px) and (max-width: 767px) {
-      header { font-size: 1.5em; padding: 20px; }
+      header { font-size: 1.3em; padding: 18px; }
       .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
     }
 
     @media screen and (min-width: 320px) and (max-width: 480px) {
-      header { font-size: 1.2em; padding: 18px; }
+      header { font-size: 1.1em; padding: 15px; }
       .content-section { padding: 15px; }
-      .labels { padding: 0 20px; }
+      .section-box { padding: 12px; }
+      .labels { padding: 0 15px; font-size: 0.85em; }
+      h3 { font-size: 1em; }
+      p, li { font-size: 0.9em; line-height: 1.4; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
     }
-  <style>
-/* Existing styles remain above... */
-
-/* 📱 Mobile-friendly custom breakpoints */
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  header { font-size: 1.5em; padding: 20px; }
-  .content-section { padding: 25px; }
-  .section-box { padding: 18px; }
-  h3 { font-size: 1.2em; }
-  p, li { font-size: 1em; }
-}
-
-@media screen and (min-width: 481px) and (max-width: 767px) {
-  header { font-size: 1.3em; padding: 18px; }
-  .content-section { padding: 20px; }
-  .section-box { padding: 16px; }
-  .labels { padding: 0 25px; }
-  h3 { font-size: 1.1em; }
-  p, li { font-size: 0.95em; }
-}
-
-@media screen and (min-width: 320px) and (max-width: 480px) {
-  header { font-size: 1.1em; padding: 15px; }
-  .content-section { padding: 15px; }
-  .section-box { padding: 12px; }
-  .labels { padding: 0 15px; font-size: 0.85em; }
-  h3 { font-size: 1em; }
-  p, li { font-size: 0.9em; line-height: 1.4; }
-  .switch {
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 30px;
-  }
-  .slider {
-    width: 22px;
-    height: 22px;
-    top: 4px;
-    left: 4px;
-  }
-}
-</style>
-
   </style>
 </head>
 <body>
   <header>🧫 Bacterial Vaginosis Counselling</header>
-
   <div class="labels">
     <span>High-Yield Notes</span>
     <span>Full Script</span>
   </div>
-
   <div class="toggle-container">
     <div class="switch" onclick="toggleContent(this)">
       <div class="slider"></div>
@@ -186,7 +164,6 @@
 
   <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-
     <div class="section-box">
       <h3>🩺 Introduction</h3>
       <ul>
@@ -195,7 +172,6 @@
         <li>📋 Clarify reason: diagnosis explanation</li>
       </ul>
     </div>
-
     <div class="section-box">
       <h3>🔍 Understanding & Concerns</h3>
       <ul>
@@ -203,7 +179,6 @@
         <li>❓ Explore concerns (e.g. STI, fertility)</li>
       </ul>
     </div>
-
     <div class="section-box">
       <h3>📖 Explanation</h3>
       <ul>
@@ -212,7 +187,6 @@
         <li>⚠️ Not an STI, but associated with sexual activity</li>
       </ul>
     </div>
-
     <div class="section-box">
       <h3>💊 Management</h3>
       <ul>
@@ -221,7 +195,6 @@
         <li>🔁 May recur, especially after sex or period</li>
       </ul>
     </div>
-
     <div class="section-box">
       <h3>👋 Closing</h3>
       <ul>
@@ -234,41 +207,34 @@
 
   <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
-
     <div class="section-box">
       <h3>🩺 Introduction</h3>
       <p>"Hi, I’m [Your Name], a medical student. I understand you were recently seen in clinic for a change in vaginal discharge. Before we go further, could I confirm your name and date of birth?"</p>
       <p>"I’d like to explain the results and what it means going forward. Is that okay?"</p>
     </div>
-
     <div class="section-box">
       <h3>🔍 Understanding & Concerns</h3>
       <p>"Have you heard of bacterial vaginosis before?"</p>
       <p>"Do you have any concerns — for example, about it being a sexually transmitted infection or affecting fertility?"</p>
     </div>
-
     <div class="section-box">
       <h3>🧫 What is Bacterial Vaginosis?</h3>
       <p>"Bacterial vaginosis, or BV, is a common cause of vaginal discharge. It’s not a sexually transmitted infection, but is linked to changes in the balance of natural bacteria in the vagina."</p>
       <p>"There’s usually a healthy balance of bacteria, but in BV one type overgrows — leading to symptoms like thin, greyish discharge and a fishy odour, especially after sex."</p>
     </div>
-
     <div class="section-box">
       <h3>⚠️ Important Reassurance</h3>
       <p>"It’s not dangerous and doesn’t usually cause serious problems. However, in pregnancy or before procedures it can be more relevant. It doesn’t cause infertility."</p>
     </div>
-
     <div class="section-box">
       <h3>💊 Treatment</h3>
       <p>"We treat it with an antibiotic called metronidazole — either as a tablet or a gel you insert into the vagina. It usually clears up within a week."</p>
       <p>"While being treated, it’s best to avoid alcohol if taking tablets, as it may cause nausea. Avoid using vaginal washes, douching, or perfumed products going forward — these upset the balance further."</p>
     </div>
-
     <div class="section-box">
       <h3>🔁 Recurrence</h3>
       <p>"BV can come back, especially after your period or sex. It’s not harmful but if it recurs frequently we can discuss options like longer treatments or specialist referral."</p>
     </div>
-
     <div class="section-box">
       <h3>✅ Summary & Safety Net</h3>
       <p>"So to summarise — BV is a common bacterial imbalance. It’s easily treatable, not an STI, and doesn’t affect fertility. We recommend treatment, avoiding vaginal products, and seeing a doctor if symptoms persist or return."</p>
