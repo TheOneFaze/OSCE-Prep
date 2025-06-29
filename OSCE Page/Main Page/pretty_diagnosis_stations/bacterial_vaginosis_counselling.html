@@ -1,168 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Bacterial Vaginosis Counselling</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f3e5f5;
-            color: #6a1b9a;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #e1bee7;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #ba68c8;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>🧫 Bacterial Vaginosis Counselling</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fce4ec;
+      color: #880e4f;
+    }
+
+    header {
+      background: linear-gradient(to right, #ec407a, #ad1457);
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #f8bbd0;
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #fce4ec;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #ad1457;
+      border-left: 5px solid #ad1457;
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .content-section { padding: 25px; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 20px; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 18px; }
+      .content-section { padding: 15px; }
+      .labels { padding: 0 20px; }
+    }
+  </style>
 </head>
 <body>
+  <header>🧫 Bacterial Vaginosis Counselling</header>
 
-<h1>🧫 Bacterial Vaginosis Counselling</h1>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
 
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span style="color:#6a1b9a;">High-Yield Notes</span>
-    <span style="color:#6a1b9a;">Full Script</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>Introduction</h3>
-    <ul>
+
+    <div class="section-box">
+      <h3>🩺 Introduction</h3>
+      <ul>
         <li>🧼 Wash hands and PPE</li>
         <li>👋 Introduce yourself, confirm ID</li>
         <li>📋 Clarify reason: diagnosis explanation</li>
-    </ul>
+      </ul>
+    </div>
 
-    <h3>Understanding & Concerns</h3>
-    <ul>
+    <div class="section-box">
+      <h3>🔍 Understanding & Concerns</h3>
+      <ul>
         <li>💬 Ask what patient knows</li>
         <li>❓ Explore concerns (e.g. STI, fertility)</li>
-    </ul>
+      </ul>
+    </div>
 
-    <h3>Explanation</h3>
-    <ul>
+    <div class="section-box">
+      <h3>📖 Explanation</h3>
+      <ul>
         <li>🔬 Overgrowth of normal vaginal bacteria</li>
         <li>👃 Causes thin, grey-white discharge + fishy smell</li>
         <li>⚠️ Not an STI, but associated with sexual activity</li>
-    </ul>
+      </ul>
+    </div>
 
-    <h3>Management</h3>
-    <ul>
+    <div class="section-box">
+      <h3>💊 Management</h3>
+      <ul>
         <li>💊 Metronidazole (oral or gel)</li>
         <li>🚫 Avoid douching, scented products</li>
         <li>🔁 May recur, especially after sex or period</li>
-    </ul>
+      </ul>
+    </div>
 
-    <h3>Closing</h3>
-    <ul>
+    <div class="section-box">
+      <h3>👋 Closing</h3>
+      <ul>
         <li>📄 Reassure, provide leaflet</li>
         <li>🩺 Safety net for worsening, recurrence</li>
         <li>🙋 Invite questions</li>
-    </ul>
-</div>
+      </ul>
+    </div>
+  </div>
 
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
 
-    <h3>🩺 Introduction</h3>
-    <p>"Hi, I’m [Your Name], a medical student. I understand you were recently seen in clinic for a change in vaginal discharge. Before we go further, could I confirm your name and date of birth?"</p>
-    <p>"I’d like to explain the results and what it means going forward. Is that okay?"</p>
+    <div class="section-box">
+      <h3>🩺 Introduction</h3>
+      <p>"Hi, I’m [Your Name], a medical student. I understand you were recently seen in clinic for a change in vaginal discharge. Before we go further, could I confirm your name and date of birth?"</p>
+      <p>"I’d like to explain the results and what it means going forward. Is that okay?"</p>
+    </div>
 
-    <h3>🔍 Understanding & Concerns</h3>
-    <p>"Have you heard of bacterial vaginosis before?"</p>
-    <p>"Do you have any concerns — for example, about it being a sexually transmitted infection or affecting fertility?"</p>
+    <div class="section-box">
+      <h3>🔍 Understanding & Concerns</h3>
+      <p>"Have you heard of bacterial vaginosis before?"</p>
+      <p>"Do you have any concerns — for example, about it being a sexually transmitted infection or affecting fertility?"</p>
+    </div>
 
-    <h3>🧫 What is Bacterial Vaginosis?</h3>
-    <p>"Bacterial vaginosis, or BV, is a common cause of vaginal discharge. It’s not a sexually transmitted infection, but is linked to changes in the balance of natural bacteria in the vagina."</p>
-    <p>"There’s usually a healthy balance of bacteria, but in BV one type overgrows — leading to symptoms like thin, greyish discharge and a fishy odour, especially after sex."</p>
+    <div class="section-box">
+      <h3>🧫 What is Bacterial Vaginosis?</h3>
+      <p>"Bacterial vaginosis, or BV, is a common cause of vaginal discharge. It’s not a sexually transmitted infection, but is linked to changes in the balance of natural bacteria in the vagina."</p>
+      <p>"There’s usually a healthy balance of bacteria, but in BV one type overgrows — leading to symptoms like thin, greyish discharge and a fishy odour, especially after sex."</p>
+    </div>
 
-    <h3>⚠️ Important Reassurance</h3>
-    <p>"It’s not dangerous and doesn’t usually cause serious problems. However, in pregnancy or before procedures it can be more relevant. It doesn’t cause infertility."</p>
+    <div class="section-box">
+      <h3>⚠️ Important Reassurance</h3>
+      <p>"It’s not dangerous and doesn’t usually cause serious problems. However, in pregnancy or before procedures it can be more relevant. It doesn’t cause infertility."</p>
+    </div>
 
-    <h3>💊 Treatment</h3>
-    <p>"We treat it with an antibiotic called metronidazole — either as a tablet or a gel you insert into the vagina. It usually clears up within a week."</p>
-    <p>"While being treated, it’s best to avoid alcohol if taking tablets, as it may cause nausea. Avoid using vaginal washes, douching, or perfumed products going forward — these upset the balance further."</p>
+    <div class="section-box">
+      <h3>💊 Treatment</h3>
+      <p>"We treat it with an antibiotic called metronidazole — either as a tablet or a gel you insert into the vagina. It usually clears up within a week."</p>
+      <p>"While being treated, it’s best to avoid alcohol if taking tablets, as it may cause nausea. Avoid using vaginal washes, douching, or perfumed products going forward — these upset the balance further."</p>
+    </div>
 
-    <h3>🔁 Recurrence</h3>
-    <p>"BV can come back, especially after your period or sex. It’s not harmful but if it recurs frequently we can discuss options like longer treatments or specialist referral."</p>
+    <div class="section-box">
+      <h3>🔁 Recurrence</h3>
+      <p>"BV can come back, especially after your period or sex. It’s not harmful but if it recurs frequently we can discuss options like longer treatments or specialist referral."</p>
+    </div>
 
-    <h3>✅ Summary & Safety Net</h3>
-    <p>"So to summarise — BV is a common bacterial imbalance. It’s easily treatable, not an STI, and doesn’t affect fertility. We recommend treatment, avoiding vaginal products, and seeing a doctor if symptoms persist or return."</p>
-    <p>"Do you have any questions or worries I can help with?"</p>
-    <p>"Here’s a leaflet with everything we discussed and advice on how to prevent recurrence. Thanks for your time."</p>
-</div>
+    <div class="section-box">
+      <h3>✅ Summary & Safety Net</h3>
+      <p>"So to summarise — BV is a common bacterial imbalance. It’s easily treatable, not an STI, and doesn’t affect fertility. We recommend treatment, avoiding vaginal products, and seeing a doctor if symptoms persist or return."</p>
+      <p>"Do you have any questions or worries I can help with?"</p>
+      <p>"Here’s a leaflet with everything we discussed and advice on how to prevent recurrence. Thanks for your time."</p>
+    </div>
+  </div>
 
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
