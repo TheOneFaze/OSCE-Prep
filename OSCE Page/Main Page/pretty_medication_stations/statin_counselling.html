@@ -1,171 +1,279 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Statin Counselling</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #fffde7;
-            color: #f57c00;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #ffe082;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #ffd54f;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🟡 Statin Counselling</title>
+  <style>
+    /* --- UPDATED YELLOW/AMBER COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffde7; /* Light yellow background */
+      color: #f57c00;     /* Dark amber text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ffd54f, #f57c00); /* Yellow/Amber gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #ffe082; /* Lighter yellow switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #fffde7; /* Light yellow background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #f57c00; /* Dark amber for headings */
+      border-left: 5px solid #f57c00; /* Dark amber border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>🟡 Statin Counselling</h1>
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
+  <header>🟡 Statin Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span style="color:#f57c00;">High-Yield Notes</span>
-    <span style="color:#f57c00;">Full Script</span>
-</div>
-<div class="content-section active" id="highYield">
+  </div>
+
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>🩺 Set up</h3>
-    <ul>
-        <li>🧼 Wash hands and don PPE if appropriate</li>
-        <li>👋 Introduce self (name, role)</li>
-        <li>🆔 Confirm patient's name and DOB</li>
-        <li>📝 Explain reason for the consultation</li>
-    </ul>
-    <h3>💭 ICE (Ideas, Concerns, Expectations)</h3>
-    <ul>
-        <li>🗣️ Ask about patient's understanding of cholesterol and statins</li>
-        <li>❓ Explore concerns about statins</li>
-        <li>🎯 Ask what the patient hopes to get from the consultation</li>
-    </ul>
-    <h3>💊 Explaining cholesterol & statins</h3>
-    <ul>
-        <li>🧠 Explain how statins work in simple terms (chunking & checking understanding)</li>
-    </ul>
-    <h3>📋 How and when to take statins</h3>
-    <ul>
-        <li>💊 Take one tablet once every night, ideally at the same time</li>
-    </ul>
-    <h3>⚠️ Side effects</h3>
-    <ul>
-        <li>💪 Myalgia (muscle aches)</li>
-        <li>🟣 Rhabdomyolysis (severe but rare: seek medical attention for muscle pain + dark urine)</li>
-        <li>🤢 Nausea, constipation and/or diarrhoea</li>
-    </ul>
-    <h3>🧪 Monitoring</h3>
-    <ul>
-        <li>🩸 Blood tests: before starting, at 3 months, at 12 months</li>
-        <li>🧬 Monitor lipids/cholesterol and liver function</li>
-    </ul>
-    <h3>✅ Missed dose</h3>
-    <ul>
-        <li>⏳ If you forget, take the next dose at the usual time. Do not double up</li>
-    </ul>
-    <h3>🥦 Lifestyle</h3>
-    <ul>
-        <li>🍏 Give lifestyle advice, commend positive changes</li>
-    </ul>
-    <h3>📝 Closing</h3>
-    <ul>
-        <li>📋 Summarise key points</li>
-        <li>🙋 Ask if any questions/concerns remain</li>
-        <li>🙏 Thank patient for time</li>
-        <li>🧼 Dispose of PPE & wash hands</li>
-        <li>👂 Active listening, summarising, signposting throughout</li>
-    </ul>
-</div>
-<div class="content-section" id="fullScript">
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <ul>
+            <li>🧼 Wash hands and don PPE if appropriate</li>
+            <li>👋 Introduce self (name, role)</li>
+            <li>🆔 Confirm patient's name and DOB</li>
+            <li>📝 Explain reason for the consultation</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 ICE (Ideas, Concerns, Expectations)</h3>
+        <ul>
+            <li>🗣️ Ask about patient's understanding of cholesterol and statins</li>
+            <li>❓ Explore concerns about statins</li>
+            <li>🎯 Ask what the patient hopes to get from the consultation</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>💊 How and when to take statins</h3>
+        <ul>
+            <li>Take one tablet once every night, ideally at the same time</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side effects</h3>
+        <ul>
+            <li>💪 Myalgia (muscle aches)</li>
+            <li>🟣 Rhabdomyolysis (severe but rare: seek medical attention for muscle pain + dark urine)</li>
+            <li>🤢 Nausea, constipation and/or diarrhoea</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🔬 Monitoring</h3>
+        <ul>
+            <li>🩸 Blood tests: before starting, at 3 months, at 12 months</li>
+            <li>🧬 Monitor lipids/cholesterol and liver function</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>❓ Missed dose</h3>
+        <ul>
+            <li>⏳ If you forget, take the next dose at the usual time. Do not double up</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🥗 Lifestyle</h3>
+        <ul>
+            <li>🍏 Give lifestyle advice, commend positive changes</li>
+        </ul>
+    </div>
+     <div class="section-box">
+        <h3>👋 Closing</h3>
+        <ul>
+            <li>📋 Summarise key points</li>
+            <li>🙋 Ask if any questions/concerns remain</li>
+            <li>🙏 Thank patient for time</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
-    <h3>🩺 Set up</h3>
-    <p>"Hi, my name is [Your Name], I’m one of the medical team. I’ll just wash my hands and put on some PPE. Can I confirm your name and date of birth?"</p>
-    <p>"I understand your doctor has suggested starting a statin. Is it alright if I explain what statins do, how to take them, and answer any questions you might have?"</p>
-    <h3>💭 ICE (Ideas, Concerns, Expectations)</h3>
-    <p>"Can I ask what you already know about cholesterol and statins? Do you have any concerns or worries about starting this medication? Is there anything specific you want to get from our discussion today?"</p>
-    <h3>💊 What are statins and why are they needed?</h3>
-    <p>"Statins are medicines that help lower cholesterol in your blood. High cholesterol can build up in your blood vessels, increasing your risk of heart attack or stroke. Statins block an enzyme your liver uses to make cholesterol, lowering your risk. Does that make sense so far?"</p>
-    <h3>📋 How and when to take statins</h3>
-    <p>"You’ll need to take one tablet every night, ideally at the same time. Taking them at night helps as your liver makes most cholesterol then. Swallow with water, and try not to miss doses."</p>
-    <h3>⚠️ Side effects</h3>
-    <p>"The most common side effect is muscle aches (myalgia), usually mild. Rarely, statins can cause severe muscle breakdown (rhabdomyolysis), which is serious. If you have severe muscle pain, weakness, or dark urine, contact your doctor immediately. You might also get nausea, constipation, or diarrhoea, but these are usually mild and settle."</p>
-    <h3>🧪 Monitoring</h3>
-    <p>"We’ll check blood tests before you start, then again at 3 and 12 months, to monitor cholesterol and your liver function. Let us know if you notice side effects between reviews."</p>
-    <h3>✅ Missed dose</h3>
-    <p>"If you forget a dose, just take the next one at the usual time. Don’t double up."</p>
-    <h3>🥦 Lifestyle</h3>
-    <p>"Statins work best with a healthy lifestyle. Keep up any positive changes you’ve already started—eating healthily, exercising, quitting smoking if relevant. Well done for what you’ve done so far!"</p>
-    <h3>📝 Summary & teach-back</h3>
-    <p>"So to summarise: statins lower cholesterol to protect your heart and brain. Take one at night, have blood tests as advised, and watch for any side effects. Can you tell me what you’ll do if you notice muscle pain, or if you miss a dose?"</p>
-    <h3>👂 Communication skills & closing</h3>
-    <p>"Have I answered all your questions today, or is there anything you’re still unsure about? Thank you for your time. Here’s a leaflet for you. I’ll take off my PPE and wash my hands now."</p>
-</div>
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <p>"Hi, my name is [Your Name], I’m one of the medical team. I’ll just wash my hands and put on some PPE. Can I confirm your name and date of birth?"</p>
+        <p>"I understand your doctor has suggested starting a statin. Is it alright if I explain what statins do, how to take them, and answer any questions you might have?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 ICE (Ideas, Concerns, Expectations)</h3>
+        <p>"Can I ask what you already know about cholesterol and statins? Do you have any concerns or worries about starting this medication? Is there anything specific you want to get from our discussion today?"</p>
+    </div>
+    <div class="section-box">
+        <h3>💊 What are statins and why are they needed?</h3>
+        <p>"Statins are medicines that help lower cholesterol in your blood. High cholesterol can build up in your blood vessels, increasing your risk of heart attack or stroke. Statins block an enzyme your liver uses to make cholesterol, lowering your risk. Does that make sense so far?"</p>
+    </div>
+    <div class="section-box">
+        <h3>📋 How and when to take statins</h3>
+        <p>"You’ll need to take one tablet every night, ideally at the same time. Taking them at night helps as your liver makes most cholesterol then. Swallow with water, and try not to miss doses."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side effects</h3>
+        <p>"The most common side effect is muscle aches (myalgia), usually mild. Rarely, statins can cause severe muscle breakdown (rhabdomyolysis), which is serious. If you have severe muscle pain, weakness, or dark urine, contact your doctor immediately. You might also get nausea, constipation, or diarrhoea, but these are usually mild and settle."</p>
+    </div>
+    <div class="section-box">
+        <h3>🔬 Monitoring</h3>
+        <p>"We’ll check blood tests before you start, then again at 3 and 12 months, to monitor cholesterol and your liver function. Let us know if you notice side effects between reviews."</p>
+    </div>
+     <div class="section-box">
+        <h3>❓ Missed dose</h3>
+        <p>"If you forget a dose, just take the next one at the usual time. Don’t double up."</p>
+    </div>
+    <div class="section-box">
+        <h3>🥗 Lifestyle</h3>
+        <p>"Statins work best with a healthy lifestyle. Keep up any positive changes you’ve already started—eating healthily, exercising, quitting smoking if relevant. Well done for what you’ve done so far!"</p>
+    </div>
+    <div class="section-box">
+        <h3>📝 Summary & teach-back</h3>
+        <p>"So to summarise: statins lower cholesterol to protect your heart and brain. Take one at night, have blood tests as advised, and watch for any side effects. Can you tell me what you’ll do if you notice muscle pain, or if you miss a dose?"</p>
+        <p>"Have I answered all your questions today, or is there anything you’re still unsure about? Thank you for your time. Here’s a leaflet for you. I’ll take off my PPE and wash my hands now."</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
