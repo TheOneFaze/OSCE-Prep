@@ -1,210 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>🩺 Colonoscopy Counselling</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩺 Colonoscopy Counselling</title>
+  <style>
+    /* --- UPDATED BLUE/CYAN COLOR SCHEME --- */
     body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #e0f7fa;
-        color: #006064;
-        margin: 0;
-        padding: 20px;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f7fa; /* Light cyan background */
+      color: #006064;     /* Dark cyan text */
     }
-    h1, h2 {
-        text-align: center;
-        color: #006064;
+
+    header {
+      background: linear-gradient(to right, #4dd0e1, #006064); /* Cyan gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    .toggle-container {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-    }
-    .switch {
-        position: relative;
-        width: 120px;
-        height: 50px;
-        background-color: #b2ebf2;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    }
-    .slider {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 40px;
-        height: 40px;
-        background-color: white;
-        border-radius: 50%;
-        transition: all 0.3s ease-in-out;
-    }
-    .switch.active .slider {
-        transform: translateX(70px);
-    }
+
     .labels {
-        display: flex;
-        justify-content: space-between;
-        font-weight: bold;
-        color: #006064;
-        padding: 0 10px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
     }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #b2ebf2; /* Lighter cyan switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
     .content-section {
-        display: none;
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        margin-top: 20px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        line-height: 1.6;
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
+
     .content-section.active {
-        display: block;
+      display: block;
     }
+
+    .section-box {
+      background: #e0f7fa; /* Light cyan background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
     h3 {
-        border-bottom: 2px solid #80deea;
-        padding-bottom: 5px;
-        margin-top: 25px;
-        color: #006064;
+      color: #006064; /* Dark cyan for headings */
+      border-left: 5px solid #006064; /* Dark cyan border */
+      padding-left: 10px;
+      margin-top: 20px;
     }
-    h4 {
-        margin-top: 20px;
-        color: #0097a7;
-    }
+
     ul {
-        margin-left: 20px;
+      padding-left: 20px;
     }
-    blockquote {
-        border-left: 3px solid #80deea;
-        margin-left: 0;
-        padding-left: 15px;
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    em, strong {
         font-style: italic;
-        color: #004d40;
-        background: #e0f7fa;
-        margin-bottom: 20px;
-    }
-    p strong {
+        font-weight: bold;
         color: #004d40;
     }
-</style>
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>🩺 Colonoscopy Counselling</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch" role="switch" aria-checked="false" tabindex="0">
-        <div class="slider"></div>
+  <header>🩺 Colonoscopy Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span>High-Yield Notes 🧠</span>
-    <span>Full Word-for-Word OSCE Script 📜</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>📚 Knowledge</h3>
+        <ul>
+            <li>Colonoscopy uses a thin, flexible tube with a camera inserted through the bottom to examine the entire colon.</li>
+            <li>Air is insufflated to expand the colon for better visualization, may cause bloating or urge to defecate.</li>
+            <li>Procedure takes approximately 30-45 minutes.</li>
+            <li>Patient must have an empty bowel, achieved by laxatives or enemas prior to procedure.</li>
+            <li>The at-home fecal immunochemical test (FIT) screens for hidden blood, indicating need for colonoscopy.</li>
+            <li>Common causes of blood in stool: bowel cancer, ulcers, diverticular disease, hemorrhoids, inflammatory bowel disease, polyps.</li>
+            <li>Biopsies may be taken if abnormalities found; results take several weeks.</li>
+            <li>Complications include bloating, cramps, small amounts of bleeding; rare risks include bowel perforation and infection.</li>
+            <li>Urgent advice if severe bleeding, pain, fever, or vomiting occurs post-procedure.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy & Summary</h3>
+        <ul>
+            <li>Explain the procedure and preparation clearly.</li>
+            <li>Reassure about sedation and pain management.</li>
+            <li>Discuss the significance of findings and biopsy.</li>
+            <li>Warn about complications and appropriate follow-up.</li>
+            <li>Confirm patient understanding and address concerns.</li>
+        </ul>
+    </div>
+  </div>
 
-    <h3>📚 Knowledge</h3>
-    <ul>
-        <li>Colonoscopy uses a thin, flexible tube with a camera inserted through the bottom to examine the entire colon.</li>
-        <li>Air is insufflated to expand the colon for better visualization, may cause bloating or urge to defecate.</li>
-        <li>Procedure takes approximately 30-45 minutes.</li>
-        <li>Patient must have an empty bowel, achieved by laxatives or enemas prior to procedure.</li>
-        <li>The at-home fecal immunochemical test (FIT) screens for hidden blood, indicating need for colonoscopy.</li>
-        <li>Common causes of blood in stool: bowel cancer, ulcers, diverticular disease, hemorrhoids, inflammatory bowel disease, polyps.</li>
-        <li>Biopsies may be taken if abnormalities found; results take several weeks.</li>
-        <li>Complications include bloating, cramps, small amounts of bleeding; rare risks include bowel perforation and infection.</li>
-        <li>Urgent advice if severe bleeding, pain, fever, or vomiting occurs post-procedure.</li>
-    </ul>
-
-    <h3>✅ Strategy &amp; summary</h3>
-    <ul>
-        <li>Explain the procedure and preparation clearly.</li>
-        <li>Reassure about sedation and pain management.</li>
-        <li>Discuss the significance of findings and biopsy.</li>
-        <li>Warn about complications and appropriate follow-up.</li>
-        <li>Confirm patient understanding and address concerns.</li>
-    </ul>
-</div>
-
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
-
-    <h3>📚 Knowledge</h3>
-
-    <h4>❓ What is a colonoscopy?</h4>
-    <blockquote>
-        <p><strong>Doctor:</strong> "A colonoscopy is a procedure to look inside your large bowel using a thin, flexible tube with a camera on the end, inserted through your bottom."</p>
+    <div class="section-box">
+        <h3>❓ What is a colonoscopy?</h3>
+        <p>"A colonoscopy is a procedure to look inside your large bowel using a thin, flexible tube with a camera on the end, inserted through your bottom."</p>
         <p>"We pump air into the bowel to open it up so we can get a clear view. This might make you feel bloated or have an urge to open your bowels."</p>
         <p>"The procedure usually takes around 30 to 45 minutes."</p>
         <p>"Your bowel needs to be empty for the colonoscopy to be effective, which is why you'll need to take laxatives or have an enema beforehand."</p>
         <p>"We'll provide you with information leaflets and the medications needed for preparation."</p>
         <p>"After the procedure, you’ll be taken to the recovery room and monitored until you’re ready to go home. If you have sedation, you must arrange for someone to take you home."</p>
-    </blockquote>
-
-    <h4>🩺 What is the at-home testing kit for?</h4>
-    <blockquote>
-        <p><strong>Doctor:</strong> "The at-home fecal immunochemical test (FIT) is offered to people aged 54 to 74 in England."</p>
+    </div>
+    <div class="section-box">
+        <h3>🩺 What is the at-home testing kit for?</h3>
+        <p>"The at-home fecal immunochemical test (FIT) is offered to people aged 54 to 74 in England."</p>
         <p>"It detects small amounts of blood in stool that are not visible to the naked eye."</p>
         <p>"If blood is detected, it could be a sign of bowel cancer or other conditions, and you will be referred for a colonoscopy."</p>
-    </blockquote>
-
-    <h4>❓ What can cause blood in stool?</h4>
-    <blockquote>
-        <p><strong>Doctor:</strong> "Blood in the stool can be caused by several conditions. The most serious is bowel cancer."</p>
+    </div>
+    <div class="section-box">
+        <h3>❓ What can cause blood in stool?</h3>
+        <p>"Blood in the stool can be caused by several conditions. The most serious is bowel cancer."</p>
         <p>"Other causes include stomach or bowel ulcers, diverticular disease, hemorrhoids, inflammatory bowel diseases like Crohn’s or ulcerative colitis, polyps, or spontaneous bleeding."</p>
         <p>"Any blood in stool is abnormal and should be investigated."</p>
-    </blockquote>
-
-    <h4>❓ Why is a colonoscopy needed?</h4>
-    <blockquote>
-        <p><strong>Doctor:</strong> "Your at-home test showed blood in your stool, so we want to look inside your bowel to check for any problems."</p>
+    </div>
+    <div class="section-box">
+        <h3>❓ Why is a colonoscopy needed?</h3>
+        <p>"Your at-home test showed blood in your stool, so we want to look inside your bowel to check for any problems."</p>
         <p>"Many people have normal colonoscopies, but polyps, which can be pre-cancerous growths, are common especially as people get older."</p>
         <p>"If we find polyps or suspicious areas, we’ll take small biopsies to be examined under a microscope. The results usually take a few weeks."</p>
         <p>"We will explain any findings on the day of the procedure."</p>
-    </blockquote>
-
-    <h4>⚠️ Complications of colonoscopy</h4>
-    <blockquote>
-        <p><strong>Doctor:</strong> "You might feel bloated and pass wind after the procedure, which usually settles within a few hours."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Complications of colonoscopy</h3>
+        <p>"You might feel bloated and pass wind after the procedure, which usually settles within a few hours."</p>
         <p>"Some patients have stomach cramps, which can be relieved with painkillers."</p>
         <p>"A small amount of blood from your bottom after the procedure is common, but large amounts or clots are not normal."</p>
         <p><em>"In rare cases, colonoscopy can cause a tear (perforation) in the bowel, which requires urgent medical attention."</em></p>
         <p><em>"There is also a small risk of infection or bleeding."</em></p>
         <p><em>"Colonoscopy is safe but not 100% perfect; some cancers or polyps can be missed."</em></p>
-    </blockquote>
+    </div>
+     <div class="section-box">
+        <h3>❤️ Exploration & Empathy</h3>
+        <p>"Do you have any questions or concerns about the colonoscopy?"</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy and Summary</h3>
+        <p>"Could you summarise the main points we’ve covered to make sure everything is clear?"</p>
+    </div>
+  </div>
 
-    <h3>💬 Exploration &amp; empathy</h3>
-    <blockquote>
-        <p><strong>Doctor:</strong> "Do you have any questions or concerns about the colonoscopy?"</p>
-        <p>Offer reassurance and clarify any doubts.</p>
-    </blockquote>
-
-    <h3>✅ Strategy and summary</h3>
-    <blockquote>
-        <p><strong>Doctor:</strong> "Could you summarise the main points we’ve covered to make sure everything is clear?"</p>
-        <p>Confirm understanding about procedure, preparation, risks, and follow-up care.</p>
-    </blockquote>
-</div>
-
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-
-        if (toggle.classList.contains("active")) {
-            toggle.setAttribute("aria-checked", "true");
-        } else {
-            toggle.setAttribute("aria-checked", "false");
-        }
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
