@@ -1,205 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>🩺 Tuberculosis Treatment Counselling</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩺 Tuberculosis Treatment Counselling</title>
+  <style>
+    /* --- UPDATED BLUE/CYAN COLOR SCHEME --- */
     body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #e0f7fa;
-        color: #006064;
-        margin: 0;
-        padding: 20px;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f7fa; /* Light cyan background */
+      color: #006064;     /* Dark cyan text */
     }
-    h1, h2 {
-        text-align: center;
-        color: #006064;
+
+    header {
+      background: linear-gradient(to right, #4dd0e1, #006064); /* Cyan gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    .toggle-container {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-    }
-    .switch {
-        position: relative;
-        width: 120px;
-        height: 50px;
-        background-color: #b2ebf2;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    }
-    .slider {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 40px;
-        height: 40px;
-        background-color: white;
-        border-radius: 50%;
-        transition: all 0.3s ease-in-out;
-    }
-    .switch.active .slider {
-        transform: translateX(70px);
-    }
+
     .labels {
-        display: flex;
-        justify-content: space-between;
-        font-weight: bold;
-        color: #006064;
-        padding: 0 10px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
     }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #b2ebf2; /* Lighter cyan switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
     .content-section {
-        display: none;
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        margin-top: 20px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        line-height: 1.6;
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
+
     .content-section.active {
-        display: block;
+      display: block;
     }
+
+    .section-box {
+      background: #e0f7fa; /* Light cyan background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
     h3 {
-        border-bottom: 2px solid #80deea;
-        padding-bottom: 5px;
-        margin-top: 25px;
-        color: #006064;
+      color: #006064; /* Dark cyan for headings */
+      border-left: 5px solid #006064; /* Dark cyan border */
+      padding-left: 10px;
+      margin-top: 20px;
     }
-    h4 {
-        margin-top: 20px;
-        color: #0097a7;
-    }
+
     ul {
-        margin-left: 20px;
+      padding-left: 20px;
     }
-    blockquote {
-        border-left: 3px solid #80deea;
-        margin-left: 0;
-        padding-left: 15px;
-        font-style: italic;
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    strong {
+        font-weight: bold;
         color: #004d40;
-        background: #e0f7fa;
-        margin-bottom: 20px;
     }
-    p strong {
-        color: #004d40;
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
     }
-</style>
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>🩺 Tuberculosis Treatment Counselling</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch" role="switch" aria-checked="false" tabindex="0">
-        <div class="slider"></div>
+  <header>🩺 Tuberculosis Treatment Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span>High-Yield Notes 🧠</span>
-    <span>Full Word-for-Word OSCE Script 📜</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>📚 Knowledge</h3>
+        <ul>
+            <li>TB is a serious bacterial disease primarily affecting the lungs but can spread to other organs.</li>
+            <li>Treatment is essential to prevent complications and disease spread.</li>
+            <li>Standard treatment lasts ~6 months using 4 drugs: rifampicin, isoniazid, pyrazinamide, ethambutol.</li>
+            <li>Initial 2 months: all four drugs; subsequent 4 months: rifampicin and isoniazid only.</li>
+            <li>Public health notification is required; close contacts may need screening.</li>
+            <li>Common side effects include orange bodily fluids (rifampicin), neuropathy (isoniazid), joint pain and liver toxicity (pyrazinamide), vision problems (ethambutol).</li>
+            <li>Monitoring includes liver function tests and vision assessments.</li>
+            <li>Patients are infectious for approximately 2 weeks after starting treatment; self-isolation is advised.</li>
+            <li>Adherence to medication is critical to prevent drug resistance and treatment failure.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy & Summary</h3>
+        <ul>
+            <li>Ensure patient understands treatment duration and drug regimen.</li>
+            <li>Explain side effects and importance of monitoring.</li>
+            <li>Highlight infection control measures including isolation and contact precautions.</li>
+            <li>Encourage adherence and clarify infectious period.</li>
+        </ul>
+    </div>
+  </div>
 
-    <h3>📚 Knowledge</h3>
-    <ul>
-        <li>TB is a serious bacterial disease primarily affecting the lungs but can spread to other organs.</li>
-        <li>Treatment is essential to prevent complications and disease spread.</li>
-        <li>Standard treatment lasts ~6 months using 4 drugs: rifampicin, isoniazid, pyrazinamide, ethambutol.</li>
-        <li>Initial 2 months: all four drugs; subsequent 4 months: rifampicin and isoniazid only.</li>
-        <li>Public health notification is required; close contacts may need screening.</li>
-        <li>Common side effects include orange bodily fluids (rifampicin), neuropathy (isoniazid), joint pain and liver toxicity (pyrazinamide), vision problems (ethambutol).</li>
-        <li>Monitoring includes liver function tests and vision assessments.</li>
-        <li>Patients are infectious for approximately 2 weeks after starting treatment; self-isolation is advised.</li>
-        <li>Adherence to medication is critical to prevent drug resistance and treatment failure.</li>
-    </ul>
-
-    <h3>✅ Strategy &amp; summary</h3>
-    <ul>
-        <li>Ensure patient understands treatment duration and drug regimen.</li>
-        <li>Explain side effects and importance of monitoring.</li>
-        <li>Highlight infection control measures including isolation and contact precautions.</li>
-        <li>Encourage adherence and clarify infectious period.</li>
-    </ul>
-</div>
-
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
-
-    <h3>📚 Knowledge</h3>
-
-    <h4>❓ What TB is and why it should be treated</h4>
-    <blockquote>
+    <div class="section-box">
+        <h3>❓ What TB is and why it should be treated</h3>
         <p><strong>Doctor:</strong> "Tuberculosis is a serious bacterial disease, primarily affecting the lungs but potentially spreading to other parts of the body like the kidneys, nerves, stomach, and heart if left untreated."</p>
         <p>"It’s very important to treat TB to prevent these complications and to stop the infection spreading to others."</p>
         <p>"Because of your penicillin allergy, we avoid penicillin-based antibiotics and use alternative medications."</p>
-    </blockquote>
-
-    <h4>🕒 General information on TB treatment</h4>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>🕒 General information on TB treatment</h3>
         <p><strong>Doctor:</strong> "Treatment usually lasts about six months and involves taking four different antibiotics: rifampicin, isoniazid, pyrazinamide, and ethambutol."</p>
         <p>"For the first two months, you take all four medications. After that, you continue with just rifampicin and isoniazid for the remaining four months."</p>
         <p>"I am required to notify public health authorities, who may contact your close contacts for screening."</p>
-    </blockquote>
-
-    <h4>⚠️ Adverse drug reactions (ADRs)</h4>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Adverse drug reactions (ADRs)</h3>
         <p><strong>Doctor:</strong> "These medications can have side effects which you should be aware of."</p>
         <p>"Rifampicin can cause your sweat, urine, and tears to turn orange — this is harmless but can be surprising."</p>
         <p>"Isoniazid may cause nerve-related symptoms, so we also give vitamin B6 to reduce this risk."</p>
         <p>"Pyrazinamide can cause joint pains, including gout, and liver toxicity."</p>
         <p>"Ethambutol can affect your vision, so we will test your eyesight before and during treatment."</p>
         <p>"If you experience any concerning side effects, please contact us immediately. I can also provide detailed written information for you."</p>
-    </blockquote>
-
-    <h4>🩺 Monitoring</h4>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>🩺 Monitoring</h3>
         <p><strong>Doctor:</strong> "We will monitor your liver function through blood tests, and regularly check your vision to detect any early problems."</p>
-    </blockquote>
-
-    <h4>🦠 Infection control and compliance</h4>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>🦠 Infection control and compliance</h3>
         <p><strong>Doctor:</strong> "You will remain infectious for about two weeks after starting treatment."</p>
         <p>"During this time, it’s important to avoid contact with vulnerable people such as children, elderly, and immunocompromised individuals."</p>
         <p>"Self-isolation is advised to prevent spread."</p>
         <p>"Adhering to your treatment regimen is crucial, even if you start feeling better early, to avoid developing drug-resistant TB."</p>
-    </blockquote>
-
-    <h3>💬 Exploration &amp; empathy</h3>
-    <blockquote>
+    </div>
+     <div class="section-box">
+        <h3>❤️ Exploration & Empathy</h3>
         <p><strong>Doctor:</strong> "How do you feel about the information I have provided?"</p>
-        <p>Address any concerns or emotional distress, especially regarding the length of treatment and self-isolation.</p>
-    </blockquote>
-
-    <h3>✅ Strategy and summary</h3>
-    <h4>📝 Patient summary</h4>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>🗣️ Strategy and Summary</h3>
         <p><strong>Doctor:</strong> "Could you please summarise the treatment plan we've discussed to ensure I've explained everything clearly?"</p>
-        <p>Confirm patient understands the duration, medications, side effects, monitoring, and infection control measures.</p>
-    </blockquote>
-</div>
+    </div>
+  </div>
 
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-
-        if (toggle.classList.contains("active")) {
-            toggle.setAttribute("aria-checked", "true");
-        } else {
-            toggle.setAttribute("aria-checked", "false");
-        }
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
