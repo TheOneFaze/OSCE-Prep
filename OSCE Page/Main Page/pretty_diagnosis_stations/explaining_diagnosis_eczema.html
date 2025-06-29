@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explaining a Diagnosis of Eczema</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #ede7f6;
+            color: #4527a0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .switch {
+            position: relative;
+            width: 120px;
+            height: 50px;
+            background-color: #d1c4e9;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        }
+        .slider {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+        }
+        .switch.active .slider {
+            transform: translateX(70px);
+        }
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .content-section {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .content-section.active {
+            display: block;
+        }
+        h3 {
+            border-bottom: 2px solid #9575cd;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        ul {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🧴 Explaining a Diagnosis of Eczema</h1>
+
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch">
+        <div class="slider"></div>
+    </div>
+</div>
+<div class="labels">
+    <span style="color:#4527a0;">High-Yield Notes</span>
+    <span style="color:#4527a0;">Full Script</span>
+</div>
+
+<div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <h3>🩺 Set up</h3>
+    <ul>
+        <li>🧼 Wash hands and PPE</li>
+        <li>👋 Introduce name and role</li>
+        <li>🆔 Confirm patient's name and DOB</li>
+        <li>📋 Explain purpose of discussion</li>
+        <li>🗺️ Use signposting: "We’ll start by discussing what eczema is, then talk through management."</li>
+    </ul>
+
+    <h3>Understanding & Concerns</h3>
+    <ul>
+        <li>❓ Ask “What do you know about eczema?”</li>
+        <li>💬 Use ICE (Ideas, Concerns, Expectations)</li>
+    </ul>
+
+    <h3>Explanation of Eczema</h3>
+    <ul>
+        <li>🧬 Chronic inflammatory skin condition</li>
+        <li>📉 Symptoms: dry, itchy, red skin; flares</li>
+        <li>⚠️ Common triggers: soaps, allergens, stress</li>
+        <li>🚫 Not contagious</li>
+    </ul>
+
+    <h3>Management</h3>
+    <ul>
+        <li>🧴 Emollients: daily use to restore skin barrier</li>
+        <li>💊 Topical steroids for flares (appropriate strength per site)</li>
+        <li>🔁 Identify and avoid triggers (soaps, allergens, stress)</li>
+        <li>📋 Written eczema action plan</li>
+        <li>💉 Flu vaccine if severe or recurrent infections</li>
+    </ul>
+
+    <h3>Closing</h3>
+    <ul>
+        <li>📄 Offer leaflet/info</li>
+        <li>🙋 Ask for questions</li>
+        <li>🩺 Arrange follow-up if needed</li>
+        <li>🚨 Safety-net: infection signs (crusting, oozing) → GP</li>
+    </ul>
+</div>
+
+<div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <h3>🩺 Set up</h3>
+    <p>“Hi, my name is [Your Name], I’m a medical student. I’ve been asked to talk to you about the diagnosis from your recent dermatology appointment.”</p>
+    <p>“To begin, can I confirm your full name and date of birth?”</p>
+    <p>“Today we’ll discuss what eczema is, how it can affect you, and what we can do to manage it. Sound good?”</p>
+
+    <h3>🔍 Understanding & Concerns</h3>
+    <p>“What do you already know about eczema?”</p>
+    <p>“Do you have any specific worries or expectations today?”</p>
+
+    <h3>🧴 What is Eczema?</h3>
+    <p>“Eczema is a long-term condition where your skin becomes inflamed. This causes dry, red, itchy patches that can flare up periodically.”</p>
+    <p>“It’s not contagious. Triggers include soaps, allergens, and stress. Everyone has slightly different triggers.”</p>
+
+    <h3>💊 Management Options</h3>
+    <p>“The foundation of treatment is using moisturisers — called emollients — regularly to restore the skin barrier.”</p>
+    <p>“During flares, steroid creams help reduce inflammation. The strength depends on the affected area and severity.”</p>
+    <p>“Avoiding known triggers and managing itching helps prevent damage to the skin and reduces risk of infection.”</p>
+    <p>“We’ll also give you a written eczema action plan to help you recognise flares and know what to do.”</p>
+
+    <h3>📎 Summary & Safety Netting</h3>
+    <p>“To summarise: eczema is a common and manageable condition. Daily moisturisers and short courses of steroids are key.”</p>
+    <p>“If your skin shows signs of infection — like oozing, crusting, or worsening redness — please contact your GP.”</p>
+    <p>“Here’s a leaflet with further information. Do you have any questions for me?”</p>
+    <p>“Thank you for your time today!”</p>
+</div>
+
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+    });
+</script>
+
+</body>
+</html>

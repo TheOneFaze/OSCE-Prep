@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>🩸 Blood Transfusion Counselling</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #e0f7fa;
+        color: #006064;
+        margin: 0;
+        padding: 20px;
+    }
+    h1, h2 {
+        text-align: center;
+        color: #006064;
+    }
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    .switch {
+        position: relative;
+        width: 120px;
+        height: 50px;
+        background-color: #b2ebf2;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+    .slider {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+    }
+    .switch.active .slider {
+        transform: translateX(70px);
+    }
+    .labels {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        color: #006064;
+        padding: 0 10px;
+    }
+    .content-section {
+        display: none;
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        line-height: 1.6;
+    }
+    .content-section.active {
+        display: block;
+    }
+    h3 {
+        border-bottom: 2px solid #80deea;
+        padding-bottom: 5px;
+        margin-top: 25px;
+        color: #006064;
+    }
+    h4 {
+        margin-top: 20px;
+        color: #0097a7;
+    }
+    ul {
+        margin-left: 20px;
+    }
+    blockquote {
+        border-left: 3px solid #80deea;
+        margin-left: 0;
+        padding-left: 15px;
+        font-style: italic;
+        color: #004d40;
+        background: #e0f7fa;
+        margin-bottom: 20px;
+    }
+    p strong {
+        color: #004d40;
+    }
+</style>
+</head>
+<body>
+
+<h1>🩸 Blood Transfusion Counselling</h1>
+
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch" role="switch" aria-checked="false" tabindex="0">
+        <div class="slider"></div>
+    </div>
+</div>
+<div class="labels">
+    <span>High-Yield Notes 🧠</span>
+    <span>Full Word-for-Word OSCE Script 📜</span>
+</div>
+
+<div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+
+    <h3>📚 Knowledge</h3>
+    <ul>
+        <li>A blood transfusion replaces lost components of blood, mainly red cells, due to blood loss, anaemia, or surgery.</li>
+        <li>Reduces symptoms like breathlessness and fatigue caused by anaemia.</li>
+        <li>Increases oxygen-carrying capacity and can improve post-op recovery.</li>
+        <li>Very low risk of infections due to rigorous screening (<1 in a million).</li>
+        <li>Minor risks: fever, chills, rash; rare risks: mismatch, overload, infections.</li>
+        <li>Alternatives include iron therapy, erythropoietin, and cell salvage.</li>
+    </ul>
+
+    <h3>✅ Strategy & Summary</h3>
+    <ul>
+        <li>Explain reason for transfusion (low Hb, recent surgery, anaemia).</li>
+        <li>Address infection fears, explain safety protocols and monitoring.</li>
+        <li>Clarify process, duration, and how it’s administered.</li>
+        <li>Reassure regarding mild side effects; mention what to watch out for post-procedure.</li>
+        <li>Check understanding and ask for any final concerns.</li>
+    </ul>
+</div>
+
+<div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+
+    <h3>📚 Knowledge</h3>
+
+    <h4>❓ Purpose and process of transfusion</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "You’ve had some blood tests which show that your blood count is quite low, likely due to the blood loss during your operation. Because of this, we’re recommending a blood transfusion to help bring that back up."</p>
+        <p><strong>Doctor:</strong> "A transfusion involves giving you a bag of red blood cells through a small plastic tube – a cannula – into a vein in your arm or hand."</p>
+        <p><strong>Doctor:</strong> "Each unit usually takes 2–4 hours. We’ll monitor your observations regularly throughout to ensure you're feeling well."</p>
+    </blockquote>
+
+    <h4>✅ Benefits</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "The transfusion should improve your energy levels and oxygenation, help you feel less breathless, and speed up your recovery."</p>
+    </blockquote>
+
+    <h4>⚠️ Risks</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "Like any procedure, there are risks, but they’re very low. The most common are mild reactions – like a fever or rash. Serious reactions are rare."</p>
+        <p><strong>Doctor:</strong> "All donor blood is screened to an extremely high standard, so the risk of infection is less than 1 in a million."</p>
+        <p><strong>Doctor:</strong> "We double-check your identity and blood group before transfusion to avoid any mix-ups, which are very rare but serious if they happen."</p>
+    </blockquote>
+
+    <h4>🔄 Alternatives</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "In some cases, we might offer iron supplements or injections like erythropoietin, or in surgical settings, we might use a technique to collect your own blood and give it back – that’s called cell salvage."</p>
+    </blockquote>
+
+    <h4>📅 Aftercare</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "After the transfusion, it’s normal to feel a bit tired or bruised at the cannula site. You should let us know if you feel unwell within the next day or two, especially if you feel chest pain or shortness of breath."</p>
+    </blockquote>
+
+    <h3>💬 Exploration & Empathy</h3>
+    <blockquote>
+        <p><strong>Doctor:</strong> "How do you feel about this? Are you comfortable going ahead, or is there anything you’d like me to go over again?"</p>
+    </blockquote>
+
+    <h3>✅ Strategy and Summary</h3>
+    <blockquote>
+        <p><strong>Doctor:</strong> "Would you mind summarising what we've discussed so I can check I’ve explained things clearly?"</p>
+    </blockquote>
+</div>
+
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+
+        if (toggle.classList.contains("active")) {
+            toggle.setAttribute("aria-checked", "true");
+        } else {
+            toggle.setAttribute("aria-checked", "false");
+        }
+    });
+</script>
+
+</body>
+</html>

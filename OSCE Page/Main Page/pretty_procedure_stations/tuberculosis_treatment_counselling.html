@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>🩺 Tuberculosis Treatment Counselling</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #e0f7fa;
+        color: #006064;
+        margin: 0;
+        padding: 20px;
+    }
+    h1, h2 {
+        text-align: center;
+        color: #006064;
+    }
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    .switch {
+        position: relative;
+        width: 120px;
+        height: 50px;
+        background-color: #b2ebf2;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+    .slider {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+    }
+    .switch.active .slider {
+        transform: translateX(70px);
+    }
+    .labels {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        color: #006064;
+        padding: 0 10px;
+    }
+    .content-section {
+        display: none;
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        line-height: 1.6;
+    }
+    .content-section.active {
+        display: block;
+    }
+    h3 {
+        border-bottom: 2px solid #80deea;
+        padding-bottom: 5px;
+        margin-top: 25px;
+        color: #006064;
+    }
+    h4 {
+        margin-top: 20px;
+        color: #0097a7;
+    }
+    ul {
+        margin-left: 20px;
+    }
+    blockquote {
+        border-left: 3px solid #80deea;
+        margin-left: 0;
+        padding-left: 15px;
+        font-style: italic;
+        color: #004d40;
+        background: #e0f7fa;
+        margin-bottom: 20px;
+    }
+    p strong {
+        color: #004d40;
+    }
+</style>
+</head>
+<body>
+
+<h1>🩺 Tuberculosis Treatment Counselling</h1>
+
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch" role="switch" aria-checked="false" tabindex="0">
+        <div class="slider"></div>
+    </div>
+</div>
+<div class="labels">
+    <span>High-Yield Notes 🧠</span>
+    <span>Full Word-for-Word OSCE Script 📜</span>
+</div>
+
+<div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+
+    <h3>📚 Knowledge</h3>
+    <ul>
+        <li>TB is a serious bacterial disease primarily affecting the lungs but can spread to other organs.</li>
+        <li>Treatment is essential to prevent complications and disease spread.</li>
+        <li>Standard treatment lasts ~6 months using 4 drugs: rifampicin, isoniazid, pyrazinamide, ethambutol.</li>
+        <li>Initial 2 months: all four drugs; subsequent 4 months: rifampicin and isoniazid only.</li>
+        <li>Public health notification is required; close contacts may need screening.</li>
+        <li>Common side effects include orange bodily fluids (rifampicin), neuropathy (isoniazid), joint pain and liver toxicity (pyrazinamide), vision problems (ethambutol).</li>
+        <li>Monitoring includes liver function tests and vision assessments.</li>
+        <li>Patients are infectious for approximately 2 weeks after starting treatment; self-isolation is advised.</li>
+        <li>Adherence to medication is critical to prevent drug resistance and treatment failure.</li>
+    </ul>
+
+    <h3>✅ Strategy &amp; summary</h3>
+    <ul>
+        <li>Ensure patient understands treatment duration and drug regimen.</li>
+        <li>Explain side effects and importance of monitoring.</li>
+        <li>Highlight infection control measures including isolation and contact precautions.</li>
+        <li>Encourage adherence and clarify infectious period.</li>
+    </ul>
+</div>
+
+<div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+
+    <h3>📚 Knowledge</h3>
+
+    <h4>❓ What TB is and why it should be treated</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "Tuberculosis is a serious bacterial disease, primarily affecting the lungs but potentially spreading to other parts of the body like the kidneys, nerves, stomach, and heart if left untreated."</p>
+        <p>"It’s very important to treat TB to prevent these complications and to stop the infection spreading to others."</p>
+        <p>"Because of your penicillin allergy, we avoid penicillin-based antibiotics and use alternative medications."</p>
+    </blockquote>
+
+    <h4>🕒 General information on TB treatment</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "Treatment usually lasts about six months and involves taking four different antibiotics: rifampicin, isoniazid, pyrazinamide, and ethambutol."</p>
+        <p>"For the first two months, you take all four medications. After that, you continue with just rifampicin and isoniazid for the remaining four months."</p>
+        <p>"I am required to notify public health authorities, who may contact your close contacts for screening."</p>
+    </blockquote>
+
+    <h4>⚠️ Adverse drug reactions (ADRs)</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "These medications can have side effects which you should be aware of."</p>
+        <p>"Rifampicin can cause your sweat, urine, and tears to turn orange — this is harmless but can be surprising."</p>
+        <p>"Isoniazid may cause nerve-related symptoms, so we also give vitamin B6 to reduce this risk."</p>
+        <p>"Pyrazinamide can cause joint pains, including gout, and liver toxicity."</p>
+        <p>"Ethambutol can affect your vision, so we will test your eyesight before and during treatment."</p>
+        <p>"If you experience any concerning side effects, please contact us immediately. I can also provide detailed written information for you."</p>
+    </blockquote>
+
+    <h4>🩺 Monitoring</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "We will monitor your liver function through blood tests, and regularly check your vision to detect any early problems."</p>
+    </blockquote>
+
+    <h4>🦠 Infection control and compliance</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "You will remain infectious for about two weeks after starting treatment."</p>
+        <p>"During this time, it’s important to avoid contact with vulnerable people such as children, elderly, and immunocompromised individuals."</p>
+        <p>"Self-isolation is advised to prevent spread."</p>
+        <p>"Adhering to your treatment regimen is crucial, even if you start feeling better early, to avoid developing drug-resistant TB."</p>
+    </blockquote>
+
+    <h3>💬 Exploration &amp; empathy</h3>
+    <blockquote>
+        <p><strong>Doctor:</strong> "How do you feel about the information I have provided?"</p>
+        <p>Address any concerns or emotional distress, especially regarding the length of treatment and self-isolation.</p>
+    </blockquote>
+
+    <h3>✅ Strategy and summary</h3>
+    <h4>📝 Patient summary</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "Could you please summarise the treatment plan we've discussed to ensure I've explained everything clearly?"</p>
+        <p>Confirm patient understands the duration, medications, side effects, monitoring, and infection control measures.</p>
+    </blockquote>
+</div>
+
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+
+        if (toggle.classList.contains("active")) {
+            toggle.setAttribute("aria-checked", "true");
+        } else {
+            toggle.setAttribute("aria-checked", "false");
+        }
+    });
+</script>
+
+</body>
+</html>

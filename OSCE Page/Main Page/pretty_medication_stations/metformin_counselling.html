@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Metformin Counselling</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #e0f7fa;
+            color: #006064;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .switch {
+            position: relative;
+            width: 120px;
+            height: 50px;
+            background-color: #b2ebf2;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        }
+        .slider {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+        }
+        .switch.active .slider {
+            transform: translateX(70px);
+        }
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #006064;
+        }
+        .content-section {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .content-section.active {
+            display: block;
+        }
+        h3 {
+            border-bottom: 2px solid #4dd0e1;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        ul {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<h1>💊 Metformin Counselling</h1>
+
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch">
+        <div class="slider"></div>
+    </div>
+</div>
+<div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+</div>
+
+<div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <h3>Purpose</h3>
+    <ul>
+        <li>📉 Helps reduce blood glucose levels in type 2 diabetes</li>
+        <li>🔁 Improves insulin sensitivity</li>
+        <li>⚖️ May help with weight loss</li>
+    </ul>
+
+    <h3>How to Take</h3>
+    <ul>
+        <li>🕒 Take with food to reduce stomach upset</li>
+        <li>💊 Usually started once daily (e.g. 500mg), titrated up</li>
+        <li>📆 Take at the same time each day</li>
+    </ul>
+
+    <h3>Side Effects</h3>
+    <ul>
+        <li>🤢 Nausea, diarrhoea, abdominal pain</li>
+        <li>🧪 Rare: lactic acidosis (monitor kidney function)</li>
+    </ul>
+
+    <h3>Monitoring</h3>
+    <ul>
+        <li>🧪 Check renal function before starting, then annually</li>
+        <li>🩺 Attend diabetes reviews and foot checks regularly</li>
+    </ul>
+
+    <h3>Missed Dose</h3>
+    <ul>
+        <li>🔁 Take when remembered unless near next dose</li>
+        <li>🚫 Never double dose</li>
+    </ul>
+</div>
+
+<div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+
+    <h3>🩺 Set up</h3>
+    <p>"Hi, I’m [Your Name], a medical student. I’ll wash my hands and put on some PPE if needed. Can I confirm your name and date of birth?"</p>
+    <p>"I see you’ve recently been diagnosed with type 2 diabetes and have been started on metformin. Is it alright if I talk you through what this medicine does, how to take it, and what to look out for?"</p>
+    <p>"What do you know about metformin already, or do you have any concerns about starting it?"</p>
+
+    <h3>💊 What is metformin and why do you need it?</h3>
+    <p>"Metformin is a tablet that helps your body respond better to insulin and reduces the amount of sugar your liver makes. It’s usually the first tablet offered for type 2 diabetes."</p>
+    <p>"It may also help with weight loss and long-term diabetes complications."</p>
+
+    <h3>🕒 How to take metformin</h3>
+    <p>"You’ll usually start with a low dose, like 500mg once a day, and increase gradually. Always take it with food to reduce stomach upset and try to take it at the same time each day."</p>
+
+    <h3>⚠️ Side effects and safety</h3>
+    <p>"The most common side effects are tummy upset—nausea, diarrhoea, or cramps. These usually settle over time. Rarely, metformin can affect your kidneys or cause a serious condition called lactic acidosis, which is why we check your kidney function before starting and every year."</p>
+
+    <h3>📝 Monitoring & follow-up</h3>
+    <p>"We’ll check your kidney function before starting, then at least once a year. You’ll also have regular diabetes reviews and foot checks."</p>
+
+    <h3>🔁 Missed dose</h3>
+    <p>"If you miss a dose, just take it when you remember, unless it’s close to your next one—then skip it. Never double up to make up for a missed dose."</p>
+
+    <h3>🫂 Empathy & summary</h3>
+    <p>"It’s normal to have questions or worries starting a new medicine. Would you like a leaflet or website about metformin and diabetes? Can you tell me what you’ll remember about how to take metformin, just to check I explained it clearly?"</p>
+    <p>"Do you have any other questions or concerns before we finish? Thank you for your time!"</p>
+</div>
+
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+    });
+</script>
+
+</body>
+</html>

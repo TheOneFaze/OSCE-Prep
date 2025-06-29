@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>🩺 Endoscopy Counselling</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #e0f7fa;
+        color: #006064;
+        margin: 0;
+        padding: 20px;
+    }
+    h1, h2 {
+        text-align: center;
+        color: #006064;
+    }
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    .switch {
+        position: relative;
+        width: 120px;
+        height: 50px;
+        background-color: #b2ebf2;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+    .slider {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+    }
+    .switch.active .slider {
+        transform: translateX(70px);
+    }
+    .labels {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        color: #006064;
+        padding: 0 10px;
+    }
+    .content-section {
+        display: none;
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        line-height: 1.6;
+    }
+    .content-section.active {
+        display: block;
+    }
+    h3 {
+        border-bottom: 2px solid #80deea;
+        padding-bottom: 5px;
+        margin-top: 25px;
+        color: #006064;
+    }
+    h4 {
+        margin-top: 20px;
+        color: #0097a7;
+    }
+    ul {
+        margin-left: 20px;
+    }
+    blockquote {
+        border-left: 3px solid #80deea;
+        margin-left: 0;
+        padding-left: 15px;
+        font-style: italic;
+        color: #004d40;
+        background: #e0f7fa;
+        margin-bottom: 20px;
+    }
+    p strong {
+        color: #004d40;
+    }
+</style>
+</head>
+<body>
+
+<h1>🩺 Endoscopy Counselling</h1>
+
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch" role="switch" aria-checked="false" tabindex="0">
+        <div class="slider"></div>
+    </div>
+</div>
+<div class="labels">
+    <span>High-Yield Notes 🧠</span>
+    <span>Full Word-for-Word OSCE Script 📜</span>
+</div>
+
+<div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+
+    <h3>📚 Knowledge</h3>
+    <ul>
+        <li>Endoscopy (OGD) examines oesophagus, stomach, and duodenum via a thin flexible tube with a camera through the mouth.</li>
+        <li>Used to investigate symptoms like dyspepsia and abnormal blood tests.</li>
+        <li>Procedure takes 20-45 minutes; fasting for 6 hours prior is required.</li>
+        <li>Numbing spray used to throat; sedation may be offered for comfort.</li>
+        <li>Air is insufflated into stomach to improve visualization, causing mild discomfort or burping.</li>
+        <li>Possible biopsy may be taken, which is painless.</li>
+        <li>Post-procedure: avoid driving/operating machinery for 24 hours if sedated.</li>
+        <li>Wait at least 1 hour before eating/drinking after throat numbing spray to avoid choking risk.</li>
+        <li>Causes of dyspepsia include hiatus hernia, gastric cancer (rare), and bacterial infections like H. pylori.</li>
+        <li>Complications are rare but include perforation, bleeding, infection, and sedative side effects.</li>
+    </ul>
+
+    <h3>✅ Strategy &amp; summary</h3>
+    <ul>
+        <li>Explain procedure clearly with reassurance about pain and sedation.</li>
+        <li>Discuss fasting and post-procedure precautions.</li>
+        <li>Highlight common causes being investigated.</li>
+        <li>Warn about potential complications and what to watch for.</li>
+        <li>Confirm patient understanding and address concerns.</li>
+    </ul>
+</div>
+
+<div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+
+    <h3>📚 Knowledge</h3>
+
+    <h4>❓ What is endoscopy and what does it involve?</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "This procedure, called an oesophagogastroduodenoscopy or OGD, allows us to look inside your oesophagus, stomach, and the first part of your small intestine."</p>
+        <p>"We do this because of your symptoms and abnormal blood tests to ensure there is no serious underlying issue."</p>
+        <p>"You'll come into hospital where a thin, flexible tube with a camera will be passed down your throat into your stomach and duodenum."</p>
+        <p>"You might feel the tube going down but it shouldn't be painful. We'll spray your throat with a numbing agent and may give you sedation to help you relax."</p>
+        <p>"Air will be gently pumped into your stomach to improve visibility, which may cause you to feel bloated or make you burp."</p>
+        <p>"If necessary, we may take small tissue samples (biopsies) during the procedure, which you won't feel."</p>
+        <p>"It's important not to eat for at least six hours before the procedure to ensure your stomach is empty."</p>
+    </blockquote>
+
+    <h4>🕒 After the endoscopy</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "If you've had sedation, you shouldn't drive or operate heavy machinery for 24 hours afterwards."</p>
+        <p>"You'll be monitored in recovery until the sedation wears off."</p>
+        <p>"If only a throat spray was used, wait at least an hour before eating or drinking to prevent choking."</p>
+    </blockquote>
+
+    <h4>❓ What can cause dyspepsia?</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "Common causes include hiatus hernia, where part of the stomach pushes into the chest area."</p>
+        <p>"Though rare, we need to rule out stomach cancer."</p>
+        <p>"Sometimes, dyspepsia can be caused by bacterial infections such as Helicobacter pylori."</p>
+    </blockquote>
+
+    <h4>⚠️ Complications of endoscopy</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "You might feel bloated or gassy for a few hours after."</p>
+        <p>"Some people experience stomach cramps, but painkillers can help."</p>
+        <p>"You may notice a small amount of blood from your throat, but larger amounts or clots are abnormal and should be reported."</p>
+        <p>"Though very rare, there's a small risk of perforation, which would need surgery."</p>
+        <p>"There is also a slight risk of infection or reactions to sedation."</p>
+    </blockquote>
+
+    <h3>💬 Exploration &amp; empathy</h3>
+    <blockquote>
+        <p><strong>Doctor:</strong> "Do you have any questions about the procedure or what we are looking for?"</p>
+        <p>Provide reassurance and address any concerns.</p>
+    </blockquote>
+
+    <h3>✅ Strategy and summary</h3>
+    <blockquote>
+        <p><strong>Doctor:</strong> "Could you please summarise back to me the key points to ensure I’ve explained everything clearly?"</p>
+        <p>Confirm understanding about the procedure, preparation, risks, and follow-up.</p>
+    </blockquote>
+</div>
+
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+
+        if (toggle.classList.contains("active")) {
+            toggle.setAttribute("aria-checked", "true");
+        } else {
+            toggle.setAttribute("aria-checked", "false");
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bacterial Vaginosis Counselling</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f3e5f5;
+            color: #6a1b9a;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .switch {
+            position: relative;
+            width: 120px;
+            height: 50px;
+            background-color: #e1bee7;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        }
+        .slider {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+        }
+        .switch.active .slider {
+            transform: translateX(70px);
+        }
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .content-section {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .content-section.active {
+            display: block;
+        }
+        h3 {
+            border-bottom: 2px solid #ba68c8;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        ul {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🧫 Bacterial Vaginosis Counselling</h1>
+
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch">
+        <div class="slider"></div>
+    </div>
+</div>
+<div class="labels">
+    <span style="color:#6a1b9a;">High-Yield Notes</span>
+    <span style="color:#6a1b9a;">Full Script</span>
+</div>
+
+<div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <h3>Introduction</h3>
+    <ul>
+        <li>🧼 Wash hands and PPE</li>
+        <li>👋 Introduce yourself, confirm ID</li>
+        <li>📋 Clarify reason: diagnosis explanation</li>
+    </ul>
+
+    <h3>Understanding & Concerns</h3>
+    <ul>
+        <li>💬 Ask what patient knows</li>
+        <li>❓ Explore concerns (e.g. STI, fertility)</li>
+    </ul>
+
+    <h3>Explanation</h3>
+    <ul>
+        <li>🔬 Overgrowth of normal vaginal bacteria</li>
+        <li>👃 Causes thin, grey-white discharge + fishy smell</li>
+        <li>⚠️ Not an STI, but associated with sexual activity</li>
+    </ul>
+
+    <h3>Management</h3>
+    <ul>
+        <li>💊 Metronidazole (oral or gel)</li>
+        <li>🚫 Avoid douching, scented products</li>
+        <li>🔁 May recur, especially after sex or period</li>
+    </ul>
+
+    <h3>Closing</h3>
+    <ul>
+        <li>📄 Reassure, provide leaflet</li>
+        <li>🩺 Safety net for worsening, recurrence</li>
+        <li>🙋 Invite questions</li>
+    </ul>
+</div>
+
+<div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+
+    <h3>🩺 Introduction</h3>
+    <p>"Hi, I’m [Your Name], a medical student. I understand you were recently seen in clinic for a change in vaginal discharge. Before we go further, could I confirm your name and date of birth?"</p>
+    <p>"I’d like to explain the results and what it means going forward. Is that okay?"</p>
+
+    <h3>🔍 Understanding & Concerns</h3>
+    <p>"Have you heard of bacterial vaginosis before?"</p>
+    <p>"Do you have any concerns — for example, about it being a sexually transmitted infection or affecting fertility?"</p>
+
+    <h3>🧫 What is Bacterial Vaginosis?</h3>
+    <p>"Bacterial vaginosis, or BV, is a common cause of vaginal discharge. It’s not a sexually transmitted infection, but is linked to changes in the balance of natural bacteria in the vagina."</p>
+    <p>"There’s usually a healthy balance of bacteria, but in BV one type overgrows — leading to symptoms like thin, greyish discharge and a fishy odour, especially after sex."</p>
+
+    <h3>⚠️ Important Reassurance</h3>
+    <p>"It’s not dangerous and doesn’t usually cause serious problems. However, in pregnancy or before procedures it can be more relevant. It doesn’t cause infertility."</p>
+
+    <h3>💊 Treatment</h3>
+    <p>"We treat it with an antibiotic called metronidazole — either as a tablet or a gel you insert into the vagina. It usually clears up within a week."</p>
+    <p>"While being treated, it’s best to avoid alcohol if taking tablets, as it may cause nausea. Avoid using vaginal washes, douching, or perfumed products going forward — these upset the balance further."</p>
+
+    <h3>🔁 Recurrence</h3>
+    <p>"BV can come back, especially after your period or sex. It’s not harmful but if it recurs frequently we can discuss options like longer treatments or specialist referral."</p>
+
+    <h3>✅ Summary & Safety Net</h3>
+    <p>"So to summarise — BV is a common bacterial imbalance. It’s easily treatable, not an STI, and doesn’t affect fertility. We recommend treatment, avoiding vaginal products, and seeing a doctor if symptoms persist or return."</p>
+    <p>"Do you have any questions or worries I can help with?"</p>
+    <p>"Here’s a leaflet with everything we discussed and advice on how to prevent recurrence. Thanks for your time."</p>
+</div>
+
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+    });
+</script>
+
+</body>
+</html>

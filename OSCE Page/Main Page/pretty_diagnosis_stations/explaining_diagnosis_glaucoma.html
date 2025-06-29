@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explaining a Diagnosis of Glaucoma</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #e0f7fa;
+            color: #006064;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .switch {
+            position: relative;
+            width: 120px;
+            height: 50px;
+            background-color: #b2ebf2;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        }
+        .slider {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+        }
+        .switch.active .slider {
+            transform: translateX(70px);
+        }
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .content-section {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .content-section.active {
+            display: block;
+        }
+        h3 {
+            border-bottom: 2px solid #4dd0e1;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        ul {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<h1>👁️ Explaining a Diagnosis of Glaucoma</h1>
+
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch">
+        <div class="slider"></div>
+    </div>
+</div>
+<div class="labels">
+    <span style="color:#006064;">High-Yield Notes</span>
+    <span style="color:#006064;">Full Script</span>
+</div>
+
+<div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <h3>Introduction</h3>
+    <ul>
+        <li>🧼 Wash hands + PPE</li>
+        <li>👋 Introduce self and role</li>
+        <li>🆔 Confirm patient details</li>
+        <li>📋 Explain purpose of consultation</li>
+    </ul>
+
+    <h3>Understanding & Concerns</h3>
+    <ul>
+        <li>❓ Ask what they know about glaucoma</li>
+        <li>💬 Use ICE framework</li>
+    </ul>
+
+    <h3>Explanation of Glaucoma</h3>
+    <ul>
+        <li>👁️ Group of conditions causing optic nerve damage</li>
+        <li>📈 Often related to high eye pressure</li>
+        <li>🧓 Common in older adults, often asymptomatic initially</li>
+        <li>⚠️ If untreated, can cause gradual vision loss</li>
+    </ul>
+
+    <h3>Management</h3>
+    <ul>
+        <li>💧 Eye drops to lower pressure</li>
+        <li>🔬 Regular monitoring (visual fields, OCT)</li>
+        <li>🔪 Laser or surgical options if severe</li>
+    </ul>
+
+    <h3>Closing</h3>
+    <ul>
+        <li>📄 Offer leaflet</li>
+        <li>🙋 Check for final questions</li>
+        <li>📆 Reinforce importance of follow-up</li>
+    </ul>
+</div>
+
+<div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <h3>🩺 Introduction</h3>
+    <p>“Hello, I’m [Your Name], a medical student. I’ve been asked to explain your recent eye clinic findings. Could I confirm your full name and date of birth?”</p>
+
+    <h3>🔍 Understanding & Concerns</h3>
+    <p>“Have you heard of glaucoma before?”</p>
+    <p>“What concerns do you have after your eye test?”</p>
+
+    <h3>👁️ What is Glaucoma?</h3>
+    <p>“Glaucoma is an eye condition where increased pressure or other factors lead to damage of the optic nerve — the cable that connects your eye to your brain.”</p>
+    <p>“It usually develops slowly and doesn’t cause symptoms early on, which is why it’s often picked up during eye tests.”</p>
+
+    <h3>⚠️ Consequences & Diagnosis</h3>
+    <p>“If untreated, glaucoma can gradually lead to peripheral vision loss and potentially blindness. But with treatment, we can prevent this.”</p>
+    <p>“We diagnose it using tests like eye pressure measurement, visual field testing, and optic nerve scans.”</p>
+
+    <h3>💧 Treatment</h3>
+    <p>“The most common treatment is eye drops that reduce the pressure inside your eye.”</p>
+    <p>“There are also laser procedures or surgery if drops don’t work or if the glaucoma is more advanced.”</p>
+
+    <h3>📆 Long-term Plan</h3>
+    <p>“You’ll have regular follow-up at the eye clinic to monitor for any changes and adjust treatment if needed.”</p>
+
+    <h3>✅ Summary & Reassurance</h3>
+    <p>“So in summary, you’ve got early glaucoma, which we can manage. The key is regular monitoring and taking your drops as prescribed.”</p>
+    <p>“Here’s some written information about the condition. Do you have any questions?”</p>
+    <p>“Thank you for coming in today!”</p>
+</div>
+
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+    });
+</script>
+
+</body>
+</html>

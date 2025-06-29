@@ -1,0 +1,9 @@
+D:\Medicine\OSCE Page\Main Page\pretty_procedure_stations\ascitic_drain_explanation.html
+D:\Medicine\OSCE Page\Main Page\pretty_procedure_stations\blood_transfusion_counselling.html
+D:\Medicine\OSCE Page\Main Page\pretty_procedure_stations\chest_drain_explanation.html
+D:\Medicine\OSCE Page\Main Page\pretty_procedure_stations\colonoscopy_explanation.html
+D:\Medicine\OSCE Page\Main Page\pretty_procedure_stations\echocardiogram_explanation.html
+D:\Medicine\OSCE Page\Main Page\pretty_procedure_stations\endoscopy_counselling.html
+D:\Medicine\OSCE Page\Main Page\pretty_procedure_stations\ercp_explanation.html
+D:\Medicine\OSCE Page\Main Page\pretty_procedure_stations\files.txt
+D:\Medicine\OSCE Page\Main Page\pretty_procedure_stations\tuberculosis_treatment_counselling.html

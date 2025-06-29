@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>🩺 Chest Drain Counselling</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #e0f7fa;
+        color: #006064;
+        margin: 0;
+        padding: 20px;
+    }
+    h1, h2 {
+        text-align: center;
+        color: #006064;
+    }
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    .switch {
+        position: relative;
+        width: 120px;
+        height: 50px;
+        background-color: #b2ebf2;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+    .slider {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+    }
+    .switch.active .slider {
+        transform: translateX(70px);
+    }
+    .labels {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        color: #006064;
+        padding: 0 10px;
+    }
+    .content-section {
+        display: none;
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        line-height: 1.6;
+    }
+    .content-section.active {
+        display: block;
+    }
+    h3 {
+        border-bottom: 2px solid #80deea;
+        padding-bottom: 5px;
+        margin-top: 25px;
+        color: #006064;
+    }
+    h4 {
+        margin-top: 20px;
+        color: #0097a7;
+    }
+    ul {
+        margin-left: 20px;
+    }
+    blockquote {
+        border-left: 3px solid #80deea;
+        margin-left: 0;
+        padding-left: 15px;
+        font-style: italic;
+        color: #004d40;
+        background: #e0f7fa;
+        margin-bottom: 20px;
+    }
+    p strong {
+        color: #004d40;
+    }
+</style>
+</head>
+<body>
+
+<h1>🩺 Chest Drain Counselling</h1>
+
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch" role="switch" aria-checked="false" tabindex="0">
+        <div class="slider"></div>
+    </div>
+</div>
+<div class="labels">
+    <span>High-Yield Notes 🧠</span>
+    <span>Full Word-for-Word OSCE Script 📜</span>
+</div>
+
+<div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+
+    <h3>📚 Knowledge</h3>
+    <ul>
+        <li>A chest drain is a tube inserted between the ribs into the pleural space to remove air or fluid.</li>
+        <li>Local anaesthetic is used; additional pain relief can be given.</li>
+        <li>Ultrasound guidance is used for accurate placement.</li>
+        <li>The tube is connected to a drainage system to allow lung re-expansion.</li>
+        <li>The drain usually stays 1-2 days but can be longer.</li>
+        <li>Risks include pain, bleeding, infection, damage to organs, and tube dislodgement.</li>
+        <li>Removal is a quick procedure, may cause mild discomfort.</li>
+        <li>Patients must stay in hospital while the drain is in place.</li>
+    </ul>
+
+    <h3>✅ Strategy &amp; summary</h3>
+    <ul>
+        <li>Explain the procedure clearly, including pain control and duration.</li>
+        <li>Discuss common risks and reassure about monitoring.</li>
+        <li>Explain the drain removal process.</li>
+        <li>Check patient understanding and willingness to proceed.</li>
+    </ul>
+</div>
+
+<div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+
+    <h3>📚 Knowledge</h3>
+
+    <h4>❓ What is a chest drain?</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "A chest drain is a small tube that we insert between your ribs into the space around your lung where air has leaked."</p>
+        <p>"This allows the air to escape and your lung to re-expand, helping relieve your symptoms."</p>
+    </blockquote>
+
+    <h4>🩺 What inserting a chest drain involves</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "Before the procedure, we will numb the area with a local anaesthetic and can give extra pain relief if needed."</p>
+        <p>"Using ultrasound guidance, we insert a needle between your ribs, then replace it with a plastic tube which is the drain."</p>
+        <p>"The tube is connected to a container that collects the air."</p>
+        <p>"The drain usually stays in place for 1-2 days but sometimes longer."</p>
+        <p>"You'll stay in hospital during this time. The drain is secured with stitches and a dressing."</p>
+    </blockquote>
+
+    <h4>⚠️ Risks of inserting a chest drain</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "There are some risks such as pain, bleeding, infection, and possible damage to nearby organs."</p>
+        <p>"Sometimes the drain can fall out and need reinsertion, but stitches and dressings reduce this risk."</p>
+        <p>"If the drain does not work, other treatments will be considered."</p>
+    </blockquote>
+
+    <h4>❓ Removing the drain</h4>
+    <blockquote>
+        <p><strong>Doctor:</strong> "Removing the drain is a simple procedure where the dressings are taken off and the tube gently pulled out."</p>
+        <p>"It can be uncomfortable but is very quick and pain relief can be provided."</p>
+    </blockquote>
+
+    <h3>💬 Exploration &amp; empathy</h3>
+    <blockquote>
+        <p><strong>Doctor:</strong> "How do you feel about the information I have given you?"</p>
+        <p>Check for understanding and concerns.</p>
+    </blockquote>
+
+    <h3>✅ Strategy and summary</h3>
+    <blockquote>
+        <p><strong>Doctor:</strong> "Could you please summarise what we’ve discussed today?"</p>
+        <p>Confirm patient understanding about the procedure, risks, and next steps.</p>
+    </blockquote>
+</div>
+
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+
+        if (toggle.classList.contains("active")) {
+            toggle.setAttribute("aria-checked", "true");
+        } else {
+            toggle.setAttribute("aria-checked", "false");
+        }
+    });
+</script>
+
+</body>
+</html>

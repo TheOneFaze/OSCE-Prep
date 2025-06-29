@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Anticoagulant Counselling | Pharmacy</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #fce4ec;
+        color: #c2185b;
+        margin: 0;
+        padding: 20px;
+    }
+    h1, h2 {
+        text-align: center;
+    }
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+    }
+    .switch {
+        position: relative;
+        width: 120px;
+        height: 50px;
+        background-color: #f8bbd0;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+    .slider {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+    }
+    .switch.active .slider {
+        transform: translateX(70px);
+    }
+    .labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 14px;
+        color: #c2185b;
+    }
+    .content-section {
+        display: none;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .content-section.active {
+        display: block;
+    }
+    h3 {
+        border-bottom: 2px solid #f48fb1;
+        padding-bottom: 5px;
+        margin-top: 30px;
+        font-weight: 600;
+        font-size: 1.2em;
+    }
+    ul {
+        line-height: 1.6;
+    }
+</style>
+</head>
+<body>
+
+<h1>🩸 Anticoagulant Counselling | Pharmacy</h1>
+
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch">
+        <div class="slider"></div>
+    </div>
+</div>
+
+<div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+</div>
+
+<div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+
+    <h3>🧼 Set up</h3>
+    <ul>
+        <li>Wash hands and don PPE if appropriate</li>
+        <li>Introduce yourself (name, role)</li>
+        <li>Confirm patient's name and date of birth</li>
+        <li>Explain purpose: discuss anticoagulant medication (apixaban)</li>
+        <li>Gain consent to proceed</li>
+    </ul>
+
+    <h3>🤔 Understanding & ICE</h3>
+    <ul>
+        <li>Explore what patient knows about atrial fibrillation and clot risk</li>
+        <li>Ask about concerns or expectations regarding anticoagulation</li>
+        <li>Encourage questions and active participation</li>
+    </ul>
+
+    <h3>🩸 Medication Purpose</h3>
+    <ul>
+        <li>Apixaban is a blood thinner to prevent clots caused by AF</li>
+        <li>Taken lifelong unless advised otherwise</li>
+        <li>Taken twice daily, 5 mg per dose, 12 hours apart</li>
+    </ul>
+
+    <h3>🍽️ How to Take</h3>
+    <ul>
+        <li>Can be taken with or without food</li>
+        <li>Do not miss doses, or double dose if missed</li>
+    </ul>
+
+    <h3>⚠️ Side Effects & Safety</h3>
+    <ul>
+        <li>Increased bleeding risk: bruising, nosebleeds, bleeding gums</li>
+        <li>Possible nausea, skin reactions, anemia</li>
+        <li>Minor cuts may bleed longer (~10 minutes)</li>
+        <li>Avoid NSAIDs like ibuprofen unless approved</li>
+        <li>Limit alcohol to reduce bleeding risk</li>
+    </ul>
+
+    <h3>🚨 Safety Netting</h3>
+    <ul>
+        <li>Seek urgent help if severe bleeding, blood in urine/stool, unexplained bruising, or head injury</li>
+        <li>Inform healthcare professionals (dentist, surgeon) before procedures</li>
+        <li>Use electric razors, wear gloves during risky activities</li>
+    </ul>
+
+    <h3>🧪 Monitoring</h3>
+    <ul>
+        <li>GP will arrange occasional blood tests to monitor safety</li>
+        <li>Carry anticoagulant alert information at all times</li>
+    </ul>
+</div>
+
+<div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+
+    <h3>🩺 Set up</h3>
+    <p>"Hi, I’m [Your Name], a pharmacy student. I’ll wash my hands and put on PPE if needed. Can I please confirm your full name and date of birth?"</p>
+    <p>"You’ve been prescribed apixaban, which is an anticoagulant — a blood thinner. Today, I’d like to explain how it works, how to take it safely, and what to watch out for. Is that okay with you?"</p>
+
+    <h3>🩸 What is Apixaban?</h3>
+    <p>"Apixaban works by reducing your blood’s ability to clot, which helps prevent harmful blood clots. This is especially important if you have atrial fibrillation — an irregular heart rhythm that can cause clots to form and lead to strokes or heart attacks."</p>
+
+    <h3>📆 How to Take Apixaban</h3>
+    <p>"You should take apixaban twice daily, 5 milligrams each dose, about 12 hours apart. Try to take it at the same times every day. If you forget a dose, take it as soon as you remember unless it’s nearly time for your next dose — don’t double up."</p>
+    <p>"You can take it with or without food."</p>
+    <p>"Most patients take this medication for life unless their doctor tells them otherwise."</p>
+
+    <h3>🩺 Side Effects and Safety</h3>
+    <p>"Apixaban increases your risk of bleeding. You may bruise more easily or have nosebleeds or bleeding gums. Minor cuts or scrapes might bleed longer — around 10 minutes — before they stop."</p>
+    <p>"Common side effects include nausea, skin reactions, or anemia."</p>
+    <p>"Avoid medications like ibuprofen or other NSAIDs unless your doctor says it’s okay, as these can increase bleeding risk. Also limit your alcohol intake."</p>
+
+    <h3>⚠️ Important Safety Advice</h3>
+    <p>"Always tell your pharmacist you’re taking apixaban before buying any over-the-counter medicines."</p>
+    <p>"Inform any healthcare professional, including dentists or surgeons, before you have any procedures."</p>
+    <p>"For lifestyle, using an electric razor for shaving and wearing gloves during activities like gardening can help reduce your risk of cuts and bruises."</p>
+    <p>"If you notice severe bleeding, blood in your urine or stools, unexplained bruising, or head injury, seek urgent medical help."</p>
+
+    <h3>🧪 Monitoring</h3>
+    <p>"Your GP will arrange blood tests now and then to check your kidney and liver function to make sure the medicine is still safe for you."</p>
+
+    <h3>✅ Summary</h3>
+    <p>"So, to sum up: take apixaban twice daily at 5 mg per dose, watch out for bleeding risks, inform healthcare professionals before procedures, and don’t miss your doses. Do you have any questions or concerns about your medication?"</p>
+</div>
+
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+    });
+</script>
+
+</body>
+</html>

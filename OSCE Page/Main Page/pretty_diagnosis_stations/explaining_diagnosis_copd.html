@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explaining a Diagnosis of COPD</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #ede7f6;
+            color: #4527a0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .switch {
+            position: relative;
+            width: 120px;
+            height: 50px;
+            background-color: #d1c4e9;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        }
+        .slider {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+        }
+        .switch.active .slider {
+            transform: translateX(70px);
+        }
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .content-section {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .content-section.active {
+            display: block;
+        }
+        h3 {
+            border-bottom: 2px solid #9575cd;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        ul {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🌬️ Explaining a Diagnosis of COPD</h1>
+
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch">
+        <div class="slider"></div>
+    </div>
+</div>
+<div class="labels">
+    <span style="color:#4527a0;">High-Yield Notes</span>
+    <span style="color:#4527a0;">Full Script</span>
+</div>
+
+<div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <h3>Introduction</h3>
+    <ul>
+        <li>🧼 Wash hands and PPE</li>
+        <li>👋 Introduce yourself and role</li>
+        <li>🆔 Confirm patient ID</li>
+        <li>📋 Confirm purpose: diagnosis explanation</li>
+    </ul>
+
+    <h3>Understanding & Concerns</h3>
+    <ul>
+        <li>❓ Ask what the patient knows</li>
+        <li>💬 Explore Ideas, Concerns, Expectations (ICE)</li>
+    </ul>
+
+    <h3>Explanation</h3>
+    <ul>
+        <li>🌬️ Chronic lung condition (bronchitis + emphysema)</li>
+        <li>😤 Airflow limitation is not fully reversible</li>
+        <li>🚬 Smoking = key risk factor</li>
+    </ul>
+
+    <h3>Symptoms & Complications</h3>
+    <ul>
+        <li>😮‍💨 Breathlessness, cough, sputum</li>
+        <li>📉 Risk of flare-ups and infections</li>
+        <li>🫁 May progress → oxygen need, hospitalisations</li>
+    </ul>
+
+    <h3>Management</h3>
+    <ul>
+        <li>🚭 Stop smoking = most important</li>
+        <li>💊 Inhalers (bronchodilators, steroids)</li>
+        <li>🧘 Pulmonary rehab, vaccines, exercise</li>
+        <li>🫁 Oxygen if indicated</li>
+    </ul>
+
+    <h3>Closing</h3>
+    <ul>
+        <li>📄 Summary + leaflet</li>
+        <li>📞 Safety net: flare signs</li>
+        <li>🙋 Invite questions</li>
+    </ul>
+</div>
+
+<div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+
+    <h3>🩺 Introduction</h3>
+    <p>“Hello, my name is [Your Name], I’m a medical student. I’ve been asked to talk with you today about the results of your recent breathing tests. Before we begin, can I confirm your full name and date of birth?”</p>
+
+    <h3>🔍 Understanding & Concerns</h3>
+    <p>“Have you heard of a condition called COPD before?”</p>
+    <p>“Do you have any concerns or thoughts about what these symptoms might mean for you?”</p>
+
+    <h3>🌬️ What is COPD?</h3>
+    <p>“COPD stands for chronic obstructive pulmonary disease. It’s a long-term lung condition that makes it difficult to breathe due to narrowing and damage in the airways. It’s usually caused by smoking or long-term exposure to harmful fumes.”</p>
+    <p>“It includes two main problems — chronic bronchitis, which causes inflammation and mucus, and emphysema, which involves damage to the air sacs in your lungs.”</p>
+
+    <h3>😮‍💨 Common Symptoms</h3>
+    <p>“Many people with COPD experience breathlessness, a persistent cough, and bringing up phlegm. Symptoms can get worse over time or suddenly worsen during what's called an exacerbation or 'flare-up.'”</p>
+
+    <h3>🚭 Why This Happened</h3>
+    <p>“The main cause of COPD is smoking. Even passive smoke or certain jobs with exposure to dust or chemicals can contribute. Your breathing test results and symptoms are consistent with this diagnosis.”</p>
+
+    <h3>🛠️ Management Plan</h3>
+    <p>“The most important step is to stop smoking — and we can help you do that with support services or medication.”</p>
+    <p>“We also use inhalers to help open your airways — some are relievers, some are preventers. You may need a combination, depending on your symptoms.”</p>
+    <p>“Other useful treatments include flu and pneumonia vaccines, pulmonary rehabilitation classes, regular exercise, and — in some cases — oxygen therapy if your oxygen levels drop.”</p>
+
+    <h3>📋 Follow-up and Monitoring</h3>
+    <p>“We’ll schedule regular reviews to check how you’re getting on, reassess your inhalers, and look out for any worsening symptoms. It’s important to let us know if you get more breathless or cough up discoloured phlegm, as that could be a flare-up.”</p>
+
+    <h3>✅ Summary & Support</h3>
+    <p>“So, to summarise: COPD is a chronic lung condition caused mainly by smoking. It affects your breathing and can lead to flare-ups, but with the right support and lifestyle changes, we can help you manage it and stay well.”</p>
+    <p>“Here’s an information leaflet and contact details for the stop smoking service. Do you have any questions or anything you'd like me to go over again?”</p>
+    <p>“Thanks for your time — we’ll arrange a nurse review and follow-up shortly.”</p>
+</div>
+
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+    });
+</script>
+
+</body>
+</html>

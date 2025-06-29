@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Warfarin Counselling</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fce4ec;
+            color: #c2185b;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .switch {
+            position: relative;
+            width: 120px;
+            height: 50px;
+            background-color: #f8bbd0;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        }
+        .slider {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+        }
+        .switch.active .slider {
+            transform: translateX(70px);
+        }
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .content-section {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .content-section.active {
+            display: block;
+        }
+        h3 {
+            border-bottom: 2px solid #ffb74d;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        ul {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<h1>💊 Warfarin Counselling</h1>
+
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch">
+        <div class="slider"></div>
+    </div>
+</div>
+<div class="labels">
+    <span style="color:#ef6c00;">High-Yield Notes</span>
+    <span style="color:#ef6c00;">Full Script</span>
+</div>
+
+<div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <h3>Introduction</h3>
+    <ul>
+        <li>🧼 Wash hands, introduce self and role</li>
+        <li>🆔 Confirm patient ID and explain purpose</li>
+    </ul>
+    <h3>Purpose of Medication</h3>
+    <ul>
+        <li>💉 Prevents blood clots (AF, DVT, PE, mechanical valve)</li>
+        <li>🧬 It’s a vitamin K antagonist (interferes with clotting)</li>
+    </ul>
+    <h3>Monitoring</h3>
+    <ul>
+        <li>🧪 Requires regular INR blood tests (target range 2–3)</li>
+        <li>📋 Dosing adjusted based on INR</li>
+    </ul>
+    <h3>Safety</h3>
+    <ul>
+        <li>⚠️ Risk of bleeding: report bruising, bleeding gums, dark stool</li>
+        <li>🚫 Avoid NSAIDs, alcohol, cranberry, extreme diet changes</li>
+    </ul>
+    <h3>Other Key Points</h3>
+    <ul>
+        <li>💊 Take at same time daily, usually evening</li>
+        <li>📒 Carry anticoagulant alert card at all times</li>
+        <li>🛡️ Let healthcare professionals know before procedures</li>
+    </ul>
+</div>
+
+<div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+
+    <h3>🩺 Set up</h3>
+    <p>"Hi, I’m [Your Name], a medical student. I’ll wash my hands and put on some PPE. Can I confirm your name and date of birth?"</p>
+    <p>"I’ve been asked to talk to you about warfarin, your new blood thinner. Is now a good time, and is there anything specific you want to discuss?"</p>
+    <p>"What do you know about warfarin or blood thinners already, or do you have any worries about starting?"</p>
+
+    <h3>💉 What is warfarin and why do you need it?</h3>
+    <p>"Warfarin is a medication that thins your blood to prevent clots forming. You need it because of [reason: atrial fibrillation, DVT, pulmonary embolism, or a mechanical valve], all of which increase your risk of a blood clot."</p>
+    <p>"It works by blocking vitamin K in your body, which is needed for blood to clot."</p>
+
+    <h3>🕒 How to take warfarin</h3>
+    <p>"Warfarin is usually taken once daily, at the same time, usually in the evening. Your dose may change depending on blood tests."</p>
+
+    <h3>🧪 Monitoring and INR</h3>
+    <p>"You’ll need regular blood tests called INR tests to see how long it takes your blood to clot. The usual target INR is between 2 and 3, but your doctor will set your exact range. Your dose will be changed depending on your INR results. It’s really important not to miss INR appointments or doses."</p>
+
+    <h3>⚠️ Side effects and safety</h3>
+    <p>"The main risk with warfarin is bleeding. Tell us if you notice unusual bruising, nosebleeds, bleeding gums, blood in your urine or stool, or very heavy periods. Seek help if you have a serious bleed that doesn’t stop."</p>
+    <p>"Warfarin interacts with many medicines and foods. Try to keep your intake of green vegetables (like spinach) and alcohol steady. Avoid cranberry juice. Don’t take over-the-counter painkillers like ibuprofen without advice, as they can increase bleeding risk."</p>
+
+    <h3>📒 Practical advice & alert card</h3>
+    <p>"You’ll be given a yellow anticoagulant alert card—please carry this at all times and show it to any healthcare professional before procedures, dental work, or new medications."</p>
+
+    <h3>✅ Summary & teach-back</h3>
+    <p>"So in summary: Warfarin helps prevent blood clots, but it needs careful monitoring with INR tests and can increase bleeding risk. Can you tell me what you’ll do to stay safe while on warfarin, just to check I’ve explained it clearly?"</p>
+    <p>"Do you have any questions about your treatment or anything you’re worried about?"</p>
+    <p>"Thank you for your time today. If you notice any serious bleeding, seek medical help right away and keep taking your medication unless advised otherwise."</p>
+
+</div>
+
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+    });
+</script>
+
+</body>
+</html>

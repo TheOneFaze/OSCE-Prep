@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inhaler Counselling 01 | Pharmacy</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #e3f2fd;
+            color: #1976d2;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #1976d2;
+        }
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .switch {
+            position: relative;
+            width: 120px;
+            height: 50px;
+            background-color: #bbdefb;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        }
+        .slider {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+        }
+        .switch.active .slider {
+            transform: translateX(70px);
+        }
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .labels span {
+            color: #1976d2;
+        }
+        .content-section {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .content-section.active {
+            display: block;
+        }
+        h3 {
+            border-bottom: 2px solid #64b5f6;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        ul {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+<h1>🫁 Inhaler Counselling 01 | Pharmacy</h1>
+<div class="toggle-container">
+<div class="switch" id="toggleSwitch">
+<div class="slider"></div>
+</div>
+</div>
+<div class="labels">
+<span>High-Yield Notes</span>
+<span>Full Script</span>
+</div>
+
+<div class="content-section active" id="highYield">
+<h2>High-Yield OSCE Points 🧠</h2>
+<h3>🩺 Set up</h3>
+<ul>
+<li>🧼 Wash hands and don PPE if appropriate</li>
+<li>👋 Introduce self (name, role)</li>
+<li>🆔 Confirm patient's name & date of birth</li>
+<li>🗣️ Explain: here to counsel on new inhaler</li>
+<li>📝 Gain consent to proceed</li>
+</ul>
+<h3>💊 Purpose</h3>
+<ul>
+<li>🌬️ Reliever inhaler for asthma/symptom relief</li>
+<li>⚡ Quick action during breathlessness, wheeze, tight chest</li>
+</ul>
+<h3>🫁 Inhaler technique (step-by-step)</h3>
+<ul>
+<li>🔍 Ask which inhaler the patient has (show device/resources)</li>
+<li>🔄 Remove cap, shake inhaler</li>
+<li>💨 If first use (or not used for a while), release test puff into air</li>
+<li>🔢 Check for a dose counter – advise order new one before empty</li>
+<li>🧽 Ensure mouthpiece is clear, shake again</li>
+<li>🪑 Sit or stand upright, chin slightly up</li>
+<li>😮‍💨 Breathe out fully away from inhaler</li>
+<li>👄 Lips tightly around mouthpiece (seal)</li>
+<li>🫧 Breathe in slowly and deeply, pressing canister at the same time</li>
+<li>⏱️ Hold breath for up to 10 seconds</li>
+<li>🌬️ Breathe out slowly</li>
+<li>🔁 Wait 30 seconds before a second puff, if needed</li>
+</ul>
+<h3>📝 Key advice & questions</h3>
+<ul>
+<li>❌ No need to rinse mouth after (unless steroid inhaler)</li>
+<li>🎒 Keep inhaler with you at all times (especially exercise/triggers)</li>
+<li>📊 Track symptoms, peak flow, and review if frequent use</li>
+</ul>
+</div>
+
+<div class="content-section" id="fullScript">
+<h2>Full Word-for-Word OSCE Script 📜</h2>
+<h3>🩺 Set up</h3>
+<p>"Hi, my name is [Your Name], I’m a pharmacy student. I'll just wash my hands and put on some PPE. Can I confirm your name and date of birth?"</p>
+<p>"I understand you've been prescribed a new inhaler for your asthma. Today I’ll show you exactly how to use it and answer any questions. Is that okay? Are you happy to continue?"</p>
+
+<h3>💊 Purpose of your inhaler</h3>
+<p>"This is a salbutamol inhaler, which is a reliever for when you have symptoms like breathlessness, wheeze, or chest tightness. It acts quickly to help you breathe easier—only use it when needed, not regularly."</p>
+
+<h3>🫁 Step-by-step inhaler technique</h3>
+<ol>
+<li>Ask: "Do you know which inhaler you’ve been given? Here’s what it looks like."</li>
+<li>If using for the first time (or after a break): "Remove the cap, shake the inhaler, and release a test puff into the air to make sure it’s working."</li>
+<li>"Check if there’s a dose counter. Make sure to order a new inhaler before it runs out."</li>
+<li>"Check the mouthpiece is clean, shake the inhaler well again."</li>
+<li>"Sit or stand upright, chin slightly upwards."</li>
+<li>"Breathe out gently away from the inhaler until your lungs feel empty."</li>
+<li>"Place your lips tightly around the mouthpiece to form a good seal."</li>
+<li>"Breathe in slowly and deeply. At the same time, press down on the canister to release a puff."</li>
+<li>"Continue to breathe in fully, then hold your breath for up to 10 seconds."</li>
+<li>"Breathe out slowly."</li>
+<li>"If you need a second puff, wait at least 30 seconds, then repeat the steps."</li>
+</ol>
+
+<h3>📝 Key FAQs & lifestyle</h3>
+<ul>
+<li><b>Do I need to rinse my mouth after?</b> "No, not with this inhaler. Rinsing is only needed for steroid inhalers."</li>
+<li><b>Should I carry it all the time?</b> "Yes, always keep it with you, especially if exercise or cold triggers your asthma."</li>
+<li><b>What if I use it a lot?</b> "Keep a diary of symptoms and peak flow. If you’re needing it more than three times a week, see your GP or asthma nurse."</li>
+</ul>
+
+<h3>📝 Summary & teach-back</h3>
+<p>"So to summarise: Use your inhaler when you get asthma symptoms. Shake it, breathe out away, press and inhale slowly, hold your breath, then breathe out. No need to rinse your mouth. Always carry your inhaler with you."</p>
+<p>"Would you like to try showing me the steps? Do you have any questions?"</p>
+<p>"Thanks for your time—I’ll dispose of PPE and wash my hands now."</p>
+</div>
+
+<script>
+const toggle = document.getElementById("toggleSwitch");
+const highYield = document.getElementById("highYield");
+const fullScript = document.getElementById("fullScript");
+
+toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    highYield.classList.toggle("active");
+    fullScript.classList.toggle("active");
+});
+</script>
+</body>
+</html>

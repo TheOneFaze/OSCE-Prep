@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Amitriptyline Counselling</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #fff3e0;
+        color: #e65100;
+        margin: 0;
+        padding: 20px;
+    }
+    h1, h2 {
+        text-align: center;
+        color: #e65100;
+    }
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+    }
+    .switch {
+        position: relative;
+        width: 120px;
+        height: 50px;
+        background-color: #ffe0b2;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+    .slider {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+    }
+    .switch.active .slider {
+        transform: translateX(70px);
+    }
+    .labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .labels span {
+        color: #e65100;
+    }
+    .content-section {
+        display: none;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .content-section.active {
+        display: block;
+    }
+    h3 {
+        border-bottom: 2px solid #ffcc80;
+        padding-bottom: 5px;
+        margin-top: 30px;
+    }
+    ul {
+        line-height: 1.6;
+    }
+</style>
+</head>
+<body>
+<h1>💊 Amitriptyline Counselling</h1>
+<div class="toggle-container">
+    <div class="switch" id="toggleSwitch">
+        <div class="slider"></div>
+    </div>
+</div>
+<div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+</div>
+<div class="content-section active" id="highYield">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <h3>Purpose</h3>
+    <ul>
+        <li>🧠 Migraine prophylaxis (prevention)</li>
+        <li>⚖️ Not for acute treatment of attacks</li>
+    </ul>
+    <h3>How to Take</h3>
+    <ul>
+        <li>🌙 Once daily at night</li>
+        <li>⏳ Takes 4–6 weeks to be effective</li>
+    </ul>
+    <h3>Side Effects</h3>
+    <ul>
+        <li>😴 Drowsiness, dry mouth, constipation</li>
+        <li>⚖️ Weight gain, blurry vision</li>
+    </ul>
+    <h3>Safety & Monitoring</h3>
+    <ul>
+        <li>✅ No routine blood tests</li>
+        <li>🚼 Discuss if planning pregnancy</li>
+        <li>🛑 Do not stop abruptly — taper off</li>
+    </ul>
+</div>
+<div class="content-section" id="fullScript">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <h3>🩺 Set up</h3>
+    <p>"Hi, I’m [Your Name], a medical student. I’ll wash my hands and put on PPE if needed. Can I confirm your name and date of birth?"</p>
+    <p>"You’ve been prescribed amitriptyline for migraine prevention. I’d like to explain how it works, how to take it, and answer any questions you may have. Is now a good time?"</p>
+    <h3>🧠 What Is It and Why?</h3>
+    <p>"Amitriptyline is originally an antidepressant, but it's used at lower doses to prevent migraines. You don’t need to have depression to benefit from it — it changes how your nerves perceive pain and increases serotonin."</p>
+    <h3>📆 How to Take</h3>
+    <p>"Take it once a day, at night. It won’t treat an acute migraine but helps reduce the frequency over time. It usually takes 4–6 weeks to feel the effects."</p>
+    <p>"If stopping, taper off gradually with medical advice to avoid withdrawal."</p>
+    <h3>🩺 Side Effects</h3>
+    <p>"Side effects include dry mouth, sleepiness, constipation, weight gain, and blurred vision. They’re usually not serious but let us know if they bother you."</p>
+    <h3>👶 Family Planning</h3>
+    <p>"If you're planning a pregnancy, speak to your doctor. It can be continued if necessary but may need monitoring."</p>
+    <h3>💬 Common Questions</h3>
+    <p><strong>Can I still take painkillers?</strong> Yes, paracetamol or ibuprofen can still be used.</p>
+    <p><strong>Do I need blood tests?</strong> No routine blood tests are required for this medication.</p>
+    <h3>✅ Summary</h3>
+    <p>"So to summarise: amitriptyline helps prevent migraines, is taken nightly, and can cause side effects like drowsiness or dry mouth. Don’t stop suddenly, and reach out if any concerns arise."</p>
+    <p>"Would you mind summarising back what we discussed to make sure I was clear?"</p>
+    <p><em>“It helps stop my migraines, taken once daily, and I need to taper off if I stop. Side effects like dry mouth or tiredness are common.”</em></p>
+</div>
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+    });
+</script>
+</body>
+</html>

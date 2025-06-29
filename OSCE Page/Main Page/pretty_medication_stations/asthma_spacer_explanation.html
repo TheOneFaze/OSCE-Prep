@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Asthma Spacer Explanation</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        margin: 0;
+        padding: 20px;
+    }
+    h1, h2 {
+        text-align: center;
+        color: #2e7d32;
+    }
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+    }
+    .switch {
+        position: relative;
+        width: 120px;
+        height: 50px;
+        background-color: #c8e6c9;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+    .slider {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+    }
+    .switch.active .slider {
+        transform: translateX(70px);
+    }
+    .labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .labels span {
+        color: #2e7d32;
+    }
+    .content-section {
+        display: none;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .content-section.active {
+        display: block;
+    }
+    h3 {
+        border-bottom: 2px solid #a5d6a7;
+        padding-bottom: 5px;
+        margin-top: 30px;
+    }
+    ul {
+        line-height: 1.6;
+    }
+</style>
+</head>
+<body>
+<h1>🫁 Asthma Spacer Explanation</h1>
+<div class="toggle-container">
+<div class="switch" id="toggleSwitch">
+<div class="slider"></div>
+</div>
+</div>
+<div class="labels">
+<span style="color:#2e7d32;">High-Yield Notes</span>
+<span style="color:#2e7d32;">Full Script</span>
+</div>
+<div class="content-section active" id="highYield">
+<h2>High-Yield OSCE Points 🧠</h2>
+<h3>🧼 Set up</h3>
+<ul>
+<li>🖐️ Wash hands and don PPE if needed</li>
+<li>📛 Introduce self (name, role)</li>
+<li>🗂️ Confirm patient details</li>
+<li>🎯 Explain purpose of consultation</li>
+<li>✅ Gain consent</li>
+</ul>
+<h3>🛡️ Purpose</h3>
+<ul>
+<li>Spacer improves delivery of inhaled medicine</li>
+<li>Reduces oropharyngeal deposition</li>
+<li>Easier for children and uncoordinated patients</li>
+</ul>
+<h3>📖 How to Use</h3>
+<ul>
+<li>Shake inhaler, remove cap</li>
+<li>Connect inhaler to spacer</li>
+<li>Exhale fully, then seal lips on spacer</li>
+<li>Press inhaler, breathe in slowly</li>
+<li>Hold breath 10s or breathe slowly for 5–10s</li>
+</ul>
+<h3>🧼 Cleaning</h3>
+<ul>
+<li>Wash spacer once weekly in warm soapy water</li>
+<li>Air dry — don’t towel dry</li>
+</ul>
+</div>
+<div class="content-section" id="fullScript">
+<h2>Full Word-for-Word OSCE Script 📜</h2>
+<h3>🧼 Set up</h3>
+<p>"Hi, I’m [Your Name], a healthcare student. I’ll just clean my hands and wear PPE if necessary. Can I confirm your full name and date of birth?"</p>
+<p>"I see you’ve been given a spacer device to use with your asthma inhaler. Would it be okay if I show you how it works and how to use it properly?"</p>
+<h3>🫁 What Is a Spacer?</h3>
+<p>"A spacer is a plastic chamber that attaches to your inhaler. It helps the medicine reach your lungs more effectively by slowing the spray so you can breathe it in more gently. It also reduces the amount of medicine that sticks to the back of your throat."</p>
+<h3>🧬 When and Why to Use It</h3>
+<p>"Spacers are especially useful if you’re experiencing side effects like taste changes from your inhaler. They help reduce medication left in the mouth and are also easier to use correctly, particularly during asthma attacks."</p>
+<h3>📏 Types of Spacers</h3>
+<p>"You might have seen a large one called a Volumatic – very effective but bulky. There are smaller ones like Aerochambers, which are more portable though slightly less effective."</p>
+<h3>📖 How to Use It</h3>
+<ol>
+<li>Prime the spacer (Volumatic only) with 10 puffs or wash and air dry before first use.</li>
+<li>Shake your inhaler and remove the cap.</li>
+<li>Attach it securely to the spacer.</li>
+<li>Exhale away from the device, then place the mouthpiece in your mouth with a good seal.</li>
+<li>Release one puff and breathe in slowly and deeply, or take 5–10 tidal breaths.</li>
+<li>Remove and repeat for a second dose if needed.</li>
+</ol>
+<h3>🧼 Cleaning and Maintenance</h3>
+<p>"Clean your spacer once a week using warm soapy water. Don’t wipe it dry – just let it air dry. This prevents static which can trap medication. Replace your spacer every year and store it safely to avoid damage."</p>
+<h3>✅ Summary</h3>
+<p>"Using a spacer helps deliver your medicine more effectively and reduces side effects like bad taste. Clean it weekly and replace it annually."</p>
+<p>"Would you like to practise using it now or do you have any questions for me?"</p>
+</div>
+<script>
+    const toggle = document.getElementById("toggleSwitch");
+    const highYield = document.getElementById("highYield");
+    const fullScript = document.getElementById("fullScript");
+
+    toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        highYield.classList.toggle("active");
+        fullScript.classList.toggle("active");
+    });
+</script>
+</body>
+</html>
