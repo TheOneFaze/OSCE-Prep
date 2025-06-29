@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚖️ Weight Loss Counselling</title>
+  <style>
+    /* --- GREEN/EARTHY BROWN COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f8e9; /* Light green background */
+      color: #33691e;     /* Dark olive text */
+    }
+
+    header {
+      background: linear-gradient(to right, #aed581, #33691e); /* Green gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #c5e1a5; /* Lighter green switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #f1f8e9; /* Light green for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #33691e; /* Dark olive for headings */
+      border-left: 5px solid #aed581; /* Green border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>⚖️ Weight Loss Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>💬 Introduction & ICE</h3>
+        <ul>
+            <li>Create a supportive, non-judgemental environment.</li>
+            <li><strong>Ideas:</strong> Ask what the patient thinks has caused their weight gain and what they know about weight loss methods (e.g., surgery).</li>
+            <li><strong>Concerns:</strong> Explore specific worries about long-term health implications.</li>
+            <li><strong>Expectations:</strong> Confirm their goal is to get safe, medical advice on losing weight.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🩺 Explain Obesity & Health Risks</h3>
+        <ul>
+            <li>Define obesity (BMI >30) but also explain its limitations (it doesn't account for muscle mass, ethnicity, etc.).</li>
+            <li>Briefly outline key health risks: Type 2 Diabetes, high blood pressure, heart disease, stroke, joint problems, and some cancers.</li>
+            <li><strong>Crucially, reassure:</strong> Emphasise that losing even a small amount of weight can significantly reduce these risks.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🪜 The Stepwise Approach to Management</h3>
+        <ul>
+            <li>Explain that weight management is a stepped process, starting with the foundation.</li>
+            <li><strong>1. Lifestyle (The Foundation):</strong>
+                <ul>
+                    <li><strong>Diet:</strong> Advise a sustainable reduction in daily calories (e.g., by 600 kcal) and refer to the NHS Eatwell Guide. Warn against unsustainable "fad" diets.</li>
+                    <li><strong>Exercise:</strong> Recommend aiming for 150 minutes of moderate-intensity activity per week.</li>
+                    <li><strong>Support:</strong> Offer referral to a dietitian or local weight management group.</li>
+                </ul>
+            </li>
+            <li><strong>2. Medication:</strong> Explain this is an option only if lifestyle changes are not sufficient. Mention options like Orlistat or Semaglutide.</li>
+            <li><strong>3. Surgery:</strong> <strong>Manage expectations.</strong> Clarify that surgery is a specialist option reserved for specific criteria (e.g., very high BMI, or lower BMI with serious health problems) and only after all other methods have been tried. It is not a first-line or "easy" option.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Closing & Shared Plan</h3>
+        <ul>
+            <li>Summarise the stepwise approach, empowering the patient to start with lifestyle changes.</li>
+            <li>Set a realistic and safe goal for weight loss (e.g., 0.5kg - 1kg per week).</li>
+            <li>Use the "teach-back" method to check for and correct any misconceptions, particularly about the role of surgery.</li>
+            <li>Agree on a clear plan and book a follow-up appointment.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>💬 Opening the Consultation</h3>
+        <p>"Hello, I’m [Your Name]. I understand you've come in today to talk about your weight. Taking this step to seek advice is a really positive and important one, so thank you for coming."</p>
+        <p>"To start, could you tell me a bit about your journey with your weight, and what your main concerns are right now?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🩺 Explaining Obesity & Reassuring About Risk</h3>
+        <p>"Thank you for sharing that. It’s incredibly common for weight to gradually increase, especially with the pressures of a busy job and family life. Please know you're not alone in this."</p>
+        <p>"You mentioned being worried about your health. It is true that having a BMI over 30, which we define as obesity, increases the long-term risk of developing conditions like Type 2 diabetes and high blood pressure. The most important message I want you to hear today is that by taking steps now, you can dramatically reduce those future risks. It is not a permanent sentence."</p>
+    </div>
+    <div class="section-box">
+        <h3>🪜 The Stepwise Approach</h3>
+        <p>"When we approach weight management, we think of it like building a house. The most important part is the foundation, which for everyone is lifestyle—that means focusing on diet and activity."</p>
+        <p>"We recommend aiming for a gradual and sustainable weight loss of about one to two pounds per week. This is best achieved by making small, consistent changes to your diet, like reducing your daily intake by about 600 calories, and by building up to 150 minutes of activity a week that gets your heart rate up."</p>
+        <p>"If, after making these changes, weight loss is still a struggle, the next step we can consider is adding medication to support your efforts."</p>
+        <p>"You mentioned you'd heard about surgery. It’s important to be clear that surgery is an option at the very top of the pyramid. It is only considered for people who meet very specific criteria—usually a very high BMI or those with serious health complications—and only after all other methods, including medication, have been tried without success. It's a major operation and certainly not an easy route."</p>
+    </div>
+     <div class="section-box">
+        <h3>✅ Agreeing a Plan & Closing</h3>
+        <p>"So, the best, safest, and most effective place for us to start is right at the foundation: creating a realistic and sustainable plan for your diet and activity."</p>
+        <p>"There are fantastic NHS and local services that can support you. I can refer you to a weight management group or a dietitian if you like. How does that sound as a starting point?"</p>
+        <p>"Just to make sure I've explained everything clearly, what are your thoughts now on the role of surgery in your weight loss journey?"</p>
+        <p>"Excellent. Let's set an initial goal and book a follow-up appointment in a few weeks to see how you're getting on."</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>

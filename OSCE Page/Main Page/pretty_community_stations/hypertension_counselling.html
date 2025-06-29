@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩺 Hypertension Counselling</title>
+  <style>
+    /* --- SLATE BLUE/GREY COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #eceff1; /* Light slate grey background */
+      color: #37474f;     /* Dark slate grey text */
+    }
+
+    header {
+      background: linear-gradient(to right, #78909c, #37474f); /* Slate gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #b0bec5; /* Lighter slate switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #eceff1; /* Light slate grey for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #37474f; /* Dark slate grey for headings */
+      border-left: 5px solid #78909c; /* Slate border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>🩺 Hypertension Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>🩺 Introduction</h3>
+        <ul>
+            <li>🧼 Wash hands, PPE</li>
+            <li>👋 Introduce name and role</li>
+            <li>🆔 Confirm patient identity & clarify purpose</li>
+            <li>✅ Gain consent & establish patient preferences</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Ideas, Concerns & Expectations (ICE)</h3>
+        <ul>
+            <li>💡 <strong>Ideas:</strong> Ask what they think is going on ("Googling", readings are "high").</li>
+            <li>😟 <strong>Concerns:</strong> Explore specific worries (e.g., family history of heart attack, life expectancy).</li>
+            <li>🤝 <strong>Expectations:</strong> Ask what they hope to get from the consultation (e.g., wanting a specific medication like Amlodipine).</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📖 Explanation of Hypertension</h3>
+        <ul>
+            <li>🤫 Explain it's the "silent killer" - often no symptoms.</li>
+            <li>🔢 Describe what the numbers mean (systolic/diastolic).</li>
+            <li>⚠️ Discuss long-term risks if untreated (heart attack, stroke, kidney problems) - link to patient's concerns about their father.</li>
+            <li>📋 Explain diagnostic process (clinic readings, home monitoring, possibly 24-hr ABPM).</li>
+        </ul>
+    </div>
+     <div class="section-box">
+        <h3>🌳 Lifestyle Management</h3>
+        <ul>
+            <li>🧂 <strong>Diet:</strong> Reduce salt intake, balanced diet. Address weight gain if relevant.</li>
+            <li>🏃 <strong>Exercise:</strong> Advise regular, moderate activity (e.g., 150 mins/week).</li>
+            <li>🍺 <strong>Alcohol:</strong> Discuss cutting down to recommended limits (e.g., <14 units/week).</li>
+            <li>🚭 <strong>Smoking:</strong> Strongly advise cessation if a current smoker (note history if ex-smoker).</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>💊 Medical Management</h3>
+        <ul>
+            <li>🎯 State the goal is to lower BP to reduce long-term risk.</li>
+            <li>💊 Explain that medication is often needed alongside lifestyle changes.</li>
+            <li>🧑‍🤝‍🧑 Address specific requests (e.g., Amlodipine) by explaining that the choice of drug is personalised (based on age, ethnicity, etc.).</li>
+            <li>📋 Mention common first-line drug classes (e.g., ACEi/ARB, CCB, Thiazide-like diuretic).</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>👋 Closing the Consultation</h3>
+        <ul>
+            <li>📄 Summarise key points and create a shared plan.</li>
+            <li>📚 Provide leaflets and links to reliable resources (e.g., NHS, BHF).</li>
+            <li>🚨 Safety net: when to seek help (e.g., side effects, worrying symptoms).</li>
+            <li>❓ Invite final questions & confirm follow-up arrangements.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Introduction</h3>
+        <p>"Hello, I’m [Your Name], one of the medical students. I understand you wanted to discuss some high blood pressure readings you've been getting at home. Is that right?"</p>
+        <p>"To start, could I please confirm your full name and date of birth?"</p>
+         <p>"Today, I'd like to talk about what high blood pressure is, what it means for you, and the steps we can take to manage it together. Is now a good time?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Understanding & Concerns</h3>
+        <p>"Before we dive in, it would be helpful to hear your thoughts. What do you understand about high blood pressure so far?"</p>
+        <p>"I know this can be worrying. Is there anything in particular that's on your mind? Some people worry about what it means for the future, especially if they have family members who've had heart problems."</p>
+        <p>"And what were you hoping we could achieve today? I see from the notes you might have been thinking about medication."</p>
+    </div>
+    <div class="section-box">
+        <h3>📖 What is Hypertension?</h3>
+        <p>"High blood pressure, or 'hypertension', means that the pressure of the blood pushing against the walls of your arteries is consistently too high. Think of it like a bicycle tyre that's been pumped up too much – over time, that extra pressure can cause strain and damage."</p>
+        <p>"It's very common and often has no symptoms, which is why we call it a 'silent' condition. The main reason we treat it is to protect you from problems in the long run, like heart attacks and strokes."</p>
+    </div>
+    <div class="section-box">
+        <h3>🛠️ How Do We Manage It? (Lifestyle)</h3>
+        <p>"The good news is, there's a lot we can do. The foundation of managing blood pressure is through lifestyle. Simple changes can have a huge impact."</p>
+        <p>"This includes things like reducing the salt in your diet, aiming for about 30 minutes of moderate exercise five times a week, watching your alcohol intake, and maintaining a healthy weight. These steps alone can sometimes be enough to bring the pressure down."</p>
+    </div>
+    <div class="section-box">
+        <h3>💊 How Do We Manage It? (Medication)</h3>
+        <p>"If lifestyle changes aren't quite enough, we often recommend starting a medication. The goal of these tablets is to lower your blood pressure to a safe level to protect you long-term."</p>
+        <p>"You mentioned your friend takes Amlodipine. That's a very common one, but the best choice for you depends on factors like your age and medical history. We would discuss the most suitable options and decide on one together."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Summary & Follow-Up</h3>
+        <p>"So, to summarise, your home readings suggest your blood pressure is high. We can manage this effectively, starting with lifestyle changes and potentially adding a medication if needed. The aim is to lower your future risk of heart problems."</p>
+        <p>"Here's a leaflet with more information. Let's agree on a few lifestyle goals to start with, and we'll arrange a follow-up appointment in a few weeks to re-check your blood pressure and see how you're getting on."</p>
+        <p>"What questions do you have for me right now?"</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔬 Bowel Cancer Screening Counselling</title>
+  <style>
+    /* --- PEACH/TERRACOTTA COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff3e0; /* Light peach background */
+      color: #bf360c;     /* Deep orange/terracotta text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ffab91, #bf360c); /* Peach to terracotta gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #ffccbc; /* Lighter peach switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #fff3e0; /* Light peach for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #bf360c; /* Deep orange for headings */
+      border-left: 5px solid #ffab91; /* Peach border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>🔬 Bowel Cancer Screening Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>💬 Introduction & ICE</h3>
+        <ul>
+            <li>Acknowledge the patient's anxiety about the invitation.</li>
+            <li><strong>Ideas:</strong> Ask what they think screening is for and why they've been invited.</li>
+            <li><strong>Concerns:</strong> Explore specific worries, such as fear of a "scary procedure".</li>
+            <li><strong>Expectations:</strong> Clarify their goal is to understand the programme.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🎯 Explaining the 'Why' - Address Anxiety First</h3>
+        <ul>
+            <li><strong>Crucially, correct misconceptions:</strong> Explain they have been invited because they are now 60, not because they are considered high-risk or likely have cancer.</li>
+            <li>Explain the programme is offered to everyone aged 60-74 in England.</li>
+            <li>Explain the main purpose of screening: to find and remove pre-cancerous growths (polyps) to <strong>prevent</strong> cancer, or to find cancer at an early, more treatable stage.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🧪 The At-Home Kit (FIT test)</h3>
+        <ul>
+            <li>Describe the simple, non-invasive process: collecting a small poo sample at home and posting it to a lab.</li>
+            <li>Explain that the test looks for tiny, invisible amounts of blood in the poo.</li>
+            <li>Reassure that a positive test does not mean cancer; there are many other causes of blood, such as polyps or haemorrhoids.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🩺 The Results Pathway</h3>
+        <ul>
+            <li><strong>Normal Result:</strong> No further action is needed until the next routine kit in 2 years.</li>
+            <li><strong>Abnormal Result:</strong> Leads to an invitation for a colonoscopy to investigate the cause of the blood.</li>
+            <li>Explain what a colonoscopy is: a thin, flexible tube with a camera to look inside the bowel.</li>
+            <li>Reassure that options for sedation and pain relief are available to ensure comfort.</li>
+        </ul>
+    </div>
+     <div class="section-box">
+        <h3>✅ Closing & Checking Understanding</h3>
+        <ul>
+            <li>Summarise the key points, re-emphasising that screening is a routine, preventative measure for their age group.</li>
+            <li>Use the "teach-back" method to ensure they have understood and to correct any lingering misconceptions (e.g., "So just to check I've explained it well...").</li>
+            <li>Briefly mention key red flag symptoms to look out for (e.g., visible blood, change in bowel habit, weight loss).</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>💬 Opening and Acknowledging Concerns</h3>
+        <p>"Hello, I’m [Your Name], one of the doctors here. I understand you received a letter about the bowel cancer screening programme and that you have some questions and concerns. It's completely normal to feel worried, so thank you for coming in to discuss it."</p>
+        <p>"To start, could you tell me what's on your mind? What are your main worries about this programme?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🎯 Explaining 'Why Me, Why Now?'</h3>
+        <p>"Thank you, that's very clear. I want to address your biggest worry straight away. You have been invited for this screening because you have turned 60. It is a routine national programme that is offered to every single person in England between the ages of 60 and 74."</p>
+        <p>"It is absolutely <strong>not</strong> because we think you have cancer or are at high risk. You have simply entered the age group where screening is recommended for everyone."</p>
+        <p>"The main aim is actually to prevent cancer by finding and removing tiny growths called polyps, which can sometimes turn into cancer years later if left alone."</p>
+    </div>
+    <div class="section-box">
+        <h3>🧪 The At-Home Test</h3>
+        <p>"You mentioned you were worried about a scary procedure, so you'll be pleased to know the first step is very simple and is done in the privacy of your own home."</p>
+        <p>"You will be sent a small kit which involves using a little stick to collect a tiny sample of your poo, which you then put in a sample bottle and post back to a lab. That's all there is to it."</p>
+        <p>"The lab then tests this sample for tiny traces of blood that would be invisible to the naked eye."</p>
+    </div>
+    <div class="section-box">
+        <h3>🩺 Understanding the Results</h3>
+        <p>"For most people, the result is normal, and you won't need to do anything else until another kit is sent in two years."</p>
+        <p>"If the test does find any blood, I want to reassure you that this does <strong>not</strong> mean you have cancer. There are many common, less serious causes, like haemorrhoids or the polyps we talked about. However, because any blood should be investigated, you would be invited for a further check called a colonoscopy."</p>
+        <p>"A colonoscopy is a specialist procedure where a thin, flexible camera is used to look inside the bowel. We would give you medication to make sure you are comfortable and relaxed throughout."</p>
+    </div>
+     <div class="section-box">
+        <h3>✅ Summary & Checking Understanding</h3>
+        <p>"So, in summary, this is a routine preventative health check for your age group, which starts with a simple at-home kit. It's designed to find and prevent problems early."</p>
+        <p>"I know we've covered a lot, and it's easy to fixate on the word 'cancer'. Just to make sure I've explained everything clearly, could you tell me back in your own words why you've been invited for this screening?"</p>
+        <p>"That's perfect. You've got it exactly right. It's about your age, not about a specific risk. Do you have any other questions for me today?"</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>

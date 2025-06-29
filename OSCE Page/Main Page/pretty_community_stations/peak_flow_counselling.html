@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💨 Peak Flow (PEFR) Technique Counselling</title>
+  <style>
+    /* --- MINT GREEN/TEAL COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f2f1; /* Light mint background */
+      color: #004d40;     /* Dark teal text */
+    }
+
+    header {
+      background: linear-gradient(to right, #4db6ac, #004d40); /* Teal gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #b2dfdb; /* Lighter teal switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #e0f2f1; /* Light mint background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #004d40; /* Dark teal for headings */
+      border-left: 5px solid #4db6ac; /* Teal border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>💨 Peak Flow (PEFR) Technique Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>💬 Introduction & ICE</h3>
+        <ul>
+            <li><strong>Ideas:</strong> Ask what the patient knows about what a peak flow meter does.</li>
+            <li><strong>Concerns:</strong> Explore any worries they have, such as not performing the technique correctly.</li>
+            <li><strong>Expectations:</strong> Confirm the goal is to learn the correct technique for better asthma management.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Explain the 'What' and 'Why'</h3>
+        <ul>
+            <li>Define PEFR: Peak Expiratory Flow Rate – how fast you can blow air out of your lungs.</li>
+            <li>Explain its importance: it helps monitor asthma, can spot worsening before major symptoms appear, and guides treatment adjustments.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🛠️ The 'How' - Step-by-Step Technique</h3>
+        <ol>
+            <li>Stand or sit up straight.</li>
+            <li>Set the meter's pointer to zero.</li>
+            <li>Hold the meter horizontally, keeping fingers clear of the scale.</li>
+            <li>Take one deep breath in to fill the lungs completely.</li>
+            <li>Seal your lips tightly around the mouthpiece.</li>
+            <li>Blow out as <strong>hard and fast</strong> as possible in a single sharp puff.</li>
+            <li>Note the reading.</li>
+            <li>Repeat the process two more times (for a total of three blows).</li>
+            <li>Record the <strong>highest</strong> of the three readings in your diary.</li>
+        </ol>
+    </div>
+    <div class="section-box">
+        <h3>✅ Practice & Planning</h3>
+        <ul>
+            <li><strong>Teach-Back:</strong> Ask the patient to demonstrate the technique. Provide constructive feedback.</li>
+            <li><strong>Diary Keeping:</strong> Advise recording the best of three readings twice daily (morning and evening), along with any symptoms or reliever use.</li>
+            <li><strong>Action Plan:</strong> Explain that their 'personal best' will be used to set zones (e.g., green/amber/red). If readings drop (e.g., below 80% of their best), they should follow their asthma action plan.</li>
+            <li>Mention common mistakes to avoid: coughing, not sealing lips, or not blowing hard enough.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>💬 Opening and Understanding</h3>
+        <p>"Hello, I’m [Your Name], the practice nurse. I understand we're going to go over how to use your peak flow meter today to help manage your asthma."</p>
+        <p>"I know you've been given one before. What's your current understanding of what it's for and how to use it?"</p>
+        <p>"It's also really common to worry about not doing it right, so our goal today is to make you feel confident with the technique."</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 The Purpose of Peak Flow</h3>
+        <p>"That's a great start. You're right, it measures how your lungs are working by checking how fast you can push air out. We call this your Peak Expiratory Flow Rate, or PEFR."</p>
+        <p>"It's a really useful tool because your PEFR can start to drop if your airways are narrowing, often before you even notice significant symptoms like wheezing. This gives us an early warning sign and helps us make sure your treatment is keeping your asthma well under control."</p>
+    </div>
+    <div class="section-box">
+        <h3>🛠️ Demonstrating the Technique</h3>
+        <p>"I'll demonstrate how to do it correctly, and then you can have a try. The most important part is a 'hard and fast' blow."</p>
+        <p>"First, you stand or sit up straight and make sure the little marker on the meter is pushed down to zero. You hold it horizontally, take a really deep breath in, seal your lips tightly around the mouthpiece, and then blow out as hard and as fast as you possibly can, in one sharp puff."</p>
+        <p>"You then look at the number the marker has moved to, note it down, and repeat the whole thing two more times. The number we care about is the highest score out of the three attempts."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Patient Practice & Planning</h3>
+        <p>"Okay, now it's your turn. Would you like to have a go while I'm here to guide you?"</p>
+        <p>"Excellent, that was a great effort. To get the best picture of your asthma, we'll ask you to do this every morning and evening and record your highest score in a diary. It's also helpful to note down any symptoms you're having."</p>
+        <p>"Once we know your 'personal best' reading, we can use it to create an action plan. For example, if your readings drop below 80% of your best, that's a signal to follow the advice in your plan, which might be to temporarily increase your inhaler use."</p>
+        <p>"Does that make sense? Do you have any questions at all?"</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>

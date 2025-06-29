@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩺 Community blood pressure check</title>
+  <style>
+    /* --- SLATE BLUE/GREY COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #eceff1; /* Light slate grey background */
+      color: #37474f;     /* Dark slate grey text */
+    }
+
+    header {
+      background: linear-gradient(to right, #78909c, #37474f); /* Slate gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #b0bec5; /* Lighter slate switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #eceff1; /* Light slate grey for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #37474f; /* Dark slate grey for headings */
+      border-left: 5px solid #78909c; /* Slate border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>🩺 New Hypertension Diagnosis Counselling (Pharmacy)</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>💬 Delivering the Result</h3>
+        <ul>
+            <li>Provide the reading calmly and clearly: "Your average reading today was 141/87 mmHg."</li>
+            <li>Explain this is in the range for stage 2 hypertension and is higher than ideal.</li>
+            <li>Acknowledge the patient feels well and the result may be unexpected.</li>
+            <li>Reassure them that a one-off reading is a 'snapshot', not a final diagnosis.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Explaining the 'Why' & Next Steps</h3>
+        <ul>
+            <li>Explain the long-term risks of untreated high BP (heart attack, stroke).</li>
+            <li>State the clear next step: referral to their GP for further assessment.</li>
+            <li>Explain the GP will likely arrange a 24-hour Ambulatory Blood Pressure Monitor (ABPM) for a formal diagnosis.</li>
+            <li>Manage expectations: medication is only considered depending on ABPM results and overall risk.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🌳 Empowering with Lifestyle Advice</h3>
+        <ul>
+            <li>Address the patient's desire to "do something themselves" first.</li>
+            <li>Advise at least 150 minutes of moderate exercise weekly (brisk walking, cycling).</li>
+            <li>Advise reducing salt intake to less than 6g per day (one teaspoon).</li>
+            <li>Recommend a diet high in whole grains, fruits, and vegetables.</li>
+            <li>Counsel limiting alcohol to 14 units per week, spread out, with drink-free days.</li>
+            <li>Strongly advise smoking cessation.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Closing the Consultation</h3>
+        <ul>
+            <li>Summarise the plan: "Reading is high, so I am referring you to your GP for a 24-hour check."</li>
+            <li>Confirm the action: "I will send these results to your GP practice today."</li>
+            <li>Provide a patient information leaflet.</li>
+            <li>Check for any final questions.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>💬 Delivering the Result</h3>
+        <p>"Thank you for your patience. I've calculated your average blood pressure reading, and it is 141 over 87."</p>
+        <p>"Now, I know you mentioned you feel perfectly well, so a number like this might seem surprising. This reading is a little higher than the ideal range, and it falls into a category we call hypertension."</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Explaining What It Means</h3>
+        <p>"It's very important to understand that a one-off check like this is just a snapshot in time. It doesn't automatically mean you need to start medication. Think of it as an early warning sign that we need to look into things more formally."</p>
+        <p>"The reason we monitor blood pressure is that if it remains high over a long period, it can increase the future risk of conditions like heart attacks or strokes. The great news is that it's very manageable."</p>
+    </div>
+    <div class="section-box">
+        <h3>📋 Outlining the Next Steps</h3>
+        <p>"So, what happens next? Because this reading is high, the correct next step is for me to refer you to your GP for a proper assessment. I will send these results directly to your surgery today, so they will have them on file."</p>
+        <p>"Your GP will likely want you to wear a small, portable machine for 24 hours that checks your blood pressure automatically as you go about your normal day. This gives a much more accurate picture of your average blood pressure."</p>
+        <p>"Only after that will your doctor decide if any treatment is needed, and that decision will be based on those results and your overall health."</p>
+    </div>
+    <div class="section-box">
+        <h3>🌳 Lifestyle Management</h3>
+        <p>"You asked if there was anything you could do yourself, and the answer is absolutely yes. In fact, lifestyle changes are the most important first step for managing blood pressure."</p>
+        <p>"Things that make a big difference include aiming for 150 minutes of moderate exercise a week - like a brisk 30-minute walk five times a week. Reducing your salt intake is also key; try to avoid adding salt to food and check labels on processed foods. Limiting alcohol to no more than 14 units a week is also recommended."</p>
+    </div>
+     <div class="section-box">
+        <h3>✅ Summary & Closing</h3>
+        <p>"So, to summarise: today's reading was high, so I am referring you to your GP. They will likely arrange a 24-hour monitor to investigate further. In the meantime, the lifestyle changes we discussed are a fantastic and powerful way for you to start taking control."</p>
+        <p>"Here is a leaflet with more information on those lifestyle tips. Do you have any other questions for me right now?"</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>

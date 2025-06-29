@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🕊️ DNACPR Counselling</title>
+  <style>
+    /* --- MUTED GREY/PURPLE COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5; /* Light grey background */
+      color: #4527a0;     /* Deep, muted purple text */
+    }
+
+    header {
+      background: linear-gradient(to right, #b39ddb, #4527a0); /* Muted purple gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #d1c4e9; /* Lighter purple switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #f5f5f5; /* Light grey for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #4527a0; /* Deep purple for headings */
+      border-left: 5px solid #b39ddb; /* Muted purple border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>🕊️ DNACPR Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>💬 Setting the Scene & ICE</h3>
+        <ul>
+            <li>Find a private, quiet space. Introduce self and confirm relative's identity.</li>
+            <li><strong>Ideas:</strong> Ask what the relative understands about the patient's current health and recent illness.</li>
+            <li><strong>Invitation:</strong> Gently introduce the topic of advance care planning and CPR. Check for prior knowledge.</li>
+            <li><strong>Concerns/Expectations:</strong> Ask permission to explain further and offer for others to be present.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📖 Explaining CPR & The Recommendation</h3>
+        <ul>
+            <li>Describe what CPR involves: forceful chest compressions, electric shocks, breathing tubes.</li>
+            <li>Explain that it is an invasive and often undignified process.</li>
+            <li>State that for frail patients with multiple co-morbidities, the success rate is very low.</li>
+            <li>Clearly outline the significant risks: broken ribs, brain injury, and distress.</li>
+            <li>Gently state the clinical recommendation: that attempting CPR would not be successful and is not in the patient's best interests.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🚫 Crucial Clarification: What a DNACPR is NOT</h3>
+        <ul>
+            <li><strong>Emphasise:</strong> The decision applies ONLY if the heart stops beating (a cardiac arrest).</li>
+            <li><strong>Reassure:</strong> State clearly that ALL other appropriate medical treatment WILL continue.</li>
+            <li>Give specific examples: antibiotics for infections, pain relief, regular medications, and other supportive care.</li>
+            <li>Stress that this is about providing appropriate care and avoiding harmful interventions, not "giving up".</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Closing the Consultation</h3>
+        <ul>
+            <li>Acknowledge that the discussion is upsetting and allow space for emotional response and questions.</li>
+            <li>Use the "teach-back" method to check understanding, especially regarding the continuation of other treatments.</li>
+            <li>Summarise the plan and reassure the relative that the patient is currently stable and this is for future planning.</li>
+            <li>Document the conversation clearly in the patient's notes.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>💬 Setting the Scene</h3>
+        <p>"Hello, my name is Dr. [Name], I'm one of the doctors looking after your mother. Thank you for taking the time to speak with me."</p>
+        <p>"To begin, it would be helpful to hear your understanding of how your mother has been recently, during this time in hospital."</p>
+    </div>
+    <div class="section-box">
+        <h3>📖 Introducing the Topic</h3>
+        <p>"Thank you, that's a very clear picture. As part of planning ahead for all our patients, especially those who are more frail, we feel it's important to discuss what we would do in the unlikely event their heart were to stop. This involves an emergency procedure called CPR, or resuscitation. Is that something you've heard much about before?"</p>
+        <p>"It's often not like it appears on television. Would it be okay if I explain what it involves and why we need to talk about it now?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Explaining CPR & The Recommendation</h3>
+        <p>"CPR is what we do to try and restart the heart after it has stopped. It's a very physical and invasive treatment. It involves very forceful and deep compressions on the chest, sometimes using electric shocks, and often placing a tube down the throat to take over breathing."</p>
+        <p>"For a person who is frail and has several significant health problems like your mother, the chances of this procedure being successful are unfortunately extremely low. More than that, the process itself can cause harm, such as breaking ribs or causing brain injury, and can be very distressing."</p>
+        <p>"Because of this, the whole medical team has discussed your mother's case. We have come to the conclusion that if her heart were to stop, attempting CPR would not work and would only cause her harm and distress. Therefore, we feel it is in her best interests to put a 'Do Not Attempt CPR' form in her notes."</p>
+    </div>
+    <div class="section-box">
+        <h3>🚫 Clarifying What This Means for Future Care</h3>
+        <p>"I need to be very clear about this next point, as it's the most important. This decision is <strong>only</strong> about the single act of CPR if her heart stops. It absolutely does not mean we will stop any other treatment."</p>
+        <p>"We will continue to give her the very best care. If she gets another chest infection, we will treat it with antibiotics. If she is in pain, we will give her pain relief. All her usual medications and care will continue exactly as before. This is not about 'giving up'; it's about ensuring any treatment we give is kind, dignified, and genuinely helpful."</p>
+    </div>
+     <div class="section-box">
+        <h3>✅ Empathy, Understanding & Closing</h3>
+        <p>"I realise this is a great deal to take in, and that this is a very difficult and upsetting conversation to have. How are you feeling after hearing all of that?"</p>
+        <p>"To help me be sure I've explained things clearly, could you tell me back in your own words what this DNACPR decision means for your mother's treatment going forward?"</p>
+        <p>"Thank you. It is a sad thing to discuss, but it is important for planning. We will make sure this decision is clearly documented. Please don't hesitate to ask if you have any more questions at all."</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>

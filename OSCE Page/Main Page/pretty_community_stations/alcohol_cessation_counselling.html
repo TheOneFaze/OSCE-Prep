@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍻 Alcohol Cessation Counselling</title>
+  <style>
+    /* --- AMBER/BROWN COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8e1; /* Light amber background */
+      color: #4e342e;     /* Dark brown text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ffb74d, #4e342e); /* Amber to brown gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #ffcc80; /* Lighter amber switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #fff8e1; /* Light amber for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #4e342e; /* Dark brown for headings */
+      border-left: 5px solid #ffb74d; /* Amber border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>🍻 Alcohol Cessation Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>💬 Assess & Advise</h3>
+        <ul>
+            <li>Begin with a non-judgemental opening.</li>
+            <li>Use a validated tool like the AUDIT questionnaire to assess consumption and risk level.</li>
+            <li>Clearly explain the results and what the risk category (e.g., hazardous, harmful, possible dependence) means.</li>
+            <li>Advise on the long-term health risks associated with their level of drinking.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Explore Motivation (ICE)</h3>
+        <ul>
+            <li><strong>Ideas:</strong> Ask what the patient thinks about their drinking and its impact.</li>
+            <li><strong>Concerns:</strong> Explore their main worries about their drinking or about the prospect of cutting down/stopping.</li>
+            <li><strong>Expectations:</strong> Ask what they hope to achieve (e.g., moderation vs. abstinence).</li>
+            <li>Assess readiness to change.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📋 Develop a Plan (Assist)</h3>
+        <ul>
+            <li><strong>For Moderation:</strong> Suggest practical strategies like setting weekly unit goals (e.g., under 14 units), having drink-free days, switching to lower-strength drinks, and keeping a drink diary.</li>
+            <li><strong>For Abstinence (Quitting):</strong> This is the goal for anyone with dependence.
+                <ul>
+                    <li><strong>CRUCIAL:</strong> Assess for risk of severe withdrawal (e.g., history of seizures, delirium tremens).</li>
+                    <li>Explain that for dependent drinkers, stopping abruptly without medical support can be dangerous.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤝 Discuss Support Options</h3>
+        <ul>
+            <li><strong>Psychosocial (Essential):</strong>
+                <ul>
+                    <li>Strongly recommend and refer to local specialist drug and alcohol services.</li>
+                    <li>Mention mutual aid groups as an option (e.g., Alcoholics Anonymous, SMART Recovery).</li>
+                </ul>
+            </li>
+            <li><strong>Pharmacological (Post-Detox):</strong>
+                <ul>
+                    <li>Mention medications that can help prevent relapse after a successful withdrawal.</li>
+                    <li>Options include Acamprosate (reduces cravings) or Naltrexone (reduces the reward from alcohol).</li>
+                    <li>Disulfiram (causes a severe reaction to alcohol) is a specialist option.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🚨 Arrange Follow-up & Safety Net</h3>
+        <ul>
+            <li>Arrange a follow-up appointment to review progress.</li>
+            <li><strong>Safety Net (for those quitting from dependence):</strong> Clearly explain symptoms of severe withdrawal (e.g., profuse sweating, severe shaking, confusion, hallucinations, seizures).</li>
+            <li>Instruct the patient to seek immediate medical help (call 999 or go to A&E) if severe withdrawal symptoms occur.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>💬 Opening the Conversation</h3>
+        <p>"Thank you for coming in today. I understand you wanted to talk about your alcohol consumption. It takes courage to have this conversation, and it's a really positive first step."</p>
+        <p>"To help me give you the best advice, would it be okay if I asked you a few standard questions about your drinking habits? It's a confidential questionnaire called the AUDIT, and it helps us understand your level of risk."</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Discussing the Results & Motivation</h3>
+        <p>"Thank you for being so open. Based on your answers, your score is [X], which suggests your drinking is at a level that is likely to be harming your health, even if you don't feel any ill effects right now."</p>
+        <p>"What are your thoughts on that? What's prompted you to think about making a change at this time?"</p>
+        <p>"It's also helpful to know what you're most concerned about, and what you'd ideally like to achieve—whether that's cutting down or stopping completely."</p>
+    </div>
+    <div class="section-box">
+        <h3>📋 Outlining a Plan: Moderation vs. Abstinence</h3>
+        <p>"There are two main routes we can explore. For some people, cutting down to a safer level—that's under 14 units a week, spread out over several days—is a realistic goal. We can discuss strategies like having drink-free days or switching to lower-strength options."</p>
+        <p>"However, if you are physically dependent on alcohol, stopping suddenly on your own can be dangerous. Your body gets used to the alcohol, and taking it away can cause serious withdrawal symptoms, including seizures. In this situation, the safest goal is to stop drinking completely with medical support."</p>
+    </div>
+    <div class="section-box">
+        <h3>🤝 Accessing Support</h3>
+        <p>"The most important message today is that you do not have to do this alone. The best way forward is with expert help. I can refer you directly to our local specialist alcohol service. They provide free, confidential one-to-one support and can create a tailored plan with you."</p>
+        <p>"Once you have stopped drinking, there are also effective medications we can prescribe. These aren't a cure, but they can support your recovery. For example, some medications work by reducing your cravings for alcohol, which makes it easier to stay abstinent."</p>
+    </div>
+     <div class="section-box">
+        <h3>🚨 Safety Netting & Follow-Up</h3>
+        <p>"This is very important: if you are dependent and decide to stop drinking, you must be aware of the signs of severe withdrawal. If you experience severe shaking, heavy sweating, confusion, or see or hear things that are not there, you must seek urgent medical help by calling 999 or going to A&E, as this is a medical emergency."</p>
+        <p>"Let's make a plan together now. We can complete the referral to the support service and book a follow-up appointment here for one to two weeks' time to check in and see how you are."</p>
+        <p>"How does that sound as a starting point?"</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>

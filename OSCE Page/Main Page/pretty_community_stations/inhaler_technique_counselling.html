@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💨 Inhaler Technique Counselling</title>
+  <style>
+    /* --- MINT GREEN/TEAL COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f2f1; /* Light mint background */
+      color: #004d40;     /* Dark teal text */
+    }
+
+    header {
+      background: linear-gradient(to right, #4db6ac, #004d40); /* Teal gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #b2dfdb; /* Lighter teal switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #e0f2f1; /* Light mint background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #004d40; /* Dark teal for headings */
+      border-left: 5px solid #4db6ac; /* Teal border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>💨 Inhaler Technique Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>🩺 Introduction & ICE</h3>
+        <ul>
+            <li>Introduce self, confirm patient, and gain consent.</li>
+            <li><strong>Ideas:</strong> Ask what they know about using inhalers ("...you just puff and breathe in, right?").</li>
+            <li><strong>Concerns:</strong> Explore and validate feelings of embarrassment about use.</li>
+            <li><strong>Expectations:</strong> Identify their goal (e.g., wanting a demonstration, understanding the difference between inhalers).</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Why Technique is Life-Saving</h3>
+        <ul>
+            <li>Explain that proper technique ensures medicine reaches the lungs to be effective.</li>
+            <li>Warn that poor technique means medicine hits the throat and won't work.</li>
+            <li>Link good technique directly to preventing attacks and making the reliever work when needed.</li>
+            <li>Address embarrassment by explaining that good control with the preventer reduces the need to use the reliever in public.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>💨 Explaining Inhaler Types</h3>
+        <ul>
+            <li><strong>Blue (Reliever - Salbutamol):</strong> Use for immediate relief of symptoms. Can cause shaking or a feeling of a fast heartbeat.</li>
+            <li><strong>Brown (Preventer - Beclometasone):</strong> A steroid taken every day to prevent attacks by reducing inflammation.</li>
+            <li>Must rinse the mouth after using the brown inhaler to prevent oral thrush.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🛠️ The 'How To' Steps (MDI)</h3>
+        <ul>
+            <li><strong>Prepare:</strong> Remove cap, check for obstructions, and shake well. Check expiry date. Test spray once if unused for 5+ days.</li>
+            <li><strong>Position:</strong> Sit or stand up straight.</li>
+            <li><strong>Breathe Out:</strong> Gently breathe out, away from the inhaler.</li>
+            <li><strong>Inhale:</strong> Seal lips around the mouthpiece. Breathe in slowly and deeply, and press the canister once during inhalation.</li>
+            <li><strong>Hold:</strong> Remove inhaler, keep lips sealed, and hold breath for 10 seconds.</li>
+            <li><strong>Recover:</strong> Breathe out gently. Wait 30 seconds before a second dose if needed.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Closing & Safety Net</h3>
+        <ul>
+            <li>Use the "teach-back" method: ask the patient to demonstrate the technique.</li>
+            <li>Explain the asthma treatment ladder (if this technique isn't enough, there are other options like combination inhalers or tablets).</li>
+            <li><strong>Crucial Safety Net:</strong> If 10 puffs of the blue inhaler do not relieve symptoms during an attack, call an ambulance immediately.</li>
+            <li>Confirm follow-up plan (e.g., with the respiratory team).</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Introduction & Assessment</h3>
+        <p>"Hello, I’m [Your Name], a medical student. I understand you've recently been admitted after an asthma attack, and you wanted to go over how to use your inhalers properly. Is that right?"</p>
+        <p>"Before we demonstrate, it would be helpful to hear your thoughts. What’s your current understanding of how to use an inhaler?"</p>
+        <p>"Thanks. I also know from the notes that you sometimes feel embarrassed using them. That's a very common feeling, but we can talk about how to manage that."</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Explaining 'The Why'</h3>
+        <p>"Let's first talk about why the technique is so important. By using the inhaler properly, you're making sure the medicine flows evenly and gets deep into your lungs where it needs to work."</p>
+        <p>"If the technique isn't quite right, the medication might just hit the back of your throat. If it's anywhere but the lungs, it can't take effect. This makes asthma attacks more likely, and means your reliever won't work as well when you need it most."</p>
+         <p>"As you've experienced, asthma can be life-threatening, so a good technique can be genuinely life-saving."</p>
+    </div>
+    <div class="section-box">
+        <h3>💨 The Blue vs. Brown Inhaler</h3>
+        <p>"You also asked about the difference between your inhalers, which is a great question."</p>
+        <p>"The <strong>blue inhaler</strong> (Salbutamol) is your 'reliever'. You use it when you feel symptoms like chest tightness or wheezing. It works quickly to open up your airways."</p>
+        <p>"The <strong>brown inhaler</strong> (Beclometasone) is your 'preventer'. It's a steroid that you must take every day, even when you feel well. It works over time to reduce the inflammation in your lungs, which stops attacks from happening in the first place."</p>
+        <p>"If you use the brown inhaler correctly every day, you'll find you need to use the blue one much less, which can help with the feeling of embarrassment you mentioned."</p>
+    </div>
+    <div class="section-box">
+        <h3>🛠️ The 'How-To' Demonstration</h3>
+        <p>"Okay, let's go through the steps. First, always take the cap off, check nothing is inside, and give it a good shake."</p>
+        <p>"Next, sit or stand straight and breathe out gently. Then, put your lips tightly around the mouthpiece to make a good seal."</p>
+        <p>"As you start to breathe in slowly and deeply, press down firmly on the canister to release one puff of medicine. Keep breathing in until your lungs feel full."</p>
+        <p>"Then, take the inhaler out of your mouth, hold your breath for about 10 seconds, and then breathe out slowly."</p>
+        <p>"If you need a second puff, wait about 30 seconds before repeating the process. And crucially, after using the brown inhaler, always rinse your mouth with water and spit it out. This prevents side effects like a sore throat or oral thrush."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Check Understanding & Safety Net</h3>
+        <p>"That's the process. How does that sound? Would you mind having a go now to see how that feels?"</p>
+        <p>"And what happens if your asthma still isn't controlled? If you're using your inhalers correctly but still needing your blue one often, we have more options. There's a treatment ladder we can go up, which might involve changing doses or adding tablets. The respiratory team will discuss this with you."</p>
+        <p>"Most importantly, if you are ever having an attack and 10 puffs of your blue inhaler don't help, you must call 999 for an ambulance straight away. That is a medical emergency."</p>
+        <p>"Do you have any other questions for me today?"</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>

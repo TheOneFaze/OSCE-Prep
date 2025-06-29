@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚭 Smoking Cessation Counselling</title>
+  <style>
+    /* --- SKY BLUE/NAVY COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e3f2fd; /* Light sky blue background */
+      color: #0d47a1;     /* Dark navy text */
+    }
+
+    header {
+      background: linear-gradient(to right, #42a5f5, #0d47a1); /* Blue gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #90caf9; /* Lighter blue switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #e3f2fd; /* Light sky blue for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #0d47a1; /* Dark navy for headings */
+      border-left: 5px solid #42a5f5; /* Blue border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>🚭 Smoking Cessation Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>💬 Introduction & ICE</h3>
+        <ul>
+            <li>Acknowledge patient's motivation: "It's great you've decided to seek help to quit."</li>
+            <li><strong>Ideas:</strong> Explore past quit attempts (e.g., "cold turkey") and their outcomes.</li>
+            <li><strong>Concerns:</strong> Ask about their main reasons for quitting (e.g., role model for children, long-term health).</li>
+            <li><strong>Expectations:</strong> Clarify what they want from the consultation (e.g., advice on strategies and medications).</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📝 Assess History & Triggers</h3>
+        <ul>
+            <li>Take a full smoking history: duration, number of cigarettes per day.</li>
+            <li>Identify specific triggers: Habitual (e.g., first thing in the morning), Social (e.g., with colleagues), Emotional (e.g., stress).</li>
+            <li>Ask about withdrawal symptoms experienced during previous quit attempts (e.g., cravings, irritability, trouble sleeping).</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>⭐ Introduce the STAR Strategy</h3>
+        <ul>
+            <li><strong>S - Set a quit date:</strong> Advise setting a specific date within the next 2-4 weeks.</li>
+            <li><strong>T - Tell family and friends:</strong> Encourage them to build a support network.</li>
+            <li><strong>A - Anticipate challenges:</strong> Proactively plan how to deal with triggers like work breaks or stress.</li>
+            <li><strong>R - Remove tobacco products:</strong> Advise clearing out all cigarettes, lighters, etc.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>💊 Discuss Treatment Options</h3>
+        <ul>
+            <li>Explain that combining medication with behavioural support is most effective.</li>
+            <li><strong>Pharmacological:</strong>
+                <ul>
+                    <li>Nicotine Replacement Therapy (NRT): Explain it's first-line and comes in many forms (patches, gum, sprays).</li>
+                    <li>Varenicline: Start 1 week before quit date for a 12-week course.</li>
+                    <li>Bupropion: Start 1-2 weeks before quit date for a 12-week course.</li>
+                </ul>
+            </li>
+            <li><strong>Non-Pharmacological:</strong> Discuss behavioural counselling options and refer to local stop smoking services.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Agree Plan & Follow-up</h3>
+        <ul>
+            <li>Create a shared plan, including a quit date and chosen therapy.</li>
+            <li>Provide prescription and/or referral as needed.</li>
+            <li>Arrange a follow-up appointment within 1-2 weeks of the quit date.</li>
+            <li>Schedule further follow-ups at 4 weeks, 3 months, and 1 year to monitor progress and prevent relapse.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>💬 Opening the Consultation</h3>
+        <p>"Hello, I’m [Your Name], one of the doctors here. I understand you've come in today to talk about quitting smoking. That's a fantastic and positive step to take, so well done for coming in."</p>
+        <p>"To make sure I give you the best advice, could you tell me a bit about what you were hoping to get from our chat today, and what you've tried in the past?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Exploring Motivation & Triggers</h3>
+        <p>"Thank you for sharing that. It’s very common to try quitting 'cold turkey', and it's a real challenge. Your reasons for quitting—for your children and your own health—are incredibly powerful motivators that we can build on."</p>
+        <p>"You mentioned you tend to smoke on your drive to work and during breaks with colleagues. Recognising these specific triggers is a key part of the process, as we can plan alternatives for those moments."</p>
+    </div>
+    <div class="section-box">
+        <h3>⭐ Planning with the STAR Method</h3>
+        <p>"Instead of just stopping, I recommend a more structured approach that we call the 'STAR' method. It helps prepare you for success."</p>
+        <p>"'S' is for <strong>Set</strong> a quit date, ideally in the next couple of weeks. 'T' is for <strong>Tell</strong> your family and friends so they can support you. 'A' is for <strong>Anticipate</strong> challenges, like what to do during a stressful day at work instead of a cigarette. And 'R' is for <strong>Remove</strong> all your tobacco products from your home and car."</p>
+    </div>
+    <div class="section-box">
+        <h3>💊 Discussing Therapies</h3>
+        <p>"You asked about medications, and you're right, they can significantly increase your chances of quitting for good. We also know that combining medication with behavioural support, like counselling, is the most effective strategy."</p>
+        <p>"The main options are Nicotine Replacement Therapy, or NRT—things like patches or gum—which help manage the withdrawal symptoms. There are also tablets like Varenicline or Bupropion which work on the brain pathways involved in craving."</p>
+        <p>"I can also refer you to a local Stop Smoking Service. They offer brilliant one-to-one support and can help you stay on track."</p>
+    </div>
+     <div class="section-box">
+        <h3>✅ Summary & Follow-Up Plan</h3>
+        <p>"So, to summarise, we can use the STAR method to create a clear plan. We can choose a therapy that you feel comfortable with to help manage cravings, and I can connect you with a local support service."</p>
+        <p>"How about we set a quit date for two weeks from now? We can decide on a medication today and get that prescribed. Then, we must book a follow-up appointment for a week or two after your quit date to see how you're getting on and support you through any challenges."</p>
+        <p>"How does that sound as a plan to start with?"</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>
