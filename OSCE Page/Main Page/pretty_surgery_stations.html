@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surgery Stations</title>
 <style>
     body {
@@ -17,6 +16,7 @@
       color: #4527a0;
       text-align: center;
       margin-bottom: 30px;
+      font-size: 2.2em;
     }
     .container {
       display: flex;
@@ -41,12 +41,49 @@
       text-decoration: none;
       color: #4527a0;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 1rem;
     }
-  </style>
+    
+    /* Media Queries for Responsiveness */
+    @media screen and (max-width: 768px) {
+        body {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 1.8em;
+        }
+        .card {
+            width: 45%;
+        }
+    }
+    @media screen and (max-width: 480px) {
+        body {
+            padding: 15px;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .container {
+            gap: 15px;
+        }
+        .card {
+            width: 100%;
+            padding: 15px;
+        }
+        a {
+            font-size: 1em;
+        }
+    }
+</style>
 </head>
 <body>
-<h1 style='color:#4527a0;'>Surgery Stations</h1>
-<div class="container"><div class="card"><a href="#gastrectomy_counselling">Gastrectomy counselling</a></div><div class="card"><a href="#cholecystectomy_counselling">Cholecystectomy counselling</a></div><div class="card"><a href="#appendicectomy_explanation">Appendicectomy explanation</a></div><div class="card"><a href="#coronary_artery_bypass_graft_(cabg)_counselling">Coronary artery bypass graft (CABG) counselling</a></div><div class="card"><a href="#total">Total</a></div></div>
+<h1>⚕️ Surgery Stations</h1>
+<div class="container">
+    <div class="card"><a href="pretty_surgery_stations/gastrectomy_counselling.html">Gastrectomy Counselling</a></div>
+    <div class="card"><a href="pretty_surgery_stations/cholecystectomy_counselling.html">Cholecystectomy Counselling</a></div>
+    <div class="card"><a href="pretty_surgery_stations/appendicectomy_counselling.html">Appendicectomy Counselling</a></div>
+    <div class="card"><a href="pretty_surgery_stations/cabg_counselling.html">Coronary Artery Bypass Graft (CABG) Counselling</a></div>
+</div>
 </body>
 </html>
