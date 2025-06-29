@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>💖 Atrial Fibrillation Counselling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>❤️‍🔥 Atrial Fibrillation Counselling</title>
   <style>
+    /* --- UPDATED GREEN COLOR SCHEME --- */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #e8f5e9;
-      color: #1b5e20;
+      background: #e8f5e9; /* Light green background */
+      color: #1b5e20;     /* Dark green text */
     }
 
     header {
-      background: linear-gradient(to right, #43cea2, #185a9d);
+      background: linear-gradient(to right, #66bb6a, #2e7d32); /* Green gradient */
       color: white;
       text-align: center;
       padding: 25px 10px;
@@ -43,7 +45,7 @@
       right: 30px;
       width: 65px;
       height: 34px;
-      background-color: #c8e6c9;
+      background-color: #c8e6c9; /* Lighter green switch */
       border-radius: 34px;
       cursor: pointer;
       z-index: 1001;
@@ -80,7 +82,7 @@
     }
 
     .section-box {
-      background: #f1f8e9;
+      background: #e8f5e9; /* Light green background for boxes */
       border-radius: 15px;
       padding: 20px;
       margin-bottom: 25px;
@@ -93,8 +95,8 @@
     }
 
     h3 {
-      color: #2e7d32;
-      border-left: 5px solid #2e7d32;
+      color: #2e7d32; /* Darker green for headings */
+      border-left: 5px solid #2e7d32; /* Darker green border */
       padding-left: 10px;
       margin-top: 20px;
     }
@@ -112,72 +114,50 @@
     }
 
     @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
       .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
     }
 
     @media screen and (min-width: 481px) and (max-width: 767px) {
-      header { font-size: 1.5em; padding: 20px; }
+      header { font-size: 1.3em; padding: 18px; }
       .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
     }
 
     @media screen and (min-width: 320px) and (max-width: 480px) {
-      header { font-size: 1.2em; padding: 18px; }
-      .content-section { padding: 15px; }
-      .labels { padding: 0 20px; }
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
     }
-  <style>
-/* Existing styles remain above... */
-
-/* 📱 Mobile-friendly custom breakpoints */
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  header { font-size: 1.5em; padding: 20px; }
-  .content-section { padding: 25px; }
-  .section-box { padding: 18px; }
-  h3 { font-size: 1.2em; }
-  p, li { font-size: 1em; }
-}
-
-@media screen and (min-width: 481px) and (max-width: 767px) {
-  header { font-size: 1.3em; padding: 18px; }
-  .content-section { padding: 20px; }
-  .section-box { padding: 16px; }
-  .labels { padding: 0 25px; }
-  h3 { font-size: 1.1em; }
-  p, li { font-size: 0.95em; }
-}
-
-@media screen and (min-width: 320px) and (max-width: 480px) {
-  header { font-size: 1.1em; padding: 15px; }
-  .content-section { padding: 15px; }
-  .section-box { padding: 12px; }
-  .labels { padding: 0 15px; font-size: 0.85em; }
-  h3 { font-size: 1em; }
-  p, li { font-size: 0.9em; line-height: 1.4; }
-  .switch {
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 30px;
-  }
-  .slider {
-    width: 22px;
-    height: 22px;
-    top: 4px;
-    left: 4px;
-  }
-}
-</style>
-
   </style>
 </head>
 <body>
-  <header>💖 Atrial Fibrillation Counselling</header>
-
+  <header>❤️‍🔥 Atrial Fibrillation Counselling</header>
   <div class="labels">
     <span>High-Yield Notes</span>
     <span>Full Script</span>
   </div>
-
   <div class="toggle-container">
     <div class="switch" onclick="toggleContent(this)">
       <div class="slider"></div>
@@ -186,7 +166,6 @@
 
   <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-
     <div class="section-box">
       <h3>🩺 Set up</h3>
       <ul>
@@ -198,18 +177,16 @@
         <li>📚 Be aware of key background info like recent AF diagnosis</li>
       </ul>
     </div>
-
     <div class="section-box">
-      <h3>🔍 Perceptions</h3>
+      <h3>🤔 Perceptions</h3>
       <ul>
         <li>🔍 Explore patient’s prior knowledge/perception of AF</li>
         <li>❓ Explore concerns and expectations</li>
         <li>🙋 Encourage patient questions throughout</li>
       </ul>
     </div>
-
     <div class="section-box">
-      <h3>Invitation</h3>
+      <h3>🤝 Invitation</h3>
       <ul>
         <li>💬 Offer more info about AF</li>
         <li>❓ Ask if patient has specific questions</li>
@@ -217,9 +194,8 @@
         <li>👥 Confirm patient wants info now and if anyone else should be present</li>
       </ul>
     </div>
-
     <div class="section-box">
-      <h3>📖 Knowledge</h3>
+      <h3>📚 Knowledge</h3>
       <ul>
         <li>🫀 Explain AF (irregular heartbeat caused by abnormal atrial electrical activity)</li>
         <li>⚠️ Describe causes, including hypertension</li>
@@ -232,17 +208,15 @@
         <li>📲 Provide additional resources like websites and leaflets</li>
       </ul>
     </div>
-
     <div class="section-box">
-      <h3>💬 Exploration & Empathy</h3>
+      <h3>❤️ Exploration & Empathy</h3>
       <ul>
         <li>❤️ Explore how patient feels about the information given</li>
         <li>🤝 Show empathy throughout</li>
       </ul>
     </div>
-
     <div class="section-box">
-      <h3>✅ Strategy & Summary</h3>
+      <h3>📝 Strategy & Summary</h3>
       <ul>
         <li>🔄 Check patient’s understanding by asking them to summarise key points</li>
         <li>✔️ Confirm all questions/needs addressed</li>
@@ -254,27 +228,23 @@
 
   <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
-
     <div class="section-box">
       <h3>🩺 Set up</h3>
       <p>"Hello, my name is [Your Name], and I’m a medical student. I will be talking with you today about your recent diagnosis of atrial fibrillation. Before we start, could you please confirm your full name and date of birth?"</p>
       <p>"The purpose of this consultation is to explain what atrial fibrillation is, how we manage it, and to answer any questions you might have. Is that okay with you?"</p>
       <p>"Do I have your consent to proceed?"</p>
     </div>
-
     <div class="section-box">
-      <h3>🔍 Perceptions</h3>
+      <h3>🤔 Perceptions</h3>
       <p>"Can you tell me what you already know or have been told about atrial fibrillation?"</p>
       <p>"What concerns or expectations do you have about this condition?"</p>
       <p>"Please feel free to ask questions or stop me at any time if you want me to explain something more clearly."</p>
     </div>
-
     <div class="section-box">
-      <h3>💡 Invitation</h3>
+      <h3>🤝 Invitation</h3>
       <p>"Would you like me to go over all the details about atrial fibrillation, or are there specific areas you want me to focus on?"</p>
       <p>"Is there anyone else you would like to have with you while we discuss this?"</p>
     </div>
-
     <div class="section-box">
       <h3>🫀 Knowledge</h3>
       <p>"Atrial fibrillation, or AF, is a common heart rhythm disorder. Normally, your heart beats in a regular and controlled way. However, in AF, the upper chambers of your heart, called the atria, beat irregularly and often very quickly because of abnormal electrical signals."</p>
@@ -282,20 +252,17 @@
       <p>"One common cause of AF is high blood pressure, also known as hypertension, which can affect the heart's structure and function."</p>
       <p>"It’s important to manage AF because it increases the risk of stroke. Blood can pool in the atria and form clots, which can then travel to the brain."</p>
     </div>
-
     <div class="section-box">
       <h3>🛠️ Management</h3>
       <p>"Treatment focuses on two main goals: preventing strokes and controlling the heart rhythm or rate."</p>
       <p>"To prevent strokes, we usually prescribe blood thinning medications called anticoagulants, such as apixaban or rivaroxaban."</p>
       <p>"To control your heartbeat, there are two approaches: rate control, which slows the heart rate using medications like beta blockers, and rhythm control, which aims to restore a normal heart rhythm through medications or procedures like cardioversion."</p>
     </div>
-
     <div class="section-box">
-      <h3>📋 Lifestyle and Monitoring</h3>
-      <p>"We also recommend lifestyle changes, such as reducing alcohol and caffeine intake, managing your blood pressure and weight, and avoiding stimulants that can trigger AF."</p>
-      <p>"You might need regular ECG monitoring and follow-up appointments with your cardiologist to manage this condition effectively."</p>
+        <h3>🌿 Lifestyle and Monitoring</h3>
+        <p>"We also recommend lifestyle changes, such as reducing alcohol and caffeine intake, managing your blood pressure and weight, and avoiding stimulants that can trigger AF."</p>
+        <p>"You might need regular ECG monitoring and follow-up appointments with your cardiologist to manage this condition effectively."</p>
     </div>
-
     <div class="section-box">
       <h3>✅ Summary & Safety Net</h3>
       <p>"To summarise, atrial fibrillation is an irregular heart rhythm that increases your risk of stroke, but with proper treatment including anticoagulation and heart rate or rhythm control, we can manage this risk."</p>
@@ -303,10 +270,9 @@
       <p>"Here is a leaflet summarising what we discussed today. Do you have any questions or concerns you'd like to discuss?"</p>
       <p>"Thank you for your time. Your GP or cardiologist will be in touch with the next steps."</p>
     </div>
-
     <div class="section-box">
-      <h3>🤝 Closing</h3>
-      <p>"Is there anything else you would like to know or talk about before we finish?"</p>
+        <h3>👋 Closing</h3>
+        <p>"Is there anything else you would like to know or talk about before we finish?"</p>
     </div>
   </div>
 
