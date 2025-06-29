@@ -21,6 +21,11 @@
         }
 
         .toggle-container {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #e8f5e9;
+    padding: 10px 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -66,6 +71,11 @@
         }
 
         .content-section {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    background: linear-gradient(to bottom right, #ffffff, #f1f8e9);
+    transition: opacity 0.3s ease;
             display: none;
             padding: 20px;
             background: white;
@@ -75,6 +85,8 @@
         }
 
         .content-section.active {
+    opacity: 1;
+    height: auto;
             display: block;
         }
 
@@ -98,6 +110,9 @@
         }
 
         @media (max-width: 768px) {
+    body { font-size: 16px; }
+    h3 { font-size: 1.1rem; }
+    ul li { padding-bottom: 6px; }
             h1 {
                 font-size: 1.6rem;
                 margin-bottom: 15px;
@@ -120,6 +135,11 @@
                 transform: translateX(68px);
             }
             .content-section {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    background: linear-gradient(to bottom right, #ffffff, #f1f8e9);
+    transition: opacity 0.3s ease;
                 padding: 15px;
                 border-radius: 12px;
                 margin-bottom: 25px;
@@ -237,5 +257,11 @@
     });
 </script>
 
+
+<!-- Floating Scroll to Top Button -->
+<button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
+style="position:fixed; bottom:20px; right:20px; background:#81c784; border:none; border-radius:50%; padding:12px 16px; font-size:20px; color:white; box-shadow: 0 4px 6px rgba(0,0,0,0.2); z-index:1000;">
+↑
+</button>
 </body>
 </html>
