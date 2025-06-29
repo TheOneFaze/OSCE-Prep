@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-t"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OSCE Spark</title>
-
-<link rel="Icon" href="Icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,6 +12,7 @@
     color: #333;
     padding: 40px;
     margin: 0;
+    transition: background-color 0.3s, color 0.3s;
   }
   .header-container {
     text-align: center;
@@ -37,7 +37,7 @@
     text-align: center;
     border-radius: 12px; /* Slightly more rounded */
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,12 +52,14 @@
     color: #333;
     font-weight: 600; /* Slightly bolder */
     font-size: 1.1rem;
+    transition: color 0.3s;
   }
   footer {
     margin-top: 50px;
     text-align: center;
     font-size: 14px;
     color: #777;
+    transition: color 0.3s;
   }
 
   /* --- Card Theme Colors --- */
@@ -85,29 +87,30 @@
       width: 100%;
     }
   }
-    /* --- Dark Mode Styles --- */
-.dark-mode {
-  background: #121212; /* Dark background */
-  color: #e0e0e0;     /* Lighter text */
-}
-
-.dark-mode .header-container {
-  /* You might not need to change the logo itself, but you can if you have a dark-mode version */
-}
-
-.dark-mode .card {
-  background-color: #1e1e1e; /* Darker card background */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  border-left-color: #777; /* A neutral border color for dark mode */
-}
-
-.dark-mode a {
-  color: #bb86fc; /* A nice, readable purple for links in dark mode */
-}
-
-.dark-mode footer {
-  color: #999;
-}
+  
+  /* --- Dark Mode Styles --- */
+  .dark-mode {
+    background: #1f2023;
+    color: #e0e0e0;
+  }
+  .dark-mode .card {
+    background-color: #2f3136;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+  .dark-mode a {
+    color: #e0e0e0;
+  }
+  .dark-mode footer {
+    color: #999;
+  }
+  /* Keep theme borders visible in dark mode */
+  .dark-mode .card.diagnosis { border-color: #29b6f6; }
+  .dark-mode .card.medication { border-color: #66bb6a; }
+  .dark-mode .card.procedure { border-color: #ffa726; }
+  .dark-mode .card.post-procedure { border-color: #ab47bc; }
+  .dark-mode .card.surgery { border-color: #ef5350; }
+  .dark-mode .card.community { border-color: #ff7043; }
+  
 </style>
 </head>
 <body>
@@ -126,16 +129,17 @@
 </div>
 
 <footer>
-  <button id="darkModeToggle">Toggle Dark Mode</button>
+  <button id="darkModeToggle">Toggle Theme</button>
   <br><br>
   Made with ❤️ for OSCE preparation
 </footer>
-  <script>
+
+<script>
   const darkModeToggle = document.getElementById('darkModeToggle');
   const body = document.body;
   const themeKey = 'theme-preference';
 
-  // Function to apply the theme
+  // This function applies the saved or default theme
   const applyTheme = (theme) => {
     if (theme === 'dark') {
       body.classList.add('dark-mode');
@@ -144,18 +148,18 @@
     }
   };
 
-  // Check for saved preference on page load
+  // On page load, check for a saved preference and apply it
   const savedTheme = localStorage.getItem(themeKey);
   if (savedTheme) {
     applyTheme(savedTheme);
   }
 
-  // Event listener for the toggle button
+  // Add the click event listener for the toggle button
   darkModeToggle.addEventListener('click', () => {
-    // Check if dark mode is currently on or off
+    // Check if dark mode is currently active
     const isDarkMode = body.classList.contains('dark-mode');
     
-    // Toggle the theme and save the new preference
+    // Toggle the theme and save the new preference to localStorage
     if (isDarkMode) {
       applyTheme('light');
       localStorage.setItem(themeKey, 'light');
@@ -165,5 +169,6 @@
     }
   });
 </script>
+
 </body>
 </html>
