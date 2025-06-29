@@ -1,194 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>🩺 Chest Drain Counselling</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩺 Chest Drain Counselling</title>
+  <style>
+    /* --- UPDATED BLUE/CYAN COLOR SCHEME --- */
     body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #e0f7fa;
-        color: #006064;
-        margin: 0;
-        padding: 20px;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f7fa; /* Light cyan background */
+      color: #006064;     /* Dark cyan text */
     }
-    h1, h2 {
-        text-align: center;
-        color: #006064;
+
+    header {
+      background: linear-gradient(to right, #4dd0e1, #006064); /* Cyan gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    .toggle-container {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-    }
-    .switch {
-        position: relative;
-        width: 120px;
-        height: 50px;
-        background-color: #b2ebf2;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    }
-    .slider {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 40px;
-        height: 40px;
-        background-color: white;
-        border-radius: 50%;
-        transition: all 0.3s ease-in-out;
-    }
-    .switch.active .slider {
-        transform: translateX(70px);
-    }
+
     .labels {
-        display: flex;
-        justify-content: space-between;
-        font-weight: bold;
-        color: #006064;
-        padding: 0 10px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
     }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #b2ebf2; /* Lighter cyan switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
     .content-section {
-        display: none;
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        margin-top: 20px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        line-height: 1.6;
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
+
     .content-section.active {
-        display: block;
+      display: block;
     }
+
+    .section-box {
+      background: #e0f7fa; /* Light cyan background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
     h3 {
-        border-bottom: 2px solid #80deea;
-        padding-bottom: 5px;
-        margin-top: 25px;
-        color: #006064;
+      color: #006064; /* Dark cyan for headings */
+      border-left: 5px solid #006064; /* Dark cyan border */
+      padding-left: 10px;
+      margin-top: 20px;
     }
-    h4 {
-        margin-top: 20px;
-        color: #0097a7;
-    }
+
     ul {
-        margin-left: 20px;
+      padding-left: 20px;
     }
-    blockquote {
-        border-left: 3px solid #80deea;
-        margin-left: 0;
-        padding-left: 15px;
-        font-style: italic;
-        color: #004d40;
-        background: #e0f7fa;
-        margin-bottom: 20px;
+
+    li {
+      margin-bottom: 10px;
     }
-    p strong {
-        color: #004d40;
+
+    p {
+      margin-bottom: 15px;
     }
-</style>
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>🩺 Chest Drain Counselling</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch" role="switch" aria-checked="false" tabindex="0">
-        <div class="slider"></div>
+  <header>🩺 Chest Drain Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span>High-Yield Notes 🧠</span>
-    <span>Full Word-for-Word OSCE Script 📜</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>📚 Knowledge</h3>
+        <ul>
+            <li>A chest drain is a tube inserted between the ribs into the pleural space to remove air or fluid.</li>
+            <li>Local anaesthetic is used; additional pain relief can be given.</li>
+            <li>Ultrasound guidance is used for accurate placement.</li>
+            <li>The tube is connected to a drainage system to allow lung re-expansion.</li>
+            <li>The drain usually stays 1-2 days but can be longer.</li>
+            <li>Risks include pain, bleeding, infection, damage to organs, and tube dislodgement.</li>
+            <li>Removal is a quick procedure, may cause mild discomfort.</li>
+            <li>Patients must stay in hospital while the drain is in place.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy & Summary</h3>
+        <ul>
+            <li>Explain the procedure clearly, including pain control and duration.</li>
+            <li>Discuss common risks and reassure about monitoring.</li>
+            <li>Explain the drain removal process.</li>
+            <li>Check patient understanding and willingness to proceed.</li>
+        </ul>
+    </div>
+  </div>
 
-    <h3>📚 Knowledge</h3>
-    <ul>
-        <li>A chest drain is a tube inserted between the ribs into the pleural space to remove air or fluid.</li>
-        <li>Local anaesthetic is used; additional pain relief can be given.</li>
-        <li>Ultrasound guidance is used for accurate placement.</li>
-        <li>The tube is connected to a drainage system to allow lung re-expansion.</li>
-        <li>The drain usually stays 1-2 days but can be longer.</li>
-        <li>Risks include pain, bleeding, infection, damage to organs, and tube dislodgement.</li>
-        <li>Removal is a quick procedure, may cause mild discomfort.</li>
-        <li>Patients must stay in hospital while the drain is in place.</li>
-    </ul>
-
-    <h3>✅ Strategy &amp; summary</h3>
-    <ul>
-        <li>Explain the procedure clearly, including pain control and duration.</li>
-        <li>Discuss common risks and reassure about monitoring.</li>
-        <li>Explain the drain removal process.</li>
-        <li>Check patient understanding and willingness to proceed.</li>
-    </ul>
-</div>
-
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
-
-    <h3>📚 Knowledge</h3>
-
-    <h4>❓ What is a chest drain?</h4>
-    <blockquote>
-        <p><strong>Doctor:</strong> "A chest drain is a small tube that we insert between your ribs into the space around your lung where air has leaked."</p>
+    <div class="section-box">
+        <h3>❓ What is a chest drain?</h3>
+        <p>"A chest drain is a small tube that we insert between your ribs into the space around your lung where air has leaked."</p>
         <p>"This allows the air to escape and your lung to re-expand, helping relieve your symptoms."</p>
-    </blockquote>
-
-    <h4>🩺 What inserting a chest drain involves</h4>
-    <blockquote>
-        <p><strong>Doctor:</strong> "Before the procedure, we will numb the area with a local anaesthetic and can give extra pain relief if needed."</p>
+    </div>
+    <div class="section-box">
+        <h3>🩺 What inserting a chest drain involves</h3>
+        <p>"Before the procedure, we will numb the area with a local anaesthetic and can give extra pain relief if needed."</p>
         <p>"Using ultrasound guidance, we insert a needle between your ribs, then replace it with a plastic tube which is the drain."</p>
         <p>"The tube is connected to a container that collects the air."</p>
         <p>"The drain usually stays in place for 1-2 days but sometimes longer."</p>
         <p>"You'll stay in hospital during this time. The drain is secured with stitches and a dressing."</p>
-    </blockquote>
-
-    <h4>⚠️ Risks of inserting a chest drain</h4>
-    <blockquote>
-        <p><strong>Doctor:</strong> "There are some risks such as pain, bleeding, infection, and possible damage to nearby organs."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Risks of inserting a chest drain</h3>
+        <p>"There are some risks such as pain, bleeding, infection, and possible damage to nearby organs."</p>
         <p>"Sometimes the drain can fall out and need reinsertion, but stitches and dressings reduce this risk."</p>
         <p>"If the drain does not work, other treatments will be considered."</p>
-    </blockquote>
-
-    <h4>❓ Removing the drain</h4>
-    <blockquote>
-        <p><strong>Doctor:</strong> "Removing the drain is a simple procedure where the dressings are taken off and the tube gently pulled out."</p>
+    </div>
+    <div class="section-box">
+        <h3>❓ Removing the drain</h3>
+        <p>"Removing the drain is a simple procedure where the dressings are taken off and the tube gently pulled out."</p>
         <p>"It can be uncomfortable but is very quick and pain relief can be provided."</p>
-    </blockquote>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Exploration & Empathy</h3>
+        <p>"How do you feel about the information I have given you?"</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy and summary</h3>
+        <p>"Could you please summarise what we’ve discussed today?"</p>
+    </div>
+  </div>
 
-    <h3>💬 Exploration &amp; empathy</h3>
-    <blockquote>
-        <p><strong>Doctor:</strong> "How do you feel about the information I have given you?"</p>
-        <p>Check for understanding and concerns.</p>
-    </blockquote>
-
-    <h3>✅ Strategy and summary</h3>
-    <blockquote>
-        <p><strong>Doctor:</strong> "Could you please summarise what we’ve discussed today?"</p>
-        <p>Confirm patient understanding about the procedure, risks, and next steps.</p>
-    </blockquote>
-</div>
-
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-
-        if (toggle.classList.contains("active")) {
-            toggle.setAttribute("aria-checked", "true");
-        } else {
-            toggle.setAttribute("aria-checked", "false");
-        }
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
