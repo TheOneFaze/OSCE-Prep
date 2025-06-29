@@ -1,187 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Explaining a Diagnosis of Fibroadenoma</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #fce4ec;
-            color: #880e4f;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #f8bbd0;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #f06292;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎀 Explaining a Diagnosis of Fibroadenoma</title>
+  <style>
+    /* --- UPDATED PINK COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fce4ec; /* Light pink background */
+      color: #880e4f;     /* Dark pink text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ec407a, #ad1457); /* Pink gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #f8bbd0; /* Lighter pink switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #fce4ec; /* Light pink background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #880e4f; /* Dark pink for headings */
+      border-left: 5px solid #880e4f; /* Dark pink border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>🎀 Explaining a Diagnosis of Fibroadenoma</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
+  <header>🎀 Explaining a Diagnosis of Fibroadenoma</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span style="color:#880e4f;">High-Yield Notes</span>
-    <span style="color:#880e4f;">Full Script</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>Set up</h3>
-    <ul>
-        <li>🧼 Wash hands and PPE</li>
-        <li>👩 Introduce self, name, role</li>
-        <li>🆔 Confirm patient identity</li>
-        <li>🗣️ Clarify consultation purpose</li>
-        <li>📁 Aware of background: first triple assessment, first presentation</li>
-    </ul>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <ul>
+            <li>🧼 Wash hands and PPE</li>
+            <li>👩 Introduce self, name, role</li>
+            <li>🆔 Confirm patient identity</li>
+            <li>🗣️ Clarify consultation purpose</li>
+            <li>📁 Aware of background: first triple assessment, first presentation</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Understanding & Concerns</h3>
+        <ul>
+            <li>💭 Ask what patient knows about breast lumps or fibroadenomas</li>
+            <li>😟 Explore concerns, especially about cancer</li>
+            <li>💬 Use ICE framework (Ideas, Concerns, Expectations)</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📖 Explanation</h3>
+        <ul>
+            <li>🎀 Fibroadenomas = benign (non-cancerous) breast lumps</li>
+            <li>👩‍⚕️ Common in women under 30</li>
+            <li>🧪 Diagnosed with triple assessment</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>💊 Management</h3>
+        <ul>
+            <li>🩺 Often no treatment needed; monitor only</li>
+            <li>🔪 Removal if large, painful, growing, or by choice</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Empathy & Support</h3>
+        <ul>
+            <li>💖 Demonstrate empathy throughout</li>
+            <li>🧠 Explore emotional response to information</li>
+            <li>📎 Provide leaflet/resources</li>
+            <li>🚨 Safety netting: advise return if changes develop</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>👋 Closing</h3>
+        <ul>
+            <li>🧠 Check understanding via patient summary</li>
+            <li>🤝 Shared decision making</li>
+            <li>📅 Discuss follow-up</li>
+            <li>❓ Address final questions, thank patient</li>
+        </ul>
+    </div>
+  </div>
 
-    <h3>Understanding & Concerns</h3>
-    <ul>
-        <li>💭 Ask what patient knows about breast lumps or fibroadenomas</li>
-        <li>😟 Explore concerns, especially about cancer</li>
-        <li>💬 Use ICE framework (Ideas, Concerns, Expectations)</li>
-    </ul>
-
-    <h3>Explanation</h3>
-    <ul>
-        <li>🎀 Fibroadenomas = benign (non-cancerous) breast lumps</li>
-        <li>👩‍⚕️ Common in women under 30</li>
-        <li>🧪 Diagnosed with triple assessment</li>
-    </ul>
-
-    <h3>Management</h3>
-    <ul>
-        <li>🩺 Often no treatment needed; monitor only</li>
-        <li>🔪 Removal if large, painful, growing, or by choice</li>
-    </ul>
-
-    <h3>Empathy & Support</h3>
-    <ul>
-        <li>💖 Demonstrate empathy throughout</li>
-        <li>🧠 Explore emotional response to information</li>
-        <li>📎 Provide leaflet/resources</li>
-        <li>🚨 Safety netting: advise return if changes develop</li>
-    </ul>
-
-    <h3>Closing</h3>
-    <ul>
-        <li>🧠 Check understanding via patient summary</li>
-        <li>🤝 Shared decision making</li>
-        <li>📅 Discuss follow-up</li>
-        <li>❓ Address final questions, thank patient</li>
-    </ul>
-</div>
-
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
-    <h3>🩺 Introduction</h3>
-    <p>“Hi, I’m [Your Name], a medical student. I’ve been asked to talk to you about your recent breast clinic visit. Can I confirm your name and date of birth?”</p>
-    <p>“Today, I’ll explain the results and answer your questions. Is that okay?”</p>
+    <div class="section-box">
+        <h3>🩺 Introduction</h3>
+        <p>“Hi, I’m [Your Name], a medical student. I’ve been asked to talk to you about your recent breast clinic visit. Can I confirm your name and date of birth?”</p>
+        <p>“Today, I’ll explain the results and answer your questions. Is that okay?”</p>
+    </div>
+     <div class="section-box">
+        <h3>📖 Background</h3>
+        <p>“I understand you’ve had a triple assessment for a lump in your breast — and this is your first time being investigated for something like this, is that right?”</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Understanding & Concerns</h3>
+        <p>“Can I ask, what do you already know about the lump?”</p>
+        <p>“Do you have any concerns, particularly about it being cancer?”</p>
+    </div>
+    <div class="section-box">
+        <h3>🎀 What is a Fibroadenoma?</h3>
+        <p>“A fibroadenoma is a benign (non-cancerous) breast lump. It doesn’t increase your risk of cancer.”</p>
+        <p>“It’s like a collection of normal breast tissue that’s just grown differently — almost like a breast mole. They’re most common in younger women under 30.”</p>
+    </div>
+    <div class="section-box">
+        <h3>🔬 How was it Diagnosed?</h3>
+        <p>“You’ve had a triple assessment: a clinical exam, an ultrasound/mammogram, and possibly a biopsy. These confirmed it’s a fibroadenoma.”</p>
+    </div>
+    <div class="section-box">
+        <h3>🛠️ Management Options</h3>
+        <p>“In most cases, we just monitor it — especially if it’s not causing issues.”</p>
+        <p>“If it becomes painful, grows, or you’d like it removed, a minor operation is possible.”</p>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Empathy & Support</h3>
+        <p>“How are you feeling about everything we’ve discussed so far?”</p>
+        <p>“It’s completely normal to feel anxious even when the news is reassuring.”</p>
+    </div>
+    <div class="section-box">
+        <h3>📎 Summary & Safety Netting</h3>
+        <p>“So to summarise, you have a benign fibroadenoma. No treatment is needed unless it causes problems.”</p>
+        <p>“We’ll give you a leaflet, and if anything changes — like a new lump, pain, or skin changes — please come back.”</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Final Check</h3>
+        <p>“Just to make sure I’ve explained everything clearly, could you summarise in your own words what you’ve understood?”</p>
+        <p>“Do you have any other questions?”</p>
+        <p>“Would you like anyone else to be in the room or speak to someone further?”</p>
+        <p>“Thanks very much for your time!”</p>
+    </div>
+  </div>
 
-    <h3>📖 Background</h3>
-    <p>“I understand you’ve had a triple assessment for a lump in your breast — and this is your first time being investigated for something like this, is that right?”</p>
-
-    <h3>🔍 Understanding & Concerns</h3>
-    <p>“Can I ask, what do you already know about the lump?”</p>
-    <p>“Do you have any concerns, particularly about it being cancer?”</p>
-
-    <h3>🎀 What is a Fibroadenoma?</h3>
-    <p>“A fibroadenoma is a benign (non-cancerous) breast lump. It doesn’t increase your risk of cancer.”</p>
-    <p>“It’s like a collection of normal breast tissue that’s just grown differently — almost like a breast mole. They’re most common in younger women under 30.”</p>
-
-    <h3>🔬 How was it Diagnosed?</h3>
-    <p>“You’ve had a triple assessment: a clinical exam, an ultrasound/mammogram, and possibly a biopsy. These confirmed it’s a fibroadenoma.”</p>
-
-    <h3>🛠️ Management Options</h3>
-    <p>“In most cases, we just monitor it — especially if it’s not causing issues.”</p>
-    <p>“If it becomes painful, grows, or you’d like it removed, a minor operation is possible.”</p>
-
-    <h3>💬 Empathy & Support</h3>
-    <p>“How are you feeling about everything we’ve discussed so far?”</p>
-    <p>“It’s completely normal to feel anxious even when the news is reassuring.”</p>
-
-    <h3>📎 Summary & Safety Netting</h3>
-    <p>“So to summarise, you have a benign fibroadenoma. No treatment is needed unless it causes problems.”</p>
-    <p>“We’ll give you a leaflet, and if anything changes — like a new lump, pain, or skin changes — please come back.”</p>
-
-    <h3>✅ Final Check</h3>
-    <p>“Just to make sure I’ve explained everything clearly, could you summarise in your own words what you’ve understood?”</p>
-    <p>“Do you have any other questions?”</p>
-    <p>“Would you like anyone else to be in the room or speak to someone further?”</p>
-    <p>“Thanks very much for your time!”</p>
-</div>
-
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
