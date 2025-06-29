@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-t"/>
+<meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OSCE Spark</title>
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f4f4f9; /* A neutral, clean background */
+    background: #f4f4f9;
     color: #333;
     padding: 40px;
     margin: 0;
@@ -21,13 +21,13 @@
   .logo {
     max-width: 100%;
     height: auto;
-    max-height: 80px; /* Control the logo size */
+    max-height: 80px;
   }
   .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px; /* A bit more space */
+    gap: 25px;
   }
   .card {
     background-color: #ffffff;
@@ -35,13 +35,13 @@
     width: 280px;
     min-height: 80px;
     text-align: center;
-    border-radius: 12px; /* Slightly more rounded */
+    border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 5px solid transparent; /* For theme color accent */
+    border-left: 5px solid transparent;
   }
   .card:hover {
     transform: translateY(-5px);
@@ -50,7 +50,7 @@
   a {
     text-decoration: none;
     color: #333;
-    font-weight: 600; /* Slightly bolder */
+    font-weight: 600;
     font-size: 1.1rem;
     transition: color 0.3s;
   }
@@ -72,20 +72,12 @@
 
   /* --- Media Queries for Mobile-Friendly Layout --- */
   @media screen and (max-width: 768px) {
-    body {
-      padding: 20px;
-    }
-    .card {
-      width: 45%;
-    }
+    body { padding: 20px; }
+    .card { width: 45%; }
   }
   @media screen and (max-width: 480px) {
-    body {
-      padding: 15px;
-    }
-    .card {
-      width: 100%;
-    }
+    body { padding: 15px; }
+    .card { width: 100%; }
   }
   
   /* --- Dark Mode Styles --- */
@@ -103,7 +95,6 @@
   .dark-mode footer {
     color: #999;
   }
-  /* Keep theme borders visible in dark mode */
   .dark-mode .card.diagnosis { border-color: #29b6f6; }
   .dark-mode .card.medication { border-color: #66bb6a; }
   .dark-mode .card.procedure { border-color: #ffa726; }
@@ -111,6 +102,57 @@
   .dark-mode .card.surgery { border-color: #ef5350; }
   .dark-mode .card.community { border-color: #ff7043; }
   
+  /* --- NEW: CSS for the Toggle Switch --- */
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+  .theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+  }
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+  }
+  input:checked + .slider {
+    background-color: #ab47bc; /* Purple color when ON */
+  }
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  .slider.round {
+    border-radius: 34px;
+  }
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
 </style>
 </head>
 <body>
@@ -129,8 +171,12 @@
 </div>
 
 <footer>
-  <button id="darkModeToggle">Toggle Theme</button>
-  <br><br>
+  <div class="theme-switch-wrapper">
+    <label class="theme-switch" for="darkModeToggle">
+      <input type="checkbox" id="darkModeToggle" />
+      <span class="slider round"></span>
+    </label>
+  </div>
   Made with ❤️ for OSCE preparation
 </footer>
 
@@ -143,29 +189,28 @@
   const applyTheme = (theme) => {
     if (theme === 'dark') {
       body.classList.add('dark-mode');
+      darkModeToggle.checked = true;
     } else {
       body.classList.remove('dark-mode');
+      darkModeToggle.checked = false;
     }
   };
 
   // On page load, check for a saved preference and apply it
   const savedTheme = localStorage.getItem(themeKey);
+  // If a theme is saved, apply it. Otherwise, do nothing (defaults to light).
   if (savedTheme) {
     applyTheme(savedTheme);
   }
 
-  // Add the click event listener for the toggle button
-  darkModeToggle.addEventListener('click', () => {
-    // Check if dark mode is currently active
-    const isDarkMode = body.classList.contains('dark-mode');
-    
-    // Toggle the theme and save the new preference to localStorage
-    if (isDarkMode) {
-      applyTheme('light');
-      localStorage.setItem(themeKey, 'light');
-    } else {
+  // Add the change event listener for the toggle switch
+  darkModeToggle.addEventListener('change', () => {
+    if (darkModeToggle.checked) {
       applyTheme('dark');
       localStorage.setItem(themeKey, 'dark');
+    } else {
+      applyTheme('light');
+      localStorage.setItem(themeKey, 'light');
     }
   });
 </script>
