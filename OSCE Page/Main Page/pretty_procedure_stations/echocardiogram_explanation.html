@@ -1,138 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>🩺 Echocardiogram Explanation</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩺 Echocardiogram Explanation</title>
+  <style>
+    /* --- UPDATED BLUE/CYAN COLOR SCHEME --- */
     body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #e0f7fa;
-        color: #006064;
-        margin: 0;
-        padding: 20px;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f7fa; /* Light cyan background */
+      color: #006064;     /* Dark cyan text */
     }
-    h1, h2 {
-        text-align: center;
-        color: #006064;
+
+    header {
+      background: linear-gradient(to right, #4dd0e1, #006064); /* Cyan gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    .toggle-container {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-    }
-    .switch {
-        position: relative;
-        width: 120px;
-        height: 50px;
-        background-color: #b2ebf2;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    }
-    .slider {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 40px;
-        height: 40px;
-        background-color: white;
-        border-radius: 50%;
-        transition: all 0.3s ease-in-out;
-    }
-    .switch.active .slider {
-        transform: translateX(70px);
-    }
+
     .labels {
-        display: flex;
-        justify-content: space-between;
-        font-weight: bold;
-        color: #006064;
-        padding: 0 10px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
     }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #b2ebf2; /* Lighter cyan switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
     .content-section {
-        display: none;
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        margin-top: 20px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        line-height: 1.6;
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
+
     .content-section.active {
-        display: block;
+      display: block;
     }
+
+    .section-box {
+      background: #e0f7fa; /* Light cyan background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
     h3 {
-        border-bottom: 2px solid #80deea;
-        padding-bottom: 5px;
-        margin-top: 25px;
-        color: #006064;
+      color: #006064; /* Dark cyan for headings */
+      border-left: 5px solid #006064; /* Dark cyan border */
+      padding-left: 10px;
+      margin-top: 20px;
     }
-    h4 {
-        margin-top: 20px;
-        color: #0097a7;
-    }
+
     ul {
-        margin-left: 20px;
+      padding-left: 20px;
     }
-    blockquote {
-        border-left: 3px solid #80deea;
-        margin-left: 0;
-        padding-left: 15px;
-        font-style: italic;
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    strong {
+        font-weight: bold;
         color: #004d40;
-        background: #e0f7fa;
-        margin-bottom: 20px;
     }
-    p strong {
-        color: #004d40;
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
     }
-</style>
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>🩺 Echocardiogram Explanation</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch" role="switch" aria-checked="false" tabindex="0">
-        <div class="slider"></div>
+  <header>🩺 Echocardiogram Explanation</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span>High-Yield Notes 🧠</span>
-    <span>Full Word-for-Word OSCE Script 📜</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>📚 Knowledge</h3>
+        <ul>
+            <li>An echocardiogram (echo) is an ultrasound scan of the heart and nearby blood vessels.</li>
+            <li>Used to assess heart structure, function, chamber sizes, wall motion, and valve competency.</li>
+            <li>Indicated post-MI, in suspected heart failure, murmurs, arrhythmias, or unexplained breathlessness.</li>
+            <li>Shows the ejection fraction – a key measure of left ventricular function.</li>
+            <li>Painless, non-invasive, uses no radiation, and takes ~15–30 minutes.</li>
+            <li>Patient lies on their side while a probe (with gel) is applied to the chest.</li>
+            <li>No specific preparation needed; outpatient basis; no risks or recovery time.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy & Summary</h3>
+        <ul>
+            <li>Clearly explain what an echo is, how it's done, and its purpose.</li>
+            <li>Provide reassurance – painless, no radiation, short duration.</li>
+            <li>Check ICE – especially concerns about heart failure.</li>
+            <li>Emphasize benefits: clarifying symptoms like breathlessness or fatigue.</li>
+            <li>Correct misunderstandings (e.g. heart failure not only due to prior MI).</li>
+        </ul>
+    </div>
+  </div>
 
-    <h3>📚 Knowledge</h3>
-    <ul>
-        <li>An echocardiogram (echo) is an ultrasound scan of the heart and nearby blood vessels.</li>
-        <li>Used to assess heart structure, function, chamber sizes, wall motion, and valve competency.</li>
-        <li>Indicated post-MI, in suspected heart failure, murmurs, arrhythmias, or unexplained breathlessness.</li>
-        <li>Shows the ejection fraction – a key measure of left ventricular function.</li>
-        <li>Painless, non-invasive, uses no radiation, and takes ~15–30 minutes.</li>
-        <li>Patient lies on their side while a probe (with gel) is applied to the chest.</li>
-        <li>No specific preparation needed; outpatient basis; no risks or recovery time.</li>
-    </ul>
-
-    <h3>✅ Strategy &amp; summary</h3>
-    <ul>
-        <li>Clearly explain what an echo is, how it's done, and its purpose.</li>
-        <li>Provide reassurance – painless, no radiation, short duration.</li>
-        <li>Check ICE – especially concerns about heart failure.</li>
-        <li>Emphasize benefits: clarifying symptoms like breathlessness or fatigue.</li>
-        <li>Correct misunderstandings (e.g. heart failure not only due to prior MI).</li>
-    </ul>
-</div>
-
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
-
-    <h3>📚 Knowledge</h3>
-
-    <h4>❓ What is an echocardiogram?</h4>
-    <blockquote>
+    <div class="section-box">
+        <h3>❓ What is an echocardiogram?</h3>
         <p><strong>Doctor:</strong> "An echocardiogram is a jelly scan of your heart and the nearby blood vessels."</p>
         <p>"The scanner uses sound waves or 'echos' to make a picture, so there's no radiation."</p>
         <p>"We will be able to see the 4 chambers of the heart, including the valves."</p>
@@ -141,53 +207,40 @@
         <p>"The procedure is generally quite quick and takes 15-30 minutes."</p>
         <p>"There are no complications to this procedure and it isn't painful."</p>
         <p>"You'll have this procedure as an outpatient, which means you don't have to stay in hospital, instead you can go home straight after."</p>
-    </blockquote>
-
-    <h4>💡 Why an echocardiogram is needed</h4>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>💡 Why an echocardiogram is needed</h3>
         <p><strong>Doctor:</strong> "Sometimes after a heart attack, the heart doesn't pump as well as it used to, or valves might become leaky."</p>
         <p>"When this happens, people get symptoms such as breathlessness and wheeziness, such as you have."</p>
         <p>"When someone gets symptoms, like breathlessness, because their heart isn't pumping as well as it used to, it's known as heart failure."</p>
         <p>"We want to make sure that all parts of the heart are moving and pumping efficiently and that the valves aren't leaky."</p>
         <p>"We also want to look at the size of your heart, and calculate how much blood it is pumping."</p>
-    </blockquote>
-
-    <h4>❤️ What is heart failure?</h4>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>❤️ What is heart failure?</h3>
         <p><strong>Doctor:</strong> "Heart failure is where your heart isn't pumping as effectively."</p>
         <p>"There are lots of causes of heart failure, including heart attacks, irregular heart rhythm, heart valve problems or murmurs, and high blood pressure."</p>
         <p>"It's quite common in your age group, with about 10% of people over 70 having heart failure."</p>
         <p>"Heart failure causes symptoms like breathlessness, tiredness, fainting, needing to sleep on more pillows, and a chronic cough."</p>
         <p>"We classify heart failure that has been going on a long time by the amount of blood pumped by one of the chambers of the heart, called the left ventricle. This is called your left ventricle ejection fraction."</p>
         <p>"However, you can also classify heart failure by symptoms and effect on life."</p>
-    </blockquote>
-
-    <h3>💬 Exploration &amp; empathy</h3>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>💬 Exploration & Empathy</h3>
         <p><strong>Doctor:</strong> "Do you have any questions about the scan or why it's being done?"</p>
-        <p>Provide reassurance and check for misunderstandings.</p>
-    </blockquote>
-
-    <h3>✅ Strategy and summary</h3>
-    <blockquote>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy and summary</h3>
         <p><strong>Doctor:</strong> "Could you please summarise back to me the key points to ensure I’ve explained everything clearly?"</p>
-        <p>Confirm understanding about the procedure, purpose, and implications.</p>
-    </blockquote>
-</div>
+    </div>
+  </div>
 
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-
-        toggle.setAttribute("aria-checked", toggle.classList.contains("active") ? "true" : "false");
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
