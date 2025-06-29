@@ -1,204 +1,271 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Opioid Analgesia Counselling</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #efebe9;
-            color: #5d4037;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #d7ccc8;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .labels span {
-            color: #5d4037;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #bcaaa4;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.7;
-        }
-        li {
-            margin-bottom: 4px;
-        }
-        .section-title {
-            font-size: 20px;
-            color: #5d4037;
-            margin-top: 25px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💊 Opioid Analgesia Counselling</title>
+  <style>
+    /* --- UPDATED BROWN/BEIGE COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #efebe9; /* Light beige background */
+      color: #5d4037;     /* Dark brown text */
+    }
+
+    header {
+      background: linear-gradient(to right, #bcaaa4, #5d4037); /* Brown gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #d7ccc8; /* Lighter beige switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #efebe9; /* Light beige background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #5d4037; /* Dark brown for headings */
+      border-left: 5px solid #5d4037; /* Dark brown border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>💊 Opioid Analgesia Counselling</h1>
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
-    </div>
-</div>
-<div class="labels">
+  <header>💊 Opioid Analgesia Counselling</header>
+  <div class="labels">
     <span>High-Yield Notes</span>
     <span>Full Script</span>
-</div>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
 
-<!-- High-Yield OSCE Checklist Section -->
-<div class="content-section active" id="highYield">
-    <h2>High-Yield OSCE Checklist 🧠</h2>
-    <h3 class="section-title">Set up</h3>
-    <ul>
-        <li>🧼 Wash hands and don PPE if appropriate</li>
-        <li>👋 Introduce self (name and role)</li>
-        <li>🆔 Confirm patient’s name and DOB</li>
-        <li>🗣️ Explain purpose: here to discuss pain management options, especially opioids and alternatives</li>
-        <li>📝 Gain consent to proceed</li>
-        <li>🧐 Show awareness of background: chronic knee pain, previous treatments</li>
-        <li>⚡ Take brief history to rule out acute or red flag causes of pain</li>
-    </ul>
-    <h3 class="section-title">Perceptions</h3>
-    <ul>
-        <li>❓ Ask about patient’s prior knowledge/perceptions of osteoarthritis and opioids</li>
-        <li>🤔 Explore concerns and expectations</li>
-        <li>🙋 Encourage patient questions and engagement</li>
-    </ul>
-    <h3 class="section-title">Invitation</h3>
-    <ul>
-        <li>📖 Offer to explain more about osteoarthritis and opioid painkillers</li>
-        <li>🗨️ Ask if patient has specific questions</li>
-        <li>🎯 Check what info patient wants to focus on (and what not)</li>
-        <li>👥 Confirm the patient is happy to hear the information now/if anyone else should be present</li>
-    </ul>
-    <h3 class="section-title">Knowledge</h3>
-    <ul>
-        <li>🦵 Brief explanation of osteoarthritis and why it causes pain</li>
-        <li>🔎 Overview of management options: non-drug, topical, oral, referral etc</li>
-        <li>💊 What are opioids? Examples: codeine, morphine, tramadol</li>
-        <li>⚠️ Explain opioid dangers: tolerance, dependence, addiction, side effects</li>
-        <li>🚫 Clarify opioids are not appropriate for this patient’s chronic pain</li>
-        <li>🌱 Suggest safer alternatives (e.g. capsaicin cream, physio, rheumatology referral)</li>
-        <li>📚 Provide extra resources (leaflets, apps, websites, support groups)</li>
-        <li>🗣️ Use clear language, check for understanding throughout</li>
-    </ul>
-    <h3 class="section-title">Exploration & Empathy</h3>
-    <ul>
-        <li>🫶 Explore how patient feels about info</li>
-        <li>🤝 Demonstrate empathy and validate their pain</li>
-    </ul>
-    <h3 class="section-title">Strategy & Summary</h3>
-    <ul>
-        <li>📋 Ask patient to summarise key points back</li>
-        <li>🎯 Check if all concerns/questions addressed</li>
-        <li>🤝 Shared decision: agree plan together</li>
-        <li>🛟 Provide safety-netting advice (when to seek help/return)</li>
-    </ul>
-</div>
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <ul>
+            <li>🧼 Wash hands and don PPE if appropriate</li>
+            <li>👋 Introduce self (name and role)</li>
+            <li>🆔 Confirm patient’s name and DOB</li>
+            <li>🗣️ Explain purpose: here to discuss pain management options, especially opioids and alternatives</li>
+            <li>📝 Gain consent to proceed</li>
+            <li>🧐 Show awareness of background: chronic knee pain, previous treatments</li>
+            <li>⚡ Take brief history to rule out acute or red flag causes of pain</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Perceptions</h3>
+        <ul>
+            <li>❓ Ask about patient’s prior knowledge/perceptions of osteoarthritis and opioids</li>
+            <li>🤔 Explore concerns and expectations</li>
+            <li>🙋 Encourage patient questions and engagement</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📖 Knowledge</h3>
+        <ul>
+            <li>🦵 Brief explanation of osteoarthritis and why it causes pain</li>
+            <li>🔎 Overview of management options: non-drug, topical, oral, referral etc</li>
+            <li>💊 What are opioids? Examples: codeine, morphine, tramadol</li>
+            <li>⚠️ Explain opioid dangers: tolerance, dependence, addiction, side effects</li>
+            <li>🚫 Clarify opioids are not appropriate for this patient’s chronic pain</li>
+            <li>🌱 Suggest safer alternatives (e.g. capsaicin cream, physio, rheumatology referral)</li>
+            <li>📚 Provide extra resources (leaflets, apps, websites, support groups)</li>
+            <li>🗣️ Use clear language, check for understanding throughout</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Exploration & Empathy</h3>
+        <ul>
+            <li>🫶 Explore how patient feels about info</li>
+            <li>🤝 Demonstrate empathy and validate their pain</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy & Summary</h3>
+        <ul>
+            <li>📋 Ask patient to summarise key points back</li>
+            <li>🎯 Check if all concerns/questions addressed</li>
+            <li>🤝 Shared decision: agree plan together</li>
+            <li>🛟 Provide safety-netting advice (when to seek help/return)</li>
+        </ul>
+    </div>
+  </div>
 
-<!-- Full Word-for-Word OSCE Script Section -->
-<div class="content-section" id="fullScript">
-    <h2>Full OSCE Script (Covers All Checklist Points) 📜</h2>
-    <h3 class="section-title">🩺 Set up</h3>
-    <p>“Hello, my name is [Your Name], I’m one of the medical students today. Before we start, can I wash my hands and put on some PPE? Thank you.”</p>
-    <p>“Could I please confirm your full name and date of birth?”</p>
-    <p>“I understand you’ve been struggling with long-term knee pain. Today, I’d like to talk with you about ways to manage this pain, especially the use of strong painkillers called opioids, and some alternative options. Is that alright with you?”</p>
-    <p>“Before we begin, is it okay if we discuss your history briefly and then go through the different options together?”</p>
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <p>“Hello, my name is [Your Name], I’m one of the medical students today. Before we start, can I wash my hands and put on some PPE? Thank you.”</p>
+        <p>“Could I please confirm your full name and date of birth?”</p>
+        <p>“I understand you’ve been struggling with long-term knee pain. Today, I’d like to talk with you about ways to manage this pain, especially the use of strong painkillers called opioids, and some alternative options. Is that alright with you?”</p>
+        <p>“Before we begin, is it okay if we discuss your history briefly and then go through the different options together?”</p>
+    </div>
+    <div class="section-box">
+        <h3>🗣️ Brief History</h3>
+        <p>“Could you tell me a bit about your knee pain? Has anything changed recently—any swelling, redness, fevers, or sudden worsening?”</p>
+        <p>“Have you tried any other treatments so far—like paracetamol, ibuprofen, or creams?”</p>
+    </div>
+     <div class="section-box">
+        <h3>💡 Perceptions & Concerns</h3>
+        <p>“Just before we go into the details, can I check what you already know about osteoarthritis and strong painkillers like opioids?”</p>
+        <p>“Are you worried about anything in particular with your pain, or about taking new medicines?”</p>
+        <p>“Please feel free to ask questions or stop me at any time—this is your consultation.”</p>
+    </div>
+    <div class="section-box">
+        <h3>🦵 Knowledge: OA & Opioids</h3>
+        <p>“Osteoarthritis is a common joint condition where the cushioning in the knee wears down over time. It causes pain, stiffness, and sometimes swelling, usually worsening with activity.”</p>
+        <p>“Treatments start with things like gentle exercise, weight loss if needed, and simple painkillers like paracetamol or anti-inflammatory creams.”</p>
+        <p>“Now, opioids are a group of strong painkillers, such as codeine, tramadol, morphine and others. They’re useful for short-term severe pain or cancer pain, but have important risks.”</p>
+        <p>“The biggest concerns with opioids are tolerance (the effect wears off), dependence (the body gets used to them), and even addiction. Side effects can include drowsiness, constipation, sickness, and—at high doses—dangerous breathing problems.”</p>
+        <p>“Because of these risks, opioids aren’t recommended for long-term joint pain like osteoarthritis, as they don’t treat the underlying cause and the risks outweigh any benefit.”</p>
+        <p>“Instead, we recommend safer options: topical creams (like capsaicin), physiotherapy, steroid injections, or referral to a rheumatologist for further assessment.”</p>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Exploration & Empathy</h3>
+        <p>“How do you feel about what we’ve discussed? I completely understand that pain is frustrating and impacts your daily life. We want to help you manage it safely and effectively.”</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy & Summary</h3>
+        <p>“Just to check we’re on the same page—could you tell me what your main takeaways from our discussion are?”</p>
+        <p>“Do you feel all your questions have been answered, or is there anything else you’d like to discuss?”</p>
+        <p>“We’ll decide the next step together, whether that’s trying a cream, getting referred to rheumatology, or something else you’re happy with.”</p>
+        <p>“If your pain changes suddenly, gets much worse, or if you notice new swelling, fevers, or can’t move the joint, please seek medical help straight away.”</p>
+        <p>“Thank you for your time—here are some leaflets and details of support groups. Please don’t hesitate to get in touch if you need further advice.”</p>
+    </div>
+  </div>
 
-    <h3 class="section-title">🗣️ Brief History</h3>
-    <p>“Could you tell me a bit about your knee pain? Has anything changed recently—any swelling, redness, fevers, or sudden worsening?”</p>
-    <p>“Have you tried any other treatments so far—like paracetamol, ibuprofen, or creams?”</p>
-
-    <h3 class="section-title">💡 Perceptions & Concerns</h3>
-    <p>“Just before we go into the details, can I check what you already know about osteoarthritis and strong painkillers like opioids?”</p>
-    <p>“Are you worried about anything in particular with your pain, or about taking new medicines?”</p>
-    <p>“Please feel free to ask questions or stop me at any time—this is your consultation.”</p>
-
-    <h3 class="section-title">📖 Invitation</h3>
-    <p>“Would you like me to explain more about osteoarthritis and how opioids work, or is there something specific you want to focus on?”</p>
-    <p>“Is there any area you do not wish to discuss today? And would you like anyone else in the room with you before we proceed?”</p>
-
-    <h3 class="section-title">🦵 Knowledge: OA & Opioids</h3>
-    <p>“Osteoarthritis is a common joint condition where the cushioning in the knee wears down over time. It causes pain, stiffness, and sometimes swelling, usually worsening with activity.”</p>
-    <p>“Treatments start with things like gentle exercise, weight loss if needed, and simple painkillers like paracetamol or anti-inflammatory creams.”</p>
-    <p>“Now, opioids are a group of strong painkillers, such as codeine, tramadol, morphine and others. They’re useful for short-term severe pain or cancer pain, but have important risks.”</p>
-    <p>“The biggest concerns with opioids are tolerance (the effect wears off), dependence (the body gets used to them), and even addiction. Side effects can include drowsiness, constipation, sickness, and—at high doses—dangerous breathing problems.”</p>
-    <p>“Because of these risks, opioids aren’t recommended for long-term joint pain like osteoarthritis, as they don’t treat the underlying cause and the risks outweigh any benefit.”</p>
-    <p>“Instead, we recommend safer options: topical creams (like capsaicin), physiotherapy, steroid injections, or referral to a rheumatologist for further assessment.”</p>
-
-    <h3 class="section-title">📚 Extra Info & Patient-Friendly Terms</h3>
-    <p>“I’ll do my best to explain things simply, but please let me know if anything isn’t clear. I can also give you written info, links to reliable websites, or support group contacts if you’d find that useful.”</p>
-
-    <h3 class="section-title">🤝 Exploration & Empathy</h3>
-    <p>“How do you feel about what we’ve discussed? I completely understand that pain is frustrating and impacts your daily life. We want to help you manage it safely and effectively.”</p>
-
-    <h3 class="section-title">✅ Strategy & Summary</h3>
-    <p>“Just to check we’re on the same page—could you tell me what your main takeaways from our discussion are?”</p>
-    <p>“Do you feel all your questions have been answered, or is there anything else you’d like to discuss?”</p>
-    <p>“We’ll decide the next step together, whether that’s trying a cream, getting referred to rheumatology, or something else you’re happy with.”</p>
-    <p>“If your pain changes suddenly, gets much worse, or if you notice new swelling, fevers, or can’t move the joint, please seek medical help straight away.”</p>
-    <p>“Thank you for your time—here are some leaflets and details of support groups. Please don’t hesitate to get in touch if you need further advice.”</p>
-</div>
-
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
