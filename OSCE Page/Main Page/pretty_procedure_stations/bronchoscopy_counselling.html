@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🫁 Bronchoscopy Counselling</title>
+  <style>
+    /* --- UPDATED ORANGE/AMBER COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff3e0; /* Light orange background */
+      color: #ef6c00;     /* Dark orange text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ffa726, #ef6c00); /* Orange gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #ffcc80; /* Lighter orange switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #fff3e0; /* Light orange background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #ef6c00; /* Dark orange for headings */
+      border-left: 5px solid #ef6c00; /* Dark orange border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    strong {
+        font-weight: bold;
+        color: #e65100;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>🫁 Bronchoscopy Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>What is bronchoscopy and what does it involve?</h3>
+        <ul>
+            <li>Bronchoscopy is an endoscopy using a thin, flexible tube with a camera</li>
+            <li>Tube passed via mouth or nose into windpipe and lungs</li>
+            <li>Oxygen given through nasal cannula; heart rate and oxygen monitored</li>
+            <li>Biopsy taken using a tiny tool to analyse tumour</li>
+            <li>Procedure lasts around 20–40 minutes</li>
+            <li>Local numbing spray and sedation available to improve comfort</li>
+            <li>Must fast for 6 hours before procedure; advised on drink restrictions</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>After the bronchoscopy</h3>
+        <ul>
+            <li>No driving or heavy machinery for 24 hours if sedated</li>
+            <li>May require hospital stay for a few hours after procedure</li>
+            <li>Avoid eating/drinking for about 1 hour after numbing spray</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>Complications and risks</h3>
+        <ul>
+            <li>Sore throat, hoarseness, mild bleeding from nose or throat</li>
+            <li>Temporary oxygen desaturation, chest infection (1%), lung collapse, airway tear (rare)</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>What is bronchoscopy and what does it involve?</h3>
+        <p><strong>Doctor's explanation:</strong> "Bronchoscopy is a type of endoscopy, which is an investigation we perform with a camera attached to a thin, flexible tube. We pass the tube into your mouth or nose, into the windpipe, and down into the tubes that go into the lungs."</p>
+        <p>"Some people worry they won't be able to breathe, but there is plenty of room as the tube is about the width of a small pencil. Still, we give patients extra oxygen, just in case, through a soft plastic tube into the nose. We monitor all patients carefully for their heart rate and oxygen levels throughout the procedure."</p>
+        <p>"Because there's a camera attached, we can see everything in real time and guide the tube down until we get to the point where we can take a biopsy of the cancer. A tiny tool will take a sample from the tumour, which we can analyse in a lab to help guide how we're going to treat you. The biopsy shouldn't be painful."</p>
+        <p>"You will be able to feel the tube going down because you won't be asleep when we do the procedure, and it may feel a little uncomfortable at times. We have options to make you as comfortable as possible, including a spray to numb the back of the throat and a medicine to make you feel a bit sleepy and relaxed. Does that make sense?"</p>
+        <p>"It's important not to eat for 6 hours before the procedure, which takes around 20-40 minutes. There are recommendations we advise for drinking as well which I can give you a leaflet on to go more in depth on what you can and can't drink and for how long before the procedure."</p>
+    </div>
+    <div class="section-box">
+        <h3>After the bronchoscopy</h3>
+        <p><strong>Doctor's explanation:</strong> "It's important if you do have the mild sedative not to drive for at least 24 hours afterwards, which means you will need someone to take you home or arrange other means of transportation. This also applies to operating heavy machinery, signing important documents, and doing anything else you might feel is dangerous or needs your full attention."</p>
+        <p>"We may need to keep you in for a few hours while the sedative wears off just so you're feeling a little better and back to normal too."</p>
+        <p>"With the numbing spray, we also advise waiting an hour or so before eating or drinking because it can make throat coordination a little difficult and might make you choke."</p>
+    </div>
+    <div class="section-box">
+        <h3>Complications and risks of bronchoscopy</h3>
+        <p><strong>Doctor's explanation:</strong> "Bronchoscopy is a safe procedure but there are some complications and risks I should go through."</p>
+        <p>"Some of the more common problems people experience include a sore throat and a bit of a hoarse voice. Usually this goes in one or two days. You may get some bloodied phlegm that you bring up for a short time. The same thing can happen with the nose if they decide to enter through that way, including some minor nose bleeds. Furthermore, some people get flu-like symptoms of the lungs and feel a little under the weather."</p>
+        <p>"Rarer complications include a drop in your oxygen levels, although we can help this with some supplementary oxygen. The procedure also increases your risk of getting a chest infection, which happens in about 1 in 100 times. Others include collapse of the lungs and a hole tearing in the lung airways, although these are very unlikely."</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>
