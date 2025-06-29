@@ -1,185 +1,270 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Iron Supplementation Counselling</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #e0f7fa;
-            color: #00796b;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #b2dfdb;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #4db6ac;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩸 Iron Supplementation Counselling</title>
+  <style>
+    /* --- UPDATED TEAL COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f7fa; /* Light teal background */
+      color: #00796b;     /* Dark teal text */
+    }
+
+    header {
+      background: linear-gradient(to right, #4db6ac, #00796b); /* Teal gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #b2dfdb; /* Lighter teal switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #e0f7fa; /* Light teal background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #00796b; /* Dark teal for headings */
+      border-left: 5px solid #00796b; /* Dark teal border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>🩸 Iron Supplementation Counselling</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
+  <header>🩸 Iron Supplementation Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span style="color:#00796b;">High-Yield Notes</span>
-    <span style="color:#00796b;">Full Script</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>Opening & Setup</h3>
-    <ul>
-        <li>🧼 Wash hands & don PPE</li>
-        <li>👋 Introduce self (name, role)</li>
-        <li>🆔 Confirm patient's name & DOB</li>
-        <li>📝 Explain reason: discuss iron deficiency anaemia and supplements</li>
-        <li>✔️ Gain consent to proceed</li>
-    </ul>
-    <h3>ICE</h3>
-    <ul>
-        <li>🤔 Explore what patient knows about iron/anaemia</li>
-        <li>❓ Ask about concerns, what they'd like to get from consult</li>
-    </ul>
-    <h3>Relevant History</h3>
-    <ul>
-        <li>📋 Symptoms leading to GP visit (fatigue, breathlessness, etc.)</li>
-        <li>🧪 Confirm bloods showed iron deficiency anaemia</li>
-        <li>🏥 Medical/surgical history, allergies, medications</li>
-        <li>🚺 Menstrual history (if relevant)</li>
-        <li>🚬 Smoking, 🍷 alcohol, 🥗 diet</li>
-    </ul>
-    <h3>Iron Supplement Counselling</h3>
-    <ul>
-        <li>💪 Role of iron: oxygen transport, energy</li>
-        <li>💔 Causes: bleeding (esp. periods), diet, GI loss</li>
-        <li>😴 Symptoms: tiredness, SOB, dizziness</li>
-        <li>💊 How to take: empty stomach, orange juice (vitamin C helps)</li>
-        <li>🍽️ If nausea: take with food</li>
-        <li>🍫 Side effects: nausea, constipation/diarrhoea, dark stools</li>
-        <li>🩸 3–6 months course; monitor with bloods</li>
-        <li>🔄 Long-term supplements may be needed</li>
-        <li>📆 May need period/menorrhagia management (if relevant)</li>
-        <li>🥩 Iron-rich foods, pair with vitamin C</li>
-        <li>🚩 What to do if struggling with side effects</li>
-    </ul>
-    <h3>Closing</h3>
-    <ul>
-        <li>📝 Summarise key points</li>
-        <li>🙋 Ask if any questions/concerns remain</li>
-        <li>🙏 Thank patient for time</li>
-        <li>🧼 Dispose of PPE & wash hands</li>
-    </ul>
-    <h3>Communication</h3>
-    <ul>
-        <li>👂 Active listening</li>
-        <li>🔄 Summarising & signposting</li>
-        <li>🗣️ Teach-back: ask patient to recap key points</li>
-    </ul>
-</div>
+    <div class="section-box">
+        <h3>🩺 Opening & Setup</h3>
+        <ul>
+            <li>🧼 Wash hands & don PPE</li>
+            <li>👋 Introduce self (name, role)</li>
+            <li>🆔 Confirm patient's name & DOB</li>
+            <li>📝 Explain reason: discuss iron deficiency anaemia and supplements</li>
+            <li>✔️ Gain consent to proceed</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 ICE</h3>
+        <ul>
+            <li>🤔 Explore what patient knows about iron/anaemia</li>
+            <li>❓ Ask about concerns, what they'd like to get from consult</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📋 Relevant History</h3>
+        <ul>
+            <li>📋 Symptoms leading to GP visit (fatigue, breathlessness, etc.)</li>
+            <li>🧪 Confirm bloods showed iron deficiency anaemia</li>
+            <li>🏥 Medical/surgical history, allergies, medications</li>
+            <li>🚺 Menstrual history (if relevant)</li>
+            <li>🚬 Smoking, 🍷 alcohol, 🥗 diet</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>💊 Iron Supplement Counselling</h3>
+        <ul>
+            <li>💪 Role of iron: oxygen transport, energy</li>
+            <li>💔 Causes: bleeding (esp. periods), diet, GI loss</li>
+            <li>😴 Symptoms: tiredness, SOB, dizziness</li>
+            <li>💊 How to take: empty stomach, orange juice (vitamin C helps)</li>
+            <li>🍽️ If nausea: take with food</li>
+            <li>🍫 Side effects: nausea, constipation/diarrhoea, dark stools</li>
+            <li>🩸 3–6 months course; monitor with bloods</li>
+            <li>🔄 Long-term supplements may be needed</li>
+            <li>📆 May need period/menorrhagia management (if relevant)</li>
+            <li>🥩 Iron-rich foods, pair with vitamin C</li>
+            <li>🚩 What to do if struggling with side effects</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>👋 Closing</h3>
+        <ul>
+            <li>📝 Summarise key points</li>
+            <li>🙋 Ask if any questions/concerns remain</li>
+            <li>🙏 Thank patient for time</li>
+            <li>🧼 Dispose of PPE & wash hands</li>
+        </ul>
+    </div>
+  </div>
 
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <p>"Hi, my name is [Your Name], I’m a medical student. I’ll quickly wash my hands and put on PPE. Can I confirm your full name and date of birth?"</p>
+        <p>"Your GP has asked me to discuss your recent blood tests, which showed iron deficiency anaemia. Is now a good time to talk about your treatment and answer any questions?"</p>
+        <p>"Can I ask what you already know about iron or anaemia, and if you have any worries or things you want to cover?"</p>
+    </div>
+    <div class="section-box">
+        <h3>📋 Brief history</h3>
+        <p>"Could you tell me what symptoms brought you to the GP—like tiredness, breathlessness, or palpitations? Have you had any other health problems, allergies, or regular medications? For women: do you have heavy periods? What’s your diet like, do you smoke or drink alcohol?"</p>
+    </div>
+    <div class="section-box">
+        <h3>💊 What is iron and why do you need it?</h3>
+        <p>"Iron helps carry oxygen in your blood, so if it’s low, you might feel tired, dizzy, or short of breath. Causes can include blood loss (like heavy periods), not enough iron in the diet, or bleeding from the gut."</p>
+    </div>
+    <div class="section-box">
+        <h3>🕒 How to take iron supplements</h3>
+        <p>"You’ll probably be prescribed a tablet like ferrous sulphate. It’s best taken on an empty stomach with orange juice (the vitamin C helps absorption). If you get nausea, you can take it with food instead."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side effects and safety</h3>
+        <p>"Side effects are common and can include nausea, constipation, diarrhoea, or dark stools. They’re not dangerous, but if you find them very bothersome, please let us know so we can change your dose or type."</p>
+    </div>
+    <div class="section-box">
+        <h3>📝 Monitoring and follow-up</h3>
+        <p>"You’ll usually need to take iron for at least 3–6 months. We’ll repeat your blood tests to check your levels. Some people need long-term supplements if the cause isn’t sorted. If heavy periods are a problem, we might suggest managing those as well."</p>
+    </div>
+    <div class="section-box">
+        <h3>🥦 Diet advice</h3>
+        <p>"Try to eat iron-rich foods (like red meat, green veg, beans, lentils, dried fruit) and have vitamin C-rich foods for better absorption."</p>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Empathy & summary</h3>
+        <p>"It’s normal to feel frustrated with anaemia or side effects. We’re here to support you. Could you tell me what you’ll do next about your iron, just to check I explained it clearly?"</p>
+        <p>"Do you have any questions or concerns? If anything comes up, ask your GP or pharmacist. Thank you for your time—I’ll dispose of my PPE and wash my hands now."</p>
+    </div>
+  </div>
 
-    <h3>🩺 Set up</h3>
-    <p>"Hi, my name is [Your Name], I’m a medical student. I’ll quickly wash my hands and put on PPE. Can I confirm your full name and date of birth?"</p>
-    <p>"Your GP has asked me to discuss your recent blood tests, which showed iron deficiency anaemia. Is now a good time to talk about your treatment and answer any questions?"</p>
-    <p>"Can I ask what you already know about iron or anaemia, and if you have any worries or things you want to cover?"</p>
-
-    <h3>📋 Brief history</h3>
-    <p>"Could you tell me what symptoms brought you to the GP—like tiredness, breathlessness, or palpitations? Have you had any other health problems, allergies, or regular medications? For women: do you have heavy periods? What’s your diet like, do you smoke or drink alcohol?"</p>
-
-    <h3>💊 What is iron and why do you need it?</h3>
-    <p>"Iron helps carry oxygen in your blood, so if it’s low, you might feel tired, dizzy, or short of breath. Causes can include blood loss (like heavy periods), not enough iron in the diet, or bleeding from the gut."</p>
-
-    <h3>🕒 How to take iron supplements</h3>
-    <p>"You’ll probably be prescribed a tablet like ferrous sulphate. It’s best taken on an empty stomach with orange juice (the vitamin C helps absorption). If you get nausea, you can take it with food instead."</p>
-
-    <h3>⚠️ Side effects and safety</h3>
-    <p>"Side effects are common and can include nausea, constipation, diarrhoea, or dark stools. They’re not dangerous, but if you find them very bothersome, please let us know so we can change your dose or type."</p>
-
-    <h3>📝 Monitoring and follow-up</h3>
-    <p>"You’ll usually need to take iron for at least 3–6 months. We’ll repeat your blood tests to check your levels. Some people need long-term supplements if the cause isn’t sorted. If heavy periods are a problem, we might suggest managing those as well."</p>
-
-    <h3>🥦 Diet advice</h3>
-    <p>"Try to eat iron-rich foods (like red meat, green veg, beans, lentils, dried fruit) and have vitamin C-rich foods for better absorption."</p>
-
-    <h3>🫂 Empathy & summary</h3>
-    <p>"It’s normal to feel frustrated with anaemia or side effects. We’re here to support you. Could you tell me what you’ll do next about your iron, just to check I explained it clearly?"</p>
-    <p>"Do you have any questions or concerns? If anything comes up, ask your GP or pharmacist. Thank you for your time—I’ll dispose of my PPE and wash my hands now."</p>
-
-</div>
-
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
