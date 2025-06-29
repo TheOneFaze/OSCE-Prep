@@ -1,180 +1,262 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Inhaler Counselling 02 | Pharmacy</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #e3f2fd;
-            color: #1976d2;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #bbdefb;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #64b5f6;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.6;
-        }
-        .resource {
-            margin-top: 20px;
-            background: #f8bbd0;
-            color: #c2185b;
-            border-radius: 8px;
-            padding: 12px;
-            font-weight: bold;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🫁 Inhaler Counselling</title>
+  <style>
+    /* --- UPDATED BLUE COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e3f2fd; /* Light blue background */
+      color: #1976d2;     /* Dark blue text */
+    }
+
+    header {
+      background: linear-gradient(to right, #64b5f6, #1976d2); /* Blue gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #bbdefb; /* Lighter blue switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #e3f2fd; /* Light blue background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #1976d2; /* Dark blue for headings */
+      border-left: 5px solid #1976d2; /* Dark blue border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    b {
+        font-weight: bold;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>🫁 Inhaler Counselling 02 | Pharmacy</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
+  <header>🫁 Inhaler Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span style="color:#1976d2;">High-Yield Notes</span>
-    <span style="color:#1976d2;">Full Script</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>Opening the Consultation</h3>
-    <ul>
-        <li>🧼 Wash hands & PPE</li>
-        <li>👋 Introduce yourself (name, role)</li>
-        <li>🆔 Confirm patient's name & date of birth</li>
-        <li>🗣️ Explain purpose: inhaler counselling</li>
-        <li>📝 Gain consent to proceed</li>
-    </ul>
-    <h3>Technique</h3>
-    <ul>
-        <li>📦 Check inhaler type, shake inhaler and remove cap (for MDI)</li>
-        <li>⬆️ Hold inhaler upright (flat base at bottom)</li>
-        <li>🔄 Open cover fully until you hear a click (for some DPIs)</li>
-        <li>🔢 Check dose counter is not empty</li>
-        <li>🧽 Check mouthpiece is clean and free from debris</li>
-        <li>🪑 Sit or stand upright, chin slightly up</li>
-        <li>😮‍💨 Breathe out fully away from inhaler</li>
-        <li>👄 Mouthpiece between lips (tight seal, don’t block air vent)</li>
-        <li>🫧 Inhale:
-            <ul>
-                <li>MDI: Slowly and deeply, press canister at same time</li>
-                <li>DPI: Quickly and deeply, listen for a click (if relevant)</li>
-            </ul>
-        </li>
-        <li>⏱️ Hold breath ~10 seconds</li>
-        <li>🌬️ Breathe out slowly, away from inhaler</li>
-        <li>🔁 For a second dose: wait, then repeat steps above</li>
-        <li>🛡️ Close cover after use to maintain hygiene</li>
-    </ul>
-    <h3>Key Points</h3>
-    <ul>
-        <li>🔁 Rinse mouth after steroid inhalers</li>
-        <li>🗓️ Use spacer if advised, clean regularly</li>
-        <li>📊 Track use and seek review if frequent reliever use</li>
-        <li>🕵️‍♂️ Signpost to <b>Asthma + Lung UK</b> for technique videos & info</li>
-    </ul>
-</div>
+    <div class="section-box">
+        <h3>🩺 Opening the Consultation</h3>
+        <ul>
+            <li>🧼 Wash hands & PPE</li>
+            <li>👋 Introduce yourself (name, role)</li>
+            <li>🆔 Confirm patient's name & date of birth</li>
+            <li>🗣️ Explain purpose: inhaler counselling</li>
+            <li>📝 Gain consent to proceed</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🫁 Technique</h3>
+        <ul>
+            <li>📦 Check inhaler type, shake inhaler and remove cap (for MDI)</li>
+            <li>⬆️ Hold inhaler upright (flat base at bottom)</li>
+            <li>🔄 Open cover fully until you hear a click (for some DPIs)</li>
+            <li>🔢 Check dose counter is not empty</li>
+            <li>🧽 Check mouthpiece is clean and free from debris</li>
+            <li>🪑 Sit or stand upright, chin slightly up</li>
+            <li>😮‍💨 Breathe out fully away from inhaler</li>
+            <li>👄 Mouthpiece between lips (tight seal, don’t block air vent)</li>
+            <li>🫧 Inhale:
+                <ul>
+                    <li>MDI: Slowly and deeply, press canister at same time</li>
+                    <li>DPI: Quickly and deeply, listen for a click (if relevant)</li>
+                </ul>
+            </li>
+            <li>⏱️ Hold breath ~10 seconds</li>
+            <li>🌬️ Breathe out slowly, away from inhaler</li>
+            <li>🔁 For a second dose: wait, then repeat steps above</li>
+            <li>🛡️ Close cover after use to maintain hygiene</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📝 Key Points</h3>
+        <ul>
+            <li>🔁 Rinse mouth after steroid inhalers</li>
+            <li>🗓️ Use spacer if advised, clean regularly</li>
+            <li>📊 Track use and seek review if frequent reliever use</li>
+            <li>🕵️‍♂️ Signpost to <b>Asthma + Lung UK</b> for technique videos & info</li>
+        </ul>
+    </div>
+  </div>
 
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <p>"Hi, my name is [Your Name], I’m a pharmacy student. I’ll just wash my hands. Can I confirm your name and date of birth?"</p>
+        <p>"You’re here to collect your inhaler. Is it okay if I show you how to use it and answer any questions? Have you used this type of inhaler before?"</p>
+        <p>"Is there anything in particular you want to know, or worries you have about using your inhaler?"</p>
+    </div>
+    <div class="section-box">
+        <h3>💊 What is the inhaler for?</h3>
+        <p>"There are two main types of inhalers. The blue one is a reliever for when you’re breathless or wheezing, working quickly to open your airways. The brown (or another color) is a preventer to use daily, which contains a steroid and helps prevent symptoms over time."</p>
+    </div>
+    <div class="section-box">
+        <h3>🕒 How to use the inhaler</h3>
+        <ol>
+            <li>"Check the dose counter to make sure it’s not empty and that the mouthpiece is clean."</li>
+            <li>"Hold the inhaler upright, open the cover fully (for some types), and shake if it’s an MDI."</li>
+            <li>"Sit or stand upright with your chin up."</li>
+            <li>"Breathe out fully away from the inhaler."</li>
+            <li>"Seal your lips around the mouthpiece (don’t block the vent)."</li>
+            <li>"If it’s an MDI, breathe in slowly and deeply while pressing the canister. For a DPI, breathe in quickly and deeply—you may hear a click."</li>
+            <li>"Hold your breath for up to 10 seconds, then breathe out slowly away from the device."</li>
+            <li>"For a second dose, wait a few moments, then repeat. Close the cover or replace the cap afterwards."</li>
+        </ol>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Key safety and extra advice</h3>
+        <p>"If your inhaler contains a steroid, rinse your mouth after use to prevent soreness or thrush. You may be given a spacer, especially for children or if you find coordination tricky—keep it clean and use it as shown. If you’re using your reliever more than three times a week, see your GP or asthma nurse."</p>
+        <p>"Always store your inhaler in a cool, dry place and check the expiry date. Asthma + Lung UK have helpful videos and advice online."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Summary & teach-back</h3>
+        <p>"So in summary: check your inhaler and mouthpiece, breathe out away, inhale as shown (slow for MDI, quick for DPI), hold your breath, rinse after steroids, and close the cover at the end."</p>
+        <p>"Would you like to have a go demonstrating it back to me, just so I know you feel confident? Any questions before we finish? Thanks for your time!"</p>
+    </div>
+  </div>
 
-    <h3>🩺 Set up</h3>
-    <p>"Hi, my name is [Your Name], I’m a pharmacy student. I’ll just wash my hands. Can I confirm your name and date of birth?"</p>
-    <p>"You’re here to collect your inhaler. Is it okay if I show you how to use it and answer any questions? Have you used this type of inhaler before?"</p>
-    <p>"Is there anything in particular you want to know, or worries you have about using your inhaler?"</p>
-
-    <h3>💊 What is the inhaler for?</h3>
-    <p>"There are two main types of inhalers. The blue one is a reliever for when you’re breathless or wheezing, working quickly to open your airways. The brown (or another color) is a preventer to use daily, which contains a steroid and helps prevent symptoms over time."</p>
-
-    <h3>🕒 How to use the inhaler</h3>
-    <ol>
-        <li>"Check the dose counter to make sure it’s not empty and that the mouthpiece is clean."</li>
-        <li>"Hold the inhaler upright, open the cover fully (for some types), and shake if it’s an MDI."</li>
-        <li>"Sit or stand upright with your chin up."</li>
-        <li>"Breathe out fully away from the inhaler."</li>
-        <li>"Seal your lips around the mouthpiece (don’t block the vent)."</li>
-        <li>"If it’s an MDI, breathe in slowly and deeply while pressing the canister. For a DPI, breathe in quickly and deeply—you may hear a click."</li>
-        <li>"Hold your breath for up to 10 seconds, then breathe out slowly away from the device."</li>
-        <li>"For a second dose, wait a few moments, then repeat. Close the cover or replace the cap afterwards."</li>
-    </ol>
-
-    <h3>⚠️ Key safety and extra advice</h3>
-    <p>"If your inhaler contains a steroid, rinse your mouth after use to prevent soreness or thrush. You may be given a spacer, especially for children or if you find coordination tricky—keep it clean and use it as shown. If you’re using your reliever more than three times a week, see your GP or asthma nurse."</p>
-    <p>"Always store your inhaler in a cool, dry place and check the expiry date. Asthma + Lung UK have helpful videos and advice online."</p>
-
-    <h3>✅ Summary & teach-back</h3>
-    <p>"So in summary: check your inhaler and mouthpiece, breathe out away, inhale as shown (slow for MDI, quick for DPI), hold your breath, rinse after steroids, and close the cover at the end."</p>
-    <p>"Would you like to have a go demonstrating it back to me, just so I know you feel confident? Any questions before we finish? Thanks for your time!"</p>
-</div>
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
