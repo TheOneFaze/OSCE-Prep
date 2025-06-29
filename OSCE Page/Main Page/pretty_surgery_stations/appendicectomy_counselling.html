@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚕️ Appendicectomy Counselling</title>
+  <style>
+    /* --- NEW BLUE THEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e3f2fd; /* Light blue background */
+      color: #1565c0;     /* Dark blue text */
+    }
+
+    header {
+      background: linear-gradient(to right, #64b5f6, #1565c0); /* Blue gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #bbdefb; /* Lighter blue switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #e3f2fd; /* Light blue background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #1565c0; /* Dark blue for headings */
+      border-left: 5px solid #1565c0; /* Dark blue border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+      list-style-type: none;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    strong {
+        font-weight: bold;
+        color: #0d47a1;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>⚕️ Appendicectomy Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>📖 The Condition & Procedure</h3>
+        <ul>
+            <li><strong>Appendicitis:</strong> Inflammation of the appendix, often from a blockage. Yours is caused by a small stone (appendicolith).</li>
+            <li><strong>Urgency:</strong> Needs urgent surgery to prevent the appendix from bursting, which is a serious complication.</li>
+            <li><strong>Appendicectomy:</strong> The surgical removal of the appendix.</li>
+            <li><strong>Method:</strong> Usually done via keyhole surgery (laparoscopic) with 3-4 small cuts.</li>
+            <li><strong>Anaesthesia:</strong> Performed under general anaesthetic (you will be asleep).</li>
+            <li><strong>Antibiotics:</strong> Given before surgery to prevent infection.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Complications & Aftercare</h3>
+        <ul>
+            <li><strong>Common:</strong> Pain and bruising around the cuts are normal.</li>
+            <li><strong>Shoulder Pain:</strong> Can occur due to the gas used in keyhole surgery and is temporary.</li>
+            <li><strong>Constipation:</strong> Common after surgery. Drink plenty of fluids and eat fibre to help.</li>
+            <li><strong>Standard Risks:</strong> As with any surgery, there is a small risk of bleeding, infection, or scarring.</li>
+            <li><strong>Safety Net:</strong> Return to hospital if you notice signs of infection (redness, swelling, discharge from wounds) or feel feverish.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🏥 Recovery</h3>
+        <ul>
+            <li><strong>Hospital Stay:</strong> Most people can go home the day after surgery.</li>
+            <li><strong>Rest:</strong> Take it easy for about 2 weeks.</li>
+            <li><strong>Activity:</strong> No heavy lifting or strenuous activity for this period to allow the wounds to heal properly.</li>
+            <li><strong>Stitches:</strong> Usually dissolvable. If not, they are removed by your GP in 7-10 days.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>❓ What is Appendicitis?</h3>
+        <p>Appendicitis is when the appendix, which is a small pouch attached to your large intestine, becomes inflamed and infected. In your case, a scan has shown that the entrance to your appendix is blocked by a small, hard stone-like object. This blockage is what's causing the inflammation.</p>
+        <p>It is very important that we treat this urgently. If we leave it, the pressure can build up and the appendix could burst. This can cause the infection to spread inside your abdomen, which can make you seriously unwell.</p>
+    </div>
+    <div class="section-box">
+        <h3>⚕️ The Appendicectomy Procedure</h3>
+        <p>The most effective treatment is to remove the appendix. This operation is called an appendicectomy, and it's one of the most common surgeries performed in the UK.</p>
+        <p>We almost always do this using 'keyhole surgery'. This involves making 3 or 4 small cuts in your tummy. We then put some gas inside to create space, and use special instruments to remove the appendix. This method results in less pain, faster recovery, and smaller scars compared to traditional open surgery.</p>
+        <p>The operation is done under general anaesthetic, so you will be completely asleep and won't feel anything. We will also give you some antibiotics before the surgery to reduce the risk of infection afterwards.</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Complications of Surgery</h3>
+        <p>After the surgery, it's normal to have some pain and bruising around the small cuts, which can be managed with regular painkillers like paracetamol. You might also feel some pain in your shoulder; this is quite common and is caused by the gas we use during the operation, it will go away on its own.</p>
+        <p>Many people also feel a bit constipated afterwards. We recommend drinking plenty of fluids and eating high-fibre foods to help with this. It's best to avoid painkillers that contain codeine, as they can make constipation worse.</p>
+        <p>As with any operation, there's a small risk of bleeding, infection, or noticeable scarring, but these are less common with keyhole surgery.</p>
+    </div>
+    <div class="section-box">
+        <h3>🏠 Recovery and Aftercare</h3>
+        <p>Most people are well enough to go home one day after their surgery. We recommend you take it easy for about two weeks to recover fully. During this time, you should not do any heavy lifting or strenuous activity, as this could put a strain on your healing wounds.</p>
+        <p>The stitches we use are normally dissolvable. If normal stitches are used, you can have them removed at your GP practice after about 7 to 10 days.</p>
+        <p>It's important to watch for any signs of infection. If you notice any of your wounds becoming red, swollen, hot, or discharging any fluid, or if you feel unwell and feverish, you should come straight back to the hospital so we can assess you.</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>
