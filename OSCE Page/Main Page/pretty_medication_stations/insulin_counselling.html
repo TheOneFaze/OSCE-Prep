@@ -1,177 +1,282 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Insulin Counselling</title>
-<style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #e3f2fd;
-            color: #1565c0;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #64b5f6;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #64b5f6;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.6;
-        }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💉 Insulin Counselling</title>
+  <style>
+    /* --- UPDATED BLUE COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e3f2fd; /* Light blue background */
+      color: #1565c0;     /* Dark blue text */
+    }
+
+    header {
+      background: linear-gradient(to right, #64b5f6, #1565c0); /* Blue gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #bbdefb; /* Lighter blue switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #e3f2fd; /* Light blue background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #1565c0; /* Dark blue for headings */
+      border-left: 5px solid #1565c0; /* Dark blue border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    b {
+        font-weight: bold;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>💉 Insulin Counselling</h1>
-<div class="toggle-container">
-<div class="switch" id="toggleSwitch">
-<div class="slider"></div>
-</div>
-</div>
-<div class="labels">
-<span style="color:#1565c0;">High-Yield Notes</span>
-<span style="color:#1565c0;">Full Script</span>
-</div>
-<div class="content-section active" id="highYield">
-<h2>High-Yield OSCE Points 🧠</h2>
-<h3>Set Up & Introduction</h3>
-<ul>
-<li>🧼 Wash hands and don PPE if appropriate</li>
-<li>👋 Introduce self (name, role)</li>
-<li>🆔 Confirm patient's name and date of birth</li>
-<li>📝 Explain purpose: discuss diabetes diagnosis and ALL treatment options (including insulin)</li>
-<li>✔️ Gain consent to proceed</li>
-<li>📋 Demonstrate awareness of background info (recent diagnosis, current management, reason for insulin)</li>
-</ul>
-<h3>Perceptions & ICE</h3>
-<ul>
-<li>🤔 Ask about prior knowledge/experience with diabetes and insulin</li>
-<li>❓ Explore concerns and expectations</li>
-<li>🙋 Encourage questions and contribution throughout</li>
-</ul>
-<h3>Information & Explanation</h3>
-<ul>
-<li>🧬 Insulin replaces the lack of natural insulin (esp. in type 1 diabetes)</li>
-<li>💬 Offer as much/little detail as wanted, check for info the patient does NOT want</li>
-<li>🔄 Check understanding regularly, correct misunderstandings</li>
-<li>🧑‍🏫 Give info in small sections, pause for understanding</li>
-</ul>
-<h3>How to Use Insulin</h3>
-<ul>
-<li>🖊️ Inject into fat (abdomen, thigh); rotate sites to avoid lipodystrophy</li>
-<li>⏰ Basal insulin (daily or twice daily), bolus insulin (before meals) as prescribed</li>
-<li>🔁 Demonstrate with pen/device if possible</li>
-</ul>
-<h3>Side Effects & Safety-Netting</h3>
-<ul>
-<li>⚠️ Hypoglycaemia: shaky, sweaty, dizzy, confused – treat with glucose/jelly babies; always carry with you</li>
-<li>💧 Oedema: possible swelling in legs/feet (rare)</li>
-<li>🚗 DVLA: inform if driving</li>
-<li>🦺 Always have hypo treatment to hand (safety netting)</li>
-</ul>
-<h3>Monitoring</h3>
-<ul>
-<li>🩸 Monitor blood glucose before meals & bedtime</li>
-<li>🧪 Regular HbA1c blood tests (every 3–6 months)</li>
-</ul>
-<h3>Extras</h3>
-<ul>
-<li>📦 Store unopened insulin in fridge, in-use at room temp (never freeze)</li>
-<li>📱 Provide resources: leaflets, websites, support apps</li>
-<li>🔄 Summarise, ask for teach-back</li>
-<li>🫂 Explore feelings about insulin & info given; empathy & shared decision-making</li>
-</ul>
-</div>
-<div class="content-section" id="fullScript">
-<h2>Full Word-for-Word OSCE Script 📜</h2>
+  <header>💉 Insulin Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
 
-<h3>🩺 Set up</h3>
-<p>"Hi, my name is [Your Name], I’m a medical student. I’ll just wash my hands and put on some PPE. Can I confirm your full name and date of birth?"</p>
-<p>"I see you’ve been diagnosed with diabetes, and today we’ll discuss your treatment options, especially insulin. Is this a good time to talk, and is there anything in particular you want to focus on?"</p>
-<p>"Before we get started, can I ask what you already know about diabetes or insulin? Are there any worries or expectations you’d like to share?"</p>
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>🩺 Set Up & Introduction</h3>
+        <ul>
+            <li>🧼 Wash hands and don PPE if appropriate</li>
+            <li>👋 Introduce self (name, role)</li>
+            <li>🆔 Confirm patient's name and date of birth</li>
+            <li>📝 Explain purpose: discuss diabetes diagnosis and ALL treatment options (including insulin)</li>
+            <li>✔️ Gain consent to proceed</li>
+            <li>📋 Demonstrate awareness of background info (recent diagnosis, current management, reason for insulin)</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Perceptions & ICE</h3>
+        <ul>
+            <li>🤔 Ask about prior knowledge/experience with diabetes and insulin</li>
+            <li>❓ Explore concerns and expectations</li>
+            <li>🙋 Encourage questions and contribution throughout</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📖 Information & Explanation</h3>
+        <ul>
+            <li>🧬 Insulin replaces the lack of natural insulin (esp. in type 1 diabetes)</li>
+            <li>💬 Offer as much/little detail as wanted, check for info the patient does NOT want</li>
+            <li>🔄 Check understanding regularly, correct misunderstandings</li>
+            <li>🧑‍🏫 Give info in small sections, pause for understanding</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🖊️ How to Use Insulin</h3>
+        <ul>
+            <li>Inject into fat (abdomen, thigh); rotate sites to avoid lipodystrophy</li>
+            <li>⏰ Basal insulin (daily or twice daily), bolus insulin (before meals) as prescribed</li>
+            <li>🔁 Demonstrate with pen/device if possible</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side Effects & Safety-Netting</h3>
+        <ul>
+            <li>📉 Hypoglycaemia: shaky, sweaty, dizzy, confused – treat with glucose/jelly babies; always carry with you</li>
+            <li>💧 Oedema: possible swelling in legs/feet (rare)</li>
+            <li>🚗 DVLA: inform if driving</li>
+            <li>🦺 Always have hypo treatment to hand (safety netting)</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🔬 Monitoring</h3>
+        <ul>
+            <li>🩸 Monitor blood glucose before meals & bedtime</li>
+            <li>🧪 Regular HbA1c blood tests (every 3–6 months)</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📦 Extras</h3>
+        <ul>
+            <li>🧊 Store unopened insulin in fridge, in-use at room temp (never freeze)</li>
+            <li>📱 Provide resources: leaflets, websites, support apps</li>
+            <li>🔄 Summarise, ask for teach-back</li>
+            <li>❤️ Explore feelings about insulin & info given; empathy & shared decision-making</li>
+        </ul>
+    </div>
+  </div>
 
-<h3>💉 What is insulin and why do you need it?</h3>
-<p>"Insulin is a hormone your body needs to move sugar from your blood into your cells. In type 1 diabetes, your body can’t make insulin at all; in some type 2 cases, there’s not enough or it doesn’t work properly, so we replace it with injections."</p>
-<p>"Would you like a detailed explanation of how insulin works, or just the essentials?"</p>
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <p>"Hi, my name is [Your Name], I’m a medical student. I’ll just wash my hands and put on some PPE. Can I confirm your full name and date of birth?"</p>
+        <p>"I see you’ve been diagnosed with diabetes, and today we’ll discuss your treatment options, especially insulin. Is this a good time to talk, and is there anything in particular you want to focus on?"</p>
+        <p>"Before we get started, can I ask what you already know about diabetes or insulin? Are there any worries or expectations you’d like to share?"</p>
+    </div>
+    <div class="section-box">
+        <h3>💉 What is insulin and why do you need it?</h3>
+        <p>"Insulin is a hormone your body needs to move sugar from your blood into your cells. In type 1 diabetes, your body can’t make insulin at all; in some type 2 cases, there’s not enough or it doesn’t work properly, so we replace it with injections."</p>
+        <p>"Would you like a detailed explanation of how insulin works, or just the essentials?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🖊️ How to use insulin</h3>
+        <p>"Insulin is injected just under the skin using a small needle—usually in your tummy or thigh. It's important to rotate where you inject to avoid thickened skin. There are different types—some are taken once or twice daily (basal), and others are taken before meals (bolus). We’ll show you exactly what you need and can practice together using a demo pen."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side effects & safety</h3>
+        <p>"The most important risk is low blood sugar (hypoglycaemia). You may feel shaky, sweaty, dizzy, or confused. If this happens, treat it with something sugary like glucose tablets or juice. Always carry hypo treatment with you. Rarely, insulin can cause swelling in your legs or feet."</p>
+        <p>"If you drive, you need to inform the DVLA, as insulin can cause hypos and affect driving safety."</p>
+    </div>
+    <div class="section-box">
+        <h3>🩸 Monitoring & storage</h3>
+        <p>"You’ll need to check your blood sugars before meals and at bedtime. We’ll also check your HbA1c every 3–6 months. Store unopened insulin in the fridge, and once in use, it can stay at room temperature for up to 28 days, but never freeze it."</p>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Empathy, feelings & shared decision-making</h3>
+        <p>"How do you feel about starting insulin? It’s normal to feel nervous, and we’ll support you as you get used to it. We’ll make a plan together that works for you. If anything isn’t clear, just ask."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Summary & teach-back</h3>
+        <p>"Just to check I’ve explained things clearly, could you tell me the main points you’ll remember about using insulin? If anything’s unclear, I can go over it again."</p>
+        <p>"Have all your questions been answered? If you have any worries, you can always contact your diabetes team. Thank you for your time today!"</p>
+        <p><b>Safety netting:</b> "If you notice frequent hypos or other side effects, please contact your team. Always carry hypo treatment, especially when out or driving."</p>
+    </div>
+  </div>
 
-<h3>🖊️ How to use insulin</h3>
-<p>"Insulin is injected just under the skin using a small needle—usually in your tummy or thigh. It's important to rotate where you inject to avoid thickened skin. There are different types—some are taken once or twice daily (basal), and others are taken before meals (bolus). We’ll show you exactly what you need and can practice together using a demo pen."</p>
-
-<h3>⚠️ Side effects & safety</h3>
-<p>"The most important risk is low blood sugar (hypoglycaemia). You may feel shaky, sweaty, dizzy, or confused. If this happens, treat it with something sugary like glucose tablets or juice. Always carry hypo treatment with you. Rarely, insulin can cause swelling in your legs or feet."</p>
-<p>"If you drive, you need to inform the DVLA, as insulin can cause hypos and affect driving safety."</p>
-
-<h3>🩸 Monitoring & storage</h3>
-<p>"You’ll need to check your blood sugars before meals and at bedtime. We’ll also check your HbA1c every 3–6 months. Store unopened insulin in the fridge, and once in use, it can stay at room temperature for up to 28 days, but never freeze it."</p>
-
-<h3>🫂 Empathy, feelings & shared decision-making</h3>
-<p>"How do you feel about starting insulin? It’s normal to feel nervous, and we’ll support you as you get used to it. We’ll make a plan together that works for you. If anything isn’t clear, just ask."</p>
-
-<h3>✅ Summary & teach-back</h3>
-<p>"Just to check I’ve explained things clearly, could you tell me the main points you’ll remember about using insulin? If anything’s unclear, I can go over it again."</p>
-<p>"Have all your questions been answered? If you have any worries, you can always contact your diabetes team. Thank you for your time today!"</p>
-<p><b>Safety netting:</b> "If you notice frequent hypos or other side effects, please contact your team. Always carry hypo treatment, especially when out or driving."</p>
-
-</div>
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
