@@ -1,147 +1,250 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Amitriptyline Counselling</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💊 Amitriptyline Counselling</title>
+  <style>
+    /* --- UPDATED ORANGE COLOR SCHEME --- */
     body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #fff3e0;
-        color: #e65100;
-        margin: 0;
-        padding: 20px;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff3e0; /* Light orange background */
+      color: #e65100;     /* Dark orange text */
     }
-    h1, h2 {
-        text-align: center;
-        color: #e65100;
+
+    header {
+      background: linear-gradient(to right, #ffb74d, #e65100); /* Orange gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    .toggle-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 30px 0;
-    }
-    .switch {
-        position: relative;
-        width: 120px;
-        height: 50px;
-        background-color: #ffe0b2;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    }
-    .slider {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 40px;
-        height: 40px;
-        background-color: white;
-        border-radius: 50%;
-        transition: all 0.3s ease-in-out;
-    }
-    .switch.active .slider {
-        transform: translateX(70px);
-    }
+
     .labels {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-        font-weight: bold;
-        font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
     }
-    .labels span {
-        color: #e65100;
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
     }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #ffe0b2; /* Lighter orange switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
     .content-section {
-        display: none;
-        padding: 20px;
-        background: white;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
+
     .content-section.active {
-        display: block;
+      display: block;
     }
+
+    .section-box {
+      background: #fff3e0; /* Light orange background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
     h3 {
-        border-bottom: 2px solid #ffcc80;
-        padding-bottom: 5px;
-        margin-top: 30px;
+      color: #e65100; /* Dark orange for headings */
+      border-left: 5px solid #e65100; /* Dark orange border */
+      padding-left: 10px;
+      margin-top: 20px;
     }
+
     ul {
-        line-height: 1.6;
+      padding-left: 20px;
     }
-</style>
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    strong {
+        font-weight: bold;
+    }
+
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>💊 Amitriptyline Counselling</h1>
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
-    </div>
-</div>
-<div class="labels">
+  <header>💊 Amitriptyline Counselling</header>
+  <div class="labels">
     <span>High-Yield Notes</span>
     <span>Full Script</span>
-</div>
-<div class="content-section active" id="highYield">
-    <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>Purpose</h3>
-    <ul>
-        <li>🧠 Migraine prophylaxis (prevention)</li>
-        <li>⚖️ Not for acute treatment of attacks</li>
-    </ul>
-    <h3>How to Take</h3>
-    <ul>
-        <li>🌙 Once daily at night</li>
-        <li>⏳ Takes 4–6 weeks to be effective</li>
-    </ul>
-    <h3>Side Effects</h3>
-    <ul>
-        <li>😴 Drowsiness, dry mouth, constipation</li>
-        <li>⚖️ Weight gain, blurry vision</li>
-    </ul>
-    <h3>Safety & Monitoring</h3>
-    <ul>
-        <li>✅ No routine blood tests</li>
-        <li>🚼 Discuss if planning pregnancy</li>
-        <li>🛑 Do not stop abruptly — taper off</li>
-    </ul>
-</div>
-<div class="content-section" id="fullScript">
-    <h2>Full Word-for-Word OSCE Script 📜</h2>
-    <h3>🩺 Set up</h3>
-    <p>"Hi, I’m [Your Name], a medical student. I’ll wash my hands and put on PPE if needed. Can I confirm your name and date of birth?"</p>
-    <p>"You’ve been prescribed amitriptyline for migraine prevention. I’d like to explain how it works, how to take it, and answer any questions you may have. Is now a good time?"</p>
-    <h3>🧠 What Is It and Why?</h3>
-    <p>"Amitriptyline is originally an antidepressant, but it's used at lower doses to prevent migraines. You don’t need to have depression to benefit from it — it changes how your nerves perceive pain and increases serotonin."</p>
-    <h3>📆 How to Take</h3>
-    <p>"Take it once a day, at night. It won’t treat an acute migraine but helps reduce the frequency over time. It usually takes 4–6 weeks to feel the effects."</p>
-    <p>"If stopping, taper off gradually with medical advice to avoid withdrawal."</p>
-    <h3>🩺 Side Effects</h3>
-    <p>"Side effects include dry mouth, sleepiness, constipation, weight gain, and blurred vision. They’re usually not serious but let us know if they bother you."</p>
-    <h3>👶 Family Planning</h3>
-    <p>"If you're planning a pregnancy, speak to your doctor. It can be continued if necessary but may need monitoring."</p>
-    <h3>💬 Common Questions</h3>
-    <p><strong>Can I still take painkillers?</strong> Yes, paracetamol or ibuprofen can still be used.</p>
-    <p><strong>Do I need blood tests?</strong> No routine blood tests are required for this medication.</p>
-    <h3>✅ Summary</h3>
-    <p>"So to summarise: amitriptyline helps prevent migraines, is taken nightly, and can cause side effects like drowsiness or dry mouth. Don’t stop suddenly, and reach out if any concerns arise."</p>
-    <p>"Would you mind summarising back what we discussed to make sure I was clear?"</p>
-    <p><em>“It helps stop my migraines, taken once daily, and I need to taper off if I stop. Side effects like dry mouth or tiredness are common.”</em></p>
-</div>
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
 
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>🎯 Purpose</h3>
+        <ul>
+            <li>🧠 Migraine prophylaxis (prevention)</li>
+            <li>⚖️ Not for acute treatment of attacks</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📅 How to Take</h3>
+        <ul>
+            <li>🌙 Once daily at night</li>
+            <li>⏳ Takes 4–6 weeks to be effective</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side Effects</h3>
+        <ul>
+            <li>😴 Drowsiness, dry mouth, constipation</li>
+            <li>⚖️ Weight gain, blurry vision</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🛡️ Safety & Monitoring</h3>
+        <ul>
+            <li>✅ No routine blood tests</li>
+            <li>🚼 Discuss if planning pregnancy</li>
+            <li>🛑 Do not stop abruptly — taper off</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <p>"Hi, I’m [Your Name], a medical student. I’ll wash my hands and put on PPE if needed. Can I confirm your name and date of birth?"</p>
+        <p>"You’ve been prescribed amitriptyline for migraine prevention. I’d like to explain how it works, how to take it, and answer any questions you may have. Is now a good time?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🧠 What Is It and Why?</h3>
+        <p>"Amitriptyline is originally an antidepressant, but it's used at lower doses to prevent migraines. You don’t need to have depression to benefit from it — it changes how your nerves perceive pain and increases serotonin."</p>
+    </div>
+    <div class="section-box">
+        <h3>📆 How to Take</h3>
+        <p>"Take it once a day, at night. It won’t treat an acute migraine but helps reduce the frequency over time. It usually takes 4–6 weeks to feel the effects."</p>
+        <p>"If stopping, taper off gradually with medical advice to avoid withdrawal."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side Effects</h3>
+        <p>"Side effects include dry mouth, sleepiness, constipation, weight gain, and blurred vision. They’re usually not serious but let us know if they bother you."</p>
+    </div>
+    <div class="section-box">
+        <h3>👶 Family Planning</h3>
+        <p>"If you're planning a pregnancy, speak to your doctor. It can be continued if necessary but may need monitoring."</p>
+    </div>
+    <div class="section-box">
+        <h3>💬 Common Questions</h3>
+        <p><strong>Can I still take painkillers?</strong> Yes, paracetamol or ibuprofen can still be used.</p>
+        <p><strong>Do I need blood tests?</strong> No routine blood tests are required for this medication.</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Summary</h3>
+        <p>"So to summarise: amitriptyline helps prevent migraines, is taken nightly, and can cause side effects like drowsiness or dry mouth. Don’t stop suddenly, and reach out if any concerns arise."</p>
+        <p>"Would you mind summarising back what we discussed to make sure I was clear?"</p>
+        <p><em>“It helps stop my migraines, taken once daily, and I need to taper off if I stop. Side effects like dry mouth or tiredness are common.”</em></p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
