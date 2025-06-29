@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>❤️ Post-STEMI Counselling</title>
+  <style>
+    /* --- RED/PINK COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffebee; /* Light red/pink background */
+      color: #b71c1c;     /* Dark red text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ef9a9a, #b71c1c); /* Red gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #ffcdd2; /* Lighter red switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #ffebee; /* Light red/pink background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #b71c1c; /* Dark red for headings */
+      border-left: 5px solid #b71c1c; /* Dark red border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+      list-style-type: none;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>❤️ Post-Heart Attack (STEMI) Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>🏥 The Recovery Process</h3>
+        <ul>
+            <li>🏨 <strong>Hospital Stay:</strong> Typically 2-5 days for monitoring.</li>
+            <li>❤️ <strong>Cardiac Rehabilitation:</strong> A key program involving education, support, and a gradual return to exercise.</li>
+            <li>🚶‍♂️ <strong>Activity:</strong> Rest is important initially, followed by a slow, gradual increase in activity. Avoid anything strenuous.</li>
+            <li>👔 <strong>Work:</strong> Plan to take at least 2 weeks off work, potentially longer depending on recovery and job demands.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Lifestyle Changes (Secondary Prevention)</h3>
+        <ul>
+            <li>🚭 <strong>Smoking:</strong> Quitting is the most critical step to prevent another heart attack.</li>
+            <li>🍺 <strong>Alcohol:</strong> Reducing intake is strongly recommended.</li>
+            <li>🥗 <strong>Diet:</strong> A healthy, balanced diet is essential for weight management and heart health.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>💊 Medical Management (Secondary Prevention)</h3>
+        <ul>
+            <li>🩸 <strong>Dual Antiplatelets:</strong> Continue taking drugs like Aspirin and Prasugrel to prevent clots.</li>
+            <li>🟡 <strong>Statins:</strong> To lower 'bad' cholesterol levels.</li>
+            <li>💓 <strong>Beta-blockers:</strong> To reduce blood pressure and the strain on your heart.</li>
+            <li>💊 <strong>ACE Inhibitors:</strong> Also helps lower blood pressure and protect the heart.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🚗 Driving and Practicalities</h3>
+        <ul>
+            <li><strong>Driving:</strong> You can usually drive again after about one week if you feel well and are not having distracting pain.</li>
+            <li><strong>Sex:</strong> It is safe to resume sexual activity when you feel ready, usually around 5 weeks post-event.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🏥 The Recovery Process & Cardiac Rehabilitation</h3>
+        <p>It's very important to take your recovery slowly and give your body time to heal after a heart attack. You will likely need to stay in the hospital for a few days, usually between 2 and 5, so we can monitor your progress.</p>
+        <p>A key part of your recovery will be a program called 'Cardiac Rehabilitation'. This is designed to help you understand your condition, learn about your medications, and gradually improve your fitness in a safe and supervised way. It involves education sessions and a plan for light exercise that you can build on over time.</p>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Lifestyle Changes for a Healthier Heart</h3>
+        <p>There are several very important lifestyle changes we need to discuss to reduce your risk of this happening again. As you anticipated, quitting smoking is the single most effective thing you can do for your heart health. We have excellent support services that can help you with this.</p>
+        <p>Cutting down on your alcohol intake and adopting a healthy, balanced diet are also crucial. This can help with managing weight and cholesterol. When you feel ready, we encourage starting with light exercise, like a 5-minute walk, and gradually increasing it as you feel stronger.</p>
+    </div>
+    <div class="section-box">
+        <h3>💊 Medications to Protect Your Heart</h3>
+        <p>To protect your heart and prevent another event, you will need to take a few different medications long-term.</p>
+        <p>We will continue the anti-platelet drugs like Aspirin and Prasugrel, which make your blood less sticky and prevent clots. We will also start you on a statin to lower your 'bad' cholesterol, a beta-blocker to lower your blood pressure and reduce the strain on your heart, and an ACE inhibitor, which also helps to lower blood pressure and protect the heart muscle.</p>
+    </div>
+    <div class="section-box">
+        <h3>🚗 Getting Back to Normal (Work, Driving, Sex)</h3>
+        <p>Regarding work, we strongly recommend taking at least two weeks off before returning. Depending on the stress of your job and how your recovery goes, it may be wise to wait longer.</p>
+        <p>You should be able to drive again after about a week, as long as you feel well and are not experiencing chest pain. In terms of sex, it's generally safe to resume activity when you feel ready, which for most people is around 5 weeks after their heart attack.</p>
+    </div>
+     <div class="section-box">
+        <h3>❗ Long-Term Outlook</h3>
+        <p>It's important to be aware that heart attacks can sometimes lead to long-term issues. In a minority of cases, people can develop an irregular heartbeat, or the heart muscle can be weakened, a condition known as heart failure. As concerning as this sounds, please be reassured that these things do not happen to most people, and we are here to monitor you closely and manage any problems that may arise.</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>
