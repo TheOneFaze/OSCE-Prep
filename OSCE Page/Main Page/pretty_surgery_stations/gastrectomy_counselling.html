@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚕️ Gastrectomy Counselling</title>
+  <style>
+    /* --- NEW GREEN THEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e8f5e9; /* Light green background */
+      color: #2e7d32;     /* Dark green text */
+    }
+
+    header {
+      background: linear-gradient(to right, #a5d6a7, #2e7d32); /* Green gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #c8e6c9; /* Lighter green switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #e8f5e9; /* Light green background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #2e7d32; /* Dark green for headings */
+      border-left: 5px solid #2e7d32; /* Dark green border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+      list-style-type: none;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    strong {
+        font-weight: bold;
+        color: #1b5e20;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>⚕️ Gastrectomy Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>📖 The Procedure</h3>
+        <ul>
+            <li>✅ <strong>Goal:</strong> To remove the part of the stomach with cancer, with the aim to cure.</li>
+            <li>🔪 <strong>Subtotal Gastrectomy:</strong> Removal of the affected part of the stomach.</li>
+            <li><strong>Types:</strong> Can be done via open surgery (one large cut) or keyhole surgery (several small cuts).</li>
+            <li>😴 <strong>Anaesthesia:</strong> Performed under general anaesthetic (you will be asleep).</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Key Risks & Complications</h3>
+        <ul>
+            <li>❗ <strong>Stomach Leak:</strong> A leak from where the stomach was surgically joined.</li>
+            <li>🤢 <strong>Dumping Syndrome:</strong> Sugary food moves too quickly into the gut, causing faintness. Avoided with diet changes.</li>
+            <li>🩸 <strong>Standard Risks:</strong> Pain, bleeding, and infection.</li>
+            <li>📉 <strong>Deficiencies:</strong> Reduced absorption of iron and calcium may require monitoring and supplements.</li>
+            <li>🚧 <strong>Bowel Blockage:</strong> A rare but serious complication that may require further surgery.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🏥 Recovery</h3>
+        <ul>
+            <li>🕒 <strong>Hospital Stay:</strong> Around 1-2 weeks.</li>
+            <li><strong>NG Tube:</strong> A tube through the nose to drain stomach secretions, preventing sickness.</li>
+            <li><strong>Feeding:</strong> Initially fed via a line into your veins (TPN) to let the stomach rest.</li>
+            <li>🥗 <strong>Diet:</strong> A dietitian will help you adjust to a new diet. High-fibre foods are avoided initially.</li>
+            <li><strong>Follow-up:</strong> You will have a follow-up appointment a few weeks after discharge.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>📖 Explaining the Gastrectomy</h3>
+        <p><strong>Doctor's explanation:</strong> "Your cancer is limited to your stomach, meaning it hasn't spread elsewhere. When cancer is confined like this, it is much easier to treat, which is very positive."</p>
+        <p>"The best option for this type of cancer is an operation called a subtotal gastrectomy. This involves a surgeon removing the part of your stomach that contains the cancer and then rejoining the healthy parts. After this procedure, your digestive system will still work, but your stomach will be smaller."</p>
+        <p>"This is a major surgery, so you will be put under a general anaesthetic, which means you'll be asleep and won't feel any pain during the operation."</p>
+        <p>"There are two ways we can do this. One is 'open surgery', where a single larger cut is made in your abdomen. The other is 'keyhole surgery', where a few small cuts are made, and the surgeon uses special tools to perform the operation. Keyhole surgery often has a faster recovery time."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Risks, Benefits, and Complications</h3>
+        <p><strong>Doctor's explanation:</strong> "The main benefit of this surgery is that it aims to cure your cancer, preventing it from growing, spreading, or causing more symptoms."</p>
+        <p>"As with any operation, there are risks, which include pain, bleeding, and infection at the wound site. There's also a risk of a leak from where your stomach was stitched back together, which can make you quite unwell. We will monitor you very closely after the surgery to catch any problems like this early."</p>
+        <p>"Because your stomach will be smaller, you will feel full much quicker, which can lead to some weight loss. Many people also experience what is called 'dumping syndrome', where sugary foods pass too quickly into your intestine, making you feel faint. This can be managed by eating slowly and avoiding very sugary foods."</p>
+        <p>"Your stomach is important for absorbing certain nutrients, so after the surgery, you could become low in things like iron or calcium. We will monitor your blood levels and can give you supplements if needed."</p>
+        <p>"A rarer risk is a blockage in your bowel, which can be serious and might require another operation."</p>
+    </div>
+    <div class="section-box">
+        <h3>🏥 Recovery in Hospital</h3>
+        <p><strong>Doctor's explanation:</strong> "After the operation, you will likely stay in the hospital for one to two weeks to recover. To help your stomach heal, you won't be able to eat or drink straight away. Instead, we will give you nutrition directly into a vein. We will also place a small tube down your nose into your stomach to drain away any fluids and prevent you from feeling sick."</p>
+        <p>"You will also have a catheter to monitor your urine output. After about a week, you should be able to start eating again, beginning with small amounts."</p>
+    </div>
+    <div class="section-box">
+        <h3>🥗 Life After Recovery</h3>
+        <p><strong>Doctor's explanation:</strong> "Once you go home, you will have an appointment with a dietician who will help you adjust to your new diet. For a while after the operation, we advise avoiding high-fibre foods to give your stomach time to heal."</p>
+        <p>"To give us the best chance of curing the cancer, we will likely recommend either chemotherapy or radiotherapy alongside the surgery as an extra precaution."</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>

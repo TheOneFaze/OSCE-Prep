@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚕️ Cholecystectomy Counselling</title>
+  <style>
+    /* --- NEW YELLOW/AMBER THEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffde7; /* Light yellow background */
+      color: #f57c00;     /* Dark amber text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ffd54f, #f57c00); /* Yellow/Amber gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #ffe082; /* Lighter yellow switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #fffde7; /* Light yellow background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #f57c00; /* Dark amber for headings */
+      border-left: 5px solid #f57c00; /* Dark amber border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+      list-style-type: none;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    strong {
+        font-weight: bold;
+        color: #e65100;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>⚕️ Cholecystectomy Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>📖 The Condition & Procedure</h3>
+        <ul>
+            <li>💎 <strong>Gallstones:</strong> Hardened deposits of bile and cholesterol that form in the gallbladder.</li>
+            <li>😖 <strong>Symptoms:</strong> Cause pain when they pass through the bile tubes, especially after eating.</li>
+            <li>✅ <strong>Cholecystectomy:</strong> Surgical removal of the gallbladder to prevent gallstones from recurring.</li>
+            <li>😴 <strong>Anaesthesia:</strong> Performed under general anaesthetic.</li>
+            <li> laparoscopy, with a chance of converting to open surgery if needed.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Key Risks & Complications</h3>
+        <ul>
+            <li>🩸 <strong>Standard Risks:</strong> Pain, bleeding, and infection at the surgical sites.</li>
+            <li>💧 <strong>Bile Leak:</strong> A rare (1 in 100) but serious risk of bile leaking from the bile duct after surgery.</li>
+            <li>💥 <strong>Organ Injury:</strong> Very rare risk of damage to nearby structures like the bowel or blood vessels.</li>
+            <li> clots and anaesthetic problems.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🏥 Recovery & Aftercare</h3>
+        <ul>
+            <li>🏠 <strong>Discharge:</strong> Often same-day for keyhole surgery; longer stay for open surgery.</li>
+            <li>💪 <strong>Activity:</strong> Avoid heavy lifting for about 3 weeks for physical jobs.</li>
+            <li>🚗 <strong>Escort:</strong> You must have someone to take you home and stay with you for 24 hours.</li>
+            <li>✨ <strong>Scars:</strong> Keyhole surgery leaves a few small, centimetre-long scars. Open surgery leaves a larger diagonal scar.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Explaining Gallstones & The Gallbladder</h3>
+        <p>The gallbladder is a small organ that sits just below your liver. Its main job is to store a substance called bile, which your liver produces to help with digestion. Sometimes, materials in the bile, like cholesterol, can harden into what we call gallstones.</p>
+        <p>The pain you've been experiencing happens when these stones move and block the small tubes that carry bile from the gallbladder. This is often worse after eating because that's when your gallbladder squeezes to release bile, pushing the stones and causing irritation.</p>
+        <p>You can live a perfectly normal life without a gallbladder. Your liver will still produce the bile you need for digestion; it just won't be stored in the gallbladder anymore.</p>
+    </div>
+    <div class="section-box">
+        <h3>⚕️ The Cholecystectomy Procedure</h3>
+        <p>To prevent this pain from happening again, we recommend removing the gallbladder entirely. If we only remove the stones, new ones are very likely to form.</p>
+        <p>The surgery is called a cholecystectomy, and it's usually done as a 'keyhole' procedure. This means the surgeon will make a few small cuts on your abdomen instead of one large one, which leads to a quicker recovery and smaller scars. This is a very common and safe operation.</p>
+        <p>The procedure is done under a general anaesthetic, so you will be completely asleep and won't feel anything. In the rare event of difficulties during the keyhole surgery, the surgeons may need to switch to an 'open' procedure, which involves a larger cut.</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Risks and Complications</h3>
+        <p>As with any surgery, there are some risks, though complications are uncommon. These include the standard risks of pain, bleeding, and infection at the surgical site. Serious bleeding is very rare.</p>
+        <p>A specific, but rare, risk for this operation is a leak from the main bile tube after the gallbladder is removed. This happens in about 1 in 100 surgeries and can make you feel quite unwell with a fever, but we monitor for this closely after the procedure.</p>
+        <p>There is also an extremely small risk of damage to nearby structures like the bowel or blood vessels, which can usually be repaired during the surgery. Other very rare risks are related to the general anaesthetic, such as heart or breathing problems, or blood clots in the legs, which we take precautions against.</p>
+    </div>
+    <div class="section-box">
+        <h3>🏠 Recovery and Aftercare</h3>
+        <p>If your surgery is done via keyhole, you can often go home the same day. For an open surgery, you would need to stay in the hospital for a few days.</p>
+        <p>You will need to take things easy for a few weeks afterwards. Because your job is quite physical, we would recommend waiting about three weeks before returning to work. You should avoid any heavy lifting or straining during this time.</p>
+        <p>You must arrange for someone to take you home after the surgery and ideally have them stay with you for the first 24 hours. Regarding scarring, the keyhole approach will leave just a few small, centimetre-long scars which will fade over time and be much less noticeable than the larger scar from an open procedure.</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>

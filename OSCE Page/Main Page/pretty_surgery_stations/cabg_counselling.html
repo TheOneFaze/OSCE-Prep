@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>❤️ CABG Counselling</title>
+  <style>
+    /* --- RED/PINK COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffebee; /* Light red/pink background */
+      color: #b71c1c;     /* Dark red text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ef9a9a, #b71c1c); /* Red gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #ffcdd2; /* Lighter red switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #ffebee; /* Light red/pink background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #b71c1c; /* Dark red for headings */
+      border-left: 5px solid #b71c1c; /* Dark red border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+      list-style-type: none;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>❤️ Coronary Artery Bypass Graft (CABG) Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>📖 The Condition & Procedure</h3>
+        <ul>
+            <li>💔 <strong>Angina:</strong> Chest pain caused by narrowed arteries supplying the heart muscle.</li>
+            <li>⚕️ <strong>CABG:</strong> A procedure to bypass these blockages using a blood vessel (graft) taken from another part of the body, like the leg.</li>
+            <li>😴 <strong>Anaesthesia:</strong> It is open-heart surgery performed under general anaesthetic.</li>
+            <li>⏰ <strong>Duration:</strong> The operation typically takes 3 to 6 hours.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>✅ Benefits & Alternatives</h3>
+        <ul>
+            <li>👍 <strong>Benefits:</strong> Significantly reduces chest pain and breathlessness, and lowers the long-term risk of a heart attack.</li>
+            <li>↔️ <strong>Alternative:</strong> A less invasive option is an angioplasty, where a balloon and stent are used to open the narrowed artery from the inside.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Key Risks & Complications</h3>
+        <ul>
+            <li>🩸 <strong>Common Risks:</strong> Standard surgical risks like bleeding, pain, and wound infection.</li>
+            <li>🫁 <strong>Specific Risks:</strong> Chest infections, failure of the new graft, and kidney issues can occur.</li>
+            <li>❗ <strong>Serious Risks:</strong> Rare but serious risks include stroke, heart attack, or blood clots in the legs or lungs.</li>
+            <li><strong>Mortality:</strong> The risk of not surviving the surgery is low, around 2-3% on average.</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🏥 Recovery</h3>
+        <ul>
+            <li>🏨 <strong>Hospital Stay:</strong> Typically around one week.</li>
+            <li>🗓️ <strong>Follow-up:</strong> An appointment will be arranged for 6-8 weeks after the procedure.</li>
+            <li>🏃‍♀️ <strong>Activity:</strong> Full recovery and return to normal activities takes about 6 weeks, with a gradual increase in exercise.</li>
+            <li>🥗 <strong>Lifestyle:</strong> It is crucial to continue healthy lifestyle changes (diet, no smoking) to protect the new grafts.</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>❓ Explaining Angina and the Need for Surgery</h3>
+        <p>Angina is the chest pain you feel when the arteries that supply your heart with blood and oxygen become narrowed over time. This narrowing is caused by fatty deposits called plaques. When your heart works harder, it needs more oxygen, but the narrowed arteries can't deliver enough blood, which causes the pain.</p>
+        <p>You've tried medical treatment, but your symptoms are still not well controlled. That's why we are now offering a surgical option called a Coronary Artery Bypass Graft, or CABG.</p>
+    </div>
+    <div class="section-box">
+        <h3>⚕️ The CABG Procedure</h3>
+        <p>This is an open-heart surgery performed while you are asleep under a general anaesthetic. The surgeon will take a healthy blood vessel, usually from your leg, and attach it to your heart artery, creating a new path or 'bypass' around the blockage. This allows blood to flow freely to the heart muscle again, which should greatly improve your chest pain.</p>
+        <p>The operation itself is quite lengthy and usually takes between 3 and 6 hours.</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Benefits and Alternatives</h3>
+        <p>The main benefits of having this surgery are that it should relieve your chest pain and breathlessness, allowing you to be more active. It also reduces your future risk of having a serious heart attack.</p>
+        <p>An alternative, less invasive procedure is called an angioplasty. This involves passing a thin tube through a blood vessel to the narrowed artery in your heart. A small balloon is then inflated to widen the artery, and a mesh tube called a stent is often left in place to keep it open.</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Risks and Complications</h3>
+        <p>As with any major surgery, there are risks. More common issues include bleeding, pain, and a risk of infection in your chest or leg wounds. You might also develop a chest infection after the operation.</p>
+        <p>There are also some rarer, but more serious risks, such as the new bypass graft failing, kidney problems, or developing blood clots in your legs or lungs. There is also a small risk of having a stroke or a heart attack during or after the procedure.</p>
+        <p>I know you were concerned about the risk of not surviving the surgery. This is a very safe and commonly performed procedure, but there is a small risk, which on average is about 2-3%. Our surgical and anaesthetic teams are highly experienced and will take every precaution to ensure your safety.</p>
+    </div>
+    <div class="section-box">
+        <h3>🏠 Recovery and Life After Surgery</h3>
+        <p>You will need to stay in the hospital for about a week after the surgery so we can monitor your recovery. After you go home, you will have a follow-up appointment in about a month and a half to two months.</p>
+        <p>Your recovery will be gradual. You'll be encouraged to do increasing levels of gentle exercise, but it's very important not to strain yourself in the first few weeks. Most people are back to their normal routine after about 6 weeks.</p>
+        <p>It's wonderful that you've already made positive lifestyle changes like stopping smoking and improving your diet. It is vital to continue with this healthy lifestyle after the surgery, as this will help protect the new grafts and your overall heart health for years to come.</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>
