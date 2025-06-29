@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩺 Haemodialysis Counselling</title>
+  <style>
+    /* --- UPDATED BLUE COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e3f2fd; /* Light blue background */
+      color: #1565c0;     /* Dark blue text */
+    }
+
+    header {
+      background: linear-gradient(to right, #42a5f5, #0d47a1); /* Blue gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #90caf9; /* Lighter blue switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #e3f2fd; /* Light blue background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #1565c0; /* Dark blue for headings */
+      border-left: 5px solid #1565c0; /* Dark blue border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+    
+    strong {
+        font-weight: bold;
+        color: #0d47a1;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>🩺 Haemodialysis Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
+    </div>
+  </div>
+
+  <div id="highYield" class="content-section active">
+    <h2>High-Yield OSCE Points 🧠</h2>
+    <div class="section-box">
+        <h3>📄 Key details</h3>
+        <ul>
+            <li>75-year-old woman</li>
+            <li>Location: nephrology department</li>
+            <li>Diagnosis: <strong>chronic kidney disease stage 5</strong></li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📖 Brief history</h3>
+        <ul>
+            <li>Chronic kidney disease for many years, now worsening with tiredness, swollen legs, breathlessness</li>
+            <li>End-stage renal failure requiring haemodialysis</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Perceptions (ICE)</h3>
+        <ul>
+            <li><strong>Ideas:</strong> Patient unsure what haemodialysis involves but hopes it will help</li>
+            <li><strong>Concerns:</strong> Worries about pain from procedure</li>
+            <li><strong>Expectations:</strong> Wants more info about haemodialysis</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🧠 Knowledge of haemodialysis</h3>
+        <ul>
+            <li>Kidneys normally filter waste & excess fluid; failure causes toxin build-up</li>
+            <li>Haemodialysis acts as artificial kidney filtering blood outside the body</li>
+            <li>Treatment done 3x/week, about 4 hours/session</li>
+            <li>Surgical creation of arteriovenous fistula required for vascular access</li>
+            <li>Common side effects: low blood pressure, muscle cramps, itchy skin, infection risk</li>
+            <li>Patients advised on fluid, diet (low potassium/phosphate), lifestyle modifications</li>
+            <li>Important cardiovascular risk and quality of life considerations</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Exploration & Summary</h3>
+        <ul>
+            <li>Assess patient feelings, readiness, and concerns</li>
+            <li>Confirm patient understanding by summarising</li>
+            <li>Discuss procedure, side effects, and lifestyle changes</li>
+            <li>Ensure safety-netting and address ongoing concerns</li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="fullScript" class="content-section">
+    <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>❓ What is dialysis?</h3>
+        <p><strong>Doctor's explanation:</strong> "Normally, your kidneys filter waste products and excess fluid from your blood, turning these into urine that you pass out of your body. When your kidneys aren’t working properly, waste and fluid build up in your blood, which can be harmful. Dialysis acts as an artificial kidney to clean your blood."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚙️ How does haemodialysis work?</h3>
+        <p><strong>Doctor's explanation:</strong> "Haemodialysis uses a machine with an artificial kidney called a dialyzer. Your blood is drawn from your body into the machine, filtered, and then returned to your body. This treatment is usually done three times a week for about four hours each session, either in a dialysis center or sometimes at home."</p>
+        <p>"Before starting, you will have a surgical procedure to create an arteriovenous fistula—this connects an artery and vein in your arm to allow easy access for the dialysis needles. It takes 6 to 8 weeks for the fistula to mature and be ready for use. Although needles are involved, nursing staff are trained to minimize discomfort."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Problems with haemodialysis</h3>
+        <p><strong>Doctor's explanation:</strong> "Between sessions, excess fluid and minerals like potassium and phosphorus can build up, so it is important to monitor fluid intake and follow a low potassium and phosphate diet."</p>
+        <p>"Dialysis is time-consuming, taking around 12 hours per week, and can impact your quality of life."</p>
+        <p>"Patients with kidney disease have a higher risk of cardiovascular disease, so quitting smoking, reducing alcohol, and exercising are important."</p>
+    </div>
+    <div class="section-box">
+        <h3>❗ Side effects of haemodialysis</h3>
+        <p><strong>Doctor's explanation:</strong> "Common side effects include low blood pressure during treatment, which may cause dizziness or weakness, muscle cramps due to fluid shifts, itchy skin, and an increased risk of serious infections like sepsis."</p>
+    </div>
+    <div class="section-box">
+        <h3>❤️ Exploration & Empathy</h3>
+        <p>"How do you feel about the information I have provided?"</p>
+        <p>"You may not have expected dialysis to be a long-term treatment but are willing to proceed."</p>
+        <p>"Concerns about needle pain are understandable, but the team will do their best to make you comfortable."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Strategy and summary</h3>
+        <p><strong>Doctor's question:</strong> "Could you summarise what we have discussed today?"</p>
+        <p>"You now understand that haemodialysis is a long-term treatment requiring a fistula and involves lifestyle and dietary changes. You are aware of common side effects and risks."</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
+</body>
+</html>
