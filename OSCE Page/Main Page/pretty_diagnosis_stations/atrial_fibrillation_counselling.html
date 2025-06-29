@@ -1,351 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Atrial Fibrillation Counselling</title>
-    <style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OSCE Spark | Atrial Fibrillation Counselling</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
     :root {
-        --primary-color: #2e7d32;
-        --secondary-bg: #f1f8e9;
-        --highlight: #81c784;
-        --card-radius: 18px;
-        --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --green: #2e7d32;
+      --bg-light: #f0fdf4;
+      --card-bg: #ffffff;
+      --accent: #a5d6a7;
+      --shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
     * {
-        box-sizing: border-box;
+      box-sizing: border-box;
     }
     body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: var(--secondary-bg);
-        color: var(--primary-color);
-        margin: 0;
-        padding: 16px;
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg-light);
+      color: #333;
+      padding-bottom: 80px;
+    }
+    header {
+      background: linear-gradient(to right, #a8edea, #fed6e3);
+      padding: 1.2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #2e7d32;
+    }
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1.5rem 0;
+    }
+    .switch {
+      width: 60px;
+      height: 30px;
+      background-color: #ddd;
+      border-radius: 15px;
+      position: relative;
+      cursor: pointer;
+    }
+    .slider {
+      width: 26px;
+      height: 26px;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: 0.3s ease;
+    }
+    .switch.active {
+      background-color: #81c784;
+    }
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      max-width: 320px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
     }
     .content-section {
-        margin: 20px auto;
-        padding: 24px;
-        max-width: 720px;
-        border-radius: var(--card-radius);
-        background: #fff;
-        box-shadow: var(--card-shadow);
-        transition: opacity 0.3s ease;
+      max-width: 700px;
+      margin: 1rem auto;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      display: none;
     }
-    .pill-header {
-        display: inline-block;
-        padding: 8px 16px;
-        margin-bottom: 16px;
-        border-radius: 50px;
-        background-color: var(--highlight);
-        color: white;
-        font-weight: bold;
-        font-size: 16px;
-    }
-    h3 {
-        border: none;
-        margin-top: 24px;
-        margin-bottom: 12px;
-        color: var(--primary-color);
-        font-size: 18px;
+    .content-section.active {
+      display: block;
     }
     h2 {
-        font-size: 22px;
-        text-align: center;
-        margin-bottom: 24px;
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      margin-top: 1.5rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.6rem;
+      font-size: 1.1rem;
+      color: var(--green);
     }
     ul {
-        padding-left: 1.2em;
+      padding-left: 1.2rem;
     }
-    ul li {
-        padding: 6px 0;
-        line-height: 1.6;
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
     }
     p {
-        line-height: 1.7;
-        margin-bottom: 16px;
+      margin: 1rem 0;
+      line-height: 1.6;
     }
-    @media (max-width: 768px) {
-        h1 {
-            font-size: 24px;
-            padding: 0 10px;
-        }
-        .labels {
-            margin: 0 12px;
-            font-size: 14px;
-        }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 3rem;
     }
-    
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #1b5e20;
-        }
-
-        .toggle-container {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: #e8f5e9;
-    padding: 10px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-        }
-
-        .switch {
-            position: relative;
-            width: 140px;
-            height: 55px;
-            background-color: #c8e6c9;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-            transition: background-color 0.3s ease;
-        }
-
-        .slider {
-            position: absolute;
-            top: 7px;
-            left: 7px;
-            width: 41px;
-            height: 41px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .switch.active {
-            background-color: #81c784;
-        }
-
-        .switch.active .slider {
-            transform: translateX(75px);
-        }
-
-        .labels {
-    margin: 0 10px;
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 20px;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .content-section {
-    margin: 20px 10px;
-    padding: 20px;
-    border-radius: 12px;
-    opacity: 0;
-    pointer-events: none;
-    height: 0;
-    background: linear-gradient(to bottom right, #ffffff, #f1f8e9);
-    transition: opacity 0.3s ease;
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 16px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-        }
-
-        .content-section.active {
-    opacity: 1;
-    height: auto;
-            display: block;
-        }
-
-        h2 {
-            text-align: center;
-            margin-top: 0;
-            color: #388e3c;
-        }
-
-        h3 {
-            border-left: 6px solid #66bb6a;
-            padding-left: 10px;
-            font-size: 1.2rem;
-            margin-top: 25px;
-            color: #1b5e20;
-        }
-
-        ul, p {
-            padding-left: 10px;
-            font-size: 1rem;
-        }
-
-        @media (max-width: 768px) {
-    body { font-size: 16px; }
-    h3 { font-size: 1.1rem; }
-    ul li { padding-bottom: 6px; }
-            h1 {
-                font-size: 1.6rem;
-                margin-bottom: 15px;
-            }
-            .labels {
-    margin: 0 10px;
-                flex-direction: column;
-                align-items: center;
-                gap: 5px;
-                text-align: center;
-            }
-            .switch {
-                width: 120px;
-                height: 50px;
-            }
-            .slider {
-                width: 36px;
-                height: 36px;
-            }
-            .switch.active .slider {
-                transform: translateX(68px);
-            }
-            .content-section {
-    margin: 20px 10px;
-    padding: 20px;
-    border-radius: 12px;
-    opacity: 0;
-    pointer-events: none;
-    height: 0;
-    background: linear-gradient(to bottom right, #ffffff, #f1f8e9);
-    transition: opacity 0.3s ease;
-                padding: 15px;
-                border-radius: 12px;
-                margin-bottom: 25px;
-            }
-        }
-    </style>
+  </style>
 </head>
-<body style="padding: 20px;">
+<body>
 
-<h1>❤️‍🔥 Atrial Fibrillation Counselling</h1>
+<header>
+  <h1>🔥 OSCE Spark: Atrial Fibrillation Counselling</h1>
+</header>
 
 <div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
-    </div>
+  <div class="switch" id="toggleSwitch">
+    <div class="slider"></div>
+  </div>
 </div>
 <div class="labels">
-    <span style="color:#2e7d32;">High-Yield Notes</span>
-    <span style="color:#2e7d32;">Full Script</span>
+  <span>High-Yield Notes</span>
+  <span>Full Script</span>
 </div>
 
 <div id="highYield" class="content-section active">
-    <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>Set up</h3>
-    <ul>
-        <li>🧼 Wash hands and don PPE if appropriate</li>
-        <li>👋 Introduce yourself including name and role</li>
-        <li>📇 Confirm patient’s name and date of birth</li>
-        <li>📋 Explain purpose: counselling on atrial fibrillation</li>
-        <li>✔️ Gain consent to proceed</li>
-        <li>📚 Be aware of key background info like recent AF diagnosis</li>
-    </ul>
-    <h3>Perceptions</h3>
-    <ul>
-        <li>🔍 Explore patient’s prior knowledge/perception of AF</li>
-        <li>❓ Explore concerns and expectations</li>
-        <li>🙋 Encourage patient questions throughout</li>
-    </ul>
-    <h3>Invitation</h3>
-    <ul>
-        <li>💬 Offer more info about AF</li>
-        <li>❓ Ask if patient has specific questions</li>
-        <li>✅ Check which areas patient wants to know more about</li>
-        <li>👥 Confirm patient wants info now and if anyone else should be present</li>
-    </ul>
-    <h3>Knowledge</h3>
-    <ul>
-        <li>🫀 Explain AF (irregular heartbeat caused by abnormal atrial electrical activity)</li>
-        <li>⚠️ Describe causes, including hypertension</li>
-        <li>🩺 Explain management: rate vs rhythm control</li>
-        <li>💊 Explain anticoagulation to reduce stroke risk</li>
-        <li>📦 Deliver info in chunks and pause to check understanding</li>
-        <li>🗣 Avoid jargon and use patient-friendly terms</li>
-        <li>🔄 Tailor depth of info based on patient knowledge/preferences</li>
-        <li>✔️ Correct misunderstandings as they arise</li>
-        <li>📲 Provide additional resources like websites and leaflets</li>
-    </ul>
-    <h3>Exploration & Empathy</h3>
-    <ul>
-        <li>❤️ Explore how patient feels about the information given</li>
-        <li>🤝 Show empathy throughout</li>
-    </ul>
-    <h3>Strategy & Summary</h3>
-    <ul>
-        <li>🔄 Check patient’s understanding by asking them to summarise key points</li>
-        <li>✔️ Confirm all questions/needs addressed</li>
-        <li>🤝 Use shared decision-making to agree on plan</li>
-        <li>⚠️ Provide safety-netting advice</li>
-    </ul>
+  <h2>High-Yield OSCE Points 🧠</h2>
+  <h3>Set up</h3>
+  <ul>
+    <li>🧼 Wash hands and don PPE if appropriate</li>
+    <li>👋 Introduce yourself including name and role</li>
+    <li>📇 Confirm patient’s name and date of birth</li>
+    <li>📋 Explain purpose: counselling on atrial fibrillation</li>
+    <li>✔️ Gain consent to proceed</li>
+    <li>📚 Be aware of key background info like recent AF diagnosis</li>
+  </ul>
 </div>
 
 <div id="fullScript" class="content-section">
-    <h2>Full Word-for-Word OSCE Script 📜</h2>
-    <h3>🩺 Set up</h3>
-    <p>"Hello, my name is [Your Name], and I’m a medical student. I will be talking with you today about your recent diagnosis of atrial fibrillation. Before we start, could you please confirm your full name and date of birth?"</p>
-    <p>"The purpose of this consultation is to explain what atrial fibrillation is, how we manage it, and to answer any questions you might have. Is that okay with you?"</p>
-    <p>"Do I have your consent to proceed?"</p>
-    <h3>🔍 Perceptions</h3>
-    <p>"Can you tell me what you already know or have been told about atrial fibrillation?"</p>
-    <p>"What concerns or expectations do you have about this condition?"</p>
-    <p>"Please feel free to ask questions or stop me at any time if you want me to explain something more clearly."</p>
-    <h3>💡 Invitation</h3>
-    <p>"Would you like me to go over all the details about atrial fibrillation, or are there specific areas you want me to focus on?"</p>
-    <p>"Is there anyone else you would like to have with you while we discuss this?"</p>
-    <h3>🫀 Knowledge</h3>
-    <p>"Atrial fibrillation, or AF, is a common heart rhythm disorder. Normally, your heart beats in a regular and controlled way. However, in AF, the upper chambers of your heart, called the atria, beat irregularly and often very quickly because of abnormal electrical signals."</p>
-    <p>"This irregular heartbeat may cause symptoms like palpitations, feeling tired, dizziness, or breathlessness. Sometimes people don’t notice any symptoms, and AF is found during routine checks."</p>
-    <p>"One common cause of AF is high blood pressure, also known as hypertension, which can affect the heart's structure and function."</p>
-    <p>"It’s important to manage AF because it increases the risk of stroke. Blood can pool in the atria and form clots, which can then travel to the brain."</p>
-    <h3>🛠️ Management</h3>
-    <p>"Treatment focuses on two main goals: preventing strokes and controlling the heart rhythm or rate."</p>
-    <p>"To prevent strokes, we usually prescribe blood thinning medications called anticoagulants, such as apixaban or rivaroxaban."</p>
-    <p>"To control your heartbeat, there are two approaches: rate control, which slows the heart rate using medications like beta blockers, and rhythm control, which aims to restore a normal heart rhythm through medications or procedures like cardioversion."</p>
-    <h3>📋 Lifestyle and Monitoring</h3>
-    <p>"We also recommend lifestyle changes, such as reducing alcohol and caffeine intake, managing your blood pressure and weight, and avoiding stimulants that can trigger AF."</p>
-    <p>"You might need regular ECG monitoring and follow-up appointments with your cardiologist to manage this condition effectively."</p>
-    <h3>✅ Summary & Safety Net</h3>
-    <p>"To summarise, atrial fibrillation is an irregular heart rhythm that increases your risk of stroke, but with proper treatment including anticoagulation and heart rate or rhythm control, we can manage this risk."</p>
-    <p>"If you experience chest pain, severe dizziness, fainting, or worsening symptoms, please seek urgent medical attention."</p>
-    <p>"Here is a leaflet summarising what we discussed today. Do you have any questions or concerns you'd like to discuss?"</p>
-    <p>"Thank you for your time. Your GP or cardiologist will be in touch with the next steps."</p>
-    <h3>🤝 Closing</h3>
-    <p>"Is there anything else you would like to know or talk about before we finish?"</p>
+  <h2>Full Word-for-Word OSCE Script 📜</h2>
+  <h3>🩺 Set up</h3>
+  <p>"Hello, my name is [Your Name], and I’m a medical student..."</p>
+  <p>"Do I have your consent to proceed?"</p>
+</div>
+
+<div class="footer">
+  Updated for OSCE Spark · 2025
 </div>
 
 <script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
+  const toggle = document.getElementById("toggleSwitch");
+  const highYield = document.getElementById("highYield");
+  const fullScript = document.getElementById("fullScript");
 
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    highYield.classList.toggle("active");
+    fullScript.classList.toggle("active");
+  });
 </script>
 
-
-<!-- Floating Scroll to Top Button -->
-<button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
-style="position:fixed; bottom:20px; right:20px; background:#81c784; border:none; border-radius:50%; padding:12px 16px; font-size:20px; color:white; box-shadow: 0 4px 6px rgba(0,0,0,0.2); z-index:1000;">
-↑
-</button>
-
-<!-- Floating Scroll to Top Button -->
-<button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
-style="position:fixed; bottom:20px; right:20px; background:#81c784; border:none; border-radius:50%; padding:12px 16px; font-size:20px; color:white; box-shadow: 0 4px 6px rgba(0,0,0,0.2); z-index:1000;">
-↑
-</button>
 </body>
 </html>
