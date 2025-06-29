@@ -1,190 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Chronic Kidney Disease Counselling</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #e0f7fa;
-            color: #006064;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #b2ebf2;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #4dd0e1;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🩻 Chronic Kidney Disease Counselling</title>
+  <style>
+    /* --- UPDATED BLUE/CYAN COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f7fa; /* Light cyan background */
+      color: #006064;     /* Dark cyan text */
+    }
+
+    header {
+      background: linear-gradient(to right, #4dd0e1, #006064); /* Cyan gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #b2ebf2; /* Lighter cyan switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #e0f7fa; /* Light cyan background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #006064; /* Dark cyan for headings */
+      border-left: 5px solid #006064; /* Dark cyan border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>🩻 Chronic Kidney Disease Counselling</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
+  <header>🩻 Chronic Kidney Disease Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span style="color:#006064;">High-Yield Notes</span>
-    <span style="color:#006064;">Full Script</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>Introduction</h3>
-    <ul>
-        <li>🧼 Wash hands, PPE</li>
-        <li>👋 Introduce name and role</li>
-        <li>🆔 Confirm patient identity</li>
-        <li>📋 Clarify consultation purpose</li>
-        <li>✅ Gain consent to proceed</li>
-        <li>❓ Check patient preference for info and who they want present</li>
-    </ul>
+    <div class="section-box">
+        <h3>🩺 Introduction</h3>
+        <ul>
+            <li>🧼 Wash hands, PPE</li>
+            <li>👋 Introduce name and role</li>
+            <li>🆔 Confirm patient identity</li>
+            <li>📋 Clarify consultation purpose</li>
+            <li>✅ Gain consent to proceed</li>
+            <li>❓ Check patient preference for info and who they want present</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Understanding & Concerns</h3>
+        <ul>
+            <li>💬 Ask what they know about CKD</li>
+            <li>❓ Explore concerns (e.g. dialysis, life expectancy)</li>
+            <li>⏸️ Pause to check understanding throughout</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>📖 Explanation</h3>
+        <ul>
+            <li>🩺 Gradual decline in kidney function over time</li>
+            <li>🧪 Often found on blood tests (eGFR, creatinine)</li>
+            <li>⚠️ Often asymptomatic until advanced stages</li>
+            <li>🚫 Correct misconceptions if any arise</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>💊 Management</h3>
+        <ul>
+            <li>📉 Control BP, diabetes, cholesterol</li>
+            <li>💊 Medications: ACE inhibitors, statins, etc.</li>
+            <li>🩺 Regular monitoring: bloods, urine, BP</li>
+            <li>🧂 Lifestyle: salt restriction, hydration, avoid NSAIDs</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>👋 Closing</h3>
+        <ul>
+            <li>📄 Summary + leaflet & resources</li>
+            <li>📞 Safety net: worsening symptoms</li>
+            <li>🙋 Invite questions</li>
+            <li>🤝 Shared decision making & follow-up plan</li>
+        </ul>
+    </div>
+  </div>
 
-    <h3>Understanding & Concerns</h3>
-    <ul>
-        <li>💬 Ask what they know about CKD</li>
-        <li>❓ Explore concerns (e.g. dialysis, life expectancy)</li>
-        <li>⏸️ Pause to check understanding throughout</li>
-    </ul>
-
-    <h3>Explanation</h3>
-    <ul>
-        <li>🩺 Gradual decline in kidney function over time</li>
-        <li>🧪 Often found on blood tests (eGFR, creatinine)</li>
-        <li>⚠️ Often asymptomatic until advanced stages</li>
-        <li>🚫 Correct misconceptions if any arise</li>
-    </ul>
-
-    <h3>Management</h3>
-    <ul>
-        <li>📉 Control BP, diabetes, cholesterol</li>
-        <li>💊 Medications: ACE inhibitors, statins, etc.</li>
-        <li>🩺 Regular monitoring: bloods, urine, BP</li>
-        <li>🧂 Lifestyle: salt restriction, hydration, avoid NSAIDs</li>
-    </ul>
-
-    <h3>Closing</h3>
-    <ul>
-        <li>📄 Summary + leaflet & resources</li>
-        <li>📞 Safety net: worsening symptoms</li>
-        <li>🙋 Invite questions</li>
-        <li>🤝 Shared decision making & follow-up plan</li>
-    </ul>
-</div>
-
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Introduction</h3>
+        <p>"Hi, I’m [Your Name], a medical student. I’ve been asked to talk to you about the results of your recent kidney function tests. Could I confirm your full name and date of birth?"</p>
+        <p>"Today I’ll explain what chronic kidney disease is, what your results mean, and how we manage it going forward."</p>
+        <p>"Is it okay if we proceed with this discussion now? Would you like anyone else to be present during our conversation?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🤔 Understanding & Concerns</h3>
+        <p>"Have you heard of chronic kidney disease, or CKD, before?"</p>
+        <p>"Is there anything in particular that you’re concerned about — such as dialysis, life expectancy, or dietary changes?"</p>
+    </div>
+    <div class="section-box">
+        <h3>🩻 What is Chronic Kidney Disease?</h3>
+        <p>"CKD means your kidneys aren’t working as well as they used to. It’s usually a gradual process and is picked up on routine blood or urine tests."</p>
+        <p>"We measure it using something called eGFR, which gives us an estimate of your kidney function. We also check for protein in your urine and monitor your blood pressure regularly."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ What Are the Risks?</h3>
+        <p>"In early stages, you may not notice any symptoms. But if it worsens, it can cause tiredness, fluid retention, or higher risks of heart problems."</p>
+        <p>"Our goal is to slow the progression and reduce any complications."</p>
+    </div>
+    <div class="section-box">
+        <h3>🛠️ How Do We Manage It?</h3>
+        <p>"The most important steps are managing blood pressure and any related conditions like diabetes or high cholesterol. We often use medications like ACE inhibitors or statins to protect your kidneys."</p>
+        <p>"We also advise drinking enough fluids, reducing salt intake, avoiding over-the-counter medications like ibuprofen, and staying on top of your blood tests and reviews."</p>
+    </div>
+    <div class="section-box">
+        <h3>📋 Monitoring and Support</h3>
+        <p>"You’ll have regular check-ups to monitor your bloods, blood pressure, and symptoms. If kidney function falls further, we might refer you to a specialist team — but many people live for years with stable CKD."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Summary & Safety Net</h3>
+        <p>"So in summary, CKD means your kidney function is a bit reduced. It’s common, especially with age, high blood pressure or diabetes — and we can manage it well with medication and lifestyle changes."</p>
+        <p>"Here’s a leaflet with everything we discussed. If you ever notice swelling, breathlessness, or changes in urine, please let us know immediately."</p>
+        <p>"Do you have any questions about what we discussed today?"</p>
+    </div>
+     <div class="section-box">
+        <h3>🤝 Shared Decision Making & Follow-up</h3>
+        <p>"Let’s agree on a plan that you feel comfortable with, and we’ll arrange regular monitoring to keep things under control."</p>
+        <p>"Thanks for your time — we’ll keep monitoring things and support you with regular reviews."</p>
+    </div>
+  </div>
 
-    <h3>🩺 Introduction</h3>
-    <p>"Hi, I’m [Your Name], a medical student. I’ve been asked to talk to you about the results of your recent kidney function tests. Could I confirm your full name and date of birth?"</p>
-    <p>"Today I’ll explain what chronic kidney disease is, what your results mean, and how we manage it going forward."</p>
-    <p>"Is it okay if we proceed with this discussion now? Would you like anyone else to be present during our conversation?"</p>
-
-    <h3>🔍 Understanding & Concerns</h3>
-    <p>"Have you heard of chronic kidney disease, or CKD, before?"</p>
-    <p>"Is there anything in particular that you’re concerned about — such as dialysis, life expectancy, or dietary changes?"</p>
-    <p>(Pause here to allow questions and check understanding.)</p>
-
-    <h3>🩻 What is Chronic Kidney Disease?</h3>
-    <p>"CKD means your kidneys aren’t working as well as they used to. It’s usually a gradual process and is picked up on routine blood or urine tests."</p>
-    <p>"We measure it using something called eGFR, which gives us an estimate of your kidney function. We also check for protein in your urine and monitor your blood pressure regularly."</p>
-    <p>(Pause to check understanding and clarify any doubts.)</p>
-
-    <h3>⚠️ What Are the Risks?</h3>
-    <p>"In early stages, you may not notice any symptoms. But if it worsens, it can cause tiredness, fluid retention, or higher risks of heart problems."</p>
-    <p>"Our goal is to slow the progression and reduce any complications."</p>
-
-    <h3>🛠️ How Do We Manage It?</h3>
-    <p>"The most important steps are managing blood pressure and any related conditions like diabetes or high cholesterol. We often use medications like ACE inhibitors or statins to protect your kidneys."</p>
-    <p>"We also advise drinking enough fluids, reducing salt intake, avoiding over-the-counter medications like ibuprofen, and staying on top of your blood tests and reviews."</p>
-
-    <h3>📋 Monitoring and Support</h3>
-    <p>"You’ll have regular check-ups to monitor your bloods, blood pressure, and symptoms. If kidney function falls further, we might refer you to a specialist team — but many people live for years with stable CKD."</p>
-
-    <h3>🗣️ Correcting Misunderstandings</h3>
-    <p>"If you have any concerns or ideas about the condition that don’t seem quite right, please let me know so I can clarify."</p>
-
-    <h3>📚 Additional Resources</h3>
-    <p>"I can provide you with leaflets and direct you to trustworthy websites and support groups to help you understand more."</p>
-
-    <h3>✅ Summary & Safety Net</h3>
-    <p>"So in summary, CKD means your kidney function is a bit reduced. It’s common, especially with age, high blood pressure or diabetes — and we can manage it well with medication and lifestyle changes."</p>
-    <p>"Here’s a leaflet with everything we discussed. If you ever notice swelling, breathlessness, or changes in urine, please let us know immediately."</p>
-    <p>"Do you have any questions about what we discussed today?"</p>
-
-    <h3>🤝 Shared Decision Making & Follow-up</h3>
-    <p>"Let’s agree on a plan that you feel comfortable with, and we’ll arrange regular monitoring to keep things under control."</p>
-
-    <p>"Thanks for your time — we’ll keep monitoring things and support you with regular reviews."</p>
-</div>
-
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
