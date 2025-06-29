@@ -1,169 +1,255 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Gliclazide (Sulfonylurea) Counselling</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #fff3e0;
-            color: #ef6c00;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #ffe0b2;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #ffb74d;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💊 Gliclazide (Sulfonylurea) Counselling</title>
+  <style>
+    /* --- UPDATED ORANGE COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff3e0; /* Light orange background */
+      color: #ef6c00;     /* Dark orange text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ffb74d, #ef6c00); /* Orange gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #ffe0b2; /* Lighter orange switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #fff3e0; /* Light orange background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #ef6c00; /* Dark orange for headings */
+      border-left: 5px solid #ef6c00; /* Dark orange border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>💊 Gliclazide (Sulfonylurea) Counselling</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
+  <header>💊 Gliclazide (Sulfonylurea) Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span style="color:#ef6c00;">High-Yield Notes</span>
-    <span style="color:#ef6c00;">Full Script</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>Introduction</h3>
-    <ul>
-        <li>👋 Introduce yourself, confirm ID</li>
-        <li>📋 Explain purpose: gliclazide for type 2 diabetes</li>
-    </ul>
+    <div class="section-box">
+        <h3>🩺 Introduction</h3>
+        <ul>
+            <li>👋 Introduce yourself, confirm ID</li>
+            <li>📋 Explain purpose: gliclazide for type 2 diabetes</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🎯 Purpose</h3>
+        <ul>
+            <li>💉 Stimulates pancreas to produce more insulin</li>
+            <li>📉 Lowers blood sugar in type 2 diabetes</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🍴 Administration</h3>
+        <ul>
+            <li>🍽️ Take with or just before food (breakfast)</li>
+            <li>📆 Usually once or twice daily</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side Effects</h3>
+        <ul>
+            <li>📉 Risk of hypoglycaemia (shaking, sweating, hunger)</li>
+            <li>🍬 Treat hypo with glucose drink or sweets</li>
+            <li>⚖️ Weight gain possible</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🔬 Monitoring</h3>
+        <ul>
+            <li>📈 Check blood glucose regularly</li>
+            <li>🧪 HbA1c every 3–6 months</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🛡️ Safety</h3>
+        <ul>
+            <li>🚫 Avoid alcohol, missed meals</li>
+            <li>📄 Inform DVLA if on sulfonylureas and driving</li>
+        </ul>
+    </div>
+  </div>
 
-    <h3>Purpose</h3>
-    <ul>
-        <li>💉 Stimulates pancreas to produce more insulin</li>
-        <li>📉 Lowers blood sugar in type 2 diabetes</li>
-    </ul>
-
-    <h3>Administration</h3>
-    <ul>
-        <li>🍽️ Take with or just before food (breakfast)</li>
-        <li>📆 Usually once or twice daily</li>
-    </ul>
-
-    <h3>Side Effects</h3>
-    <ul>
-        <li>⚠️ Risk of hypoglycaemia (shaking, sweating, hunger)</li>
-        <li>🧃 Treat hypo with glucose drink or sweets</li>
-        <li>🩺 Weight gain possible</li>
-    </ul>
-
-    <h3>Monitoring</h3>
-    <ul>
-        <li>📈 Check blood glucose regularly</li>
-        <li>🧪 HbA1c every 3–6 months</li>
-    </ul>
-
-    <h3>Safety</h3>
-    <ul>
-        <li>🚫 Avoid alcohol, missed meals</li>
-        <li>📄 Inform DVLA if on sulfonylureas and driving</li>
-    </ul>
-</div>
-
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <p>"Hi, I’m [Your Name], a medical student. I’ll wash my hands and put on PPE if needed. Can I confirm your name and date of birth?"</p>
+        <p>"I’ve been asked to talk to you about gliclazide, your new tablet for diabetes. Is now a good time, and is there anything you want to focus on or are worried about?"</p>
+        <p>"Have you taken tablets for your diabetes before, or is this your first?"</p>
+    </div>
+    <div class="section-box">
+        <h3>💊 What is gliclazide and why do you need it?</h3>
+        <p>"Gliclazide is a tablet that helps your pancreas release more insulin, which helps lower your blood sugar. It’s used when lifestyle changes or metformin alone aren’t enough to control your sugar."</p>
+    </div>
+    <div class="section-box">
+        <h3>🕒 How to take gliclazide</h3>
+        <p>"Take it with or just before food, usually at breakfast time. Some people need it once daily, others twice, depending on your dose. Always follow the instructions on your prescription."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side effects and safety</h3>
+        <p>"The main risk is low blood sugar, or hypo. Signs include feeling shaky, sweaty, dizzy, confused, or very hungry. If this happens, have a sugary drink or snack right away. Let your doctor know if this happens a lot—your dose might need adjusting."</p>
+        <p>"Gliclazide can also cause weight gain in some people. Try not to skip meals and avoid alcohol, which can increase your risk of hypos."</p>
+    </div>
+    <div class="section-box">
+        <h3>📈 Monitoring and follow-up</h3>
+        <p>"You’ll need to check your blood sugar as advised by your diabetes team, and have regular blood tests (HbA1c) every few months to see how you’re doing."</p>
+        <p>"If you drive, let the DVLA know that you’re taking a sulfonylurea, and always check your blood sugar before long journeys."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Summary & teach-back</h3>
+        <p>"So in summary: gliclazide helps lower your sugar by boosting your own insulin. Take it with food, watch for low sugars, and keep up with your reviews. Can you tell me what you’ll remember about how to take gliclazide, just so I know I explained it well?"</p>
+        <p>"Any questions or concerns before we finish? Thanks for your time!"</p>
+    </div>
+  </div>
 
-    <h3>🩺 Set up</h3>
-    <p>"Hi, I’m [Your Name], a medical student. I’ll wash my hands and put on PPE if needed. Can I confirm your name and date of birth?"</p>
-    <p>"I’ve been asked to talk to you about gliclazide, your new tablet for diabetes. Is now a good time, and is there anything you want to focus on or are worried about?"</p>
-    <p>"Have you taken tablets for your diabetes before, or is this your first?"</p>
-
-    <h3>💊 What is gliclazide and why do you need it?</h3>
-    <p>"Gliclazide is a tablet that helps your pancreas release more insulin, which helps lower your blood sugar. It’s used when lifestyle changes or metformin alone aren’t enough to control your sugar."</p>
-
-    <h3>🕒 How to take gliclazide</h3>
-    <p>"Take it with or just before food, usually at breakfast time. Some people need it once daily, others twice, depending on your dose. Always follow the instructions on your prescription."</p>
-
-    <h3>⚠️ Side effects and safety</h3>
-    <p>"The main risk is low blood sugar, or hypo. Signs include feeling shaky, sweaty, dizzy, confused, or very hungry. If this happens, have a sugary drink or snack right away. Let your doctor know if this happens a lot—your dose might need adjusting."</p>
-    <p>"Gliclazide can also cause weight gain in some people. Try not to skip meals and avoid alcohol, which can increase your risk of hypos."</p>
-
-    <h3>📈 Monitoring and follow-up</h3>
-    <p>"You’ll need to check your blood sugar as advised by your diabetes team, and have regular blood tests (HbA1c) every few months to see how you’re doing."</p>
-    <p>"If you drive, let the DVLA know that you’re taking a sulfonylurea, and always check your blood sugar before long journeys."</p>
-
-    <h3>✅ Summary & teach-back</h3>
-    <p>"So in summary: gliclazide helps lower your sugar by boosting your own insulin. Take it with food, watch for low sugars, and keep up with your reviews. Can you tell me what you’ll remember about how to take gliclazide, just so I know I explained it well?"</p>
-    <p>"Any questions or concerns before we finish? Thanks for your time!"</p>
-
-</div>
-
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
