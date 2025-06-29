@@ -1,163 +1,253 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Warfarin Counselling</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #fce4ec;
-            color: #c2185b;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        .switch {
-            position: relative;
-            width: 120px;
-            height: 50px;
-            background-color: #f8bbd0;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease-in-out;
-        }
-        .switch.active .slider {
-            transform: translateX(70px);
-        }
-        .labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .content-section {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .content-section.active {
-            display: block;
-        }
-        h3 {
-            border-bottom: 2px solid #ffb74d;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        ul {
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💊 Warfarin Counselling</title>
+  <style>
+    /* --- UPDATED PINK COLOR SCHEME --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fce4ec; /* Light pink background */
+      color: #c2185b;     /* Dark pink text */
+    }
+
+    header {
+      background: linear-gradient(to right, #ec407a, #ad1457); /* Pink gradient */
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1.8em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #f8bbd0; /* Lighter pink switch */
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
+    }
+
+    .content-section {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .section-box {
+      background: #fce4ec; /* Light pink background for boxes */
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      color: #c2185b; /* Dark pink for headings */
+      border-left: 5px solid #c2185b; /* Dark pink border */
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      header { font-size: 1.5em; padding: 20px; }
+      .content-section { padding: 25px; }
+      .section-box { padding: 18px; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.3em; padding: 18px; }
+      .content-section { padding: 20px; }
+      .section-box { padding: 16px; }
+      .labels { padding: 0 25px; }
+      h3 { font-size: 1.1em; }
+      p, li { font-size: 0.95em; }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      header { font-size: 1.2em; padding: 20px 15px; }
+      .content-section { margin: 0 10px 40px; padding: 20px; }
+      .section-box { padding: 18px; }
+      .labels { padding: 0 20px; font-size: 1em; }
+      h3 { font-size: 1.2em; }
+      p, li { font-size: 1em; line-height: 1.5; }
+      .switch {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 30px;
+      }
+      .slider {
+        width: 22px;
+        height: 22px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<h1>💊 Warfarin Counselling</h1>
-
-<div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
-        <div class="slider"></div>
+  <header>💊 Warfarin Counselling</header>
+  <div class="labels">
+    <span>High-Yield Notes</span>
+    <span>Full Script</span>
+  </div>
+  <div class="toggle-container">
+    <div class="switch" onclick="toggleContent(this)">
+      <div class="slider"></div>
     </div>
-</div>
-<div class="labels">
-    <span style="color:#ef6c00;">High-Yield Notes</span>
-    <span style="color:#ef6c00;">Full Script</span>
-</div>
+  </div>
 
-<div id="highYield" class="content-section active">
+  <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>Introduction</h3>
-    <ul>
-        <li>🧼 Wash hands, introduce self and role</li>
-        <li>🆔 Confirm patient ID and explain purpose</li>
-    </ul>
-    <h3>Purpose of Medication</h3>
-    <ul>
-        <li>💉 Prevents blood clots (AF, DVT, PE, mechanical valve)</li>
-        <li>🧬 It’s a vitamin K antagonist (interferes with clotting)</li>
-    </ul>
-    <h3>Monitoring</h3>
-    <ul>
-        <li>🧪 Requires regular INR blood tests (target range 2–3)</li>
-        <li>📋 Dosing adjusted based on INR</li>
-    </ul>
-    <h3>Safety</h3>
-    <ul>
-        <li>⚠️ Risk of bleeding: report bruising, bleeding gums, dark stool</li>
-        <li>🚫 Avoid NSAIDs, alcohol, cranberry, extreme diet changes</li>
-    </ul>
-    <h3>Other Key Points</h3>
-    <ul>
-        <li>💊 Take at same time daily, usually evening</li>
-        <li>📒 Carry anticoagulant alert card at all times</li>
-        <li>🛡️ Let healthcare professionals know before procedures</li>
-    </ul>
-</div>
+    <div class="section-box">
+        <h3>🩺 Introduction</h3>
+        <ul>
+            <li>🧼 Wash hands, introduce self and role</li>
+            <li>🆔 Confirm patient ID and explain purpose</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🎯 Purpose of Medication</h3>
+        <ul>
+            <li>💉 Prevents blood clots (AF, DVT, PE, mechanical valve)</li>
+            <li>🧬 It’s a vitamin K antagonist (interferes with clotting)</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🔬 Monitoring</h3>
+        <ul>
+            <li>🧪 Requires regular INR blood tests (target range 2–3)</li>
+            <li>📋 Dosing adjusted based on INR</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🛡️ Safety</h3>
+        <ul>
+            <li>⚠️ Risk of bleeding: report bruising, bleeding gums, dark stool</li>
+            <li>🚫 Avoid NSAIDs, alcohol, cranberry, extreme diet changes</li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h3>🔑 Other Key Points</h3>
+        <ul>
+            <li>💊 Take at same time daily, usually evening</li>
+            <li>📒 Carry anticoagulant alert card at all times</li>
+            <li>🛡️ Let healthcare professionals know before procedures</li>
+        </ul>
+    </div>
+  </div>
 
-<div id="fullScript" class="content-section">
+  <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
+    <div class="section-box">
+        <h3>🩺 Set up</h3>
+        <p>"Hi, I’m [Your Name], a medical student. I’ll wash my hands and put on some PPE. Can I confirm your name and date of birth?"</p>
+        <p>"I’ve been asked to talk to you about warfarin, your new blood thinner. Is now a good time, and is there anything specific you want to discuss?"</p>
+        <p>"What do you know about warfarin or blood thinners already, or do you have any worries about starting?"</p>
+    </div>
+    <div class="section-box">
+        <h3>💉 What is warfarin and why do you need it?</h3>
+        <p>"Warfarin is a medication that thins your blood to prevent clots forming. You need it because of [reason: atrial fibrillation, DVT, pulmonary embolism, or a mechanical valve], all of which increase your risk of a blood clot."</p>
+        <p>"It works by blocking vitamin K in your body, which is needed for blood to clot."</p>
+    </div>
+    <div class="section-box">
+        <h3>🕒 How to take warfarin</h3>
+        <p>"Warfarin is usually taken once daily, at the same time, usually in the evening. Your dose may change depending on blood tests."</p>
+    </div>
+    <div class="section-box">
+        <h3>🔬 Monitoring and INR</h3>
+        <p>"You’ll need regular blood tests called INR tests to see how long it takes your blood to clot. The usual target INR is between 2 and 3, but your doctor will set your exact range. Your dose will be changed depending on your INR results. It’s really important not to miss INR appointments or doses."</p>
+    </div>
+    <div class="section-box">
+        <h3>⚠️ Side effects and safety</h3>
+        <p>"The main risk with warfarin is bleeding. Tell us if you notice unusual bruising, nosebleeds, bleeding gums, blood in your urine or stool, or very heavy periods. Seek help if you have a serious bleed that doesn’t stop."</p>
+        <p>"Warfarin interacts with many medicines and foods. Try to keep your intake of green vegetables (like spinach) and alcohol steady. Avoid cranberry juice. Don’t take over-the-counter painkillers like ibuprofen without advice, as they can increase bleeding risk."</p>
+    </div>
+    <div class="section-box">
+        <h3>📒 Practical advice & alert card</h3>
+        <p>"You’ll be given a yellow anticoagulant alert card—please carry this at all times and show it to any healthcare professional before procedures, dental work, or new medications."</p>
+    </div>
+    <div class="section-box">
+        <h3>✅ Summary & teach-back</h3>
+        <p>"So in summary: Warfarin helps prevent blood clots, but it needs careful monitoring with INR tests and can increase bleeding risk. Can you tell me what you’ll do to stay safe while on warfarin, just to check I’ve explained it clearly?"</p>
+        <p>"Do you have any questions about your treatment or anything you’re worried about?"</p>
+        <p>"Thank you for your time today. If you notice any serious bleeding, seek medical help right away and keep taking your medication unless advised otherwise."</p>
+    </div>
+  </div>
 
-    <h3>🩺 Set up</h3>
-    <p>"Hi, I’m [Your Name], a medical student. I’ll wash my hands and put on some PPE. Can I confirm your name and date of birth?"</p>
-    <p>"I’ve been asked to talk to you about warfarin, your new blood thinner. Is now a good time, and is there anything specific you want to discuss?"</p>
-    <p>"What do you know about warfarin or blood thinners already, or do you have any worries about starting?"</p>
-
-    <h3>💉 What is warfarin and why do you need it?</h3>
-    <p>"Warfarin is a medication that thins your blood to prevent clots forming. You need it because of [reason: atrial fibrillation, DVT, pulmonary embolism, or a mechanical valve], all of which increase your risk of a blood clot."</p>
-    <p>"It works by blocking vitamin K in your body, which is needed for blood to clot."</p>
-
-    <h3>🕒 How to take warfarin</h3>
-    <p>"Warfarin is usually taken once daily, at the same time, usually in the evening. Your dose may change depending on blood tests."</p>
-
-    <h3>🧪 Monitoring and INR</h3>
-    <p>"You’ll need regular blood tests called INR tests to see how long it takes your blood to clot. The usual target INR is between 2 and 3, but your doctor will set your exact range. Your dose will be changed depending on your INR results. It’s really important not to miss INR appointments or doses."</p>
-
-    <h3>⚠️ Side effects and safety</h3>
-    <p>"The main risk with warfarin is bleeding. Tell us if you notice unusual bruising, nosebleeds, bleeding gums, blood in your urine or stool, or very heavy periods. Seek help if you have a serious bleed that doesn’t stop."</p>
-    <p>"Warfarin interacts with many medicines and foods. Try to keep your intake of green vegetables (like spinach) and alcohol steady. Avoid cranberry juice. Don’t take over-the-counter painkillers like ibuprofen without advice, as they can increase bleeding risk."</p>
-
-    <h3>📒 Practical advice & alert card</h3>
-    <p>"You’ll be given a yellow anticoagulant alert card—please carry this at all times and show it to any healthcare professional before procedures, dental work, or new medications."</p>
-
-    <h3>✅ Summary & teach-back</h3>
-    <p>"So in summary: Warfarin helps prevent blood clots, but it needs careful monitoring with INR tests and can increase bleeding risk. Can you tell me what you’ll do to stay safe while on warfarin, just to check I’ve explained it clearly?"</p>
-    <p>"Do you have any questions about your treatment or anything you’re worried about?"</p>
-    <p>"Thank you for your time today. If you notice any serious bleeding, seek medical help right away and keep taking your medication unless advised otherwise."</p>
-
-</div>
-
-<script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
-        highYield.classList.toggle("active");
-        fullScript.classList.toggle("active");
-    });
-</script>
-
+  <script>
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
+  </script>
 </body>
 </html>
