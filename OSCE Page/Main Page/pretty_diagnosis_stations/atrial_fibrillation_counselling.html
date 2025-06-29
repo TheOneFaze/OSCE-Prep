@@ -2,92 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>💖 Atrial Fibrillation Counselling | OSCE Spark</title>
+  <title>💖 Atrial Fibrillation Counselling</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: #e8f5e9;
       color: #1b5e20;
     }
+
     header {
-      position: sticky;
-      top: 0;
-      background: linear-gradient(135deg, #43cea2, #185a9d);
+      background: linear-gradient(to right, #43cea2, #185a9d);
       color: white;
       text-align: center;
       padding: 25px 10px;
       font-size: 1.8em;
       font-weight: bold;
-      z-index: 10;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .toggle-container {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
+      position: sticky;
+      top: 0;
       z-index: 1000;
-    }
-    .switch {
-      position: relative;
-      width: 80px;
-      height: 40px;
-      background-color: #c8e6c9;
-      border-radius: 40px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    .slider {
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      width: 32px;
-      height: 32px;
-      background-color: white;
-      border-radius: 50%;
-      transition: transform 0.3s ease;
-    }
-    .switch.active .slider {
-      transform: translateX(40px);
     }
 
     .labels {
       display: flex;
       justify-content: space-between;
-      max-width: 720px;
-      margin: 20px auto 10px;
-      font-size: 0.95em;
-      color: #1b5e20;
+      padding: 0 40px;
+      font-size: 0.9em;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .switch {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 34px;
+      background-color: #c8e6c9;
+      border-radius: 34px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .slider {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .switch.active .slider {
+      transform: translateX(30px);
     }
 
     .content-section {
       display: none;
       max-width: 720px;
-      margin: 0 auto 30px;
+      margin: 0 auto 40px;
       background: white;
       padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      animation: fadeIn 0.4s ease-in-out;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
+
     .content-section.active {
       display: block;
     }
 
+    .section-box {
+      background: #f1f8e9;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
     h2 {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     h3 {
-      margin-top: 30px;
-      margin-bottom: 10px;
       color: #2e7d32;
-      border-left: 4px solid #2e7d32;
+      border-left: 5px solid #2e7d32;
       padding-left: 10px;
+      margin-top: 20px;
     }
 
     ul {
@@ -102,33 +111,19 @@
       margin-bottom: 15px;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* MEDIA QUERIES */
     @media screen and (min-width: 768px) and (max-width: 991px) {
       .content-section { padding: 25px; }
-      header { font-size: 1.6em; }
     }
+
     @media screen and (min-width: 481px) and (max-width: 767px) {
+      header { font-size: 1.5em; padding: 20px; }
       .content-section { padding: 20px; }
-      header { font-size: 1.4em; }
-      .labels { font-size: 0.85em; }
     }
+
     @media screen and (min-width: 320px) and (max-width: 480px) {
-      .content-section { padding: 15px; border-radius: 15px; }
-      header { font-size: 1.3em; padding: 20px 10px; }
-      .labels { font-size: 0.8em; padding: 0 20px; }
-      .switch { width: 70px; height: 36px; }
-      .slider { width: 28px; height: 28px; top: 4px; left: 4px; }
+      header { font-size: 1.2em; padding: 18px; }
+      .content-section { padding: 15px; }
+      .labels { padding: 0 20px; }
     }
   </style>
 </head>
@@ -141,117 +136,143 @@
   </div>
 
   <div class="toggle-container">
-    <div class="switch" id="toggleSwitch">
+    <div class="switch" onclick="toggleContent(this)">
       <div class="slider"></div>
     </div>
   </div>
 
   <div id="highYield" class="content-section active">
     <h2>High-Yield OSCE Points 🧠</h2>
-    <h3>🩺 Set up</h3>
-    <ul>
-      <li>🧼 Wash hands and don PPE if appropriate</li>
-      <li>👋 Introduce yourself including name and role</li>
-      <li>📇 Confirm patient’s name and date of birth</li>
-      <li>📋 Explain purpose: counselling on atrial fibrillation</li>
-      <li>✔️ Gain consent to proceed</li>
-      <li>📚 Be aware of key background info like recent AF diagnosis</li>
-    </ul>
 
-    <h3>🔍 Perceptions</h3>
-    <ul>
-      <li>🔎 Explore patient’s prior knowledge/perception of AF</li>
-      <li>❓ Explore concerns and expectations</li>
-      <li>🙋 Encourage patient questions throughout</li>
-    </ul>
+    <div class="section-box">
+      <h3>🩺 Set up</h3>
+      <ul>
+        <li>🧼 Wash hands and don PPE if appropriate</li>
+        <li>👋 Introduce yourself including name and role</li>
+        <li>📇 Confirm patient’s name and date of birth</li>
+        <li>📋 Explain purpose: counselling on atrial fibrillation</li>
+        <li>✔️ Gain consent to proceed</li>
+        <li>📚 Be aware of key background info like recent AF diagnosis</li>
+      </ul>
+    </div>
 
-    <h3>💡 Invitation</h3>
-    <ul>
-      <li>💬 Offer more info about AF</li>
-      <li>❓ Ask if patient has specific questions</li>
-      <li>✅ Check which areas patient wants to know more about</li>
-      <li>👥 Confirm patient wants info now and if anyone else should be present</li>
-    </ul>
+    <div class="section-box">
+      <h3>🔍 Perceptions</h3>
+      <ul>
+        <li>🔍 Explore patient’s prior knowledge/perception of AF</li>
+        <li>❓ Explore concerns and expectations</li>
+        <li>🙋 Encourage patient questions throughout</li>
+      </ul>
+    </div>
 
-    <h3>📖 Knowledge</h3>
-    <ul>
-      <li>🫀 Explain AF (irregular heartbeat caused by abnormal atrial electrical activity)</li>
-      <li>⚠️ Describe causes, including hypertension</li>
-      <li>🩺 Explain management: rate vs rhythm control</li>
-      <li>💊 Explain anticoagulation to reduce stroke risk</li>
-      <li>📦 Deliver info in chunks and pause to check understanding</li>
-      <li>🗣 Avoid jargon and use patient-friendly terms</li>
-      <li>🔄 Tailor depth of info based on patient knowledge/preferences</li>
-      <li>✔️ Correct misunderstandings as they arise</li>
-      <li>📲 Provide additional resources like websites and leaflets</li>
-    </ul>
+    <div class="section-box">
+      <h3>Invitation</h3>
+      <ul>
+        <li>💬 Offer more info about AF</li>
+        <li>❓ Ask if patient has specific questions</li>
+        <li>✅ Check which areas patient wants to know more about</li>
+        <li>👥 Confirm patient wants info now and if anyone else should be present</li>
+      </ul>
+    </div>
 
-    <h3>💬 Exploration & Empathy</h3>
-    <ul>
-      <li>❤️ Explore how patient feels about the information given</li>
-      <li>🤝 Show empathy throughout</li>
-    </ul>
+    <div class="section-box">
+      <h3>📖 Knowledge</h3>
+      <ul>
+        <li>🫀 Explain AF (irregular heartbeat caused by abnormal atrial electrical activity)</li>
+        <li>⚠️ Describe causes, including hypertension</li>
+        <li>🩺 Explain management: rate vs rhythm control</li>
+        <li>💊 Explain anticoagulation to reduce stroke risk</li>
+        <li>📦 Deliver info in chunks and pause to check understanding</li>
+        <li>🗣 Avoid jargon and use patient-friendly terms</li>
+        <li>🔄 Tailor depth of info based on patient knowledge/preferences</li>
+        <li>✔️ Correct misunderstandings as they arise</li>
+        <li>📲 Provide additional resources like websites and leaflets</li>
+      </ul>
+    </div>
 
-    <h3>✅ Strategy & Summary</h3>
-    <ul>
-      <li>🔄 Check patient’s understanding by asking them to summarise key points</li>
-      <li>✔️ Confirm all questions/needs addressed</li>
-      <li>🤝 Use shared decision-making to agree on plan</li>
-      <li>⚠️ Provide safety-netting advice</li>
-    </ul>
+    <div class="section-box">
+      <h3>💬 Exploration & Empathy</h3>
+      <ul>
+        <li>❤️ Explore how patient feels about the information given</li>
+        <li>🤝 Show empathy throughout</li>
+      </ul>
+    </div>
+
+    <div class="section-box">
+      <h3>✅ Strategy & Summary</h3>
+      <ul>
+        <li>🔄 Check patient’s understanding by asking them to summarise key points</li>
+        <li>✔️ Confirm all questions/needs addressed</li>
+        <li>🤝 Use shared decision-making to agree on plan</li>
+        <li>⚠️ Provide safety-netting advice</li>
+      </ul>
+    </div>
   </div>
 
   <div id="fullScript" class="content-section">
     <h2>Full Word-for-Word OSCE Script 📜</h2>
-    <h3>🩺 Set up</h3>
-    <p>"Hello, my name is [Your Name], and I’m a medical student. I will be talking with you today about your recent diagnosis of atrial fibrillation. Before we start, could you please confirm your full name and date of birth?"</p>
-    <p>"The purpose of this consultation is to explain what atrial fibrillation is, how we manage it, and to answer any questions you might have. Is that okay with you?"</p>
-    <p>"Do I have your consent to proceed?"</p>
 
-    <h3>🔍 Perceptions</h3>
-    <p>"Can you tell me what you already know or have been told about atrial fibrillation?"</p>
-    <p>"What concerns or expectations do you have about this condition?"</p>
-    <p>"Please feel free to ask questions or stop me at any time if you want me to explain something more clearly."</p>
+    <div class="section-box">
+      <h3>🩺 Set up</h3>
+      <p>"Hello, my name is [Your Name], and I’m a medical student. I will be talking with you today about your recent diagnosis of atrial fibrillation. Before we start, could you please confirm your full name and date of birth?"</p>
+      <p>"The purpose of this consultation is to explain what atrial fibrillation is, how we manage it, and to answer any questions you might have. Is that okay with you?"</p>
+      <p>"Do I have your consent to proceed?"</p>
+    </div>
 
-    <h3>💡 Invitation</h3>
-    <p>"Would you like me to go over all the details about atrial fibrillation, or are there specific areas you want me to focus on?"</p>
-    <p>"Is there anyone else you would like to have with you while we discuss this?"</p>
+    <div class="section-box">
+      <h3>🔍 Perceptions</h3>
+      <p>"Can you tell me what you already know or have been told about atrial fibrillation?"</p>
+      <p>"What concerns or expectations do you have about this condition?"</p>
+      <p>"Please feel free to ask questions or stop me at any time if you want me to explain something more clearly."</p>
+    </div>
 
-    <h3>📖 Knowledge</h3>
-    <p>"Atrial fibrillation, or AF, is a common heart rhythm disorder. Normally, your heart beats in a regular and controlled way. However, in AF, the upper chambers of your heart, called the atria, beat irregularly and often very quickly because of abnormal electrical signals."</p>
-    <p>"This irregular heartbeat may cause symptoms like palpitations, feeling tired, dizziness, or breathlessness. Sometimes people don’t notice any symptoms, and AF is found during routine checks."</p>
-    <p>"One common cause of AF is high blood pressure, also known as hypertension, which can affect the heart's structure and function."</p>
-    <p>"It’s important to manage AF because it increases the risk of stroke. Blood can pool in the atria and form clots, which can then travel to the brain."</p>
+    <div class="section-box">
+      <h3>💡 Invitation</h3>
+      <p>"Would you like me to go over all the details about atrial fibrillation, or are there specific areas you want me to focus on?"</p>
+      <p>"Is there anyone else you would like to have with you while we discuss this?"</p>
+    </div>
 
-    <h3>🛠️ Management</h3>
-    <p>"Treatment focuses on two main goals: preventing strokes and controlling the heart rhythm or rate."</p>
-    <p>"To prevent strokes, we usually prescribe blood thinning medications called anticoagulants, such as apixaban or rivaroxaban."</p>
-    <p>"To control your heartbeat, there are two approaches: rate control, which slows the heart rate using medications like beta blockers, and rhythm control, which aims to restore a normal heart rhythm through medications or procedures like cardioversion."</p>
+    <div class="section-box">
+      <h3>🫀 Knowledge</h3>
+      <p>"Atrial fibrillation, or AF, is a common heart rhythm disorder. Normally, your heart beats in a regular and controlled way. However, in AF, the upper chambers of your heart, called the atria, beat irregularly and often very quickly because of abnormal electrical signals."</p>
+      <p>"This irregular heartbeat may cause symptoms like palpitations, feeling tired, dizziness, or breathlessness. Sometimes people don’t notice any symptoms, and AF is found during routine checks."</p>
+      <p>"One common cause of AF is high blood pressure, also known as hypertension, which can affect the heart's structure and function."</p>
+      <p>"It’s important to manage AF because it increases the risk of stroke. Blood can pool in the atria and form clots, which can then travel to the brain."</p>
+    </div>
 
-    <h3>📋 Lifestyle and Monitoring</h3>
-    <p>"We also recommend lifestyle changes, such as reducing alcohol and caffeine intake, managing your blood pressure and weight, and avoiding stimulants that can trigger AF."</p>
-    <p>"You might need regular ECG monitoring and follow-up appointments with your cardiologist to manage this condition effectively."</p>
+    <div class="section-box">
+      <h3>🛠️ Management</h3>
+      <p>"Treatment focuses on two main goals: preventing strokes and controlling the heart rhythm or rate."</p>
+      <p>"To prevent strokes, we usually prescribe blood thinning medications called anticoagulants, such as apixaban or rivaroxaban."</p>
+      <p>"To control your heartbeat, there are two approaches: rate control, which slows the heart rate using medications like beta blockers, and rhythm control, which aims to restore a normal heart rhythm through medications or procedures like cardioversion."</p>
+    </div>
 
-    <h3>✅ Summary & Safety Net</h3>
-    <p>"To summarise, atrial fibrillation is an irregular heart rhythm that increases your risk of stroke, but with proper treatment including anticoagulation and heart rate or rhythm control, we can manage this risk."</p>
-    <p>"If you experience chest pain, severe dizziness, fainting, or worsening symptoms, please seek urgent medical attention."</p>
-    <p>"Here is a leaflet summarising what we discussed today. Do you have any questions or concerns you'd like to discuss?"</p>
-    <p>"Thank you for your time. Your GP or cardiologist will be in touch with the next steps."</p>
+    <div class="section-box">
+      <h3>📋 Lifestyle and Monitoring</h3>
+      <p>"We also recommend lifestyle changes, such as reducing alcohol and caffeine intake, managing your blood pressure and weight, and avoiding stimulants that can trigger AF."</p>
+      <p>"You might need regular ECG monitoring and follow-up appointments with your cardiologist to manage this condition effectively."</p>
+    </div>
 
-    <h3>🤝 Closing</h3>
-    <p>"Is there anything else you would like to know or talk about before we finish?"</p>
+    <div class="section-box">
+      <h3>✅ Summary & Safety Net</h3>
+      <p>"To summarise, atrial fibrillation is an irregular heart rhythm that increases your risk of stroke, but with proper treatment including anticoagulation and heart rate or rhythm control, we can manage this risk."</p>
+      <p>"If you experience chest pain, severe dizziness, fainting, or worsening symptoms, please seek urgent medical attention."</p>
+      <p>"Here is a leaflet summarising what we discussed today. Do you have any questions or concerns you'd like to discuss?"</p>
+      <p>"Thank you for your time. Your GP or cardiologist will be in touch with the next steps."</p>
+    </div>
+
+    <div class="section-box">
+      <h3>🤝 Closing</h3>
+      <p>"Is there anything else you would like to know or talk about before we finish?"</p>
+    </div>
   </div>
 
   <script>
-    const toggle = document.getElementById("toggleSwitch");
-    const highYield = document.getElementById("highYield");
-    const fullScript = document.getElementById("fullScript");
-
-    toggle.addEventListener("click", () => {
-      toggle.classList.toggle("active");
-      highYield.classList.toggle("active");
-      fullScript.classList.toggle("active");
-    });
+    function toggleContent(switchEl) {
+      const isActive = switchEl.classList.toggle('active');
+      document.getElementById('highYield').classList.toggle('active', !isActive);
+      document.getElementById('fullScript').classList.toggle('active', isActive);
+    }
   </script>
 </body>
 </html>
